@@ -47,6 +47,10 @@
 
         <activity android:name=".ui.activity.ArticleResultActivity" />
 
+        <activity android:name=".ui.activity.ClassifiedResultActivity" />
+
+        <activity android:name=".ui.activity.EventResultActivity" />
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/androidApiKey"/>

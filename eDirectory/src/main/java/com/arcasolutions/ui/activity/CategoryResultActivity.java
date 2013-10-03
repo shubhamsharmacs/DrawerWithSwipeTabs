@@ -8,7 +8,9 @@ import com.arcasolutions.api.model.ArticleCategory;
 import com.arcasolutions.api.model.ArticleResult;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.BaseCategoryResult;
+import com.arcasolutions.api.model.ClassifiedCategory;
 import com.arcasolutions.api.model.DealCategory;
+import com.arcasolutions.api.model.EventCategory;
 import com.arcasolutions.api.model.ListingCategory;
 import com.arcasolutions.ui.fragment.CategoryResultFragment;
 
@@ -60,6 +62,14 @@ public class CategoryResultActivity extends BaseActivity
                 startActivity(intent);
             } else if (category instanceof ArticleCategory) {
                 Intent intent = new Intent(this, ArticleResultActivity.class);
+                intent.putExtra(ListingResultActivity.EXTRA_CATEGORY, category);
+                startActivity(intent);
+            } else if (category instanceof ClassifiedCategory) {
+                Intent intent = new Intent(this, ClassifiedResultActivity.class);
+                intent.putExtra(ListingResultActivity.EXTRA_CATEGORY, category);
+                startActivity(intent);
+            } else if (category instanceof EventCategory) {
+                Intent intent = new Intent(this, EventResultActivity.class);
                 intent.putExtra(ListingResultActivity.EXTRA_CATEGORY, category);
                 startActivity(intent);
             }

@@ -36,6 +36,7 @@
         android:layout_toRightOf="@+id/label1" />
 
     <ImageView
+        style="@style/imageResult"
         android:layout_width="60dp"
         android:layout_height="40dp"
         android:id="@id/articleImage"

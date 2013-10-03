@@ -18,7 +18,6 @@ import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.implementation.IMapItem;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.EventResult;
-import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.ListingResultActivity;
@@ -51,7 +50,7 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
     private LatLng mSearchNearLeftLatLng;
     private LatLng mSearchFarRightLatLng;
 
-    private Class<? extends BaseResult> mClass = ListingResult.class;
+    private Class<? extends BaseResult> mClass = EventResult.class;
 
     private final Map<Marker, IMapItem> mListingMap = Maps.newHashMap();
 

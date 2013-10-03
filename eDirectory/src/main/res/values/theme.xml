@@ -149,4 +149,51 @@
         <item name="android:textColor">@color/textColorExtras</item>
     </style>
 
+
+    <!-- Classified Results -->
+    <style name="classifiedResultTextTitle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="classifiedResultTextPrice" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="classifiedResultTextAddress" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorTertiary</item>
+    </style>
+
+    <!-- Event Results -->
+
+    <style name="eventResultTextTitle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="eventResultTextWhen" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="eventResultTextAddress" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorTertiary</item>
+    </style>
+
+    <!-- All Images -->
+    <style name="imageResult">
+        <item name="android:padding">3dp</item>
+        <item name="android:cropToPadding">true</item>
+        <item name="android:background">@drawable/background_image_border</item>
+    </style>
+
 </resources>

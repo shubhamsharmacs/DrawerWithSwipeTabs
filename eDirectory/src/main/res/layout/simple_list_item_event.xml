@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fff"
+    android:padding="@dimen/spacingMedium"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/eventResultTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Cupcake Show"
+        android:id="@id/eventTitle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_alignRight="@id/eventAddress"
+        android:layout_marginBottom="@dimen/spacingSmall"/>
+
+    <TextView
+        style="@style/eventResultTextWhen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacingSmall"
+        android:text="When:"
+        android:id="@+id/label1"
+        android:layout_below="@id/eventTitle"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_marginTop="@dimen/spacingSmall"
+        style="@style/eventResultTextAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3461 SW Beaverton Hillsdale  HWY Portland, Oregon, USA"
+        android:id="@id/eventAddress"
+        android:layout_below="@+id/label1"
+        android:layout_alignParentLeft="true"
+        android:minLines="2"
+        android:layout_toLeftOf="@id/eventImage" />
+
+    <ImageView
+
+        android:layout_marginLeft="@dimen/spacingMedium"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:id="@id/eventImage"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        style="@style/imageResult" />
+
+    <TextView
+        style="@style/eventResultTextWhen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10/09/2013"
+        android:id="@id/eventDate"
+        android:layout_below="@id/eventTitle"
+        android:layout_toRightOf="@+id/label1" />
+</RelativeLayout>

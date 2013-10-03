@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.arcasolutions.api.annotation.ApiResource;
 import com.arcasolutions.api.constant.Resource;
 
-@ApiResource(Resource.LISTING)
+@ApiResource(Resource.EVENT)
 public class ListingResult extends BaseResult<Listing> {
 
 

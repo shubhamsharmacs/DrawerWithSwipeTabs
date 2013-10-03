@@ -35,6 +35,18 @@
     <item type="id" name="dealListing" />
     <item type="id" name="dealImage" />
 
+    <!-- Classified IDs -->
+    <item type="id" name="classifiedTitle" />
+    <item type="id" name="classifiedPrice" />
+    <item type="id" name="classifiedAddress" />
+    <item type="id" name="classifiedImage" />
+
+    <!-- Event IDs -->
+    <item type="id" name="eventTitle" />
+    <item type="id" name="eventDate" />
+    <item type="id" name="eventAddress" />
+    <item type="id" name="eventImage" />
+
     <!-- Review IDs -->
     <item type="id" name="reviewImage" />
     <item type="id" name="reviewTitle" />

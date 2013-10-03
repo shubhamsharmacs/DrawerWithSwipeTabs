@@ -7,6 +7,8 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:padding="4dp"
+        style="@style/imageResult"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:id="@id/dealImage"

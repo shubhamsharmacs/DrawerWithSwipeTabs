@@ -2,12 +2,12 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#fff"
+    android:padding="@dimen/spacingMedium"
     android:divider="@drawable/common_line"
     android:showDividers="middle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacingMedium">
+    android:background="#fff">
 
     <RelativeLayout
         android:layout_marginBottom="@dimen/spacingSmall"
@@ -78,13 +78,16 @@
             android:layout_toLeftOf="@id/listingImage" />
 
         <ImageView
+            android:layout_marginLeft="@dimen/spacingMedium"
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:id="@id/listingImage"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:baselineAlignBottom="false"
+            style="@style/imageResult" />
     </RelativeLayout>
 
 </LinearLayout>
