@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="@dimen/spacingMedium"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/articleResultTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How to relax and be zen"
+        android:id="@id/articleTitle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        style="@style/articleResultTextBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacingSmall"
+        android:text="By"
+        android:id="@+id/label1"
+        android:layout_below="@id/articleTitle"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        style="@style/articleResultTextAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Laura Green"
+        android:id="@id/articleAuthor"
+        android:layout_alignTop="@+id/label1"
+        android:layout_toRightOf="@+id/label1" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:id="@id/articleImage"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+</RelativeLayout>

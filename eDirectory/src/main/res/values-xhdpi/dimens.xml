@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Spacing -->
+    <dimen name="spacingSmall">5dp</dimen>
+    <dimen name="spacingMedium">10dp</dimen>
+    <dimen name="spacingLarge">15dp</dimen>
+
+    <!-- Sizes -->
+    <dimen name="reviewImageBoxSize">52dp</dimen> <!-- width / height -->
+
+    <!-- Text Sizes -->
+    <item name="textSizeMicro">12sp</item> <!-- 24pt -->
+    <item name="textSizeSmall">13sp</item> <!-- 26pt  -->
+    <item name="textSizeMedium">13.5sp</item> <!-- 27pt -->
+    <item name="textSizeLarge">15sp</item> <!-- 30pt -->
+    <item name="textSizeExtraLarge">18sp</item> <!-- 36pt -->
+
+</resources>

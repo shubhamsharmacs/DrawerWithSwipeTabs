@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.1.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 18
+    }
+}
+
+dependencies {
+
+    // android libraries
+	compile 'com.android.support:appcompat-v7:18.0.0'
+	compile 'com.android.support:support-v4:18.0.0'
+
+    // google libraries
+    compile 'com.google.android.gms:play-services:3.2.65'
+
+    // lombok
+    compile 'org.projectlombok:lombok:0.12.0'
+
+    // guava
+    compile 'com.google.guava:guava:15.0'
+
+    // spring for android
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+
+    // Android Query
+    compile 'com.googlecode.android-query:android-query:0.24.3'
+
+    // Jackson
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.1.2'
+
+}

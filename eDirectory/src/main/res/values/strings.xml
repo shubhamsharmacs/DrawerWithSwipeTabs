@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">eDirectory</string>
+
+    <!-- Navigation Drawer -->
+    <string name="drawerMap">Map</string>
+    <string name="drawerBusiness">Business</string>
+    <string name="drawerDeals">Deals</string>
+    <string name="drawerClassifieds">Classifieds</string>
+    <string name="drawerEvents">Events</string>
+    <string name="drawerArticles">Articles</string>
+    <string name="drawerMyFavorites">My Favorites</string>
+    <string name="drawerSetting">Settings</string>
+
+</resources>

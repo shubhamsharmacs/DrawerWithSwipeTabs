@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Category IDs -->
+    <item type="id" name="categoryTitle" />
+    <item type="id" name="categorySubcategories" />
+    <item type="id" name="categoryActiveItems" />
+    <item type="id" name="categoryArrow" />
+
+    <!-- Map IDs -->
+    <item type="id" name="mapInfoView" />
+    <item type="id" name="mapInfoTitle" />
+    <item type="id" name="mapInfoDistance" />
+    <item type="id" name="mapInfoAddress" />
+    <item type="id" name="mapInfoRatingBar" />
+
+    <!-- Article IDs -->
+    <item type="id" name="articleTitle" />
+    <item type="id" name="articleAuthor" />
+    <item type="id" name="articleImage" />
+
+    <!-- Listing IDs -->
+    <item type="id" name="listingTitle" />
+    <item type="id" name="listingRatingBar" />
+    <item type="id" name="listingReviews" />
+    <item type="id" name="listingDistance" />
+    <item type="id" name="listingAddress" />
+    <item type="id" name="listingDealBadge" />
+    <item type="id" name="listingImage" />
+
+    <!-- Deal IDs -->
+    <item type="id" name="dealName" />
+    <item type="id" name="dealPrice" />
+    <item type="id" name="dealDiscount" />
+    <item type="id" name="dealListing" />
+    <item type="id" name="dealImage" />
+
+    <!-- Review IDs -->
+    <item type="id" name="reviewImage" />
+    <item type="id" name="reviewTitle" />
+    <item type="id" name="reviewDescription" />
+    <item type="id" name="reviewAuthor" />
+    <item type="id" name="reviewDate" />
+    <item type="id" name="reviewRating" />
+</resources>

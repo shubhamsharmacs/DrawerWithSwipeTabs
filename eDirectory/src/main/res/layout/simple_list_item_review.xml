@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/spacingMedium"
+    android:paddingBottom="@dimen/spacingMedium">
+
+    <FrameLayout
+        android:layout_marginRight="@dimen/spacingMedium"
+        android:layout_width="@dimen/reviewImageBoxSize"
+        android:layout_height="@dimen/reviewImageBoxSize"
+        android:id="@+id/frameLayout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@id/reviewImage" />
+
+    </FrameLayout>
+
+    <TextView
+        style="@style/reviewTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nice deal"
+        android:id="@id/reviewTitle"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/frameLayout" />
+
+    <TextView
+        android:layout_marginTop="@dimen/spacingSmall"
+        android:layout_marginBottom="@dimen/spacingMedium"
+        style="@style/reviewTextDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sent those roses to my girlfriend, she  loved it. Beautiful roses."
+        android:id="@id/reviewDescription"
+        android:layout_below="@id/reviewTitle"
+        android:layout_toRightOf="@+id/frameLayout" />
+
+    <TextView
+        style="@style/reviewTextAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Peter Johnson"
+        android:id="@id/reviewAuthor"
+        android:layout_below="@id/reviewDescription"
+        android:layout_toRightOf="@+id/frameLayout" />
+
+    <TextView
+        style="@style/reviewTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" - "
+        android:id="@+id/textView"
+        android:layout_below="@id/reviewDescription"
+        android:layout_toRightOf="@id/reviewAuthor" />
+
+    <TextView
+        style="@style/reviewTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="03/22/2013"
+        android:id="@+id/reviewDate"
+        android:layout_below="@id/reviewDescription"
+        android:layout_toRightOf="@+id/textView" />
+
+    <RatingBar
+        android:layout_marginTop="@dimen/spacingMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:ratingBarStyleSmall"
+        android:id="@+id/ratingBar"
+        android:layout_below="@id/reviewAuthor"
+        android:layout_alignLeft="@id/reviewAuthor" />
+</RelativeLayout>

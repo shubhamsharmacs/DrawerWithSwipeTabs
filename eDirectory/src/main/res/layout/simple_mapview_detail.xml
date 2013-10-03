@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/mapInfoView"
+    android:visibility="gone"
+    android:animateLayoutChanges="false"
+    android:layout_gravity="bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spacingMedium"
+    android:background="#dd000000">
+
+
+    <TextView
+        style="@style/mapInfoTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listing Title Listing Title Listing Title Listing Title Listing Title Listing Title Listing Title"
+        android:id="@id/mapInfoTitle"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/mapInfoDistance"
+        android:layout_marginBottom="@dimen/spacingSmall"
+        android:layout_marginRight="@dimen/spacingSmall"/>
+
+    <TextView
+        style="@style/mapInfoTextDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2.2 quilometros"
+        android:id="@id/mapInfoDistance"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
+
+    <RatingBar
+        style="?android:ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@id/mapInfoRatingBar"
+        android:layout_below="@id/mapInfoTitle" />
+
+    <TextView
+        style="@style/mapInfoTextAddress"
+        android:gravity="right"
+        android:layout_marginLeft="@dimen/spacingLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="407 South Main Street Grove Oklahoma United States 74344"
+        android:id="@id/mapInfoAddress"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_alignTop="@id/mapInfoRatingBar"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/mapInfoRatingBar" />
+</RelativeLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:divider="@drawable/common_line"
+    android:showDividers="middle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacingMedium">
+
+    <RelativeLayout
+        android:layout_marginBottom="@dimen/spacingSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/listingResultTextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Some Flower Shop"
+            android:id="@id/listingTitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/listingDealBadge"
+            android:autoText="false" />
+
+        <RatingBar
+            android:layout_marginRight="@dimen/spacingSmall"
+            style="?android:ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:layout_below="@id/listingTitle"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            style="@style/listingResultTextReviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 reviews"
+            android:id="@id/listingReviews"
+            android:layout_alignBottom="@+id/ratingBar"
+            android:layout_toRightOf="@+id/ratingBar" />
+
+        <TextView
+            style="@style/listingResultTextDealBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="deal"
+            android:id="@id/listingDealBadge"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_alignWithParentIfMissing="false" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/spacingSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginBottom="@dimen/spacingSmall"
+            style="@style/listingResultTextDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.2 miles"
+            android:id="@id/listingDistance" />
+
+        <TextView
+            style="@style/listingResultTextAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3461 SW Beaverton Hillsdale  HWY Portland, Oregon, USA"
+            android:id="@id/listingAddress"
+            android:layout_below="@id/listingDistance"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/listingImage" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:id="@id/listingImage"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+</LinearLayout>

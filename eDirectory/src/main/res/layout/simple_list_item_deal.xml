@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/spacingMedium"
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:id="@id/dealImage"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="false"
+        android:layout_marginRight="@dimen/spacingMedium"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:layout_marginTop="-4dp"
+        style="@style/dealResultTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy two delicious pizzas for the  price of one!"
+        android:id="@id/dealName"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/dealImage"
+        android:maxLines="2"
+        android:lineSpacingExtra="-2sp"
+        android:layout_alignRight="@id/dealListing" />
+
+    <TextView
+        style="@style/dealResultTextPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$20.00"
+        android:id="@id/dealPrice"
+        android:layout_above="@id/dealListing"
+        android:layout_toRightOf="@id/dealImage" />
+
+    <TextView
+        style="@style/dealResultTextDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50%"
+        android:id="@id/dealDiscount"
+        android:layout_alignBottom="@id/dealImage"
+        android:layout_toRightOf="@id/dealImage" />
+
+    <TextView
+        style="@style/dealResultTextListing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pizza’s Downtown"
+        android:id="@id/dealListing"
+        android:layout_alignBottom="@id/dealDiscount"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/dealDiscount"
+        android:gravity="right" />
+</RelativeLayout>

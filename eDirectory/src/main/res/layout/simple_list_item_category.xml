@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?listPreferredItemHeight"
+    android:paddingLeft="@dimen/spacingMedium"
+    android:paddingTop="@dimen/spacingMedium"
+    android:paddingBottom="@dimen/spacingMedium">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/categoryResultTextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:text="Beauty and Fitness"
+            android:id="@id/categoryTitle" />
+
+        <TextView
+            style="@style/categoryResultTextSubcategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 subcategories"
+            android:id="@id/categorySubcategories" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="60dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            style="@style/categoryResultTextActiveItems"
+            android:layout_gravity="center_vertical|right"
+            android:gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="400"
+            android:layout_marginRight="@dimen/spacingMedium"
+            android:id="@id/categoryActiveItems" />
+
+        <ImageView
+            android:layout_marginTop="-2dp"
+            android:layout_marginRight="1dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/categoryArrow"
+            android:src="@drawable/ic_arrow_black" />
+    </FrameLayout>
+</LinearLayout>
