@@ -30,7 +30,7 @@
             style="?android:ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
+            android:id="@id/listingRatingBar"
             android:layout_below="@id/listingTitle"
             android:layout_alignParentLeft="true" />
 
@@ -38,10 +38,11 @@
             style="@style/listingResultTextReviews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:lineSpacingExtra="-2sp"
             android:text="4 reviews"
             android:id="@id/listingReviews"
-            android:layout_alignBottom="@+id/ratingBar"
-            android:layout_toRightOf="@+id/ratingBar" />
+            android:layout_alignBottom="@id/listingRatingBar"
+            android:layout_toRightOf="@id/listingRatingBar" />
 
         <TextView
             style="@style/listingResultTextDealBadge"

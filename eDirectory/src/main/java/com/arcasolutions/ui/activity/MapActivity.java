@@ -13,10 +13,13 @@ public class MapActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mMyMapFragment = new MyMapFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_content, mMyMapFragment)
-                .commit();
+        mMyMapFragment = (MyMapFragment) getSupportFragmentManager().findFragmentByTag("map");
+        if (mMyMapFragment == null) {
+            mMyMapFragment = new MyMapFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_content, mMyMapFragment, "map")
+                    .commit();
+        }
     }
 
 

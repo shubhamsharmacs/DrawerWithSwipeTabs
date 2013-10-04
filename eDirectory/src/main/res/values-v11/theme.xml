@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Ratings Bars -->
+    <style name="RatingBarAppTheme" parent="android:Widget.Holo.Light.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_full_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_full_holo_light</item>
+    </style>
+
+    <style name="RatingBarBigAppTheme" parent="android:Widget.Holo.Light.RatingBar.Indicator">
+        <item name="android:progressDrawable">@drawable/ratingbar_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_holo_light</item>
+    </style>
+
+    <style name="RatingBarSmallAppTheme" parent="android:Widget.Holo.Light.RatingBar.Small">
+        <item name="android:progressDrawable">@drawable/ratingbar_small_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_small_holo_light</item>
+    </style>
+
+</resources>

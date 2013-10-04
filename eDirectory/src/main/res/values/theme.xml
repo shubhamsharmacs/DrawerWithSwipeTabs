@@ -196,4 +196,24 @@
         <item name="android:background">@drawable/background_image_border</item>
     </style>
 
+    <!-- Rating Bars -->
+    <style name="RatingBarAppTheme" parent="android:Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_full_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_full_holo_light</item>
+    </style>
+
+    <style name="RatingBarBigAppTheme">
+        <item name="android:progressDrawable">@drawable/ratingbar_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_holo_light</item>
+        <item name="android:minHeight">35dip</item>
+        <item name="android:maxHeight">35dip</item>
+    </style>
+
+    <style name="RatingBarSmallAppTheme">
+        <item name="android:progressDrawable">@drawable/ratingbar_small_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_small_holo_light</item>
+        <item name="android:minHeight">16dip</item>
+        <item name="android:maxHeight">16dip</item>
+    </style>
+
 </resources>

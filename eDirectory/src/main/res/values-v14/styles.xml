@@ -7,6 +7,12 @@
     -->
     <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <!-- API 14 theme customizations can go here. -->
+        <!-- API 11 theme customizations can go here. -->
+        <item name="android:ratingBarStyle">@style/RatingBarAppTheme</item>
+
+        <item name="android:ratingBarStyleIndicator">@style/RatingBarBigAppTheme</item>
+
+        <item name="android:ratingBarStyleSmall">@style/RatingBarSmallAppTheme</item>
     </style>
 
 </resources>

@@ -10,6 +10,11 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="android:ratingBarStyle">@style/RatingBarAppTheme</item>
+
+        <item name="android:ratingBarStyleIndicator">@style/RatingBarBigAppTheme</item>
+
+        <item name="android:ratingBarStyleSmall">@style/RatingBarSmallAppTheme</item>
     </style>
 
     <!-- Application theme. -->
