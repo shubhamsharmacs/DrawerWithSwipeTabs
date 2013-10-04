@@ -8,12 +8,10 @@ import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
-import com.arcasolutions.api.model.Article;
-import com.arcasolutions.api.model.ArticleResult;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.ClassifiedResult;
-import com.arcasolutions.ui.adapter.ClassifiedResultAdapter;
+import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -29,7 +27,7 @@ public class ClassifiedResultActivity extends ActionBarActivity {
 
     private final List<Classified> mClassifieds = Lists.newArrayList();
 
-    private ClassifiedResultAdapter mAdapter;
+    private ModuleResultAdapter<Classified> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +35,7 @@ public class ClassifiedResultActivity extends ActionBarActivity {
         setContentView(R.layout.custom_list_view);
 
 
-        mAdapter = new ClassifiedResultAdapter(this, mClassifieds);
+        mAdapter = new ModuleResultAdapter<Classified>(this, mClassifieds);
 
         AQuery aq = new AQuery(this);
         aq.id(android.R.id.list)

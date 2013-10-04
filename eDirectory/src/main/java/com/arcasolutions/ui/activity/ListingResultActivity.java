@@ -11,8 +11,7 @@ import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.ListingResult;
-import com.arcasolutions.ui.adapter.ListingResultAdapter;
-import com.google.android.gms.internal.bu;
+import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class ListingResultActivity extends ActionBarActivity {
 
     private final List<Listing> mListings = Lists.newArrayList();
 
-    private ListingResultAdapter mAdapter;
+    private ModuleResultAdapter<Listing> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ public class ListingResultActivity extends ActionBarActivity {
         setContentView(R.layout.custom_list_view);
 
 
-        mAdapter = new ListingResultAdapter(this, mListings);
+        mAdapter = new ModuleResultAdapter<Listing>(this, mListings);
 
         AQuery aq = new AQuery(this);
         aq.id(android.R.id.list)

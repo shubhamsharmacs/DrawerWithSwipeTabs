@@ -12,7 +12,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Article implements Parcelable {
+public class Article extends Module {
 
     @JsonProperty("article_ID")
     private long id;

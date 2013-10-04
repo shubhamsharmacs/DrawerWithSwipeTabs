@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class Listing implements Parcelable, IMapItem {
+public class Listing  extends Module implements IMapItem {
 
     @JsonProperty("listing_ID")
     private long id;

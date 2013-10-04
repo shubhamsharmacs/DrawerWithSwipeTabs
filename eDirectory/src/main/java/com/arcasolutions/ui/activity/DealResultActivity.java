@@ -12,7 +12,7 @@ import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.Listing;
-import com.arcasolutions.ui.adapter.DealResultAdapter;
+import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class DealResultActivity extends ActionBarActivity {
 
     private final List<Deal> mDeals = Lists.newArrayList();
 
-    private DealResultAdapter mAdapter;
+    private ModuleResultAdapter<Deal> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class DealResultActivity extends ActionBarActivity {
         setContentView(R.layout.custom_list_view);
 
 
-        mAdapter = new DealResultAdapter(this, mDeals);
+        mAdapter = new ModuleResultAdapter<Deal>(this, mDeals);
 
         AQuery aq = new AQuery(this);
         aq.id(android.R.id.list)

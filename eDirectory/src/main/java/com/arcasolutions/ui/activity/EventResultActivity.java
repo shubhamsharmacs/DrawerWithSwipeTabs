@@ -11,7 +11,7 @@ import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.EventResult;
-import com.arcasolutions.ui.adapter.EventResultAdapter;
+import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class EventResultActivity extends ActionBarActivity {
 
     private final List<Event> mEvents = Lists.newArrayList();
 
-    private EventResultAdapter mAdapter;
+    private ModuleResultAdapter<Event> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class EventResultActivity extends ActionBarActivity {
         setContentView(R.layout.custom_list_view);
 
 
-        mAdapter = new EventResultAdapter(this, mEvents);
+        mAdapter = new ModuleResultAdapter<Event>(this, mEvents);
 
         AQuery aq = new AQuery(this);
         aq.id(android.R.id.list)

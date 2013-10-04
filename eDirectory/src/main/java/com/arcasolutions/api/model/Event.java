@@ -15,7 +15,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Event implements Parcelable, IMapItem {
+public class Event  extends Module implements IMapItem {
 
     @JsonProperty("event_ID")
     private long id;
