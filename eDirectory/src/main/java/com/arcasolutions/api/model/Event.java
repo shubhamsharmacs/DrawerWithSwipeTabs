@@ -29,7 +29,6 @@ public class Event implements Parcelable, IMapItem {
     @JsonProperty("imageurl")
     private String imageUrl;
 
-    @JsonProperty
     private float rating = -1;
 
     @JsonProperty("phonenumber")
@@ -57,7 +56,7 @@ public class Event implements Parcelable, IMapItem {
     @JsonDeserialize(using = SimpleTimeDeserializer.class)
     private Date endTime;
 
-    @JsonProperty("recurring_string")
+    @JsonProperty("recurring")
     @JsonDeserialize(using = BooleanDeserializer.class)
     private boolean recurring;
 

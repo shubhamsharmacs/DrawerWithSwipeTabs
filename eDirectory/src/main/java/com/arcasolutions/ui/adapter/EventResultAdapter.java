@@ -51,10 +51,10 @@ public class EventResultAdapter extends BaseAdapter {
         Event e = getItem(i);
         if (e != null) {
             AQuery aq = new AQuery(v);
-            aq.id(R.id.eventImage).image(e.getImageUrl(), true, true);
+//            aq.id(R.id.eventImage).image(e.getImageUrl(), true, true);
             aq.id(R.id.eventTitle).text(e.getTitle());
-            aq.id(R.id.eventDate).text(String.format(Locale.getDefault(), "%1$tD", e.getStartDate()));
-            aq.id(R.id.classifiedAddress).text(e.getAddress());
+//            aq.id(R.id.eventDate).text(String.format(Locale.getDefault(), "%1$tD", e.getStartDate()));
+//            aq.id(R.id.classifiedAddress).text(e.getAddress());
         }
 
         return v;
