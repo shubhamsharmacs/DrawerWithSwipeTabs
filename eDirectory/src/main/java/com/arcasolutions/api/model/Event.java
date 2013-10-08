@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.arcasolutions.api.deserializer.BooleanDeserializer;
 import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
 import com.arcasolutions.api.deserializer.SimpleTimeDeserializer;
+import com.arcasolutions.api.implementation.ContactInfo;
 import com.arcasolutions.api.implementation.IMapItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -16,7 +17,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Event extends Module implements IMapItem {
+public class Event extends Module implements ContactInfo, IMapItem {
 
     @JsonProperty(value = "event_ID")
     private long id;

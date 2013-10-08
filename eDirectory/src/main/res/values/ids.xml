@@ -4,6 +4,11 @@
     <item type="id" name="pager" />
     <item type="id" name="tabStrip" />
 
+    <!-- Contact Info IDs -->
+    <item type="id" name="contactPhoneNumber" />
+    <item type="id" name="contactEmail" />
+    <item type="id" name="contactUrl" />
+
     <!-- Category IDs -->
     <item type="id" name="categoryTitle" />
     <item type="id" name="categorySubcategories" />

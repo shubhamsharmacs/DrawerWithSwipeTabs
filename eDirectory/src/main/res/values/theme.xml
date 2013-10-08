@@ -221,6 +221,32 @@
     </style>
 
 
+    <!-- Contact Info -->
+    <style name="contactInfoTextPrimary" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="contactInfoTextSecondary" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorTertiary</item>
+    </style>
+
+    <!-- Blue button white text -->
+    <style name="blueButtonStyle" parent="android:Widget.Button">
+        <item name="android:paddingLeft">@dimen/spacingLarge</item>
+        <item name="android:paddingRight">@dimen/spacingLarge</item>
+        <item name="android:background">@drawable/background_button_blue</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="heartCheckBoxStyle" parent="android:Widget.CompoundButton.CheckBox">
+        <item name="android:background">@drawable/favorite</item>
+        <item name="android:button">@drawable/favorite</item>
+    </style>
+
 
     <!-- All Images -->
     <style name="imageResult">

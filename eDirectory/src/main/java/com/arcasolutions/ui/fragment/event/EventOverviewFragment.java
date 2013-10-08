@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Event;
+import com.arcasolutions.ui.fragment.ContactInfoFragment;
 
 import java.util.Locale;
 
@@ -47,9 +48,14 @@ public class EventOverviewFragment  extends Fragment {
             aq.id(R.id.eventOverviewImage).image(e.getImageUrl(), true, true);
             aq.id(R.id.eventOverviewTitle).text(e.getTitle());
             aq.id(R.id.eventOverviewDescription).text(e.getSummary());
-            aq.id(R.id.eventOverviewAddress).text(e.getAddress());
+            aq.id(R.id.eventOverviewAddress).text(e.getAddress()).getView().invalidate();
             aq.id(R.id.eventOverviewStartDate).text(String.format(Locale.getDefault(), "%tD", e.getStartDate()));
             aq.id(R.id.eventOverviewEndDate).text(String.format(Locale.getDefault(), "%tD", e.getEndDate()));
+
+            ContactInfoFragment f = ContactInfoFragment.newInstance(e);
+            getChildFragmentManager().beginTransaction()
+                    .replace(R.id.eventOverviewContact, f)
+                    .commit();
         }
 
     }
