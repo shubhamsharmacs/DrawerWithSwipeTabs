@@ -5,13 +5,14 @@ import android.os.Bundle;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.ArticleCategory;
-import com.arcasolutions.api.model.ArticleResult;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.BaseCategoryResult;
 import com.arcasolutions.api.model.ClassifiedCategory;
 import com.arcasolutions.api.model.DealCategory;
 import com.arcasolutions.api.model.EventCategory;
 import com.arcasolutions.api.model.ListingCategory;
+import com.arcasolutions.ui.activity.event.EventResultActivity;
+import com.arcasolutions.ui.activity.listing.ListingResultActivity;
 import com.arcasolutions.ui.fragment.CategoryResultFragment;
 
 public class CategoryResultActivity extends BaseActivity

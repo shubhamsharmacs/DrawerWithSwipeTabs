@@ -189,6 +189,39 @@
         <item name="android:textColor">@color/textColorTertiary</item>
     </style>
 
+    <!-- Event Overview -->
+    <style name="eventOverviewTextTitle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="eventOverviewTextDateLabel" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="eventOverviewTextDate" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="eventOverviewTextDescription" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="eventOverviewTextAddress" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeMedium</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+
+
     <!-- All Images -->
     <style name="imageResult">
         <item name="android:padding">3dp</item>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacingMedium">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:id="@id/eventOverviewImage" />
+
+            <TextView
+                style="@style/eventOverviewTextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Annual Rock Festival"
+                android:id="@id/eventOverviewTitle"
+                android:layout_below="@id/eventOverviewImage"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                style="@style/eventOverviewTextDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="When:"
+                android:id="@+id/textView2"
+                android:layout_below="@id/eventOverviewTitle"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                style="@style/eventOverviewTextDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="10/10/2013"
+                android:id="@id/eventOverviewStartDate"
+                android:layout_alignTop="@+id/textView2"
+                android:layout_toRightOf="@+id/textView2" />
+
+            <TextView
+                style="@style/eventOverviewTextDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To:"
+                android:id="@+id/textView4"
+                android:layout_alignTop="@id/eventOverviewStartDate"
+                android:layout_toRightOf="@id/eventOverviewStartDate" />
+
+            <TextView
+                style="@style/eventOverviewTextDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="12/10/2013"
+                android:id="@id/eventOverviewEndDate"
+                android:layout_below="@id/eventOverviewTitle"
+                android:layout_toRightOf="@+id/textView4" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/eventOverviewTextDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Lorem ipsum, pitsumily in on the verily we did fly to the  place of the people that were doing  soom-stuff we did not  quite understand, etc etc. Lorem ipsum, pitsumily in on the  verily we did fly to the place of the people that were doing  soom-stuff we did not quite understand, etc etc."
+                android:id="@id/eventOverviewDescription"
+                android:layout_alignParentTop="true" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventOverviewDescription"
+                android:gravity="bottom">
+
+                <TextView
+                    style="@style/eventOverviewTextAddress"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    tools:text="3461 SW Beaverton  Hillsdale HWY Portland, Oregon, USA"
+                    android:id="@id/eventOverviewAddress"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get Directions"
+                    android:id="@id/eventOverviewGetDirections" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@id/eventOverviewContact" />
+
+    </LinearLayout>
+</ScrollView>

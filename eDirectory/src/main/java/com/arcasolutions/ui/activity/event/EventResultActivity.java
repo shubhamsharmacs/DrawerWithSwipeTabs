@@ -1,8 +1,12 @@
-package com.arcasolutions.ui.activity;
+package com.arcasolutions.ui.activity.event;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
@@ -17,7 +21,7 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventResultActivity extends ActionBarActivity {
+public class EventResultActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     public static final String EXTRA_ITEMS = "items";
     public static final String EXTRA_CATEGORY = "category";
@@ -39,6 +43,7 @@ public class EventResultActivity extends ActionBarActivity {
 
         AQuery aq = new AQuery(this);
         aq.id(android.R.id.list)
+                .itemClicked(this)
                 .adapter(mAdapter);
 
         ArrayList<Parcelable> items = getIntent().getParcelableArrayListExtra(EXTRA_ITEMS);
@@ -84,4 +89,10 @@ public class EventResultActivity extends ActionBarActivity {
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(this, EventDetailActivity.class);
+        intent.putExtra(EventDetailActivity.EXTRA_ID, l);
+        startActivity(intent);
+    }
 }

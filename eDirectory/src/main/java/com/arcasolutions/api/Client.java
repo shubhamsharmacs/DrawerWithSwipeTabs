@@ -55,9 +55,6 @@ public class Client {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy
-                .CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
-
         MappingJackson2HttpMessageConverter jconverter
                 = new MappingJackson2HttpMessageConverter();
         jconverter.setObjectMapper(objectMapper);
@@ -149,6 +146,11 @@ public class Client {
 
         public Builder page(int page) {
             mMap.put("page", page);
+            return this;
+        }
+
+        public Builder id(long id) {
+            mMap.put("id", id);
             return this;
         }
 

@@ -1,4 +1,4 @@
-package com.arcasolutions.ui.activity;
+package com.arcasolutions.ui.activity.listing;
 
 import android.os.Bundle;
 import android.os.Parcelable;

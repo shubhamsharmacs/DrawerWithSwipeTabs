@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <item type="id" name="pager" />
+    <item type="id" name="tabStrip" />
+
     <!-- Category IDs -->
     <item type="id" name="categoryTitle" />
     <item type="id" name="categorySubcategories" />
@@ -41,12 +44,26 @@
     <item type="id" name="classifiedAddress" />
     <item type="id" name="classifiedImage" />
 
-    <!-- Event IDs -->
+    <!-- ======================================== -->
+    <!--   Event Result IDs                       -->
     <item type="id" name="eventTitle" />
     <item type="id" name="eventDate" />
     <item type="id" name="eventAddress" />
     <item type="id" name="eventImage" />
 
+    <!--   Event Overview IDs -->
+    <item type="id" name="eventOverviewImage" />
+    <item type="id" name="eventOverviewTitle" />
+    <item type="id" name="eventOverviewStartDate" />
+    <item type="id" name="eventOverviewEndDate" />
+    <item type="id" name="eventOverviewFavorite" />
+    <item type="id" name="eventOverviewDescription" />
+    <item type="id" name="eventOverviewAddress" />
+    <item type="id" name="eventOverviewGetDirections" />
+    <item type="id" name="eventOverviewContact" />
+
+
+    <!-- ======================================== -->
     <!-- Review IDs -->
     <item type="id" name="reviewImage" />
     <item type="id" name="reviewTitle" />

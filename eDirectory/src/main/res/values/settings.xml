@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- eDirectory settings -->
+    <string name="edirectoryScheme">http://</string>
+
+    <string name="edirectoryUrl">www.demodirectory.com</string>
+
+    <string name="edirectoryApiKey">a585-11c0-9dd7-0702-161b-e47a-92a6-90f0</string>
+
     <!-- Key for Android apps -->
     <string name="androidApiKey">AIzaSyDYB91N3rZLtb4931i0oahyTDLwmG8CzqM</string>
+
+
+    <!-- Facebook settings -->
+    <string name="facebookAppId">132709406766649</string>
 
 </resources>

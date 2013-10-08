@@ -46,4 +46,7 @@ dependencies {
     // Jackson
     compile 'com.fasterxml.jackson.core:jackson-databind:2.1.2'
 
+    // PhotoView (zoom)
+    compile 'com.github.chrisbanes.photoview:library:1.2.1'
+
 }

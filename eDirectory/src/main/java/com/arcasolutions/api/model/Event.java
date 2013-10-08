@@ -10,14 +10,15 @@ import com.arcasolutions.api.implementation.IMapItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class Event  extends Module implements IMapItem {
+public class Event extends Module implements IMapItem {
 
-    @JsonProperty("event_ID")
+    @JsonProperty(value = "event_ID")
     private long id;
 
     @JsonProperty("name")
@@ -71,6 +72,30 @@ public class Event  extends Module implements IMapItem {
     @JsonProperty("recurring_string")
     private String recurringString;
 
+    @JsonProperty("string_time")
+    private String stringTime;
+
+    @JsonProperty("description")
+    private String summary;
+
+    @JsonProperty("long_description")
+    private String description;
+
+    @JsonProperty
+    private String url;
+
+    @JsonProperty
+    private String email;
+
+    @JsonProperty
+    private int level;
+
+    @JsonProperty("friendly_url")
+    private String friendlyUrl;
+
+    @JsonProperty("gallery")
+    private ArrayList<Photo> gallery;
+
 
     @Override
     public int describeContents() {
@@ -96,6 +121,14 @@ public class Event  extends Module implements IMapItem {
         untilDate = new Date(in.readLong());
         repeatEvent = Boolean.getBoolean(in.readString());
         recurringString = in.readString();
+        stringTime = in.readString();
+        summary = in.readString();
+        description = in.readString();
+        url = in.readString();
+        email = in.readString();
+        level = in.readInt();
+        friendlyUrl = in.readString();
+        gallery = in.readArrayList(Photo.class.getClassLoader());
     }
 
 
@@ -117,6 +150,14 @@ public class Event  extends Module implements IMapItem {
         out.writeLong(untilDate != null ? untilDate.getTime() : 0 );
         out.writeString(Boolean.toString(repeatEvent));
         out.writeString(recurringString);
+        out.writeString(stringTime);
+        out.writeString(summary);
+        out.writeString(description);
+        out.writeString(url);
+        out.writeString(email);
+        out.writeInt(level);
+        out.writeString(friendlyUrl);
+        out.writeList(gallery);
     }
 
     public static final Parcelable.Creator<Event> CREATOR

@@ -8,6 +8,8 @@ import com.arcasolutions.api.constant.Resource;
 import com.arcasolutions.api.implementation.IMapItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+
 import lombok.Data;
 
 @Data
@@ -23,7 +25,7 @@ public class Listing  extends Module implements IMapItem {
     private int level;
 
     @JsonProperty("has_deal")
-    private long dealId;
+    private long hasDeal;
 
     @JsonProperty("location_information")
     private String address;
@@ -43,11 +45,59 @@ public class Listing  extends Module implements IMapItem {
     @JsonProperty("longitude")
     private double longitude;
 
-    @JsonProperty("description")
-    private String description;
-
     @JsonProperty("total_reviews")
     private int totalReviews;
+
+    @JsonProperty("description")
+    private String summary;
+
+    @JsonProperty("long_description")
+    private String description;
+
+    @JsonProperty("video_snippet")
+    private String videoSnippet;
+
+    @JsonProperty("video_description")
+    private String videoDescription;
+
+    @JsonProperty("gallery")
+    private ArrayList<Photo> gallery;
+
+    @JsonProperty("total_checkins")
+    private int totalCheckins;
+
+    @JsonProperty("categories")
+    private ArrayList<ListingCategory> categories;
+
+    @JsonProperty("friendly_url")
+    private String friendlyUrl;
+
+    @JsonProperty("email")
+    private String email;
+
+    @JsonProperty("fax")
+    private String fax;
+
+    @JsonProperty("deal_id")
+    private long dealId;
+
+    @JsonProperty("deal_name")
+    private String dealName;
+
+    @JsonProperty("deal_price")
+    private float dealPrice;
+
+    @JsonProperty("deal_realvalue")
+    private float dealRealPrice;
+
+    @JsonProperty("deal_discount")
+    private String dealDiscount;
+
+    @JsonProperty("deal_remaining")
+    private int dealRemaining;
+
+    @JsonProperty("deal_description")
+    private String dealDescription;
 
     public Listing(){}
 
@@ -64,6 +114,24 @@ public class Listing  extends Module implements IMapItem {
         longitude = in.readDouble();
         description = in.readString();
         totalReviews = in.readInt();
+
+        summary = in.readString();
+        description = in.readString();
+        videoSnippet = in.readString();
+        videoDescription = in.readString();
+        gallery = in.readArrayList(ClassLoader.getSystemClassLoader());
+        totalCheckins = in.readInt();
+        categories = in.readArrayList(ClassLoader.getSystemClassLoader());
+        friendlyUrl = in.readString();
+        email = in.readString();
+        fax = in.readString();
+        dealId = in.readLong();
+        dealName = in.readString();
+        dealPrice = in.readFloat();
+        dealRealPrice = in.readFloat();
+        dealDiscount = in.readString();
+        dealRemaining = in.readInt();
+        dealDescription = in.readString();
     }
 
     @Override
@@ -85,6 +153,23 @@ public class Listing  extends Module implements IMapItem {
         in.writeDouble(longitude);
         in.writeString(description);
         in.writeInt(totalReviews);
+        in.writeString(summary);
+        in.writeString(description);
+        in.writeString(videoSnippet);
+        in.writeString(videoDescription);
+        in.writeList(gallery);
+        in.writeInt(totalCheckins);
+        in.writeList(categories);
+        in.writeString(friendlyUrl);
+        in.writeString(email);
+        in.writeString(fax);
+        in.writeLong(dealId);
+        in.writeString(dealName);
+        in.writeFloat(dealPrice);
+        in.writeFloat(dealRealPrice);
+        in.writeString(dealDiscount);
+        in.writeInt(dealRemaining);
+        in.writeString(dealDescription);
     }
 
     public static final Parcelable.Creator<Listing> CREATOR
