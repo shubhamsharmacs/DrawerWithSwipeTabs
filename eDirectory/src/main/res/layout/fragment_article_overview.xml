@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:paddingTop="@dimen/spacingSmall"
+        android:paddingBottom="@dimen/spacingSmall"
+        android:paddingLeft="@dimen/spacingMedium"
+        android:paddingRight="@dimen/spacingMedium"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/common_line"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacingMedium">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:id="@id/articleOverviewImage"
+                android:layout_marginBottom="@dimen/spacingMedium" />
+
+            <TextView
+                style="@style/articleOverviewTextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="How to relax and be zen"
+                android:id="@id/articleOverviewTitle"
+                android:layout_below="@id/articleOverviewImage"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/articleOverviewFavorite" />
+
+            <TextView
+                style="@style/articleOverviewTextPublishDate"
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Published about 3 months ago by "
+                android:id="@id/articleOverviewPublishDate"
+                android:layout_below="@id/articleOverviewTitle"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                style="@style/articleOverviewTextAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Laura Green"
+                android:id="@id/articleOverviewAuthor"
+                android:layout_alignTop="@id/articleOverviewPublishDate"
+                android:layout_toRightOf="@id/articleOverviewPublishDate" />
+
+            <CheckBox
+                android:layout_marginBottom="-10dp"
+                android:layout_marginRight="@dimen/spacingMedium"
+                style="@style/heartCheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@id/articleOverviewFavorite"
+                android:checked="false"
+                android:layout_above="@id/articleOverviewTitle"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <WebView
+            android:layout_marginTop="@dimen/spacingMedium"
+            android:layout_marginBottom="@dimen/spacingMedium"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@id/articleOverviewContent" />
+
+    </LinearLayout>
+</ScrollView>

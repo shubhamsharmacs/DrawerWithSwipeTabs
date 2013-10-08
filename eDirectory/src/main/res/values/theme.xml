@@ -149,6 +149,26 @@
         <item name="android:textColor">@color/textColorExtras</item>
     </style>
 
+    <!-- Article Overview -->
+
+    <style name="articleOverviewTextTitle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="articleOverviewTextPublishDate" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="articleOverviewTextAuthor" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorExtras</item>
+    </style>
+
 
     <!-- Classified Results -->
     <style name="classifiedResultTextTitle" parent="@android:style/TextAppearance.Small">

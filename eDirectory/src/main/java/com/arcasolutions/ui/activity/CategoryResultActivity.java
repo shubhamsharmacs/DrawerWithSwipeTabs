@@ -11,6 +11,7 @@ import com.arcasolutions.api.model.ClassifiedCategory;
 import com.arcasolutions.api.model.DealCategory;
 import com.arcasolutions.api.model.EventCategory;
 import com.arcasolutions.api.model.ListingCategory;
+import com.arcasolutions.ui.activity.article.ArticleResultActivity;
 import com.arcasolutions.ui.activity.event.EventResultActivity;
 import com.arcasolutions.ui.activity.listing.ListingResultActivity;
 import com.arcasolutions.ui.fragment.CategoryResultFragment;

@@ -45,7 +45,9 @@
 
         <activity android:name=".ui.activity.DealResultActivity" />
 
-        <activity android:name=".ui.activity.ArticleResultActivity" />
+        <activity android:name=".ui.activity.article.ArticleResultActivity" />
+
+        <activity android:name=".ui.activity.article.ArticleDetailActivity" android:hardwareAccelerated="false" />
 
         <activity android:name=".ui.activity.ClassifiedResultActivity" />
 

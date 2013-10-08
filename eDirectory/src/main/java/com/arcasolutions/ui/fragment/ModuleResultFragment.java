@@ -1,10 +1,12 @@
 package com.arcasolutions.ui.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
@@ -14,12 +16,17 @@ import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
+import com.google.android.gms.internal.ac;
 import com.google.common.collect.Lists;
 
 import java.util.List;
 
 public class ModuleResultFragment<T extends BaseResult>
-        extends Fragment implements Client.RestListener<T> {
+        extends Fragment implements Client.RestListener<T>, AdapterView.OnItemClickListener {
+
+    public interface OnModuleSelectionListener {
+        void onModuleSelected(Module module, int position, long id);
+    }
 
     public static final String ARG_ITEMS = "items";
     public static final String ARG_CATEGORY = "category";
@@ -33,6 +40,8 @@ public class ModuleResultFragment<T extends BaseResult>
     private final List<Module> mModules = Lists.newArrayList();
     private ModuleResultAdapter mAdapter;
 
+    private OnModuleSelectionListener mListener;
+
     public ModuleResultFragment()  {}
 
     public static <F extends BaseResult> ModuleResultFragment<F> newInstance(Class<F> clazz, BaseCategory category) {
@@ -42,6 +51,14 @@ public class ModuleResultFragment<T extends BaseResult>
         final ModuleResultFragment<F> f = new ModuleResultFragment<F>();
         f.setArguments(args);
         return f;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof OnModuleSelectionListener) {
+            mListener = (OnModuleSelectionListener) activity;
+        }
     }
 
     @Override
@@ -65,7 +82,7 @@ public class ModuleResultFragment<T extends BaseResult>
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         AQuery aq = new AQuery(view);
-        aq.id(android.R.id.list).adapter(mAdapter);
+        aq.id(android.R.id.list).itemClicked(this).adapter(mAdapter);
         loadData();
     }
 
@@ -93,6 +110,14 @@ public class ModuleResultFragment<T extends BaseResult>
         }
 
         builder.execAsync(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if (mListener != null) {
+            Module m = (Module) adapterView.getItemAtPosition(i);
+            mListener.onModuleSelected(m, i, l);
+        }
     }
 
 }

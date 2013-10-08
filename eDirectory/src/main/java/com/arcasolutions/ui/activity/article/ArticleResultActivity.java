@@ -1,13 +1,16 @@
-package com.arcasolutions.ui.activity;
+package com.arcasolutions.ui.activity.article;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.ArticleResult;
 import com.arcasolutions.api.model.BaseCategory;
+import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.fragment.ModuleResultFragment;
 
-public class ArticleResultActivity extends BaseActivity {
+public class ArticleResultActivity extends BaseActivity implements ModuleResultFragment.OnModuleSelectionListener {
 
     public static final String EXTRA_CATEGORY = "category";
 
@@ -24,6 +27,12 @@ public class ArticleResultActivity extends BaseActivity {
     }
 
 
-
-
+    @Override
+    public void onModuleSelected(Module module, int position, long id) {
+        if (module != null) {
+            Intent intent = new Intent(this, ArticleDetailActivity.class);
+            intent.putExtra(ArticleDetailActivity.EXTRA_ID, module.getId());
+            startActivity(intent);
+        }
+    }
 }

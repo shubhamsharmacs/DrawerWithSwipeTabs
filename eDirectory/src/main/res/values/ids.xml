@@ -22,10 +22,19 @@
     <item type="id" name="mapInfoAddress" />
     <item type="id" name="mapInfoRatingBar" />
 
-    <!-- Article IDs -->
+    <!-- ======================================== -->
+    <!--   Article IDs                            -->
     <item type="id" name="articleTitle" />
     <item type="id" name="articleAuthor" />
     <item type="id" name="articleImage" />
+
+    <!-- Article Overview IDs -->
+    <item type="id" name="articleOverviewImage" />
+    <item type="id" name="articleOverviewTitle" />
+    <item type="id" name="articleOverviewPublishDate" />
+    <item type="id" name="articleOverviewAuthor" />
+    <item type="id" name="articleOverviewContent" />
+    <item type="id" name="articleOverviewFavorite" />
 
     <!-- Listing IDs -->
     <item type="id" name="listingTitle" />

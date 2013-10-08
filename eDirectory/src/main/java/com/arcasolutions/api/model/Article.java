@@ -7,6 +7,7 @@ import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import lombok.Data;
@@ -33,6 +34,21 @@ public class Article extends Module {
     @JsonProperty("avg_review")
     private float rating;
 
+    @JsonProperty("abstract")
+    private String summary;
+
+    @JsonProperty("content")
+    private String content;
+
+    @JsonProperty("level")
+    private int level;
+
+    @JsonProperty("gallery")
+    private ArrayList<Photo> gallery;
+
+    @JsonProperty("friendly_url")
+    private String friendlyUrl;
+
 
     public Article() {
     }
@@ -44,6 +60,11 @@ public class Article extends Module {
         imageUrl = in.readString();
         pubDate = new Date(in.readLong());
         rating = in.readFloat();
+        summary = in.readString();
+        content = in.readString();
+        level = in.readInt();
+        gallery = in.readArrayList(Photo.class.getClassLoader());
+        friendlyUrl = in.readString();
     }
 
     @Override
@@ -59,6 +80,11 @@ public class Article extends Module {
         out.writeString(imageUrl);
         out.writeLong(pubDate != null ? pubDate.getTime() : 0L);
         out.writeFloat(rating);
+        out.writeString(summary);
+        out.writeString(content);
+        out.writeInt(level);
+        out.writeList(gallery);
+        out.writeString(friendlyUrl);
     }
 
     public static final Parcelable.Creator<Article> CREATOR
