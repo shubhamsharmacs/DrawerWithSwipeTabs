@@ -224,7 +224,7 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
                     items.add((Parcelable) i);
                 }
                 Intent intent = new Intent(getActivity(), ListingResultActivity.class);
-                intent.putExtra(ListingResultActivity.EXTRA_ITEMS, items);
+                //intent.putExtra(ListingResultActivity.EXTRA_ITEMS, items);
                 startActivity(intent);
                 break;
         }
