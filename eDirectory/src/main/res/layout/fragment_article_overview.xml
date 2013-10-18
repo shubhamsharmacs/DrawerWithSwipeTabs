@@ -22,6 +22,8 @@
             android:layout_marginBottom="@dimen/spacingMedium">
 
             <ImageView
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:id="@id/articleOverviewImage"
