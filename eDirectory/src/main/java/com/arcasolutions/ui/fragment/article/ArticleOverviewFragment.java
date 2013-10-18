@@ -67,7 +67,7 @@ public class ArticleOverviewFragment extends Fragment {
 
         StringBuilder builder = new StringBuilder();
         builder.append("<html><head>");
-        builder.append("<style>body {color: black;}</style>");
+        builder.append("<style>body {color: black; margin:0px}</style>");
         builder.append("</head><body>");
         builder.append(content);
         builder.append("</body></html>");
