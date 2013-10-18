@@ -36,7 +36,8 @@
     <item type="id" name="articleOverviewContent" />
     <item type="id" name="articleOverviewFavorite" />
 
-    <!-- Listing IDs -->
+    <!-- ======================================== -->
+    <!--   Listing IDs -->
     <item type="id" name="listingTitle" />
     <item type="id" name="listingRatingBar" />
     <item type="id" name="listingReviews" />
@@ -44,6 +45,18 @@
     <item type="id" name="listingAddress" />
     <item type="id" name="listingDealBadge" />
     <item type="id" name="listingImage" />
+
+    <!--   Listing Overview IDs -->
+    <item type="id" name="listingOverviewImage" />
+    <item type="id" name="listingOverviewTitle" />
+    <item type="id" name="listingOverviewFavorite" />
+    <item type="id" name="listingOverviewSummary" />
+    <item type="id" name="listingOverviewAddress" />
+    <item type="id" name="listingOverviewGetDirections" />
+    <item type="id" name="listingOverviewContact" />
+    <item type="id" name="listingOverviewCheckIn" />
+    <item type="id" name="listingOverviewRatingBar" />
+    <item type="id" name="listingOverviewReviews" />
 
     <!-- Deal IDs -->
     <item type="id" name="dealName" />

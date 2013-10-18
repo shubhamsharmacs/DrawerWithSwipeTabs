@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.arcasolutions.api.annotation.ApiResource;
 import com.arcasolutions.api.constant.Resource;
+import com.arcasolutions.api.implementation.ContactInfo;
 import com.arcasolutions.api.implementation.IMapItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import lombok.Data;
 
 @Data
-public class Listing  extends Module implements IMapItem {
+public class Listing  extends Module implements IMapItem, ContactInfo {
 
     @JsonProperty("listing_ID")
     private long id;
@@ -99,6 +100,9 @@ public class Listing  extends Module implements IMapItem {
     @JsonProperty("deal_description")
     private String dealDescription;
 
+    @JsonProperty
+    private String url;
+
     public Listing(){}
 
     private Listing(Parcel in) {
@@ -132,6 +136,8 @@ public class Listing  extends Module implements IMapItem {
         dealDiscount = in.readString();
         dealRemaining = in.readInt();
         dealDescription = in.readString();
+        url = in.readString();
+
     }
 
     @Override
@@ -140,36 +146,37 @@ public class Listing  extends Module implements IMapItem {
     }
 
     @Override
-    public void writeToParcel(Parcel in, int i) {
-        in.writeLong(id);
-        in.writeString(title);
-        in.writeInt(level);
-        in.writeLong(dealId);
-        in.writeString(address);
-        in.writeFloat(rating);
-        in.writeString(imageUrl);
-        in.writeString(phoneNumber);
-        in.writeDouble(latitude);
-        in.writeDouble(longitude);
-        in.writeString(description);
-        in.writeInt(totalReviews);
-        in.writeString(summary);
-        in.writeString(description);
-        in.writeString(videoSnippet);
-        in.writeString(videoDescription);
-        in.writeList(gallery);
-        in.writeInt(totalCheckins);
-        in.writeList(categories);
-        in.writeString(friendlyUrl);
-        in.writeString(email);
-        in.writeString(fax);
-        in.writeLong(dealId);
-        in.writeString(dealName);
-        in.writeFloat(dealPrice);
-        in.writeFloat(dealRealPrice);
-        in.writeString(dealDiscount);
-        in.writeInt(dealRemaining);
-        in.writeString(dealDescription);
+    public void writeToParcel(Parcel out, int i) {
+        out.writeLong(id);
+        out.writeString(title);
+        out.writeInt(level);
+        out.writeLong(dealId);
+        out.writeString(address);
+        out.writeFloat(rating);
+        out.writeString(imageUrl);
+        out.writeString(phoneNumber);
+        out.writeDouble(latitude);
+        out.writeDouble(longitude);
+        out.writeString(description);
+        out.writeInt(totalReviews);
+        out.writeString(summary);
+        out.writeString(description);
+        out.writeString(videoSnippet);
+        out.writeString(videoDescription);
+        out.writeList(gallery);
+        out.writeInt(totalCheckins);
+        out.writeList(categories);
+        out.writeString(friendlyUrl);
+        out.writeString(email);
+        out.writeString(fax);
+        out.writeLong(dealId);
+        out.writeString(dealName);
+        out.writeFloat(dealPrice);
+        out.writeFloat(dealRealPrice);
+        out.writeString(dealDiscount);
+        out.writeInt(dealRemaining);
+        out.writeString(dealDescription);
+        out.writeString(url);
     }
 
     public static final Parcelable.Creator<Listing> CREATOR

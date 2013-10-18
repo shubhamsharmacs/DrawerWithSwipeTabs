@@ -43,6 +43,8 @@
 
         <activity android:name=".ui.activity.listing.ListingResultActivity" />
 
+        <activity android:name=".ui.activity.listing.ListingDetailActivity" />
+
         <activity android:name=".ui.activity.DealResultActivity" />
 
         <activity android:name=".ui.activity.article.ArticleResultActivity" />

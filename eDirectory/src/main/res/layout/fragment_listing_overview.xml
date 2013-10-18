@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/common_line"
+        android:showDividers="middle"
+        android:paddingTop="@dimen/spacingSmall"
+        android:paddingBottom="@dimen/spacingSmall"
+        android:paddingLeft="@dimen/spacingMedium"
+        android:paddingRight="@dimen/spacingMedium">
+
+        <RelativeLayout
+            android:layout_marginBottom="@dimen/spacingMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:id="@id/listingOverviewImage" />
+
+            <TextView
+                style="@style/listingOverviewTextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Annual Rock Festival"
+                android:id="@id/listingOverviewTitle"
+                android:layout_below="@id/listingOverviewImage"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/classifiedOverviewFavorite" />
+
+            <RatingBar
+                style="?android:ratingBarStyleSmall"
+                tools:rating="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:id="@id/listingOverviewRatingBar"
+                android:layout_below="@id/listingOverviewTitle"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                style="@style/listingOverviewTextReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="4 reviews"
+                android:id="@id/listingOverviewReviews"
+                android:layout_alignTop="@id/listingOverviewRatingBar"
+                android:layout_toRightOf="@id/listingOverviewRatingBar"
+                android:layout_marginRight="@dimen/spacingMedium"/>
+
+            <CheckBox
+                style="@style/heartCheckBoxStyle"
+                android:layout_marginRight="@dimen/spacingMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@id/listingOverviewFavorite"
+                android:layout_alignBottom="@id/listingOverviewTitle"
+                android:layout_alignParentRight="true"
+                android:checked="false" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/spacingMedium"
+            android:layout_marginBottom="@dimen/spacingMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/listingOverviewTextSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Lorem ipsum, pitsumily in on the verily we did fly to the  place of the people that were doing  soom-stuff we did not  quite understand, etc etc. Lorem ipsum, pitsumily in on the  verily we did fly to the place of the people that were doing  soom-stuff we did not quite understand, etc etc. Lorem ipsum, pitsumily in on the verily we did fly to the  place of the people that were doing  soom-stuff we did not  quite understand, etc etc. Lorem ipsum, pitsumily in on the  verily we did fly to the place of the people that were doing  soom-stuff we did not quite understand, etc etc."
+                android:id="@id/listingOverviewSummary"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="@dimen/spacingMedium" />
+
+            <TextView
+                style="@style/listingOverviewTextAddress"
+                android:gravity="bottom"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:id="@id/listingOverviewAddress"
+                android:layout_weight="1"
+                android:text="Rua Domingues Carmelingo Caló, 21-20, Jardim Vila Santa Tereza, CEP 17.055-453, Bauru, SP"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/listingOverviewSummary"
+                android:layout_toLeftOf="@id/listingOverviewGetDirections"
+                android:layout_marginRight="@dimen/spacingMedium" />
+
+            <Button
+                style="@style/blueButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Get Directions"
+                android:id="@id/listingOverviewGetDirections"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@id/listingOverviewContact" />
+
+        <Button
+            android:layout_marginTop="@dimen/spacingMedium"
+            android:layout_marginBottom="@dimen/spacingMedium"
+            style="@style/blueButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Check in"
+            android:id="@id/listingOverviewCheckIn" />
+
+    </LinearLayout>
+</ScrollView>

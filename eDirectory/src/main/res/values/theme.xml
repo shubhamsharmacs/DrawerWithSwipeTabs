@@ -111,6 +111,37 @@
         <item name="android:background">#2ecc71</item>
     </style>
 
+    <!-- Listing Overview -->
+    <style name="listingOverviewTextTitle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="listingOverviewTextLabel" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="listingOverviewTextReviews" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorExtras</item>
+    </style>
+
+    <style name="listingOverviewTextSummary" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="listingOverviewTextAddress" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeMedium</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
     <!-- Review Styles -->
 
     <style name="reviewTextTitle" parent="@android:style/TextAppearance.Small">
@@ -233,12 +264,6 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">@dimen/textSizeLarge</item>
         <item name="android:textColor">@color/textColorExtras</item>
-    </style>
-
-    <style name="classifiedOverviewTextContact" parent="@android:style/TextAppearance.Small">
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">@dimen/textSizeLarge</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 
     <style name="classifiedOverviewTextDescription" parent="@android:style/TextAppearance.Small">
