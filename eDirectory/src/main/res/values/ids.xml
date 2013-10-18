@@ -52,11 +52,22 @@
     <item type="id" name="dealListing" />
     <item type="id" name="dealImage" />
 
-    <!-- Classified IDs -->
+    <!-- ======================================== -->
+    <!--   Classified IDs -->
     <item type="id" name="classifiedTitle" />
     <item type="id" name="classifiedPrice" />
     <item type="id" name="classifiedAddress" />
     <item type="id" name="classifiedImage" />
+
+    <!--   Classified Overview IDs -->
+    <item type="id" name="classifiedOverviewImage" />
+    <item type="id" name="classifiedOverviewTitle" />
+    <item type="id" name="classifiedOverviewPrice" />
+    <item type="id" name="classifiedOverviewFavorite" />
+    <item type="id" name="classifiedOverviewDescription" />
+    <item type="id" name="classifiedOverviewAddress" />
+    <item type="id" name="classifiedOverviewGetDirections" />
+    <item type="id" name="classifiedOverviewContact" />
 
     <!-- ======================================== -->
     <!--   Event Result IDs                       -->

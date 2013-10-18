@@ -49,7 +49,9 @@
 
         <activity android:name=".ui.activity.article.ArticleDetailActivity" android:hardwareAccelerated="false" />
 
-        <activity android:name=".ui.activity.ClassifiedResultActivity" />
+        <activity android:name=".ui.activity.classified.ClassifiedResultActivity" />
+
+        <activity android:name=".ui.activity.classified.ClassifiedDetailActivity" />
 
         <activity android:name=".ui.activity.event.EventResultActivity" />
 

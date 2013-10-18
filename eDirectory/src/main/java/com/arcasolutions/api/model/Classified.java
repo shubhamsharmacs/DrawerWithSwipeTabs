@@ -4,15 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
+import com.arcasolutions.api.implementation.ContactInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class Classified  extends Module {
+public class Classified  extends Module implements ContactInfo {
 
     @JsonProperty("classified_ID")
     private long id;
@@ -38,6 +40,27 @@ public class Classified  extends Module {
     @JsonProperty("price")
     private float price;
 
+    @JsonProperty("summarydesc")
+    private String summary;
+
+    @JsonProperty("detaildesc")
+    private String description;
+
+    @JsonProperty("friendly_url")
+    private String friendlyUrl;
+
+    @JsonProperty("gallery")
+    private ArrayList<Photo> gallery;
+
+    @JsonProperty
+    private String url;
+
+    @JsonProperty
+    private String email;
+
+    @JsonProperty
+    private int level;
+
 
     public Classified() {
     }
@@ -51,6 +74,13 @@ public class Classified  extends Module {
         latitude = in.readDouble();
         longitude = in.readDouble();
         price = in.readFloat();
+        summary = in.readString();
+        description = in.readString();
+        friendlyUrl = in.readString();
+        gallery = in.readArrayList(Photo.class.getClassLoader());
+        url = in.readString();
+        email = in.readString();
+        level = in.readInt();
     }
 
     @Override
@@ -68,6 +98,13 @@ public class Classified  extends Module {
         out.writeDouble(latitude);
         out.writeDouble(longitude);
         out.writeFloat(price);
+        out.writeString(summary);
+        out.writeString(description);
+        out.writeString(friendlyUrl);
+        out.writeList(gallery);
+        out.writeString(url);
+        out.writeString(email);
+        out.writeInt(level);
     }
 
     public static final Creator<Classified> CREATOR

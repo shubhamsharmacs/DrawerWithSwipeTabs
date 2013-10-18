@@ -216,6 +216,43 @@
         <item name="android:textColor">@color/textColorTertiary</item>
     </style>
 
+    <!-- Classified Overview -->
+    <style name="classifiedOverviewTextTitle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="classifiedOverviewTextLabel" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="classifiedOverviewTextPrice" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorExtras</item>
+    </style>
+
+    <style name="classifiedOverviewTextContact" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="classifiedOverviewTextDescription" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="classifiedOverviewTextAddress" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeMedium</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
     <!-- Event Overview -->
     <style name="eventOverviewTextTitle" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">sans-serif</item>
