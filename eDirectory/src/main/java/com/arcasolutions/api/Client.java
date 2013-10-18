@@ -5,8 +5,10 @@ import android.text.TextUtils;
 
 import com.arcasolutions.api.annotation.ApiResource;
 import com.arcasolutions.api.constant.Resource;
+import com.arcasolutions.api.constant.ReviewModule;
 import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.model.BaseResult;
+import com.arcasolutions.api.model.Module;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
@@ -81,7 +83,7 @@ public class Client {
             }
 
             if (apiResource == null)
-                throw new IllegalArgumentException("clazz must be annotated with " + ApiResource.class.getName());
+                throw new IllegalArgumentException(mClass.getName() + " must be annotated with " + ApiResource.class.getName());
 
             Resource resource = apiResource.value();
             if (resource == null)
@@ -131,6 +133,11 @@ public class Client {
 
         public Builder id(long id) {
             mMap.put("id", id);
+            return this;
+        }
+
+        public Builder module(ReviewModule module) {
+            mMap.put("type", module.toString());
             return this;
         }
 

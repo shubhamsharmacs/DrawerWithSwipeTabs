@@ -9,11 +9,13 @@ import android.view.View;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
+import com.arcasolutions.api.constant.ReviewModule;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.DescriptionFragment;
 import com.arcasolutions.ui.fragment.GalleryFragment;
+import com.arcasolutions.ui.fragment.ReviewListFragment;
 import com.arcasolutions.ui.fragment.listing.ListingOverviewFragment;
 
 import java.util.List;
@@ -64,6 +66,10 @@ public class ListingDetailActivity extends ActionBarActivity {
         DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(listing.getTitle(), listing.getDescription());
         adapter.add("Description", ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
 
+        // Adds reviews
+        ReviewListFragment reviewListFragment = ReviewListFragment.newInstance(listing.getId(), ReviewModule.LISTING);
+        adapter.add("Reviews", reviewListFragment.getClass(), reviewListFragment.getArguments());
+
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(listing.getIGallery());
         adapter.add("Gallery", ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
@@ -76,6 +82,7 @@ public class ListingDetailActivity extends ActionBarActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
         pager.setVisibility(View.VISIBLE);
+        pager.setOffscreenPageLimit(adapter.getCount());
 
     }
 }

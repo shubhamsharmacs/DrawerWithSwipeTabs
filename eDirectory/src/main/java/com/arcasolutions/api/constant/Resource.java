@@ -11,7 +11,8 @@ public enum Resource {
     CLASSIFIED("classified"),
     CLASSIFIED_CATEGORY("classified_category"),
     DEAL("deal"),
-    DEAL_CATEGORY("deal_category");
+    DEAL_CATEGORY("deal_category"),
+    REVIEW("review");
 
     private String val;
 

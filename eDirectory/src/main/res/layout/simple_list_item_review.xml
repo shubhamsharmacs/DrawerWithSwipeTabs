@@ -3,8 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/spacingMedium"
-    android:paddingBottom="@dimen/spacingMedium">
+    android:padding="@dimen/spacingMedium">
 
     <FrameLayout
         android:layout_marginRight="@dimen/spacingMedium"
@@ -71,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="?android:ratingBarStyleSmall"
-        android:id="@+id/ratingBar"
+        android:id="@id/reviewRating"
         android:layout_below="@id/reviewAuthor"
         android:layout_alignLeft="@id/reviewAuthor" />
 </RelativeLayout>
