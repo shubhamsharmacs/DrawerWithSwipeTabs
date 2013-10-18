@@ -14,7 +14,6 @@ import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.ListingResult;
-import com.arcasolutions.ui.activity.classified.ClassifiedDetailActivity;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.google.common.collect.Lists;
 
@@ -67,7 +66,7 @@ public class ListingResultActivity extends ActionBarActivity implements AdapterV
         builder.page(mPage);
         if (mCategory != null) {
             builder.categoryId(mCategory.getId())
-                .searchBy(SearchBy.CATEGORY);
+                    .searchBy(SearchBy.CATEGORY);
         }
         builder.execAsync(new Client.RestListener<ListingResult>() {
 

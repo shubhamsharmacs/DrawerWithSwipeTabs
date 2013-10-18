@@ -18,7 +18,8 @@ public class ImageViewFragment extends Fragment {
     public static final String ARG_PHOTO = "photo";
     private PhotoViewAttacher mAttacher;
 
-    public ImageViewFragment() {}
+    public ImageViewFragment() {
+    }
 
     public static ImageViewFragment newInstance(Photo photo) {
         final Bundle args = new Bundle();

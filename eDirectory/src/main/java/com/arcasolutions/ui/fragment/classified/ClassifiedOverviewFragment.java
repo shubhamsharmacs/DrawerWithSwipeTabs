@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Classified;
-import com.arcasolutions.api.model.Event;
 import com.arcasolutions.ui.fragment.ContactInfoFragment;
 
 import java.util.Locale;
@@ -18,7 +17,8 @@ public class ClassifiedOverviewFragment extends Fragment {
 
     public static final String ARG_CLASSIFIED = "classofied";
 
-    public ClassifiedOverviewFragment() {}
+    public ClassifiedOverviewFragment() {
+    }
 
     public static ClassifiedOverviewFragment newInstance(Classified classified) {
         final Bundle args = new Bundle();

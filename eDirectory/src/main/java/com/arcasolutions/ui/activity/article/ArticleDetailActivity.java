@@ -11,12 +11,9 @@ import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Article;
 import com.arcasolutions.api.model.ArticleResult;
-import com.arcasolutions.api.model.Event;
-import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.GalleryFragment;
 import com.arcasolutions.ui.fragment.article.ArticleOverviewFragment;
-import com.arcasolutions.ui.fragment.event.EventOverviewFragment;
 
 import java.util.List;
 

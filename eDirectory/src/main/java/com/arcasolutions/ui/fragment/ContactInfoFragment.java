@@ -18,7 +18,8 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
     private LayoutInflater mInflater;
     private LinearLayout mLinearLayout;
 
-    public ContactInfoFragment() {}
+    public ContactInfoFragment() {
+    }
 
     public static ContactInfoFragment newInstance(ContactInfo contactInfo) {
         final Bundle args = new Bundle();

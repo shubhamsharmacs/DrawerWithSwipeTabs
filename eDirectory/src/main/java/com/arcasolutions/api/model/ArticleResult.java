@@ -9,7 +9,8 @@ import com.arcasolutions.api.constant.Resource;
 public class ArticleResult extends BaseResult<Article> {
 
 
-    public ArticleResult() {}
+    public ArticleResult() {
+    }
 
     private ArticleResult(Parcel in) {
         super(in);

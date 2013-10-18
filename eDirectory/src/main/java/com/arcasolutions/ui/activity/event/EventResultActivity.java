@@ -1,7 +1,6 @@
 package com.arcasolutions.ui.activity.event;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
@@ -67,7 +66,7 @@ public class EventResultActivity extends ActionBarActivity implements AdapterVie
         builder.page(mPage);
         if (mCategory != null) {
             builder.categoryId(mCategory.getId())
-                .searchBy(SearchBy.CATEGORY);
+                    .searchBy(SearchBy.CATEGORY);
         }
         builder.execAsync(new Client.RestListener<EventResult>() {
 

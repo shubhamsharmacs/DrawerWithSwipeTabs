@@ -9,7 +9,8 @@ import com.arcasolutions.api.constant.Resource;
 public class DealResult extends BaseResult<Deal> {
 
 
-    public DealResult() {}
+    public DealResult() {
+    }
 
     private DealResult(Parcel in) {
         super(in);

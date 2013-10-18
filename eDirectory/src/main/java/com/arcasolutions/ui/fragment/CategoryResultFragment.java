@@ -32,7 +32,8 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
         void onCategorySelected(BaseCategory category);
     }
 
-    public CategoryResultFragment() {}
+    public CategoryResultFragment() {
+    }
 
     public static CategoryResultFragment newInstance(Class<? extends BaseCategoryResult> clazz) {
         final Bundle args = new Bundle();

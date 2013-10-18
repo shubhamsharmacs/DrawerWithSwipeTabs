@@ -8,7 +8,8 @@ import com.arcasolutions.api.constant.Resource;
 @ApiResource(Resource.CLASSIFIED_CATEGORY)
 public class ClassifiedCategoryResult extends BaseCategoryResult<ClassifiedCategory> {
 
-    public ClassifiedCategoryResult() {}
+    public ClassifiedCategoryResult() {
+    }
 
     private ClassifiedCategoryResult(Parcel in) {
         super(in);

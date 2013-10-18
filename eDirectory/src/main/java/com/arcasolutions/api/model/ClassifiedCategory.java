@@ -12,7 +12,8 @@ public class ClassifiedCategory extends BaseCategory {
     @JsonProperty("active_classifieds")
     private int activeItems;
 
-    public ClassifiedCategory() {}
+    public ClassifiedCategory() {
+    }
 
     private ClassifiedCategory(Parcel in) {
         super(in);

@@ -56,19 +56,19 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
         if (item == null) return new View(mContext);
 
         if (item instanceof Article)
-            return getView((Article)item, convertView, viewGroup);
+            return getView((Article) item, convertView, viewGroup);
 
         if (item instanceof Classified)
-            return getView((Classified)item, convertView, viewGroup);
+            return getView((Classified) item, convertView, viewGroup);
 
         if (item instanceof Deal)
-            return getView((Deal)item, convertView, viewGroup);
+            return getView((Deal) item, convertView, viewGroup);
 
         if (item instanceof Event)
-            return getView((Event)item, convertView, viewGroup);
+            return getView((Event) item, convertView, viewGroup);
 
         if (item instanceof Listing)
-            return getView((Listing)item, convertView, viewGroup);
+            return getView((Listing) item, convertView, viewGroup);
 
         return new View(mContext);
     }
@@ -76,7 +76,7 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
     //
     // Article information
     //
-    public View getView(Article a,  View convertView, ViewGroup viewGroup) {
+    public View getView(Article a, View convertView, ViewGroup viewGroup) {
         View v = convertView;
         if (v == null) {
             v = mInflater.inflate(R.layout.simple_list_item_article, viewGroup, false);
@@ -115,7 +115,7 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
     //
     // Deal information
     //
-    public View getView(Deal d,  View convertView, ViewGroup viewGroup) {
+    public View getView(Deal d, View convertView, ViewGroup viewGroup) {
         View v = convertView;
         if (v == null) {
             v = mInflater.inflate(R.layout.simple_list_item_deal, viewGroup, false);
@@ -176,7 +176,6 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
 
         return v;
     }
-
 
 
 }

@@ -27,7 +27,8 @@ public abstract class BaseCategory implements Parcelable {
 
     public abstract int getActiveItems();
 
-    public BaseCategory(){}
+    public BaseCategory() {
+    }
 
     protected BaseCategory(Parcel in) {
         id = in.readLong();

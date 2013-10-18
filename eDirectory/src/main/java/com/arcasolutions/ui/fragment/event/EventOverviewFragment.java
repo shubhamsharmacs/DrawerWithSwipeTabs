@@ -13,11 +13,12 @@ import com.arcasolutions.ui.fragment.ContactInfoFragment;
 
 import java.util.Locale;
 
-public class EventOverviewFragment  extends Fragment {
+public class EventOverviewFragment extends Fragment {
 
     public static final String ARG_EVENT = "event";
 
-    public EventOverviewFragment() {}
+    public EventOverviewFragment() {
+    }
 
     public static EventOverviewFragment newInstance(Event event) {
         final Bundle args = new Bundle();

@@ -57,7 +57,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         Display defaultDisplay = getActivity().getWindowManager().getDefaultDisplay();
         defaultDisplay.getMetrics(metrics);
 
-        int size = (int)Math.ceil(metrics.widthPixels / getResources().getInteger(R.integer.numColumnsGallery));
+        int size = (int) Math.ceil(metrics.widthPixels / getResources().getInteger(R.integer.numColumnsGallery));
 
         ArrayList<Photo> gallery = getShownGallery();
 
@@ -69,7 +69,7 @@ public class GalleryFragment extends Fragment implements AdapterView.OnItemClick
         Bundle args = getArguments();
 
         ArrayList<Photo> gallery = null;
-        if (args != null)  gallery = args.getParcelableArrayList(ARG_PHOTO_ARRAY);
+        if (args != null) gallery = args.getParcelableArrayList(ARG_PHOTO_ARRAY);
         return gallery;
     }
 

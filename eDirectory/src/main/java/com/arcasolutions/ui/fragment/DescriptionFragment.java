@@ -11,22 +11,31 @@ import com.arcasolutions.R;
 
 public class DescriptionFragment extends Fragment {
 
-    public static final String ARG_TEXT = "text";
+    public static final String ARG_TITLE = "title";
+    public static final String ARG_CONTENT = "content";
 
-    public DescriptionFragment() {}
+    public DescriptionFragment() {
+    }
 
-    public static DescriptionFragment newInstance(CharSequence text) {
+    public static DescriptionFragment newInstance(CharSequence title, CharSequence content) {
         final Bundle args = new Bundle();
-        args.putCharSequence(ARG_TEXT, text);
+        args.putCharSequence(ARG_TITLE, title);
+        args.putCharSequence(ARG_CONTENT, content);
 
         final DescriptionFragment f = new DescriptionFragment();
         f.setArguments(args);
         return f;
     }
 
-    public CharSequence getShownText() {
+    public CharSequence getShownTitle() {
         return getArguments() != null
-                ? getArguments().getCharSequence(ARG_TEXT)
+                ? getArguments().getCharSequence(ARG_TITLE)
+                : "";
+    }
+
+    public CharSequence getShownContent() {
+        return getArguments() != null
+                ? getArguments().getCharSequence(ARG_CONTENT)
                 : "";
     }
 
@@ -38,6 +47,7 @@ public class DescriptionFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         AQuery aq = new AQuery(view);
-        aq.id(R.id.text1).text(getShownText());
+        aq.id(R.id.text1).text(getShownTitle());
+        aq.id(R.id.text2).text(getShownContent());
     }
 }

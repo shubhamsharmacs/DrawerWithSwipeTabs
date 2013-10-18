@@ -17,7 +17,7 @@
         android:lines="1"
         android:ellipsize="end"
         android:layout_alignRight="@id/eventAddress"
-        android:layout_marginBottom="@dimen/spacingSmall"/>
+        android:layout_marginBottom="@dimen/spacingSmall" />
 
     <TextView
         style="@style/eventResultTextWhen"

@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Photo;
-import com.google.android.gms.internal.w;
 
 import java.util.List;
 

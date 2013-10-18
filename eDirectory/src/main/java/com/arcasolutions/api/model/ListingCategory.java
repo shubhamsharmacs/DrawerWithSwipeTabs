@@ -13,7 +13,8 @@ public class ListingCategory extends BaseCategory {
     @JsonProperty("active_listings")
     private int activeItems;
 
-    public ListingCategory() {}
+    public ListingCategory() {
+    }
 
     private ListingCategory(Parcel in) {
         super(in);

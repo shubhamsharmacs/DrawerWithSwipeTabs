@@ -63,7 +63,7 @@ public class DealResultActivity extends ActionBarActivity {
         builder.page(mPage);
         if (mCategory != null) {
             builder.categoryId(mCategory.getId())
-                .searchBy(SearchBy.CATEGORY);
+                    .searchBy(SearchBy.CATEGORY);
         }
         builder.execAsync(new Client.RestListener<DealResult>() {
 

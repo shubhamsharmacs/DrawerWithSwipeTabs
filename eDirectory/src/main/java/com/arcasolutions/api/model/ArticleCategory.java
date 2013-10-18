@@ -12,7 +12,8 @@ public class ArticleCategory extends BaseCategory {
     @JsonProperty("active_articles")
     private int activeItems;
 
-    public ArticleCategory() {}
+    public ArticleCategory() {
+    }
 
     private ArticleCategory(Parcel in) {
         super(in);

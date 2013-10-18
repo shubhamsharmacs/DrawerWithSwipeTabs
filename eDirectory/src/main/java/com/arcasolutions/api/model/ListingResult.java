@@ -10,7 +10,8 @@ import com.arcasolutions.api.constant.Resource;
 public class ListingResult extends BaseResult<Listing> {
 
 
-    public ListingResult() {}
+    public ListingResult() {
+    }
 
     private ListingResult(Parcel in) {
         super(in);

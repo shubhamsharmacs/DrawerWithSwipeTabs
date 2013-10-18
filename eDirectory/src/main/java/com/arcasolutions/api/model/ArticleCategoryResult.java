@@ -8,7 +8,8 @@ import com.arcasolutions.api.constant.Resource;
 @ApiResource(Resource.ARTICLE_CATEGORY)
 public class ArticleCategoryResult extends BaseCategoryResult<ArticleCategory> {
 
-    public ArticleCategoryResult() {}
+    public ArticleCategoryResult() {
+    }
 
     private ArticleCategoryResult(Parcel in) {
         super(in);

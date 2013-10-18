@@ -9,14 +9,11 @@ import android.view.View;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
-import com.arcasolutions.api.model.Classified;
-import com.arcasolutions.api.model.ClassifiedResult;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.DescriptionFragment;
 import com.arcasolutions.ui.fragment.GalleryFragment;
-import com.arcasolutions.ui.fragment.classified.ClassifiedOverviewFragment;
 import com.arcasolutions.ui.fragment.listing.ListingOverviewFragment;
 
 import java.util.List;
@@ -61,15 +58,15 @@ public class ListingDetailActivity extends ActionBarActivity {
 
         // Adds tab Overview
         ListingOverviewFragment overviewFragment = ListingOverviewFragment.newInstance(listing);
-        adapter.add("Overview", ((Object)overviewFragment).getClass(), overviewFragment.getArguments());
+        adapter.add("Overview", ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
 
         // Adds tab Description
-        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(listing.getDescription());
-        adapter.add("Description", ((Object)descriptionFragment).getClass(), descriptionFragment.getArguments());
+        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(listing.getTitle(), listing.getDescription());
+        adapter.add("Description", ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
 
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(listing.getIGallery());
-        adapter.add("Gallery", ((Object)galleryFragment).getClass(), galleryFragment.getArguments());
+        adapter.add("Gallery", ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
         tabStrip.setBackgroundColor(Color.parseColor("#3d3d3d"));

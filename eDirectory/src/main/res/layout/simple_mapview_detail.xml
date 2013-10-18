@@ -23,7 +23,7 @@
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/mapInfoDistance"
         android:layout_marginBottom="@dimen/spacingSmall"
-        android:layout_marginRight="@dimen/spacingSmall"/>
+        android:layout_marginRight="@dimen/spacingSmall" />
 
     <TextView
         style="@style/mapInfoTextDistance"

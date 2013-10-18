@@ -11,10 +11,6 @@ import android.webkit.WebView;
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Article;
-import com.arcasolutions.api.model.Event;
-import com.arcasolutions.ui.fragment.ContactInfoFragment;
-import com.arcasolutions.util.Util;
-import com.google.android.gms.internal.bu;
 import com.google.common.base.Charsets;
 
 import java.util.Locale;
@@ -23,7 +19,8 @@ public class ArticleOverviewFragment extends Fragment {
 
     public static final String ARG_ARTICLE = "article";
 
-    public ArticleOverviewFragment() {}
+    public ArticleOverviewFragment() {
+    }
 
     public static ArticleOverviewFragment newInstance(Article article) {
         final Bundle args = new Bundle();

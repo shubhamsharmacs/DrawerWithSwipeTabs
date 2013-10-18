@@ -12,6 +12,14 @@
         android:layout_height="wrap_content">
 
         <TextView
+            style="@style/commonTextTitle"
+            tools:text="Some Flower Shop"
+            android:layout_marginBottom="@dimen/spacingMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text1" />
+
+        <TextView
             style="@style/commonTextDescription"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend, massa id euismod faucibus, arcu turpis pulvinar metus, vel pulvinar eros erat vitae eros. Praesent consequat id purus sit amet elementum. In hac habitasse platea dictumst. Sed sagittis ipsum id orci iaculis convallis. Aliquam neque mauris, vulputate non ornare in, placerat id erat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas accumsan tellus cursus magna faucibus aliquet. Proin mollis augue vitae ultrices ultrices. Mauris adipiscing vel mauris eget porta. Maecenas sem eros, euismod et tortor at, rutrum lobortis mauris. Nunc ullamcorper varius nulla, at condimentum dui convallis ac. Curabitur rhoncus nisl enim, vel ornare metus interdum ac.
 
@@ -24,7 +32,7 @@ Sed iaculis molestie purus, id commodo dolor pretium eu. Mauris quis tincidunt m
 Nunc ac ligula a sapien dapibus eleifend. Duis hendrerit laoreet accumsan. Morbi suscipit turpis id tellus varius, consequat hendrerit turpis cursus. Cras erat odio, porta vel pellentesque vel, viverra ac diam. Sed laoreet tellus id turpis adipiscing lacinia vel eget ante. Etiam quis dapibus nibh. Mauris a imperdiet nibh. Proin ut risus leo. Donec congue elit vitae elementum hendrerit. Vestibulum blandit posuere dui. Vivamus tristique quam suscipit, pellentesque nisl eget, lacinia nunc. Morbi suscipit est erat, a dignissim lorem tempus nec. Praesent sodales lobortis eleifend. Nam accumsan condimentum ipsum ut pellentesque."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text1" />
+            android:id="@+id/text2" />
 
     </LinearLayout>
 

@@ -29,7 +29,7 @@
         android:layout_toLeftOf="@id/classifiedImage"
         android:lines="1"
         android:ellipsize="end"
-        android:layout_marginBottom="@dimen/spacingSmall"/>
+        android:layout_marginBottom="@dimen/spacingSmall" />
 
     <TextView
         style="@style/classifiedResultTextPrice"
@@ -39,7 +39,7 @@
         android:id="@id/classifiedPrice"
         android:layout_below="@id/classifiedTitle"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="@dimen/spacingSmall"/>
+        android:layout_marginBottom="@dimen/spacingSmall" />
 
     <TextView
         style="@style/classifiedResultTextAddress"

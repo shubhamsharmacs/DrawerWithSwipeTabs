@@ -9,7 +9,8 @@ import com.arcasolutions.api.constant.Resource;
 public class ClassifiedResult extends BaseResult<Classified> {
 
 
-    public ClassifiedResult() {}
+    public ClassifiedResult() {
+    }
 
     private ClassifiedResult(Parcel in) {
         super(in);

@@ -8,7 +8,8 @@ import com.arcasolutions.api.constant.Resource;
 @ApiResource(Resource.DEAL_CATEGORY)
 public class DealCategoryResult extends BaseCategoryResult<DealCategory> {
 
-    public DealCategoryResult() {}
+    public DealCategoryResult() {
+    }
 
     private DealCategoryResult(Parcel in) {
         super(in);

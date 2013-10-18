@@ -12,7 +12,8 @@ public class DealCategory extends BaseCategory {
     @JsonProperty("active_listings")
     private int activeItems;
 
-    public DealCategory() {}
+    public DealCategory() {
+    }
 
     private DealCategory(Parcel in) {
         super(in);

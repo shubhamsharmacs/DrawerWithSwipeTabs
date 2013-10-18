@@ -8,17 +8,15 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
-import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.ui.fragment.ContactInfoFragment;
-
-import java.util.Locale;
 
 public class ListingOverviewFragment extends Fragment {
 
     public static final String ARG_LISTING = "listing";
 
-    public ListingOverviewFragment() {}
+    public ListingOverviewFragment() {
+    }
 
     public static ListingOverviewFragment newInstance(Listing listing) {
         final Bundle args = new Bundle();

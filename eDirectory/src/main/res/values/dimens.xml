@@ -6,14 +6,20 @@
     <dimen name="spacingLarge">15dp</dimen>
 
     <!-- Sizes -->
-    <dimen name="reviewImageBoxSize">52dp</dimen> <!-- width / height -->
+    <dimen name="reviewImageBoxSize">52dp</dimen>
+    <!-- width / height -->
 
     <!-- Text Sizes -->
-    <dimen name="textSizeMicro">12sp</dimen> <!-- 24pt -->
-    <dimen name="textSizeSmall">13sp</dimen> <!-- 26pt  -->
-    <dimen name="textSizeMedium">13.5sp</dimen> <!-- 27pt -->
-    <dimen name="textSizeLarge">15sp</dimen> <!-- 30pt -->
-    <dimen name="textSizeExtraLarge">18sp</dimen><!-- 36pt -->
+    <dimen name="textSizeMicro">12sp</dimen>
+    <!-- 24pt -->
+    <dimen name="textSizeSmall">13sp</dimen>
+    <!-- 26pt  -->
+    <dimen name="textSizeMedium">13.5sp</dimen>
+    <!-- 27pt -->
+    <dimen name="textSizeLarge">15sp</dimen>
+    <!-- 30pt -->
+    <dimen name="textSizeExtraLarge">18sp</dimen>
+    <!-- 36pt -->
 
     <dimen name="drawer_list_width">260dp</dimen>
 

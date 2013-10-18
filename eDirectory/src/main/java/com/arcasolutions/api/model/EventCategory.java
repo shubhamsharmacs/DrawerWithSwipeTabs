@@ -12,7 +12,8 @@ public class EventCategory extends BaseCategory {
     @JsonProperty("active_events")
     private int activeItems;
 
-    public EventCategory() {}
+    public EventCategory() {
+    }
 
     private EventCategory(Parcel in) {
         super(in);

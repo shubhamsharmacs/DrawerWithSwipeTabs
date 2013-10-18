@@ -18,6 +18,7 @@ public class DetailFragmentPagerAdapter extends FragmentStatePagerAdapter {
             this.clss = clss;
             this.args = args;
         }
+
         CharSequence title;
         Class clss;
         Bundle args;

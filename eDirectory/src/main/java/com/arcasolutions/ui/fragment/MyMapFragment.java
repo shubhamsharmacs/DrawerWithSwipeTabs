@@ -184,13 +184,13 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
         };
 
         new Client.Builder(tClass)
-            .searchBy(SearchBy.MAP)
-            .region(
-                    mSearchNearLeftLatLng.latitude,
-                    mSearchNearLeftLatLng.longitude,
-                    mSearchFarRightLatLng.latitude,
-                    mSearchFarRightLatLng.longitude)
-            .execAsync(mListener);
+                .searchBy(SearchBy.MAP)
+                .region(
+                        mSearchNearLeftLatLng.latitude,
+                        mSearchNearLeftLatLng.longitude,
+                        mSearchFarRightLatLng.latitude,
+                        mSearchFarRightLatLng.longitude)
+                .execAsync(mListener);
 
     }
 

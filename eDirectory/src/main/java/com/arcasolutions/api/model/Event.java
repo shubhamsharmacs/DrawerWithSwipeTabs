@@ -103,7 +103,8 @@ public class Event extends Module implements ContactInfo, IMapItem {
         return 0;
     }
 
-    public Event() {}
+    public Event() {
+    }
 
     private Event(Parcel in) {
         id = in.readLong();
@@ -148,7 +149,7 @@ public class Event extends Module implements ContactInfo, IMapItem {
         out.writeLong(startTime != null ? startTime.getTime() : 0);
         out.writeLong(endTime != null ? endTime.getTime() : 0);
         out.writeString(Boolean.toString(recurring));
-        out.writeLong(untilDate != null ? untilDate.getTime() : 0 );
+        out.writeLong(untilDate != null ? untilDate.getTime() : 0);
         out.writeString(Boolean.toString(repeatEvent));
         out.writeString(recurringString);
         out.writeString(stringTime);

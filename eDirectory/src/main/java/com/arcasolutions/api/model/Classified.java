@@ -1,20 +1,16 @@
 package com.arcasolutions.api.model;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
-import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
 import com.arcasolutions.api.implementation.ContactInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class Classified  extends Module implements ContactInfo {
+public class Classified extends Module implements ContactInfo {
 
     @JsonProperty("classified_ID")
     private long id;

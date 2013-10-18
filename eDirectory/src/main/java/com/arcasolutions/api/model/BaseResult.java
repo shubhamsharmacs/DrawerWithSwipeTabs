@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.android.gms.internal.o;
 
 import lombok.Data;
 
@@ -26,7 +25,8 @@ public abstract class BaseResult<T> implements Parcelable {
     @JsonProperty("results")
     private java.util.List<T> results;
 
-    public BaseResult() {}
+    public BaseResult() {
+    }
 
     protected BaseResult(Parcel in) {
         type = in.readString();

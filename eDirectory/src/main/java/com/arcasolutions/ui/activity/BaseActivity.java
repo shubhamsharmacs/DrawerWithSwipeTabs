@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,19 +21,13 @@ import com.arcasolutions.api.model.DealCategoryResult;
 import com.arcasolutions.api.model.EventCategoryResult;
 import com.arcasolutions.api.model.ListingCategoryResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.location.LocationClient;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
-import java.util.AbstractMap;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class BaseActivity extends ActionBarActivity implements
-           LocationClient.ConnectionCallbacks, LocationClient.OnConnectionFailedListener, AdapterView.OnItemClickListener {
+        LocationClient.ConnectionCallbacks, LocationClient.OnConnectionFailedListener, AdapterView.OnItemClickListener {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -132,5 +125,5 @@ public abstract class BaseActivity extends ActionBarActivity implements
         Class<? extends ActionBarActivity> clazz;
         Bundle extras;
     }
-    
+
 }

@@ -1,15 +1,12 @@
 package com.arcasolutions.ui.activity.event;
 
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Event;
@@ -61,15 +58,15 @@ public class EventDetailActivity extends ActionBarActivity {
 
         // Adds tab Overview
         EventOverviewFragment overviewFragment = EventOverviewFragment.newInstance(event);
-        adapter.add("Overview", ((Object)overviewFragment).getClass(), overviewFragment.getArguments());
+        adapter.add("Overview", ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
 
         // Adds tab Description
-        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(event.getDescription());
-        adapter.add("Description", ((Object)descriptionFragment).getClass(), descriptionFragment.getArguments());
+        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(event.getTitle(), event.getDescription());
+        adapter.add("Description", ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
 
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(event.getIGallery());
-        adapter.add("Gallery", ((Object)galleryFragment).getClass(), galleryFragment.getArguments());
+        adapter.add("Gallery", ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
         tabStrip.setBackgroundColor(Color.parseColor("#3d3d3d"));

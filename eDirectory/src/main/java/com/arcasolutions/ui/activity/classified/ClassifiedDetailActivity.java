@@ -11,13 +11,10 @@ import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.ClassifiedResult;
-import com.arcasolutions.api.model.Event;
-import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.DescriptionFragment;
 import com.arcasolutions.ui.fragment.GalleryFragment;
 import com.arcasolutions.ui.fragment.classified.ClassifiedOverviewFragment;
-import com.arcasolutions.ui.fragment.event.EventOverviewFragment;
 
 import java.util.List;
 
@@ -61,15 +58,15 @@ public class ClassifiedDetailActivity extends ActionBarActivity {
 
         // Adds tab Overview
         ClassifiedOverviewFragment overviewFragment = ClassifiedOverviewFragment.newInstance(classified);
-        adapter.add("Overview", ((Object)overviewFragment).getClass(), overviewFragment.getArguments());
+        adapter.add("Overview", ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
 
         // Adds tab Description
-        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(classified.getDescription());
-        adapter.add("Description", ((Object)descriptionFragment).getClass(), descriptionFragment.getArguments());
+        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(classified.getName(), classified.getDescription());
+        adapter.add("Description", ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
 
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(classified.getIGallery());
-        adapter.add("Gallery", ((Object)galleryFragment).getClass(), galleryFragment.getArguments());
+        adapter.add("Gallery", ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
         tabStrip.setBackgroundColor(Color.parseColor("#3d3d3d"));

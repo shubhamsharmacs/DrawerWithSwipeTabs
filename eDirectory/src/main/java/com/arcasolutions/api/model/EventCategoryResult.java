@@ -8,7 +8,8 @@ import com.arcasolutions.api.constant.Resource;
 @ApiResource(Resource.EVENT_CATEGORY)
 public class EventCategoryResult extends BaseCategoryResult<EventCategory> {
 
-    public EventCategoryResult() {}
+    public EventCategoryResult() {
+    }
 
     private EventCategoryResult(Parcel in) {
         super(in);

@@ -1,7 +1,6 @@
 package com.arcasolutions.api.model;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import com.arcasolutions.api.implementation.IMapItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class Deal  extends Module implements IMapItem {
+public class Deal extends Module implements IMapItem {
 
     @JsonProperty("deal_ID")
     private long id;
@@ -58,7 +57,8 @@ public class Deal  extends Module implements IMapItem {
         return null;
     }
 
-    public Deal(){}
+    public Deal() {
+    }
 
     private Deal(Parcel in) {
         id = in.readLong();

@@ -9,7 +9,8 @@ import com.arcasolutions.api.constant.Resource;
 @ApiResource(Resource.EVENT)
 public class EventResult extends BaseResult<Event> {
 
-    public EventResult() {}
+    public EventResult() {
+    }
 
     private EventResult(Parcel in) {
         super(in);

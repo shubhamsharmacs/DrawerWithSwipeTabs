@@ -16,7 +16,8 @@ public class Photo implements Parcelable {
     @JsonProperty("caption")
     private String caption;
 
-    public Photo() {}
+    public Photo() {
+    }
 
     private Photo(Parcel in) {
         imageUrl = in.readString();

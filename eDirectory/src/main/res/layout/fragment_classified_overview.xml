@@ -56,7 +56,7 @@
                 android:id="@id/classifiedOverviewPrice"
                 android:layout_alignTop="@+id/label1"
                 android:layout_toRightOf="@+id/label1"
-                android:layout_marginRight="@dimen/spacingMedium"/>
+                android:layout_marginRight="@dimen/spacingMedium" />
 
             <CheckBox
                 style="@style/heartCheckBoxStyle"

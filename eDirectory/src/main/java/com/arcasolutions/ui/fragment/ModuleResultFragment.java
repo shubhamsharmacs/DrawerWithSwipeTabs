@@ -16,7 +16,6 @@ import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
-import com.google.android.gms.internal.ac;
 import com.google.common.collect.Lists;
 
 import java.util.List;
@@ -42,7 +41,8 @@ public class ModuleResultFragment<T extends BaseResult>
 
     private OnModuleSelectionListener mListener;
 
-    public ModuleResultFragment()  {}
+    public ModuleResultFragment() {
+    }
 
     public static <F extends BaseResult> ModuleResultFragment<F> newInstance(Class<F> clazz, BaseCategory category) {
         final Bundle args = new Bundle();
