@@ -15,6 +15,7 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
+import com.arcasolutions.ui.fragment.DescriptionFragment;
 import com.arcasolutions.ui.fragment.GalleryFragment;
 import com.arcasolutions.ui.fragment.event.EventOverviewFragment;
 
@@ -60,12 +61,15 @@ public class EventDetailActivity extends ActionBarActivity {
 
         // Adds tab Overview
         EventOverviewFragment overviewFragment = EventOverviewFragment.newInstance(event);
-        adapter.add("Overview", overviewFragment.getClass(), overviewFragment.getArguments());
+        adapter.add("Overview", ((Object)overviewFragment).getClass(), overviewFragment.getArguments());
 
+        // Adds tab Description
+        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(event.getDescription());
+        adapter.add("Description", ((Object)descriptionFragment).getClass(), descriptionFragment.getArguments());
 
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(event.getIGallery());
-        adapter.add("Gallery", galleryFragment.getClass(), galleryFragment.getArguments());
+        adapter.add("Gallery", ((Object)galleryFragment).getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
         tabStrip.setBackgroundColor(Color.parseColor("#3d3d3d"));
