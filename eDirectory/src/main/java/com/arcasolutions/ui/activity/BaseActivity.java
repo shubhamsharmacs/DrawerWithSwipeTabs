@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -50,23 +51,19 @@ public abstract class BaseActivity extends ActionBarActivity implements
 
 
         List<NavItem> options = Lists.newArrayList();
-        options.add(new NavItem(R.drawable.ic_location_map, R.string.drawerMap, MapActivity.class, null));
-        options.add(new NavItem(R.drawable.ic_collections_go_to_today, R.string.drawerBusiness, CategoryResultActivity.class, buildCatExtras(ListingCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_collections_go_to_today, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_collections_go_to_today, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_collections_go_to_today, R.string.drawerEvents, CategoryResultActivity.class, buildCatExtras(EventCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_collections_go_to_today, R.string.drawerArticles, CategoryResultActivity.class, buildCatExtras(ArticleCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_collections_go_to_today, R.string.drawerMyFavorites, CategoryResultActivity.class, null));
-        options.add(new NavItem(R.drawable.ic_action_settings, R.string.drawerSetting, CategoryResultActivity.class, null));
-
+        options.add(new NavItem(R.drawable.ic_map, R.string.drawerMap, MapActivity.class, null));
+        options.add(new NavItem(R.drawable.ic_business, R.string.drawerBusiness, CategoryResultActivity.class, buildCatExtras(ListingCategoryResult.class)));
+        options.add(new NavItem(R.drawable.ic_tag, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
+        options.add(new NavItem(R.drawable.ic_classifieds, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));
+        options.add(new NavItem(R.drawable.ic_events, R.string.drawerEvents, CategoryResultActivity.class, buildCatExtras(EventCategoryResult.class)));
+        options.add(new NavItem(R.drawable.ic_articles, R.string.drawerArticles, CategoryResultActivity.class, buildCatExtras(ArticleCategoryResult.class)));
+        options.add(new NavItem(R.drawable.ic_favorites, R.string.drawerMyFavorites, CategoryResultActivity.class, null));
+        options.add(new NavItem(R.drawable.ic_settings, R.string.drawerSetting, CategoryResultActivity.class, null));
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
         mDrawerList.setAdapter(new NavigationAdapter(this, options));
         mDrawerList.setOnItemClickListener(this);
-
-
-
     }
 
     private Bundle buildCatExtras(Class<? extends BaseCategoryResult> clazz) {

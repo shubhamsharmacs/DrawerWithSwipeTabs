@@ -7,7 +7,9 @@
     <dimen name="spacingLarge">12dp</dimen>
 
     <!-- Sizes -->
-    <dimen name="reviewImageBoxSize">39dp</dimen> <!-- width / height -->
+    <dimen name="reviewImageBoxSize">39dp</dimen>
+    <dimen name="drawer_list_width">280dp</dimen>
+    <!-- width / height -->
 
     <!-- Text Sizes -->
     <item name="textSizeMicro">9sp</item> <!-- 24pt -->
