@@ -10,9 +10,11 @@ import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.google.common.collect.Maps;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 import lombok.Data;
 
@@ -97,6 +99,22 @@ public class Event extends Module implements IContactInfo, IGeoPoint {
     @JsonProperty("gallery")
     private ArrayList<Photo> gallery;
 
+    @Override
+    public Map<String, String> getLevelFieldsMap() {
+        Map<String, String> map = Maps.newHashMap();
+        map.put("summary_description", "summary");
+        map.put("email", "email");
+        map.put("url", "url");
+//        map.put("contact_name", "");
+        map.put("end_time", "endTime");
+        map.put("start_time", "startTime");
+        map.put("long_description", "description");
+        map.put("main_image", "imageUrl");
+        map.put("phone", "phoneNumber");
+//        map.put("video_snippet", "");
+//        map.put("video", "");
+        return map;
+    }
 
     @Override
     public int describeContents() {

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 import lombok.Data;
 
@@ -48,6 +49,11 @@ public class Article extends Module {
 
     @JsonProperty("friendly_url")
     private String friendlyUrl;
+
+    @Override
+    public Map<String, String> getLevelFieldsMap() {
+        return null;
+    }
 
 
     public Article() {

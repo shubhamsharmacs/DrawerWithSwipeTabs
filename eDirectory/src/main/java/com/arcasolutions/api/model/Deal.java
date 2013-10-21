@@ -4,6 +4,9 @@ import android.os.Parcel;
 
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Maps;
+
+import java.util.Map;
 
 import lombok.Data;
 
@@ -51,6 +54,11 @@ public class Deal extends Module implements IGeoPoint {
 
     @JsonProperty("total_reviews")
     private int totalReviews;
+
+    @Override
+    public Map<String, String> getLevelFieldsMap() {
+        return null;
+    }
 
     @Override
     public String getAddress() {

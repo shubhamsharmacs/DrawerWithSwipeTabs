@@ -6,8 +6,10 @@ import android.os.Parcelable;
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Maps;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import lombok.Data;
 
@@ -100,6 +102,24 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
 
     @JsonProperty
     private String url;
+
+    @Override
+    public Map<String, String> getLevelFieldsMap() {
+        Map<String, String> map = Maps.newHashMap();
+        map.put("summary_description", "summary");
+        map.put("email", "email");
+        map.put("url", "url");
+        map.put("fax", "fax");
+//        map.put("video", "");
+//        map.put("attachment_file", "");
+        map.put("long_description", "description");
+//        map.put("hours_of_work", "");
+        map.put("locations", "address");
+//        map.put("badges", "");
+        map.put("main_image", "imageUrl");
+        map.put("phone", "phoneNumber");
+        return map;
+    }
 
     public Listing() {
     }

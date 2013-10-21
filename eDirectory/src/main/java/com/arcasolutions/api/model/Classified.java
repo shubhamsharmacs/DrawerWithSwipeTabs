@@ -4,8 +4,10 @@ import android.os.Parcel;
 
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Maps;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import lombok.Data;
 
@@ -57,6 +59,20 @@ public class Classified extends Module implements IContactInfo {
     @JsonProperty
     private int level;
 
+    @Override
+    public Map<String, String> getLevelFieldsMap() {
+        Map<String, String> map = Maps.newHashMap();
+//        map.put("contact_name", "");
+//        map.put("fax", "");
+        map.put("url", "url");
+        map.put("long_description", "description");
+        map.put("main_image", "imageUrl");
+        map.put("summary_description", "summary");
+        map.put("contact_phone", "phone");
+        map.put("contact_email", "email");
+        map.put("price", "price");
+        return map;
+    }
 
     public Classified() {
     }

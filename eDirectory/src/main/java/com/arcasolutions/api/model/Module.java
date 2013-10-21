@@ -4,6 +4,7 @@ import android.os.Parcelable;
 import android.webkit.URLUtil;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public abstract class Module implements Parcelable {
     public abstract long getId();
@@ -23,4 +24,14 @@ public abstract class Module implements Parcelable {
         }
         return igallery;
     }
+
+    /**
+     * Retorna mapa de/para, onde 'de' eh o nome do atributo que
+     * vem da API e 'para' eh o nome do atributo da classe.
+     *
+     * @return
+     */
+    public abstract Map<String, String> getLevelFieldsMap();
+
+
 }
