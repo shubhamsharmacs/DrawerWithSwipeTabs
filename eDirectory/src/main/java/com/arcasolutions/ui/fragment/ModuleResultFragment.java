@@ -3,10 +3,16 @@ package com.arcasolutions.ui.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
@@ -41,6 +47,14 @@ public class ModuleResultFragment<T extends BaseResult>
 
     private OnModuleSelectionListener mListener;
 
+    private enum SortOpt {
+        RATING, ALPHABETICALLY, DISTANCE, RECENTLY_ADDED;
+    }
+
+    private SortOpt mSortOpt;
+
+    private TextView mHeader;
+
     public ModuleResultFragment() {
     }
 
@@ -66,6 +80,8 @@ public class ModuleResultFragment<T extends BaseResult>
         super.onCreate(savedInstanceState);
         mAdapter = new ModuleResultAdapter(getActivity(), mModules);
 
+        setHasOptionsMenu(true);
+
         Bundle args = getArguments();
         if (args != null) {
             mType = (Class<T>) args.getSerializable(ARG_TYPE);
@@ -75,7 +91,9 @@ public class ModuleResultFragment<T extends BaseResult>
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.custom_list_view, container, false);
+        View rootView = inflater.inflate(R.layout.custom_list_view, container, false);
+        mHeader = (TextView) rootView.findViewById(android.R.id.text1);
+        return rootView;
     }
 
     @Override
@@ -87,26 +105,110 @@ public class ModuleResultFragment<T extends BaseResult>
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.results, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_rating:
+                item.setChecked(true);
+                changeOrder(SortOpt.RATING);
+                break;
+
+            case R.id.action_alphabetically:
+                item.setChecked(true);
+                changeOrder(SortOpt.ALPHABETICALLY);
+                break;
+
+            case R.id.action_distance:
+                item.setChecked(true);
+                changeOrder(SortOpt.DISTANCE);
+                break;
+
+            case R.id.action_recently_added:
+                item.setChecked(true);
+                changeOrder(SortOpt.RECENTLY_ADDED);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onComplete(T result) {
         List results = result.getResults();
         if (results != null) {
             mModules.addAll(results);
             mAdapter.notifyDataSetChanged();
         }
+        if (!TextUtils.isEmpty(result.getError())) {
+            displayError();
+        }
     }
 
     @Override
     public void onFail(Exception ex) {
+        displayError();
+    }
 
+    private void displayError() {
+        AQuery aq = new AQuery(getView());
+        aq.id(android.R.id.list).getListView()
+                .setEmptyView(aq.id(R.id.error).getView());
+    }
+
+    private void changeOrder(SortOpt sortOpt) {
+        mSortOpt = sortOpt;
+        mModules.clear();
+        mAdapter.notifyDataSetChanged();
+        loadData();
     }
 
     private void loadData() {
+        new AQuery(getView()).id(android.R.id.list).getListView().setEmptyView(new ProgressBar(getActivity()));
+
         Client.Builder builder = new Client.Builder(mType);
         builder.page(mPage);
 
         if (mCatagory != null) {
             builder.categoryId(mCatagory.getId());
             builder.searchBy(SearchBy.CATEGORY);
+        }
+
+        if (mSortOpt != null) {
+            AQuery aq = new AQuery(mHeader);
+            switch (mSortOpt) {
+
+                case RATING:
+                    aq.id(android.R.id.text1).text(getString(R.string.show_results_by_sort))
+                            .visible();
+                    builder.orderBy("rate");
+                    builder.orderSequence("desc");
+                    break;
+
+                case ALPHABETICALLY:
+                    aq.id(android.R.id.text1).text("Showing results by \"alphabetical\"")
+                            .visible();
+                    builder.orderBy("name");
+                    builder.orderSequence("asc");
+                    break;
+
+                case DISTANCE:
+                    aq.id(android.R.id.text1).text("Showing results by \"distance\"")
+                            .visible();
+                    builder.orderBy("distance_score");
+                    builder.orderSequence("asc");
+                    break;
+
+                case RECENTLY_ADDED:
+                    aq.id(android.R.id.text1).text("Showing results by \"recently added\"")
+                            .visible();
+                    builder.orderBy("datecreated");
+                    builder.orderSequence("asc");
+                    break;
+            }
         }
 
         builder.execAsync(this);

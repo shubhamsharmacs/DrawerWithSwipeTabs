@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_sort"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_action_az"
+        android:title="Sort">
+        <menu>
+            <group>
+                <item android:id="@+id/action_rating"
+                    android:title="@string/rating" />
+                <item android:id="@+id/action_alphabetically"
+                    android:title="@string/alphabetically" />
+                <item android:id="@+id/action_distance"
+                    android:title="@string/distance" />
+                <item android:id="@+id/action_recently_added"
+                    android:title="@string/recently_added" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

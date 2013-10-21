@@ -22,6 +22,9 @@ public abstract class BaseResult<T> implements Parcelable {
     @JsonProperty("results_per_page")
     private int resultsPerPage;
 
+    @JsonProperty("error")
+    private String error;
+
     @JsonProperty("results")
     private java.util.List<T> results;
 
@@ -33,6 +36,7 @@ public abstract class BaseResult<T> implements Parcelable {
         totalResults = in.readInt();
         totalPages = in.readInt();
         resultsPerPage = in.readInt();
+        error = in.readString();
         results = in.readArrayList(ClassLoader.getSystemClassLoader());
     }
 
@@ -47,6 +51,7 @@ public abstract class BaseResult<T> implements Parcelable {
         out.writeInt(totalResults);
         out.writeInt(totalPages);
         out.writeInt(resultsPerPage);
+        out.writeString(error);
 
         if (results != null) {
             Object[] results = new Object[this.results.size()];

@@ -146,6 +146,16 @@ public class Client {
             return this;
         }
 
+        public Builder orderBy(String orderBy) {
+            mMap.put("orderBy", orderBy);
+            return this;
+        }
+
+        public Builder orderSequence(String orderSequence) {
+            mMap.put("orderSequence", orderSequence);
+            return this;
+        }
+
         public Builder module(ReviewModule module) {
             mMap.put("type", module.toString());
             return this;

@@ -20,6 +20,7 @@ import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.listing.ListingResultActivity;
+import com.arcasolutions.util.Util;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -41,7 +42,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeListener, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener, View.OnClickListener {
+public class MyMapFragment extends Fragment implements
+        GoogleMap.OnCameraChangeListener,
+        GoogleMap.OnMarkerClickListener,
+        GoogleMap.OnMapClickListener,
+        View.OnClickListener {
 
     private BaseActivity mBaseActivity;
     private GoogleMap mMap;
@@ -98,12 +103,9 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
     }
 
     private LatLng getMyPosition() {
-        LocationClient locationClient = mBaseActivity.getLocationClient();
-        if (locationClient.isConnected()) {
-            Location location = locationClient.getLastLocation();
-            if (location != null) {
-                return new LatLng(location.getLatitude(), location.getLongitude());
-            }
+        Location location = Util.getMyLocation();
+        if (location != null) {
+            return new LatLng(location.getLatitude(), location.getLongitude());
         }
         return null;
     }

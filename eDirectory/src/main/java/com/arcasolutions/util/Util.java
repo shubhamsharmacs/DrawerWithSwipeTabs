@@ -20,6 +20,10 @@ public class Util {
         return mMyLocation.distanceTo(l);
     }
 
+    public static Location getMyLocation() {
+        return mMyLocation;
+    }
+
     public static void setMyLocation(Location myLocation) {
         mMyLocation = myLocation;
     }
