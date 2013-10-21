@@ -3,6 +3,8 @@ package com.arcasolutions.api.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.arcasolutions.api.annotation.ApiModule;
+import com.arcasolutions.api.constant.ModuleName;
 import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -13,7 +15,7 @@ import java.util.Map;
 
 import lombok.Data;
 
-@Data
+@Data @ApiModule(ModuleName.ARTICLE)
 public class Article extends Module {
 
     @JsonProperty("article_ID")

@@ -3,6 +3,8 @@ package com.arcasolutions.api.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.arcasolutions.api.annotation.ApiModule;
+import com.arcasolutions.api.constant.ModuleName;
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +15,7 @@ import java.util.Map;
 
 import lombok.Data;
 
-@Data
+@Data @ApiModule(ModuleName.LISTING)
 public class Listing extends Module implements IGeoPoint, IContactInfo {
 
     @JsonProperty("listing_ID")

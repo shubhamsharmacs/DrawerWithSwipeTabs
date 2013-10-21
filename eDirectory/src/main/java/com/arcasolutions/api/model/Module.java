@@ -3,7 +3,11 @@ package com.arcasolutions.api.model;
 import android.os.Parcelable;
 import android.webkit.URLUtil;
 
+import com.google.android.gms.internal.ab;
+
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public abstract class Module implements Parcelable {
@@ -25,6 +29,8 @@ public abstract class Module implements Parcelable {
         return igallery;
     }
 
+    public abstract int getLevel();
+
     /**
      * Retorna mapa de/para, onde 'de' eh o nome do atributo que
      * vem da API e 'para' eh o nome do atributo da classe.
@@ -33,5 +39,22 @@ public abstract class Module implements Parcelable {
      */
     public abstract Map<String, String> getLevelFieldsMap();
 
+    public void keepGeneralFields(List<String> general) {
+        if (general == null) return;
+        if (getLevelFieldsMap() == null) return;
 
+        for (Map.Entry<String, String> entry : getLevelFieldsMap().entrySet()) {
+            if (!general.contains(entry.getKey())) {
+                try {
+                    Field field = getClass().getDeclaredField(entry.getValue());
+                    field.setAccessible(true);
+                    field.set(this, null);
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }

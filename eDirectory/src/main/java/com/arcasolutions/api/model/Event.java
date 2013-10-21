@@ -3,6 +3,8 @@ package com.arcasolutions.api.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.arcasolutions.api.annotation.ApiModule;
+import com.arcasolutions.api.constant.ModuleName;
 import com.arcasolutions.api.deserializer.BooleanDeserializer;
 import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
 import com.arcasolutions.api.deserializer.SimpleTimeDeserializer;
@@ -18,7 +20,7 @@ import java.util.Map;
 
 import lombok.Data;
 
-@Data
+@Data @ApiModule(ModuleName.EVENT)
 public class Event extends Module implements IContactInfo, IGeoPoint {
 
     @JsonProperty(value = "event_ID")

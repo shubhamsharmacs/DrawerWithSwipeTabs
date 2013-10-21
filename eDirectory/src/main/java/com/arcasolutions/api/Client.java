@@ -3,12 +3,18 @@ package com.arcasolutions.api;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 
+import com.arcasolutions.api.annotation.ApiModule;
 import com.arcasolutions.api.annotation.ApiResource;
 import com.arcasolutions.api.constant.Resource;
 import com.arcasolutions.api.constant.ReviewModule;
 import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.model.BaseResult;
+import com.arcasolutions.api.model.EdirectoryConf;
+import com.arcasolutions.api.model.EdirectoryConfResult;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.api.model.ModuleConf;
+import com.arcasolutions.api.model.ModuleConfResult;
+import com.arcasolutions.api.model.ModuleFeature;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
@@ -31,6 +37,10 @@ public class Client {
     private static final String API_URL = BASE_URL + "/API/api2.php";
 
     private final RestTemplate mRestTemplate = new RestTemplate();
+
+    private static EdirectoryConf mEdirectoryConf;
+
+    private static ModuleConf mModuleConf;
 
     public Client() {
 
@@ -141,8 +151,17 @@ public class Client {
             return this;
         }
 
-        public <T extends BaseResult> T get(Class<T> clazz) {
-            return new Client().getResult(clazz, mMap);
+        public <T extends BaseResult> T get(Class<T> clazz) throws Exception {
+            T result = new Client().getResult(clazz, mMap);
+            List results = result.getResults();
+            if (results != null) {
+                for (Object item : results) {
+                    if (item instanceof Module) {
+                        applyModuleConf((Module) item);
+                    }
+                }
+            }
+            return result;
         }
 
         public <T extends BaseResult> void execAsync(RestListener<T> listener) {
@@ -185,6 +204,47 @@ public class Client {
         void onComplete(T result);
 
         void onFail(Exception ex);
+    }
+
+    private static <T extends Module> void applyModuleConf(T module) throws Exception {
+        ApiModule apiModule = null;
+        Annotation[] annotations = module.getClass().getDeclaredAnnotations();
+        if (annotations != null) {
+            for (Annotation a : annotations) {
+                if (a instanceof ApiModule) {
+                    apiModule = (ApiModule) a;
+                    break;
+                }
+            }
+        }
+
+        if (apiModule == null) return;
+
+        ModuleConf moduleConf = getModuleConf();
+        ModuleFeature features = moduleConf.get(apiModule.value(), module.getLevel());
+        if (features != null) {
+            module.keepGeneralFields(features.getGeneral());
+        }
+    }
+
+    private static EdirectoryConf getEdirectoryConf() throws Exception {
+        if (mEdirectoryConf == null) {
+            Builder builder = new Builder(EdirectoryConfResult.class);
+            EdirectoryConfResult result = builder.get(EdirectoryConfResult.class);
+            List<EdirectoryConf> results = result.getResults();
+            mEdirectoryConf = results.get(0);
+        }
+        return mEdirectoryConf;
+    }
+
+    private static ModuleConf getModuleConf() throws Exception {
+        if (mModuleConf == null) {
+            Builder builder = new Builder(ModuleConfResult.class);
+            ModuleConfResult result = builder.get(ModuleConfResult.class);
+            List<ModuleConf> results = result.getResults();
+            mModuleConf = results.get(0);
+        }
+        return mModuleConf;
     }
 
 }

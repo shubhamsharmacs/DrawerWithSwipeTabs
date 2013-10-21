@@ -55,6 +55,10 @@ public class Deal extends Module implements IGeoPoint {
     @JsonProperty("total_reviews")
     private int totalReviews;
 
+    public int getLevel() {
+        return 0;
+    }
+
     @Override
     public Map<String, String> getLevelFieldsMap() {
         return null;
