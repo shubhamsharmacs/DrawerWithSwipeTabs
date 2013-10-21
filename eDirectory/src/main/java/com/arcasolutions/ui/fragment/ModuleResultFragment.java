@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,12 +23,17 @@ import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
+import com.arcasolutions.util.AbsListViewHelper;
 import com.google.common.collect.Lists;
 
 import java.util.List;
 
 public class ModuleResultFragment<T extends BaseResult>
-        extends Fragment implements Client.RestListener<T>, AdapterView.OnItemClickListener {
+        extends Fragment
+        implements
+            Client.RestListener<T>, AdapterView.OnItemClickListener,
+            AbsListViewHelper.OnNextPageListener {
+
 
     public interface OnModuleSelectionListener {
         void onModuleSelected(Module module, int position, long id);
@@ -54,6 +60,8 @@ public class ModuleResultFragment<T extends BaseResult>
     private SortOpt mSortOpt;
 
     private TextView mHeader;
+
+    private AbsListViewHelper mListViewHelper;
 
     public ModuleResultFragment() {
     }
@@ -99,8 +107,10 @@ public class ModuleResultFragment<T extends BaseResult>
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AQuery aq = new AQuery(view);
-        aq.id(android.R.id.list).itemClicked(this).adapter(mAdapter);
+        ListView listView = (ListView) view.findViewById(android.R.id.list);
+        mListViewHelper = new AbsListViewHelper(listView, this);
+        listView.setOnItemClickListener(this);
+        listView.setAdapter(mAdapter);
         loadData();
     }
 
@@ -138,6 +148,9 @@ public class ModuleResultFragment<T extends BaseResult>
 
     @Override
     public void onComplete(T result) {
+        mListViewHelper.finishLoading();
+        mListViewHelper.changeBaseResult(result);
+
         List results = result.getResults();
         if (results != null) {
             mModules.addAll(results);
@@ -150,6 +163,7 @@ public class ModuleResultFragment<T extends BaseResult>
 
     @Override
     public void onFail(Exception ex) {
+        mListViewHelper.finishLoading();
         displayError();
     }
 
@@ -182,7 +196,7 @@ public class ModuleResultFragment<T extends BaseResult>
             switch (mSortOpt) {
 
                 case RATING:
-                    aq.id(android.R.id.text1).text(getString(R.string.show_results_by_sort))
+                    aq.id(android.R.id.text1).text(getString(R.string.show_results_by_sort, getString(R.string.rating)))
                             .visible();
                     builder.orderBy("rate");
                     builder.orderSequence("desc");
@@ -211,6 +225,7 @@ public class ModuleResultFragment<T extends BaseResult>
             }
         }
 
+        mListViewHelper.startLoading();
         builder.execAsync(this);
     }
 
@@ -220,6 +235,12 @@ public class ModuleResultFragment<T extends BaseResult>
             Module m = (Module) adapterView.getItemAtPosition(i);
             mListener.onModuleSelected(m, i, l);
         }
+    }
+
+    @Override
+    public void onNextPage() {
+        mPage += 1;
+        loadData();
     }
 
 }

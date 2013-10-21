@@ -6,8 +6,7 @@ import com.arcasolutions.api.model.BaseResult;
 
 public class AbsListViewHelper implements AbsListView.OnScrollListener {
 
-    private int mPage;
-    private BaseResult mBaseResult;
+    private int mTotalResults = Integer.MIN_VALUE;
     private AbsListView mListView;
     private OnNextPageListener mListener;
 
@@ -23,10 +22,14 @@ public class AbsListViewHelper implements AbsListView.OnScrollListener {
 
         mListView = listView;
         mListener = listener;
+
+        mListView.setOnScrollListener(this);
     }
 
     public void changeBaseResult(BaseResult baseResult) {
-        mBaseResult = baseResult;
+        if (baseResult != null) {
+            mTotalResults = baseResult.getTotalResults();
+        }
     }
 
     public void startLoading() {
@@ -41,14 +44,12 @@ public class AbsListViewHelper implements AbsListView.OnScrollListener {
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (mLoading) return;
 
-        if (scrollState != SCROLL_STATE_IDLE) return;
+        boolean hasResults = view.getAdapter().getCount() < mTotalResults;
 
-        int totalResultsLoaded = view.getAdapter().getCount();
-        int totalResults = mBaseResult.getTotalResults();
-
-        if (totalResults > totalResultsLoaded) {
+        if (hasResults && scrollState == SCROLL_STATE_IDLE) {
             mListener.onNextPage();
         }
+
     }
 
     @Override
