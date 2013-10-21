@@ -2,13 +2,13 @@ package com.arcasolutions.api.model;
 
 import android.os.Parcel;
 
-import com.arcasolutions.api.implementation.IMapItem;
+import com.arcasolutions.api.implementation.IGeoPoint;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
 @Data
-public class Deal extends Module implements IMapItem {
+public class Deal extends Module implements IGeoPoint {
 
     @JsonProperty("deal_ID")
     private long id;

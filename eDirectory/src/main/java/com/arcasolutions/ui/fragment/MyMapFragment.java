@@ -15,7 +15,7 @@ import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
-import com.arcasolutions.api.implementation.IMapItem;
+import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.ui.activity.BaseActivity;
@@ -51,7 +51,7 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
 
     private Class<? extends BaseResult> mClass = EventResult.class;
 
-    private final Map<Marker, IMapItem> mListingMap = Maps.newHashMap();
+    private final Map<Marker, IGeoPoint> mListingMap = Maps.newHashMap();
 
     public MyMapFragment() {
     }
@@ -118,15 +118,15 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
     }
 
 
-    private void updateMapMarkers(Collection<IMapItem> items) {
+    private void updateMapMarkers(Collection<IGeoPoint> items) {
         if (items == null) {
             mListingMap.clear();
             mMap.clear();
         }
 
         // Ignore existing items
-        List<IMapItem> ignore = Lists.newArrayList();
-        for (IMapItem l : items) {
+        List<IGeoPoint> ignore = Lists.newArrayList();
+        for (IGeoPoint l : items) {
             if (mListingMap.containsValue(l)) {
                 ignore.add(l);
             }
@@ -135,7 +135,7 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
 
         // Remove unneeded items
         List<Marker> unneeded = Lists.newArrayList();
-        for (Map.Entry<Marker, IMapItem> entry : mListingMap.entrySet()) {
+        for (Map.Entry<Marker, IGeoPoint> entry : mListingMap.entrySet()) {
             if (!items.contains(entry.getValue()) && !ignore.contains(entry.getValue())) {
                 unneeded.add(entry.getKey());
                 entry.getKey().remove();
@@ -147,7 +147,7 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
 
 
         // Adds news items as Marker
-        for (IMapItem l : items) {
+        for (IGeoPoint l : items) {
             LatLng latLng = new LatLng(l.getLatitude(), l.getLongitude());
             Marker m = mMap.addMarker(new MarkerOptions()
                     .icon(BitmapDescriptorFactory.defaultMarker())
@@ -166,10 +166,10 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
             public void onComplete(T result) {
                 List listings = result.getResults();
                 if (listings != null) {
-                    Collection<IMapItem> items = Collections2.transform(listings, new Function<Object, IMapItem>() {
+                    Collection<IGeoPoint> items = Collections2.transform(listings, new Function<Object, IGeoPoint>() {
                         @Override
-                        public IMapItem apply(Object listing) {
-                            return (IMapItem) listing;
+                        public IGeoPoint apply(Object listing) {
+                            return (IGeoPoint) listing;
                         }
                     });
                     updateMapMarkers(items);
@@ -196,7 +196,7 @@ public class MyMapFragment extends Fragment implements GoogleMap.OnCameraChangeL
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        IMapItem item = mListingMap.get(marker);
+        IGeoPoint item = mListingMap.get(marker);
         if (item != null) {
             AQuery aq = new AQuery(getView());
             aq.id(R.id.mapInfoView).gone();

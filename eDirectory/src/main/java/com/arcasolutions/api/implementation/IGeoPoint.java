@@ -1,6 +1,6 @@
 package com.arcasolutions.api.implementation;
 
-public interface IMapItem {
+public interface IGeoPoint {
 
     public String getTitle();
 

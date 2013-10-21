@@ -2,7 +2,7 @@ package com.arcasolutions.api.model;
 
 import android.os.Parcel;
 
-import com.arcasolutions.api.implementation.ContactInfo;
+import com.arcasolutions.api.implementation.IContactInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import lombok.Data;
 
 @Data
-public class Classified extends Module implements ContactInfo {
+public class Classified extends Module implements IContactInfo {
 
     @JsonProperty("classified_ID")
     private long id;

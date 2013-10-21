@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
-import com.arcasolutions.api.implementation.ContactInfo;
+import com.arcasolutions.api.implementation.IContactInfo;
 
 public class ContactInfoFragment extends Fragment implements View.OnClickListener {
 
@@ -21,7 +21,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
     public ContactInfoFragment() {
     }
 
-    public static ContactInfoFragment newInstance(ContactInfo contactInfo) {
+    public static ContactInfoFragment newInstance(IContactInfo contactInfo) {
         final Bundle args = new Bundle();
         args.putParcelable(ARG_CONTACT_INFO, contactInfo);
 
@@ -30,9 +30,9 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
         return f;
     }
 
-    public ContactInfo getShownContactInfo() {
+    public IContactInfo getShownContactInfo() {
         return getArguments() != null
-                ? (ContactInfo) getArguments().getParcelable(ARG_CONTACT_INFO)
+                ? (IContactInfo) getArguments().getParcelable(ARG_CONTACT_INFO)
                 : null;
     }
 
@@ -53,7 +53,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ContactInfo contactInfo = getShownContactInfo();
+        IContactInfo contactInfo = getShownContactInfo();
         if (contactInfo != null) {
 
             if (!TextUtils.isEmpty(contactInfo.getPhoneNumber())) {

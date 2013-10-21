@@ -3,8 +3,8 @@ package com.arcasolutions.api.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.arcasolutions.api.implementation.ContactInfo;
-import com.arcasolutions.api.implementation.IMapItem;
+import com.arcasolutions.api.implementation.IContactInfo;
+import com.arcasolutions.api.implementation.IGeoPoint;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import lombok.Data;
 
 @Data
-public class Listing extends Module implements IMapItem, ContactInfo {
+public class Listing extends Module implements IGeoPoint, IContactInfo {
 
     @JsonProperty("listing_ID")
     private long id;
