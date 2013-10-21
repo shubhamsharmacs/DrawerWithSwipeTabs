@@ -22,6 +22,9 @@ public class BooleanDeserializer extends JsonDeserializer<Boolean> {
             if ("N".equalsIgnoreCase(val)) return false;
             if ("true".equalsIgnoreCase(val)) return true;
             if ("false".equalsIgnoreCase(val)) return false;
+            if ("on".equalsIgnoreCase(val)) return true;
+            if ("off".equalsIgnoreCase(val)) return false;
+            if ("no".equalsIgnoreCase(val)) return false;
             return false;
         } catch (Exception e) {
             Log.e(tag, "Parser boolean error", e);
