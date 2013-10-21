@@ -12,7 +12,8 @@ public enum Resource {
     CLASSIFIED_CATEGORY("classified_category"),
     DEAL("deal"),
     DEAL_CATEGORY("deal_category"),
-    REVIEW("review");
+    REVIEW("review"),
+    MODULES_CONF("modulesConf");
 
     private String val;
 
