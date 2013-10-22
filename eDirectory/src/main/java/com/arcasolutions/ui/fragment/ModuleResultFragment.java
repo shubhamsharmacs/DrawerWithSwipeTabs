@@ -3,7 +3,6 @@ package com.arcasolutions.ui.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
@@ -24,22 +22,16 @@ import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.arcasolutions.util.AbsListViewHelper;
+import com.arcasolutions.util.Util;
 import com.google.common.collect.Lists;
 
 import java.util.List;
 
 public class ModuleResultFragment<T extends BaseResult>
         extends Fragment
-        implements
-            Client.RestListener<T>, AdapterView.OnItemClickListener,
+        implements  Client.RestListener<T>, AdapterView.OnItemClickListener,
             AbsListViewHelper.OnNextPageListener {
 
-
-    public interface OnModuleSelectionListener {
-        void onModuleSelected(Module module, int position, long id);
-    }
-
-    public static final String ARG_ITEMS = "items";
     public static final String ARG_CATEGORY = "category";
     public static final String ARG_TYPE = "type";
 
@@ -49,20 +41,17 @@ public class ModuleResultFragment<T extends BaseResult>
     private Class<T> mType;
 
     private final List<Module> mModules = Lists.newArrayList();
+    private ListView mListView;
     private ModuleResultAdapter mAdapter;
 
     private OnModuleSelectionListener mListener;
 
-    private enum SortOpt {
-        RATING, ALPHABETICALLY, DISTANCE, RECENTLY_ADDED;
-    }
-
-    private SortOpt mSortOpt;
-
-    private TextView mHeader;
+    private OrderBy mOrderBy;
 
     private AbsListViewHelper mListViewHelper;
+    private MenuItem mOrderItem;
 
+    // Default constructor
     public ModuleResultFragment() {
     }
 
@@ -100,17 +89,16 @@ public class ModuleResultFragment<T extends BaseResult>
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.custom_list_view, container, false);
-        mHeader = (TextView) rootView.findViewById(android.R.id.text1);
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListView listView = (ListView) view.findViewById(android.R.id.list);
-        mListViewHelper = new AbsListViewHelper(listView, this);
-        listView.setOnItemClickListener(this);
-        listView.setAdapter(mAdapter);
+        mListView = (ListView) view.findViewById(android.R.id.list);
+        mListViewHelper = new AbsListViewHelper(mListView, this);
+        mListView.setOnItemClickListener(this);
+        mListView.setAdapter(mAdapter);
         loadData();
     }
 
@@ -118,29 +106,30 @@ public class ModuleResultFragment<T extends BaseResult>
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.results, menu);
+        mOrderItem = menu.findItem(R.id.action_sort);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_rating:
-                item.setChecked(true);
-                changeOrder(SortOpt.RATING);
+            case R.id.action_level:
+                changeOrder(OrderBy.LEVEL);
                 break;
 
             case R.id.action_alphabetically:
-                item.setChecked(true);
-                changeOrder(SortOpt.ALPHABETICALLY);
+                changeOrder(OrderBy.ALPHABETICALLY);
+                break;
+
+            case R.id.action_popular:
+                changeOrder(OrderBy.POPULAR);
+                break;
+
+            case R.id.action_rating:
+                changeOrder(OrderBy.RATING);
                 break;
 
             case R.id.action_distance:
-                item.setChecked(true);
-                changeOrder(SortOpt.DISTANCE);
-                break;
-
-            case R.id.action_recently_added:
-                item.setChecked(true);
-                changeOrder(SortOpt.RECENTLY_ADDED);
+                changeOrder(OrderBy.DISTANCE);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -156,25 +145,15 @@ public class ModuleResultFragment<T extends BaseResult>
             mModules.addAll(results);
             mAdapter.notifyDataSetChanged();
         }
-        if (!TextUtils.isEmpty(result.getError())) {
-            displayError();
-        }
     }
 
     @Override
     public void onFail(Exception ex) {
         mListViewHelper.finishLoading();
-        displayError();
     }
 
-    private void displayError() {
-        AQuery aq = new AQuery(getView());
-        aq.id(android.R.id.list).getListView()
-                .setEmptyView(aq.id(R.id.error).getView());
-    }
-
-    private void changeOrder(SortOpt sortOpt) {
-        mSortOpt = sortOpt;
+    private void changeOrder(OrderBy sortOpt) {
+        mOrderBy = sortOpt;
         mModules.clear();
         mAdapter.notifyDataSetChanged();
         loadData();
@@ -191,37 +170,41 @@ public class ModuleResultFragment<T extends BaseResult>
             builder.searchBy(SearchBy.CATEGORY);
         }
 
-        if (mSortOpt != null) {
-            AQuery aq = new AQuery(mHeader);
-            switch (mSortOpt) {
+        if (mOrderBy != null) {
+            CharSequence headerInfo = null;
+            switch (mOrderBy) {
 
-                case RATING:
-                    aq.id(android.R.id.text1).text(getString(R.string.show_results_by_sort, getString(R.string.rating)))
-                            .visible();
-                    builder.orderBy("rate");
-                    builder.orderSequence("desc");
+                case LEVEL:
+                    headerInfo = getString(R.string.show_results_by_sort, getString(R.string.level));
+                    builder.orderBy("level,name");
+                    builder.orderSequence("asc,asc");
                     break;
 
                 case ALPHABETICALLY:
-                    aq.id(android.R.id.text1).text("Showing results by \"alphabetical\"")
-                            .visible();
+                    headerInfo = getString(R.string.show_results_by_sort, getString(R.string.alphabetically));
                     builder.orderBy("name");
                     builder.orderSequence("asc");
                     break;
 
-                case DISTANCE:
-                    aq.id(android.R.id.text1).text("Showing results by \"distance\"")
-                            .visible();
-                    builder.orderBy("distance_score");
+                case POPULAR:
+                    headerInfo = getString(R.string.show_results_by_sort, getString(R.string.popular));
+                    builder.orderBy("name");
                     builder.orderSequence("asc");
                     break;
 
-                case RECENTLY_ADDED:
-                    aq.id(android.R.id.text1).text("Showing results by \"recently added\"")
-                            .visible();
-                    builder.orderBy("datecreated");
+                case RATING:
+                    headerInfo = getString(R.string.show_results_by_sort, getString(R.string.rating));
+                    builder.orderBy("rate");
+                    builder.orderSequence("desc");
+                    break;
+
+                case DISTANCE:
+                    headerInfo = getString(R.string.show_results_by_sort, getString(R.string.distance));
+                    builder.orderBy("distance_score");
+                    builder.myLocation(Util.getMyLocation().getLatitude(), Util.getMyLocation().getLongitude());
                     builder.orderSequence("asc");
                     break;
+
             }
         }
 
@@ -242,5 +225,16 @@ public class ModuleResultFragment<T extends BaseResult>
         mPage += 1;
         loadData();
     }
+
+    // Module selection listener
+    public interface OnModuleSelectionListener {
+        void onModuleSelected(Module module, int position, long id);
+    }
+
+    // OrderBy options
+    private enum OrderBy {
+        LEVEL, ALPHABETICALLY, POPULAR, RATING, DISTANCE;
+    }
+
 
 }

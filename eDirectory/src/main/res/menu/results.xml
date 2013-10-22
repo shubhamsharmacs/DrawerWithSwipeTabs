@@ -9,14 +9,22 @@
         android:title="Sort">
         <menu>
             <group>
-                <item android:id="@+id/action_rating"
-                    android:title="@string/rating" />
+
+                <item android:id="@+id/action_level"
+                    android:title="@string/level" />
+
                 <item android:id="@+id/action_alphabetically"
                     android:title="@string/alphabetically" />
+
+                <item android:id="@+id/action_popular"
+                    android:title="@string/popular" />
+
+                <item android:id="@+id/action_rating"
+                    android:title="@string/rating" />
+
                 <item android:id="@+id/action_distance"
                     android:title="@string/distance" />
-                <item android:id="@+id/action_recently_added"
-                    android:title="@string/recently_added" />
+
             </group>
         </menu>
     </item>

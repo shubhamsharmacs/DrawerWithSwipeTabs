@@ -36,6 +36,8 @@
     <string name="connection_error_unknown">An unknown error occurred</string>
     <string name="something_was_wrong">SOMETHING WAS WRONG!</string>
     <string name="try_again">Try again!</string>
+    <string name="level">Level</string>
+    <string name="popular">Popular</string>
 
 
 </resources>

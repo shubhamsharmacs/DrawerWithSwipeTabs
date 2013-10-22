@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
@@ -26,7 +28,9 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
     private CategoryResultAdapter mAdapter;
     private final List<BaseCategory> mCategories = Lists.newArrayList();
     private OnCategorySelectionListener mListener;
-
+    private ProgressBar mProgressBar;
+    private ViewGroup mRootView;
+    private ListView mListView;
 
     public interface OnCategorySelectionListener {
         void onCategorySelected(BaseCategory category);
@@ -77,19 +81,23 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
 
         mAdapter = new CategoryResultAdapter(getActivity(), mCategories);
+        mProgressBar = new ProgressBar(getActivity());
+        mProgressBar.setId(android.R.id.empty);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.simple_list_view, container, false);
+        mRootView = (ViewGroup) inflater.inflate(R.layout.simple_list_view, container, false);
+        return mRootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        new AQuery(view).id(android.R.id.list)
-                .itemClicked(this)
-                .adapter(mAdapter);
+        mListView = (ListView) view.findViewById(android.R.id.list);
+        mListView.setOnItemClickListener(this);
+        mListView.setAdapter(mAdapter);
+
         loadCategories();
     }
 
@@ -125,6 +133,9 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
         if (category != null) {
             builder.fatherId(category.getId());
         }
+
+        mRootView.addView(mProgressBar);
+        mListView.setEmptyView(mProgressBar);
         builder.execAsync(mListener);
 
     }
