@@ -3,6 +3,7 @@ package com.arcasolutions.api.model;
 import android.os.Parcel;
 
 import com.arcasolutions.api.implementation.IContactInfo;
+import com.arcasolutions.api.implementation.IGeoPoint;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Maps;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 import lombok.Data;
 
 @Data
-public class Classified extends Module implements IContactInfo {
+public class Classified extends Module implements IGeoPoint, IContactInfo {
 
     @JsonProperty("classified_ID")
     private long id;
@@ -93,6 +94,14 @@ public class Classified extends Module implements IContactInfo {
         url = in.readString();
         email = in.readString();
         level = in.readInt();
+    }
+
+    public float getRating() {
+        return 0;
+    }
+
+    public String getTitle() {
+        return getName();
     }
 
     @Override
