@@ -370,4 +370,12 @@
         <item name="android:maxHeight">16dip</item>
     </style>
 
+    <style name="MapSpinnerDropDownItem" parent="@style/Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="MapSpinnerItem" parent="@style/Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:textColor">#fff</item>
+    </style>
+
 </resources>

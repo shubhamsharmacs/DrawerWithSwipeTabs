@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
@@ -17,11 +19,13 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.api.model.BaseResult;
+import com.arcasolutions.api.model.ClassifiedResult;
+import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.EventResult;
+import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.listing.ListingResultActivity;
 import com.arcasolutions.util.Util;
-import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.Projection;
@@ -46,7 +50,8 @@ public class MyMapFragment extends Fragment implements
         GoogleMap.OnCameraChangeListener,
         GoogleMap.OnMarkerClickListener,
         GoogleMap.OnMapClickListener,
-        View.OnClickListener {
+        View.OnClickListener,
+        AdapterView.OnItemSelectedListener {
 
     private BaseActivity mBaseActivity;
     private GoogleMap mMap;
@@ -69,8 +74,10 @@ public class MyMapFragment extends Fragment implements
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_map, container, false);
-        final View mapInfo = view.findViewById(R.id.mapInfoView);
+        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
+
+        final View mapInfo = rootView.findViewById(R.id.mapInfoView);
         mapInfo.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -80,15 +87,23 @@ public class MyMapFragment extends Fragment implements
                 mMap.setPadding(0, 0, 0, h);
             }
         });
-        return view;
+        return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Spinner adapter modules
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                getActivity(),
+                R.array.modules,
+                R.layout.simple_map_spinner_item);
+        adapter.setDropDownViewResource(R.layout.simple_map_spinner_dropdown_item);
+
         AQuery aq = new AQuery(view);
         aq.id(R.id.buttonList).clicked(this);
+        aq.id(R.id.spinner).adapter(adapter).itemSelected(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.map);
         mMap = mapFragment.getMap();
@@ -116,7 +131,7 @@ public class MyMapFragment extends Fragment implements
         VisibleRegion visibleRegion = projection.getVisibleRegion();
         mSearchNearLeftLatLng = visibleRegion.nearLeft;
         mSearchFarRightLatLng = visibleRegion.farRight;
-        searchItems(mClass);
+        searchItems();
     }
 
 
@@ -160,18 +175,19 @@ public class MyMapFragment extends Fragment implements
 
     }
 
-    private <T extends BaseResult> void searchItems(Class<T> tClass) {
+    private void searchItems() {
         if (mSearchFarRightLatLng == null || mSearchNearLeftLatLng == null) return;
 
-        Client.RestListener<T> mListener = new Client.RestListener<T>() {
+        Client.RestListener<BaseResult> mListener = new Client.RestListener<BaseResult>() {
             @Override
-            public void onComplete(T result) {
+            public void onComplete(BaseResult result) {
+                displayProgress(false);
                 List listings = result.getResults();
                 if (listings != null) {
                     Collection<IGeoPoint> items = Collections2.transform(listings, new Function<Object, IGeoPoint>() {
                         @Override
-                        public IGeoPoint apply(Object listing) {
-                            return (IGeoPoint) listing;
+                        public IGeoPoint apply(Object geoPoint) {
+                            return (IGeoPoint) geoPoint;
                         }
                     });
                     updateMapMarkers(items);
@@ -180,12 +196,14 @@ public class MyMapFragment extends Fragment implements
 
             @Override
             public void onFail(Exception ex) {
+                displayProgress(false);
                 ex.printStackTrace();
                 Toast.makeText(mBaseActivity, "Fail: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
             }
         };
 
-        new Client.Builder(tClass)
+        displayProgress(true);
+        new Client.Builder(mClass)
                 .searchBy(SearchBy.MAP)
                 .region(
                         mSearchNearLeftLatLng.latitude,
@@ -229,6 +247,39 @@ public class MyMapFragment extends Fragment implements
                 //intent.putExtra(ListingResultActivity.EXTRA_ITEMS, items);
                 startActivity(intent);
                 break;
+        }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        switch (i) {
+
+            case 0:
+                mClass = ListingResult.class;
+                break;
+
+            case 1:
+                mClass = DealResult.class;
+                break;
+
+            case 2:
+                mClass = ClassifiedResult.class;
+                break;
+
+            case 3:
+                mClass = EventResult.class;
+                break;
+        }
+        searchItems();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
+    private void displayProgress(boolean display) {
+        if (getActivity() != null) {
+            getActivity().setProgressBarIndeterminateVisibility(display);
         }
     }
 }

@@ -11,6 +11,8 @@
         <item name="android:ratingBarStyleIndicator">@style/RatingBarBigAppTheme</item>
 
         <item name="android:ratingBarStyleSmall">@style/RatingBarSmallAppTheme</item>
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
 </resources>

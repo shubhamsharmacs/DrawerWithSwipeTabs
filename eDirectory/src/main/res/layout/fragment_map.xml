@@ -27,27 +27,36 @@
     </FrameLayout>
 
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="right|center_vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#4c4c4c">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true" />
 
         <ImageButton
             style="?attr/actionButtonStyle"
             android:id="@+id/buttonDraw"
             android:src="@drawable/ic_action_content_edit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/buttonList" />
 
         <ImageButton
             style="?attr/actionButtonStyle"
             android:id="@+id/buttonList"
             android:src="@drawable/ic_action_collections_view_as_list"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
