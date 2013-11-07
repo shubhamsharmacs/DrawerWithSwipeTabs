@@ -8,6 +8,10 @@
         <item>Event</item>
     </string-array>
 
+    <string name="alert_progress_authenticating">Authenticating&#8230;</string>
+    <string name="alert_title_fail">Fail</string>
+    <string name="alert_message_fail">Something was wrong.\n<xliff:g id="detail">%1$s</xliff:g></string>
+
     <string name="app_name">eDirectory</string>
 
     <string name="rating">Rating</string>
@@ -15,6 +19,14 @@
     <string name="distance">Distance</string>
     <string name="recently_added">Recently Added</string>
     <string name="show_results_by_sort">Showing results by \"<xliff:g id="sort">%1$s</xliff:g>\"</string>
+
+    <!-- setting -->
+    <string name="setting_account">Accoount</string>
+    <string name="setting_about">About</string>
+    <string name="setting_about_us">About us</string>
+    <string name="setting_legal_notices">Legal Notices</string>
+    <string name="setting_what_app_tutorial">Watch app tutorial</string>
+    <string name="setting_appVersion">version <xliff:g id="versionName">%1$s</xliff:g></string>
 
     <!-- Navigation Drawer -->
     <string name="drawerMap">Map</string>

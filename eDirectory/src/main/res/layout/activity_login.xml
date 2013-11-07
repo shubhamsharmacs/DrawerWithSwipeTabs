@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.arcasolutions.ui.activity.LoginActivity">
+
+    <LinearLayout
+        android:padding="@dimen/spacingLarge"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:text="Login with your details"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+        <EditText
+            android:id="@+id/loginEmail"
+            android:hint="Email address"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+        <Button
+            android:id="@+id/loginLogin"
+            android:text="Login"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:onClick="onLogin" />
+
+        <TextView
+            android:text="OR"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+        <Button
+            android:id="@+id/loginFacebook"
+            android:text="Sign in with Facebook"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:onClick="onLoginWithFacebook" />
+
+    </LinearLayout>
+
+</ScrollView>

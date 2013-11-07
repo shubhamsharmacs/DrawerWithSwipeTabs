@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="settingHeader" parent="@android:style/TextAppearance.Large">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+    </style>
+
+    <style name="settingText1" parent="@android:style/TextAppearance.Large">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+    </style>
+
+    <style name="settingText2" parent="@android:style/TextAppearance.Large">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textSize">@dimen/textSizeMedium</item>
+    </style>
+
     <!-- Description Fragment -->
     <style name="commonTextTitle" parent="@android:style/TextAppearance.Large">
         <item name="android:fontFamily">sans-serif</item>

@@ -49,4 +49,7 @@ dependencies {
     // PhotoView (zoom)
     compile 'com.github.chrisbanes.photoview:library:1.2.1'
 
+    // Orm Lite
+    compile 'com.j256.ormlite:ormlite-android:4.25'
+
 }

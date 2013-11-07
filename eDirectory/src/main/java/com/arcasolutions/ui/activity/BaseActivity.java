@@ -26,6 +26,7 @@ import com.arcasolutions.api.model.ClassifiedCategoryResult;
 import com.arcasolutions.api.model.DealCategoryResult;
 import com.arcasolutions.api.model.EventCategoryResult;
 import com.arcasolutions.api.model.ListingCategoryResult;
+import com.arcasolutions.ui.fragment.SettingFragment;
 import com.arcasolutions.util.Util;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -148,7 +149,7 @@ public abstract class BaseActivity extends ActionBarActivity implements
         options.add(new NavItem(R.drawable.ic_events, R.string.drawerEvents, CategoryResultActivity.class, buildCatExtras(EventCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_articles, R.string.drawerArticles, CategoryResultActivity.class, buildCatExtras(ArticleCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_favorites, R.string.drawerMyFavorites, CategoryResultActivity.class, null));
-        options.add(new NavItem(R.drawable.ic_settings, R.string.drawerSetting, CategoryResultActivity.class, null));
+        options.add(new NavItem(R.drawable.ic_settings, R.string.drawerSetting, SettingActivity.class, null));
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.drawer_list);

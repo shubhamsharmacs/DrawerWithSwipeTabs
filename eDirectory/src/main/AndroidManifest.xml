@@ -63,6 +63,10 @@
 
         <activity android:name=".ui.activity.GalleryViewActivity" />
 
+        <activity android:name=".ui.activity.SettingActivity" />
+
+        <activity android:name=".ui.activity.LoginActivity" />
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/androidApiKey" />
