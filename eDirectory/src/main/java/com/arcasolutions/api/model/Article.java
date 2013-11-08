@@ -14,8 +14,9 @@ import java.util.Date;
 import java.util.Map;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Data @ApiModule(ModuleName.ARTICLE)
+@Data @EqualsAndHashCode(callSuper = false) @ApiModule(ModuleName.ARTICLE)
 public class Article extends Module {
 
     @JsonProperty("article_ID")

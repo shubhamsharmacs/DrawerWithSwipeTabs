@@ -19,8 +19,9 @@ import java.util.Date;
 import java.util.Map;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Data @ApiModule(ModuleName.EVENT)
+@Data @EqualsAndHashCode(callSuper = false) @ApiModule(ModuleName.EVENT)
 public class Event extends Module implements IContactInfo, IGeoPoint {
 
     @JsonProperty(value = "event_ID")

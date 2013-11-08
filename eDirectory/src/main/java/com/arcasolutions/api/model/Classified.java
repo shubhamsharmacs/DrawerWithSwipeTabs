@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Data
+@Data @EqualsAndHashCode(callSuper = false)
 public class Classified extends Module implements IGeoPoint, IContactInfo {
 
     @JsonProperty("classified_ID")

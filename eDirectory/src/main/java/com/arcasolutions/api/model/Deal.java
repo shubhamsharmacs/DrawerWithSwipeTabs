@@ -9,8 +9,9 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Data
+@Data @EqualsAndHashCode(callSuper = false)
 public class Deal extends Module implements IGeoPoint {
 
     @JsonProperty("deal_ID")

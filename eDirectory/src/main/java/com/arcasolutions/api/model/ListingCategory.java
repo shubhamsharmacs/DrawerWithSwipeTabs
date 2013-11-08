@@ -6,8 +6,9 @@ import android.os.Parcelable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Data
+@Data @EqualsAndHashCode(callSuper = false)
 public class ListingCategory extends BaseCategory {
 
     @JsonProperty("active_listings")

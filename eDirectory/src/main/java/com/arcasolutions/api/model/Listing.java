@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Data @ApiModule(ModuleName.LISTING)
+@Data @EqualsAndHashCode(callSuper = false) @ApiModule(ModuleName.LISTING)
 public class Listing extends Module implements IGeoPoint, IContactInfo {
 
     @JsonProperty("listing_ID")

@@ -1,6 +1,7 @@
 package com.arcasolutions.ui.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
@@ -9,12 +10,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
+import com.arcasolutions.App;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Account;
 import com.arcasolutions.api.model.IappResult;
 import com.arcasolutions.util.AccountHelper;
 import com.arcasolutions.util.DialogHelper;
+import com.arcasolutions.web.FacebookWebOAuthActivity;
+
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.FacebookProfile;
 
 import java.sql.SQLException;
 
@@ -25,6 +31,7 @@ public class LoginActivity extends ActionBarActivity
     private EditText passwordView;
     private AccountHelper mAccountHelper;
     private ProgressDialog mProgress;
+    private App mApp;
 
     public static final int AUTHENTICATION_REQUEST_CODE = 0x1010;
 
@@ -33,6 +40,8 @@ public class LoginActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mApp = (App) getApplicationContext();
+
         mAccountHelper = new AccountHelper(this);
 
         AQuery aq = new AQuery(this);
@@ -40,9 +49,17 @@ public class LoginActivity extends ActionBarActivity
         passwordView = aq.id(R.id.loginPassword).getEditText();
     }
 
-    public void onLogin(View view) {
-        Toast.makeText(this, "onLogin", Toast.LENGTH_SHORT).show();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == FacebookWebOAuthActivity.REQUEST_FACEBOOK_PERMISSION) {
+                loginWithFacebook();
+            }
+        }
+    }
 
+    public void onLogin(View view) {
 
         String email = emailView.getText().toString();
         String password = passwordView.getText().toString();
@@ -67,12 +84,32 @@ public class LoginActivity extends ActionBarActivity
             Client.IappBuilder.newAuthenticateAccountBuilder(email, password)
                     .execAsync(this);
         }
-
     }
 
     public void onLoginWithFacebook(View view) {
-        Toast.makeText(this, "onLoginWithFacebook", Toast.LENGTH_SHORT).show();
+        if (mApp.isFacebookConnected()) {
+            mApp.facebookDisconnect();
+        }
 
+        Intent intent = new Intent(this, FacebookWebOAuthActivity.class);
+        startActivityForResult(intent, FacebookWebOAuthActivity.REQUEST_FACEBOOK_PERMISSION);
+    }
+
+    private void loginWithFacebook() {
+        if (!mApp.isFacebookConnected()) {
+            DialogHelper.from(this).fail("You are not connected on facebook.");
+            return;
+        }
+
+        Facebook facebook = mApp.getFacebook();
+        mProgress = DialogHelper.from(this).progress(R.string.alert_progress_authenticating);
+        FacebookProfile profile = facebook.userOperations().getUserProfile();
+        Client.IappBuilder.newAuthenticateFacebookBuilder(
+                profile.getId(),
+                profile.getEmail(),
+                profile.getFirstName(),
+                profile.getLastName()
+        );
     }
 
     @Override
