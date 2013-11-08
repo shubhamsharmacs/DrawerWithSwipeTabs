@@ -33,6 +33,7 @@
     </LinearLayout>
 
     <Button
+        android:layout_marginLeft="@dimen/spacingMedium"
         android:id="@+id/buttonLoginLogout"
         style="@style/blueButtonStyle"
         android:layout_height="38dp"
