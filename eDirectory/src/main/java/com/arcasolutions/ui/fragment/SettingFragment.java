@@ -3,7 +3,6 @@ package com.arcasolutions.ui.fragment;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
@@ -26,7 +25,6 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 public class SettingFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private SettingAdapter mAdapter;
-    private AccountHelper mAccountHelper;
 
     private final IntentFilter mAccountChangedFilter = new IntentFilter(AccountHelper.ACTION_ACCOUNT_CHANGED);
     private final BroadcastReceiver mAccountChangedReceiver = new BroadcastReceiver() {
@@ -41,7 +39,6 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAccountHelper = new AccountHelper(getActivity());
         mAdapter = new SettingAdapter(getActivity());
         getActivity().setTitle(R.string.drawerSetting);
     }
@@ -60,6 +57,12 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
         getActivity().registerReceiver(mAccountChangedReceiver, mAccountChangedFilter);
@@ -67,8 +70,8 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
 
     @Override
     public void onPause() {
-        super.onPause();
         getActivity().unregisterReceiver(mAccountChangedReceiver);
+        super.onPause();
     }
 
     @Override
@@ -100,9 +103,9 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
         static final int ITEM_ABOUT_WATCH_APP_TUTORIAL = 5;
         static final int ITEM_ABOUT_VERSION = 6;
 
-        private static final int VIEW_TYPE_HEADER = 0x100;
-        private static final int VIEW_TYPE_NORMAL = 0x200;
-        private static final int VIEW_TYPE_CUSTOM = 0x300;
+        private static final int VIEW_TYPE_HEADER = 0;
+        private static final int VIEW_TYPE_TWO_LINES = 1;
+        private static final int VIEW_TYPE_LOGIN = 2;
 
         private final Context mContext;
         private final LayoutInflater mInflater;
@@ -147,11 +150,11 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
                     view = textView;
                     break;
 
-                case VIEW_TYPE_CUSTOM:
+                case VIEW_TYPE_LOGIN:
                     View viewItemAccount;
-                    if (view == null || VIEW_TYPE_CUSTOM != view.getTag()) {
+                    if (view == null || VIEW_TYPE_LOGIN != view.getTag()) {
                         viewItemAccount = mInflater.inflate(R.layout.simple_list_item_setting_login, parent, false);
-                        viewItemAccount.setTag(VIEW_TYPE_CUSTOM);
+                        viewItemAccount.setTag(VIEW_TYPE_LOGIN);
                     } else {
                         viewItemAccount = view;
                     }
@@ -161,17 +164,17 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
                     final Account account = mAccountHelper.getAccount();
                     aq2.id(R.id.settingText1).visible()
                             .text(account != null
-                                    ? "You are logged in as"
-                                    : "You are not logged in");
+                                    ? mContext.getString(R.string.you_are_logged_in_as)
+                                    : mContext.getString(R.string.you_are_not_logged_in));
                     aq2.id(R.id.settingText2).visible()
                             .text(account != null
                                     ? account.getFullName() + "\n" + account.getEmail()
-                                    : "Login with you details or create a new account");
+                                    : mContext.getString(R.string.login_with_your_detail_or_create_a_new_account));
 
                     aq2.id(R.id.buttonLoginLogout).visible()
                             .text(account != null
-                                    ? "Sign Out"
-                                    : "Sign In")
+                                    ? mContext.getString(R.string.sign_out)
+                                    : mContext.getString(R.string.sign_in))
                             .clicked(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
@@ -186,11 +189,11 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
                     view = viewItemAccount;
                     break;
 
-                case VIEW_TYPE_NORMAL:
+                case VIEW_TYPE_TWO_LINES:
                     View viewItemNormal;
-                    if (view == null || VIEW_TYPE_NORMAL != view.getTag()) {
+                    if (view == null || VIEW_TYPE_TWO_LINES != view.getTag()) {
                         viewItemNormal = mInflater.inflate(R.layout.simple_list_item_setting_normal, parent, false);
-                        viewItemNormal.setTag(VIEW_TYPE_NORMAL);
+                        viewItemNormal.setTag(VIEW_TYPE_TWO_LINES);
                     } else {
                         viewItemNormal = view;
                     }
@@ -230,6 +233,10 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
                     }
                     view = viewItemNormal;
                     break;
+
+                default:
+                    throw new IllegalArgumentException("Unknown view at position : " + position);
+
             }
             return view;
         }
@@ -237,15 +244,21 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
         @Override
         public int getItemViewType(int position) {
             switch (position) {
-                case 0:
-                case 2:
+                case ITEM_ACCOUNT_HEADER:
+                case ITEM_ABOUT_HEADER:
                     return VIEW_TYPE_HEADER;
 
-                case 1:
-                    return VIEW_TYPE_CUSTOM;
+                case ITEM_ACCOUNT_VIEW:
+                    return VIEW_TYPE_LOGIN;
+
+                case ITEM_ABOUT_US:
+                case ITEM_ABOUT_LEGAL_NOTICES:
+                case ITEM_ABOUT_WATCH_APP_TUTORIAL:
+                case ITEM_ABOUT_VERSION:
+                    return VIEW_TYPE_TWO_LINES;
 
                 default:
-                    return VIEW_TYPE_NORMAL;
+                    throw new IllegalArgumentException("Unknown item view type at position: " + position);
             }
         }
 
