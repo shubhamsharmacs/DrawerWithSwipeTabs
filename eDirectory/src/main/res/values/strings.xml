@@ -62,6 +62,8 @@
     <string name="you_are_logged_in_as">You are logged in as</string>
     <string name="you_are_not_logged_in">You are not logged in</string>
     <string name="login_with_your_detail_or_create_a_new_account">Login with you details or create a new account</string>
+    <string name="loading">Loading...</string>
+    <string name="loading_please_wait">Loading. Please wait...</string>
 
 
 </resources>

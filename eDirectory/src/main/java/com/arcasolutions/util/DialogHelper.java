@@ -42,4 +42,13 @@ public class DialogHelper {
                 mContext.getString(message));
     }
 
+    public ProgressDialog progress(CharSequence message) {
+        return progress(null, message);
+    }
+
+    public ProgressDialog progress(CharSequence title, CharSequence message) {
+        return ProgressDialog.show(
+                mContext,title, message);
+    }
+
 }

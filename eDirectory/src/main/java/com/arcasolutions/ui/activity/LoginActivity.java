@@ -2,6 +2,7 @@ package com.arcasolutions.ui.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
@@ -101,15 +102,32 @@ public class LoginActivity extends ActionBarActivity
             return;
         }
 
-        Facebook facebook = mApp.getFacebook();
         mProgress = DialogHelper.from(this).progress(R.string.alert_progress_authenticating);
-        FacebookProfile profile = facebook.userOperations().getUserProfile();
-        Client.IappBuilder.newAuthenticateFacebookBuilder(
-                profile.getId(),
-                profile.getEmail(),
-                profile.getFirstName(),
-                profile.getLastName()
-        );
+        new FacebookTask().execute();
+    }
+
+    private class FacebookTask extends AsyncTask<Void, Void, FacebookProfile> {
+
+        Facebook mFacebook;
+
+        FacebookTask() {
+            mFacebook = mApp.getFacebook();
+        }
+
+        @Override
+        protected FacebookProfile doInBackground(Void... voids) {
+            return mFacebook.userOperations().getUserProfile();
+        }
+
+        @Override
+        protected void onPostExecute(FacebookProfile profile) {
+            Client.IappBuilder.newAuthenticateFacebookBuilder(
+                    profile.getId(),
+                    profile.getEmail(),
+                    profile.getFirstName(),
+                    profile.getLastName()
+            ).execAsync(LoginActivity.this);
+        }
     }
 
     @Override
@@ -122,6 +140,7 @@ public class LoginActivity extends ActionBarActivity
                 finishActivity(AUTHENTICATION_REQUEST_CODE);
                 finish();
             } catch (SQLException e) {
+                e.printStackTrace();
                 DialogHelper.from(this).fail(e.getMessage());
             }
         } else {
@@ -132,6 +151,7 @@ public class LoginActivity extends ActionBarActivity
     @Override
     public void onFail(Exception ex) {
         mProgress.dismiss();
+        ex.printStackTrace();
         DialogHelper.from(this).fail(ex.getMessage());
     }
 }

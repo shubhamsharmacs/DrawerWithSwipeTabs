@@ -48,7 +48,7 @@ import java.util.Map;
 
 public class Client {
 
-    private static final String BASE_URL = "http://demodirectory.com";
+    private static final String BASE_URL = "http://demodirectory-nextversion-design.basecode.arcasolutions.com";
 
     private static final String API_URL = BASE_URL + "/API/api2.php";
     private static final String IAPP_URL = BASE_URL + "/iapp/m6400";
@@ -72,7 +72,11 @@ public class Client {
             HttpEntity<?> requestEntity = getHttpEntity(builder.mParams);
             responseEntity = mRestTemplate.postForEntity(builder.mUrl, requestEntity, String.class);
         } else {
-            responseEntity = mRestTemplate.exchange(builder.mUrl, HttpMethod.GET, getHttpEntity(), String.class, builder.mParams);
+            Map<String, String> params = Maps.newHashMap();
+            for (Map.Entry<String, List<String>> entry : builder.mParams.entrySet()) {
+                params.put(entry.getKey(), entry.getValue().get(0));
+            }
+            responseEntity = mRestTemplate.exchange(builder.mUrl, HttpMethod.GET, getHttpEntity(), String.class, params);
         }
 
         String body = responseEntity.getBody();
