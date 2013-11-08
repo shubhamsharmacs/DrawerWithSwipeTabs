@@ -1,5 +1,6 @@
 package com.arcasolutions.ui.fragment.listing;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +11,12 @@ import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.ui.fragment.ContactInfoFragment;
+import com.arcasolutions.util.CheckInHelper;
 
 public class ListingOverviewFragment extends Fragment {
 
     public static final String ARG_LISTING = "listing";
+    private CheckInHelper mCheckInHelper;
 
     public ListingOverviewFragment() {
     }
@@ -55,7 +58,16 @@ public class ListingOverviewFragment extends Fragment {
             getChildFragmentManager().beginTransaction()
                     .replace(R.id.listingOverviewContact, f)
                     .commit();
+
+            mCheckInHelper = new CheckInHelper(getActivity(), l.getId());
+            mCheckInHelper.setCheckInButton(aq.id(R.id.listingOverviewCheckIn).getButton());
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mCheckInHelper.onActivityResult(requestCode, resultCode, data);
     }
 }

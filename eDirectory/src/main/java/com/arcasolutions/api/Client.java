@@ -147,7 +147,7 @@ public class Client {
 
     IappResult<Object> getCheckInResult(IappBuilder builder) throws RestClientException {
         HttpEntity<?> request = getHttpEntity(builder.mParams);
-        ResponseEntity<String> responseEntity = mRestTemplate.postForEntity(builder.mUrl, request, String.class);
+        ResponseEntity<String> responseEntity = mRestTemplate.exchange(builder.mUrl, HttpMethod.POST, request, String.class);
         return  new IappResult<Object>(true, null);
     }
 
