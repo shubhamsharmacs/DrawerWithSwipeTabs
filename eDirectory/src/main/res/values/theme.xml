@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Login -->
+    <style name="loginTextContent" parent="@android:style/TextAppearance.Large">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+    </style>
+
+    <!-- Settings -->
+
     <style name="settingHeader" parent="@android:style/TextAppearance.Large">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/textColorPrimary</item>
@@ -352,6 +361,13 @@
         <item name="android:paddingLeft">@dimen/spacingLarge</item>
         <item name="android:paddingRight">@dimen/spacingLarge</item>
         <item name="android:background">@drawable/background_button_blue</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="blueFacebookButtonStyle" parent="android:Widget.Button">
+        <item name="android:paddingLeft">@dimen/spacingLarge</item>
+        <item name="android:paddingRight">@dimen/spacingLarge</item>
+        <item name="android:background">@drawable/background_button_blue_facebook</item>
         <item name="android:textColor">#fff</item>
     </style>
 

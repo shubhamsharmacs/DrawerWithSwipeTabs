@@ -96,6 +96,10 @@ public class LoginActivity extends ActionBarActivity
         startActivityForResult(intent, FacebookWebOAuthActivity.REQUEST_FACEBOOK_PERMISSION);
     }
 
+    public void onCreateAccount(View view) {
+        Toast.makeText(this, "Create account", Toast.LENGTH_SHORT).show();
+    }
+
     private void loginWithFacebook() {
         if (!mApp.isFacebookConnected()) {
             DialogHelper.from(this).fail("You are not connected on facebook.");

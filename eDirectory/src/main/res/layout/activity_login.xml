@@ -4,53 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.arcasolutions.ui.activity.LoginActivity">
+    tools:context="com.arcasolutions.ui.activity.LoginActivity"
+    android:fillViewport="true"
+    android:layout_alignBaseline="@+id/createAccount">
 
-    <LinearLayout
+    <RelativeLayout
         android:padding="@dimen/spacingLarge"
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
         <TextView
+            style="@style/loginTextContent"
             android:text="Login with your details"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            android:layout_width="match_parent"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
 
         <EditText
             android:id="@+id/loginEmail"
             android:hint="Email address"
             android:inputType="textEmailAddress"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            android:layout_width="match_parent"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true" />
 
         <EditText
             android:id="@+id/loginPassword"
             android:hint="Password"
             android:inputType="textPassword"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            android:layout_width="match_parent"
+            android:layout_below="@+id/loginEmail"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
 
         <Button
+            style="@style/blueButtonStyle"
             android:id="@+id/loginLogin"
             android:text="Login"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:onClick="onLogin" />
+            android:onClick="onLogin"
+            android:layout_below="@+id/loginPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="70dp" />
 
         <TextView
             android:text="OR"
+            style="@style/loginTextContent"
             android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            android:layout_width="match_parent"
+            android:id="@+id/textView"
+            android:layout_below="@+id/loginLogin"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp" />
 
         <Button
+            style="@style/blueFacebookButtonStyle"
             android:id="@+id/loginFacebook"
             android:text="Sign in with Facebook"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:onClick="onLoginWithFacebook" />
+            android:onClick="onLoginWithFacebook"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="70dp" />
 
-    </LinearLayout>
+        <Button
+            style="@style/blueButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Create new account"
+            android:id="@+id/createAccount"
+            android:onClick="onCreateAccount"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </ScrollView>
