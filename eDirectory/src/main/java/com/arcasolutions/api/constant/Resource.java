@@ -14,7 +14,8 @@ public enum Resource {
     DEAL_CATEGORY("deal_category"),
     REVIEW("review"),
     MODULES_CONF("modulesConf"),
-    EDIRECTORY_CONF("getConf");
+    EDIRECTORY_CONF("getConf"),
+    NOTIFICATION("notification");
 
     private String val;
 

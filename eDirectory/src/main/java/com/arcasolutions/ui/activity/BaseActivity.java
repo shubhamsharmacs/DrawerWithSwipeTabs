@@ -26,7 +26,7 @@ import com.arcasolutions.api.model.ClassifiedCategoryResult;
 import com.arcasolutions.api.model.DealCategoryResult;
 import com.arcasolutions.api.model.EventCategoryResult;
 import com.arcasolutions.api.model.ListingCategoryResult;
-import com.arcasolutions.ui.fragment.SettingFragment;
+import com.arcasolutions.util.NotificationHelper;
 import com.arcasolutions.util.Util;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -155,6 +155,9 @@ public abstract class BaseActivity extends ActionBarActivity implements
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
         mDrawerList.setAdapter(new NavigationAdapter(this, options));
         mDrawerList.setOnItemClickListener(this);
+
+        // Handle eDirectory notification
+        NotificationHelper.getInstance(this).checkNewNotifications();
     }
 
     /*
