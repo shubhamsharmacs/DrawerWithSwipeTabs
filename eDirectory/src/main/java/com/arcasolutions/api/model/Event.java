@@ -10,9 +10,13 @@ import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
 import com.arcasolutions.api.deserializer.SimpleTimeDeserializer;
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.implementation.IGeoPoint;
+import com.arcasolutions.database.Database;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.collect.Maps;
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,19 +25,26 @@ import java.util.Map;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data @EqualsAndHashCode(callSuper = false) @ApiModule(ModuleName.EVENT)
+@Data
+@EqualsAndHashCode(callSuper = false)
+@ApiModule(ModuleName.EVENT)
+@DatabaseTable(tableName = Database.Tables.EVENTS)
 public class Event extends Module implements IContactInfo, IGeoPoint {
 
     @JsonProperty(value = "event_ID")
+    @DatabaseField(id = true, columnName = Database.EventsColumns.EVENT_ID)
     private long id;
 
     @JsonProperty("name")
+    @DatabaseField(columnName = Database.EventsColumns.EVENT_TITLE)
     private String title;
 
     @JsonProperty("location_information")
+    @DatabaseField(columnName = Database.EventsColumns.EVENT_ADDRESS)
     private String address;
 
     @JsonProperty("imageurl")
+    @DatabaseField(columnName = Database.EventsColumns.EVENT_ICON)
     private String imageUrl;
 
     private float rating = -1;
@@ -42,13 +53,16 @@ public class Event extends Module implements IContactInfo, IGeoPoint {
     private String phoneNumber;
 
     @JsonProperty("latitude")
+    @DatabaseField(columnName = Database.EventsColumns.EVENT_LATITUDE)
     private double latitude;
 
     @JsonProperty("longitude")
+    @DatabaseField(columnName = Database.EventsColumns.EVENT_LONGITUDE)
     private double longitude;
 
     @JsonProperty("start_date")
     @JsonDeserialize(using = SimpleDateDeserializer.class)
+    @DatabaseField(columnName = Database.EventsColumns.EVENT_START_DATE, dataType = DataType.DATE_LONG)
     private Date startDate;
 
     @JsonProperty("end_date")

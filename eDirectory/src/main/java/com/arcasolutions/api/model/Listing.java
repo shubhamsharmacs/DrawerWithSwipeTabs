@@ -7,8 +7,11 @@ import com.arcasolutions.api.annotation.ApiModule;
 import com.arcasolutions.api.constant.ModuleName;
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.implementation.IGeoPoint;
+import com.arcasolutions.database.Database;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Maps;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -16,37 +19,48 @@ import java.util.Map;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data @EqualsAndHashCode(callSuper = false) @ApiModule(ModuleName.LISTING)
+@Data
+@EqualsAndHashCode(callSuper = false)
+@ApiModule(ModuleName.LISTING)
+@DatabaseTable(tableName = Database.Tables.LISTINGS)
 public class Listing extends Module implements IGeoPoint, IContactInfo {
 
     @JsonProperty("listing_ID")
+    @DatabaseField(id = true, columnName = Database.ListingsColumns.LISTING_ID)
     private long id;
 
     @JsonProperty("name")
+    @DatabaseField(columnName = Database.ListingsColumns.LISTING_TITLE)
     private String title;
 
     @JsonProperty("level")
     private int level;
 
     @JsonProperty("has_deal")
+    @DatabaseField(columnName = Database.ListingsColumns.LISTING_HAS_DEAL)
     private long hasDeal;
 
     @JsonProperty("location_information")
+    @DatabaseField(columnName = Database.ListingsColumns.LISTING_ADDRESS)
     private String address;
 
     @JsonProperty("rate")
+    @DatabaseField(columnName = Database.ListingsColumns.LISTING_RATE)
     private float rating;
 
     @JsonProperty("imageurl")
+    @DatabaseField(columnName = Database.ListingsColumns.LISTING_ICON)
     private String imageUrl;
 
     @JsonProperty("phonenumber")
     private String phoneNumber;
 
     @JsonProperty("latitude")
+    @DatabaseField(columnName = Database.ListingsColumns.LISTING_LATITUDE)
     private double latitude;
 
     @JsonProperty("longitude")
+    @DatabaseField(columnName = Database.ListingsColumns.LISTING_LONGITUDE)
     private double longitude;
 
     @JsonProperty("total_reviews")

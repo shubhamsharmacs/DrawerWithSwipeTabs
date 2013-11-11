@@ -7,10 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Article;
+import com.arcasolutions.util.FavoriteHelper;
 import com.google.common.base.Charsets;
 
 import java.util.Locale;
@@ -18,6 +21,7 @@ import java.util.Locale;
 public class ArticleOverviewFragment extends Fragment {
 
     public static final String ARG_ARTICLE = "article";
+    private FavoriteHelper<Article> mFavoriteHelper;
 
     public ArticleOverviewFragment() {
     }
@@ -37,6 +41,12 @@ public class ArticleOverviewFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mFavoriteHelper = new FavoriteHelper<Article>(getActivity(), Article.class);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_article_overview, container, false);
     }
@@ -45,13 +55,24 @@ public class ArticleOverviewFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Article a = getShownArticle();
+        final Article a = getShownArticle();
         if (a != null) {
+            mFavoriteHelper.updateFavorite(a);
             AQuery aq = new AQuery(view);
             aq.id(R.id.articleOverviewImage).image(a.getImageUrl(), true, true);
             aq.id(R.id.articleOverviewTitle).text(a.getName());
             aq.id(R.id.articleOverviewPublishDate).text(String.format(Locale.getDefault(), "Published at %tD by", a.getPubDate()));
             aq.id(R.id.articleOverviewAuthor).text(a.getAuthor());
+            final CheckBox favoriteCheckBox = aq.id(R.id.articleOverviewFavorite).getCheckBox();
+            favoriteCheckBox.setChecked(mFavoriteHelper.isFavorited(a));
+            favoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (!mFavoriteHelper.toggleFavorite(a)) {
+                        favoriteCheckBox.setChecked(!b);
+                    }
+                }
+            });
             WebView webView = aq.id(R.id.articleOverviewContent).getWebView();
             webView.loadData(buildHtml(a.getContent()), "text/html", Charsets.UTF_8.displayName());
             webView.setBackgroundColor(Color.TRANSPARENT);

@@ -7,6 +7,8 @@
 
     <android.support.v4.view.PagerTabStrip
         android:id="@id/tabStrip"
+        android:textColor="#fff"
+        android:textAllCaps="true"
         android:layout_gravity="top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

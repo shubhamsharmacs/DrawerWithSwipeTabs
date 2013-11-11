@@ -64,6 +64,8 @@
 
         <activity android:name=".ui.activity.GalleryViewActivity" />
 
+        <activity android:name=".ui.activity.MyFavoriteActivity" />
+
         <activity android:name=".ui.activity.SettingActivity" />
 
         <activity android:name=".ui.activity.LoginActivity"

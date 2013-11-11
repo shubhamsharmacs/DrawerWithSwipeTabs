@@ -6,8 +6,12 @@ import android.os.Parcelable;
 import com.arcasolutions.api.annotation.ApiModule;
 import com.arcasolutions.api.constant.ModuleName;
 import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
+import com.arcasolutions.database.Database;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,26 +20,35 @@ import java.util.Map;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data @EqualsAndHashCode(callSuper = false) @ApiModule(ModuleName.ARTICLE)
+@Data
+@EqualsAndHashCode(callSuper = false)
+@ApiModule(ModuleName.ARTICLE)
+@DatabaseTable(tableName = Database.Tables.ARTICLES)
 public class Article extends Module {
 
     @JsonProperty("article_ID")
+    @DatabaseField(id = true, columnName = Database.ArticlesColumns.ARTICLE_ID)
     private long id;
 
     @JsonProperty("name")
+    @DatabaseField(columnName = Database.ArticlesColumns.ARTICLE_TITLE)
     private String name;
 
     @JsonProperty("author")
+    @DatabaseField(columnName = Database.ArticlesColumns.ARTICLE_PUBLISHED)
     private String author;
 
     @JsonProperty("imageurl")
+    @DatabaseField(columnName = Database.ArticlesColumns.ARTICLE_ICON)
     private String imageUrl;
 
     @JsonProperty("publication_date")
     @JsonDeserialize(using = SimpleDateDeserializer.class)
+    @DatabaseField(columnName = Database.ArticlesColumns.ARTICLE_PUBLISHED, dataType = DataType.DATE_LONG)
     private Date pubDate;
 
     @JsonProperty("avg_review")
+    @DatabaseField(columnName = Database.ArticlesColumns.ARTICLE_RATE)
     private float rating;
 
     @JsonProperty("abstract")

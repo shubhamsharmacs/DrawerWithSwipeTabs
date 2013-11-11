@@ -3,39 +3,51 @@ package com.arcasolutions.api.model;
 import android.os.Parcel;
 
 import com.arcasolutions.api.implementation.IGeoPoint;
+import com.arcasolutions.database.Database;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Maps;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Map;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data @EqualsAndHashCode(callSuper = false)
+@Data
+@EqualsAndHashCode(callSuper = false)
+@DatabaseTable(tableName = Database.Tables.DEALS)
 public class Deal extends Module implements IGeoPoint {
 
     @JsonProperty("deal_ID")
+    @DatabaseField(id = true, columnName = Database.DealsColumns.DEAL_ID)
     private long id;
 
     @JsonProperty("name")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_TITLE)
     private String title;
 
     @JsonProperty("imageurl")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_ICON)
     private String imageUrl;
 
     @JsonProperty("listing_id")
     private long listingId;
 
     @JsonProperty("listing_title")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_LISTING_TITLE)
     private String listingTitle;
 
     @JsonProperty("listing_latitude")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_LATITUDE)
     private double latitude;
 
     @JsonProperty("listing_longitude")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_LONGITUDE)
     private double longitude;
 
     @JsonProperty("avg_review")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_RATE)
     private float rating;
 
     @JsonProperty("realvalue")

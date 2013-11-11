@@ -50,6 +50,11 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
     }
 
     @Override
+    public boolean hasStableIds() {
+        return true;
+    }
+
+    @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
         Module item = getItem(i);
 

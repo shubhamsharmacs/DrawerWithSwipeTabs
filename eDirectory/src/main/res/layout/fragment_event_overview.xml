@@ -36,7 +36,7 @@
                 android:id="@id/eventOverviewTitle"
                 android:layout_below="@id/eventOverviewImage"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/checkBox" />
+                android:layout_toLeftOf="@id/eventOverviewFavorite" />
 
             <TextView
                 style="@style/eventOverviewTextDateLabel"
@@ -82,7 +82,7 @@
                 android:layout_marginRight="@dimen/spacingMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBox"
+                android:id="@id/eventOverviewFavorite"
                 android:layout_alignBottom="@id/eventOverviewTitle"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>

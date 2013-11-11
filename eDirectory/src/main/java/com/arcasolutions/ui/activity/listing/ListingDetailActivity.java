@@ -75,9 +75,9 @@ public class ListingDetailActivity extends ActionBarActivity {
         adapter.add("Gallery", ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
-        tabStrip.setBackgroundColor(Color.parseColor("#3d3d3d"));
+        tabStrip.setBackgroundColor(getResources().getColor(R.color.pagerStripBackground));
         tabStrip.setDrawFullUnderline(false);
-        tabStrip.setTabIndicatorColor(Color.parseColor("#33b5e5"));
+        tabStrip.setTabIndicatorColor(getResources().getColor(R.color.pagerStripIndicator));
 
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);

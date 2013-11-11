@@ -4,8 +4,11 @@ import android.os.Parcel;
 
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.implementation.IGeoPoint;
+import com.arcasolutions.database.Database;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Maps;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -13,31 +16,40 @@ import java.util.Map;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data @EqualsAndHashCode(callSuper = false)
+@Data
+@EqualsAndHashCode(callSuper = false)
+@DatabaseTable(tableName = Database.Tables.CLASSIFIEDS)
 public class Classified extends Module implements IGeoPoint, IContactInfo {
 
     @JsonProperty("classified_ID")
+    @DatabaseField(id = true, columnName = Database.ClassifiedsColumns.CLASSIFIED_ID)
     private long id;
 
     @JsonProperty("name")
+    @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_TITLE)
     private String name;
 
     @JsonProperty("location_information")
+    @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_ADDRESS1)
     private String address;
 
     @JsonProperty("imageurl")
+    @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_ICON)
     private String imageUrl;
 
     @JsonProperty("phonenumber")
     private String phoneNumber;
 
     @JsonProperty("latitude")
+    @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_LATITUDE)
     private double latitude;
 
     @JsonProperty("longitude")
+    @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_LONGITUDE)
     private double longitude;
 
     @JsonProperty("price")
+    @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_PRICE)
     private float price;
 
     @JsonProperty("summarydesc")

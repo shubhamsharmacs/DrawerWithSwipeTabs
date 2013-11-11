@@ -32,7 +32,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
         String SETTING_TABLE_NAME = "Setting";
     }
 
-    private interface Tables {
+    public interface Tables {
         String ARTICLES = "articles";
         String CLASSIFIEDS = "classifieds";
         String DEALS = "deals";
