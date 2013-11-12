@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
@@ -61,6 +62,11 @@ public class ListingOverviewFragment extends Fragment {
 
             AQuery aq = new AQuery(view);
             aq.id(R.id.listingOverviewImage).image(l.getImageUrl(), true, true);
+            if (!URLUtil.isValidUrl(l.getImageUrl())) {
+                aq.id(R.id.listingOverviewImage).gone();
+                aq.id(R.id.listingOverviewFavorite).margin(0, 0, getResources().getDimension(R.dimen.spacingSmall), 0);
+            }
+
             aq.id(R.id.listingOverviewTitle).text(l.getTitle());
             aq.id(R.id.listingOverviewSummary).text(l.getSummary());
             aq.id(R.id.listingOverviewAddress).text(l.getAddress()).getView().invalidate();

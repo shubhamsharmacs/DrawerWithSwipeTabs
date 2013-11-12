@@ -32,11 +32,11 @@
                 style="@style/listingOverviewTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Annual Rock Festival"
+                tools:text="Annual Rock Festival Agora vou colocar um titulo enorme para ter certeza que não está quebrando o layout"
                 android:id="@id/listingOverviewTitle"
                 android:layout_below="@id/listingOverviewImage"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/classifiedOverviewFavorite" />
+                android:layout_toLeftOf="@id/listingOverviewFavorite" />
 
             <RatingBar
                 style="?android:ratingBarStyleSmall"
@@ -60,13 +60,14 @@
 
             <CheckBox
                 style="@style/heartCheckBoxStyle"
-                android:layout_marginRight="@dimen/spacingMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@id/listingOverviewFavorite"
-                android:layout_alignBottom="@id/listingOverviewTitle"
+                android:checked="false"
+                android:layout_below="@id/listingOverviewImage"
                 android:layout_alignParentRight="true"
-                android:checked="false" />
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:layout_marginTop="-20dp" />
 
         </RelativeLayout>
 
