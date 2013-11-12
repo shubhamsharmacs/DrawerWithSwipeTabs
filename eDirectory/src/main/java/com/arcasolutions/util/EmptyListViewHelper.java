@@ -86,7 +86,10 @@ public class EmptyListViewHelper {
         emptyView.setVisibility(View.GONE);
         AQuery aq = new AQuery(emptyView);
         aq.id(R.id.image).image(drawableId);
-        aq.id(R.id.text1).text(stringId, true);
+        CharSequence text = stringId != 0
+                ? mContext.getString(stringId)
+                : null;
+        aq.id(R.id.text1).text(text, true);
         return emptyView;
     }
 
