@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -60,6 +61,10 @@ public class ArticleOverviewFragment extends Fragment {
             mFavoriteHelper.updateFavorite(a);
             AQuery aq = new AQuery(view);
             aq.id(R.id.articleOverviewImage).image(a.getImageUrl(), true, true);
+            if (!URLUtil.isValidUrl(a.getImageUrl())) {
+                aq.id(R.id.articleOverviewImage).gone();
+                aq.id(R.id.articleOverviewFavorite).margin(0, 0, getResources().getDimension(R.dimen.spacingSmall), 0);
+            }
             aq.id(R.id.articleOverviewTitle).text(a.getName());
             aq.id(R.id.articleOverviewPublishDate).text(String.format(Locale.getDefault(), "Published at %tD by", a.getPubDate()));
             aq.id(R.id.articleOverviewAuthor).text(a.getAuthor());

@@ -59,15 +59,15 @@
                 android:layout_toRightOf="@id/articleOverviewPublishDate" />
 
             <CheckBox
-                android:layout_marginBottom="-10dp"
-                android:layout_marginRight="@dimen/spacingMedium"
                 style="@style/heartCheckBoxStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@id/articleOverviewFavorite"
                 android:checked="false"
-                android:layout_above="@id/articleOverviewTitle"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/articleOverviewImage"
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:layout_marginTop="-20dp" />
         </RelativeLayout>
 
         <WebView
