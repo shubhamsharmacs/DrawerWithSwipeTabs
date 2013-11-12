@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppBackground">
+        <item name="android:background">@color/appBackground</item>
+    </style>
+
     <!-- Login -->
     <style name="loginTextContent" parent="@android:style/TextAppearance.Large">
         <item name="android:fontFamily">sans-serif</item>

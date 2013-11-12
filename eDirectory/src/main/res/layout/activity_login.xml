@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.arcasolutions.ui.activity.LoginActivity"
     android:fillViewport="true"
+    style="@style/AppBackground"
     android:layout_alignBaseline="@+id/createAccount">
 
     <RelativeLayout

@@ -12,4 +12,6 @@
     <color name="pagerStripBackground">#3d3d3d</color>
     <color name="pagerStripIndicator">#33b5e5</color>
 
+    <color name="appBackground">#f6f6f7</color>
+
 </resources>
