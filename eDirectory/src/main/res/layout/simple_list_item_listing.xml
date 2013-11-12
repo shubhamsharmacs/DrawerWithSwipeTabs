@@ -60,13 +60,25 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imagePin"
+            android:src="@drawable/ic_pin_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacingSmall"
+            android:layout_marginBottom="@dimen/spacingSmall" />
+
         <TextView
-            android:layout_marginBottom="@dimen/spacingSmall"
             style="@style/listingResultTextDistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2.2 miles"
-            android:id="@id/listingDistance" />
+            android:id="@id/listingDistance"
+            android:layout_toRightOf="@+id/imagePin"
+            android:layout_marginLeft="@dimen/spacingSmall"
+            android:layout_alignBottom="@+id/imagePin"
+            android:gravity="center_vertical"
+            android:layout_alignTop="@+id/imagePin" />
 
         <TextView
             style="@style/listingResultTextAddress"
@@ -74,7 +86,7 @@
             android:layout_height="wrap_content"
             android:text="3461 SW Beaverton Hillsdale  HWY Portland, Oregon, USA"
             android:id="@id/listingAddress"
-            android:layout_below="@id/listingDistance"
+            android:layout_below="@+id/imagePin"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@id/listingImage" />
 
