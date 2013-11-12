@@ -8,6 +8,8 @@
         <item>Event</item>
     </string-array>
 
+    <string name="oops_something_went_wrong">Oops&#8230; something went wrong.</string>
+    <string name="your_search_matched_no_results">Your search matched no results.</string>
     <string name="alert_progress_authenticating">Authenticating&#8230;</string>
     <string name="alert_title_fail">Fail</string>
     <string name="alert_message_fail">Something was wrong.\n<xliff:g id="detail">%1$s</xliff:g></string>

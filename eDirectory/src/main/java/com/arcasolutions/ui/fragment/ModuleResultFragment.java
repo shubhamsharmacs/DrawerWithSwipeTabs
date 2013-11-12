@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
-import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
@@ -22,6 +20,7 @@ import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.arcasolutions.util.AbsListViewHelper;
+import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.util.Util;
 import com.google.common.collect.Lists;
 
@@ -50,6 +49,8 @@ public class ModuleResultFragment<T extends BaseResult>
 
     private AbsListViewHelper mListViewHelper;
     private MenuItem mOrderItem;
+
+    private EmptyListViewHelper mEmptyHelper;
 
     // Default constructor
     public ModuleResultFragment() {
@@ -99,6 +100,7 @@ public class ModuleResultFragment<T extends BaseResult>
         mListViewHelper = new AbsListViewHelper(mListView, this);
         mListView.setOnItemClickListener(this);
         mListView.setAdapter(mAdapter);
+        mEmptyHelper = new EmptyListViewHelper(mListView, R.drawable.no_results, R.string.your_search_matched_no_results);
         loadData();
     }
 
@@ -141,15 +143,19 @@ public class ModuleResultFragment<T extends BaseResult>
         mListViewHelper.changeBaseResult(result);
 
         List results = result.getResults();
-        if (results != null) {
+        int size = results != null ? results.size() : 0;
+        if (size > 0) {
             mModules.addAll(results);
             mAdapter.notifyDataSetChanged();
+        } else {
+            mEmptyHelper.empty();
         }
     }
 
     @Override
     public void onFail(Exception ex) {
         mListViewHelper.finishLoading();
+        mEmptyHelper.error();
     }
 
     private void changeOrder(OrderBy sortOpt) {
@@ -160,7 +166,6 @@ public class ModuleResultFragment<T extends BaseResult>
     }
 
     private void loadData() {
-        new AQuery(getView()).id(android.R.id.list).getListView().setEmptyView(new ProgressBar(getActivity()));
 
         Client.Builder builder = new Client.Builder(mType);
         builder.page(mPage);
@@ -208,7 +213,7 @@ public class ModuleResultFragment<T extends BaseResult>
             }
         }
 
-        mListViewHelper.startLoading();
+        mEmptyHelper.progress();
         builder.execAsync(this);
     }
 

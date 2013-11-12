@@ -5,14 +5,24 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/spacingLarge"
     android:gravity="center">
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@id/eventOverviewFavorite"
-        android:layout_gravity="center_horizontal"
+        android:id="@id/image"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
         tools:src="@drawable/no_business" />
+
+    <TextView
+        style="@style/noResultsText"
+        android:layout_marginTop="@dimen/spacingMedium"
+        android:id="@+id/text1"
+        tools:text="Your search matched no results."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

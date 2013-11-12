@@ -5,6 +5,7 @@
     <color name="textColorSecondary">#ff363536</color>
     <color name="textColorTertiary">#ff686868</color>
     <color name="textColorExtras">#ff3498db</color>
+    <color name="textColorNoResults">#ffc2c2c2</color>
 
     <color name="textColorPrimaryInverse">#ffffffff</color>
     <color name="textColorSecondaryInverse">#ffDDDDDD</color>
