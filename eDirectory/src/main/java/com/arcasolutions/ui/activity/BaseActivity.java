@@ -5,11 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -43,6 +47,9 @@ public abstract class BaseActivity extends ActionBarActivity implements
         LocationClient.OnConnectionFailedListener, AdapterView.OnItemClickListener {
 
     private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
     private ListView mDrawerList;
 
     private String APPTAG;
@@ -151,7 +158,27 @@ public abstract class BaseActivity extends ActionBarActivity implements
         options.add(new NavItem(R.drawable.ic_favorites, R.string.drawerMyFavorites, MyFavoriteActivity.class, null));
         options.add(new NavItem(R.drawable.ic_settings, R.string.drawerSetting, SettingActivity.class, null));
 
+        mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                getSupportActionBar().setTitle(mTitle);
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                getSupportActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu();
+            }
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
         mDrawerList.setAdapter(new NavigationAdapter(this, options));
         mDrawerList.setOnItemClickListener(this);
@@ -160,10 +187,31 @@ public abstract class BaseActivity extends ActionBarActivity implements
         NotificationHelper.getInstance(this).checkNewNotifications();
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     /*
-     * Called when the Activity is no longer visible at all.
-     * Stop updates and disconnect.
-     */
+                     * Called when the Activity is no longer visible at all.
+                     * Stop updates and disconnect.
+                     */
     @Override
     public void onStop() {
 

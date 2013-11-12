@@ -70,6 +70,8 @@
     <string name="tab_gallery">GALLERY</string>
     <string name="tab_description">DESCRIPTION</string>
     <string name="tab_reviews">REVIEWS</string>
+    <string name="drawer_open">Open menu</string>
+    <string name="drawer_close">Close menu</string>
 
 
 </resources>
