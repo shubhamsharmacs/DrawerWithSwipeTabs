@@ -14,7 +14,9 @@
         android:text="How to relax and be zen"
         android:id="@id/articleTitle"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:ellipsize="end"
+        android:lines="1" />
 
     <TextView
         style="@style/articleResultTextBy"

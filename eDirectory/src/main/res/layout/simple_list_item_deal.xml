@@ -29,7 +29,8 @@
         android:layout_toRightOf="@id/dealImage"
         android:maxLines="2"
         android:lineSpacingExtra="-2sp"
-        android:layout_alignRight="@id/dealListing" />
+        android:layout_alignRight="@id/dealListing"
+        android:ellipsize="end" />
 
     <TextView
         style="@style/dealResultTextPrice"

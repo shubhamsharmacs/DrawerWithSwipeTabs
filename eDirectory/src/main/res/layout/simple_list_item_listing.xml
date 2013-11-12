@@ -23,7 +23,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@id/listingDealBadge"
-            android:autoText="false" />
+            android:autoText="false"
+            android:ellipsize="end"
+            android:lines="1" />
 
         <RatingBar
             android:layout_marginRight="@dimen/spacingSmall"
