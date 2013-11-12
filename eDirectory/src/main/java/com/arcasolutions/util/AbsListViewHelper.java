@@ -20,7 +20,7 @@ public class AbsListViewHelper implements AbsListView.OnScrollListener {
     private final ViewGroup mContainer;
     private ProgressBar mProgressBar;
     private ListView mListView;
-    private View mFooterView;
+//    private View mFooterView;
 
     private OnNextPageListener mListener;
     private boolean mIsLast = false;
@@ -44,10 +44,10 @@ public class AbsListViewHelper implements AbsListView.OnScrollListener {
 
         mContainer = (ViewGroup) mListView.getParent();
 
-        mFooterView = inflater.inflate(R.layout.simple_list_footer_loading, null);
-        mFooterView.setVisibility(View.GONE);
-        mListView.setFooterDividersEnabled(true);
-        mListView.addFooterView(mFooterView, null, false);
+//        mFooterView = inflater.inflate(R.layout.simple_list_footer_loading, null);
+//        mFooterView.setVisibility(View.GONE);
+//        mListView.setFooterDividersEnabled(true);
+//        mListView.addFooterView(mFooterView, null, false);
         mListView.setOnScrollListener(this);
     }
 
@@ -59,16 +59,16 @@ public class AbsListViewHelper implements AbsListView.OnScrollListener {
 
     public void startLoading() {
         mLoading = true;
-        mFooterView.setPadding(0, 0, 0, 0);
-        mFooterView.setVisibility(View.VISIBLE);
+        //mFooterView.setPadding(0, 0, 0, 0);
+//        mFooterView.setVisibility(View.VISIBLE);
         if (mContainer != null) mContainer.addView(mProgressBar);
         mListView.setEmptyView(mProgressBar);
     }
 
     public void finishLoading() {
         mLoading = false;
-        mFooterView.setPadding(0, -1000, 0, 0);
-        mFooterView.setVisibility(View.GONE);
+        //mFooterView.setPadding(0, -1000, 0, 0);
+//        mFooterView.setVisibility(View.GONE);
         if (mContainer != null) mContainer.removeView(mProgressBar);
     }
 

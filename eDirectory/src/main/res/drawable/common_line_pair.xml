@@ -12,7 +12,7 @@
         android:top="1dp"
         android:bottom="1dp">
         <shape android:shape="rectangle">
-            <solid android:color="#efefef" />
+            <solid android:color="@color/appBackground" />
         </shape>
     </item>
 
