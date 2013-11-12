@@ -32,7 +32,7 @@
                 style="@style/classifiedOverviewTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Annual Rock Festival"
+                tools:text="Annual Rock Festival estou usando o título enorme aqui para ter certeza que o layout não está quebrando"
                 android:id="@id/classifiedOverviewTitle"
                 android:layout_below="@id/classifiedOverviewImage"
                 android:layout_alignParentLeft="true"
@@ -60,13 +60,14 @@
 
             <CheckBox
                 style="@style/heartCheckBoxStyle"
-                android:layout_marginRight="@dimen/spacingMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@id/classifiedOverviewFavorite"
-                android:layout_alignBottom="@id/classifiedOverviewTitle"
+                android:checked="false"
+                android:layout_below="@id/classifiedOverviewImage"
                 android:layout_alignParentRight="true"
-                android:checked="false" />
+                android:layout_marginTop="-20dp"
+                android:layout_marginRight="@dimen/spacingSmall" />
 
         </RelativeLayout>
 
