@@ -2,10 +2,12 @@ package com.arcasolutions.api.model;
 
 import android.os.Parcel;
 
+import com.arcasolutions.api.deserializer.AddressDeserializer;
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.database.Database;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.collect.Maps;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -30,6 +32,7 @@ public class Classified extends Module implements IGeoPoint, IContactInfo {
     private String name;
 
     @JsonProperty("location_information")
+    @JsonDeserialize(using = AddressDeserializer.class)
     @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_ADDRESS1)
     private String address;
 

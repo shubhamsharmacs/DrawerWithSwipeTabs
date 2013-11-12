@@ -5,10 +5,12 @@ import android.os.Parcelable;
 
 import com.arcasolutions.api.annotation.ApiModule;
 import com.arcasolutions.api.constant.ModuleName;
+import com.arcasolutions.api.deserializer.AddressDeserializer;
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.database.Database;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.collect.Maps;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -41,6 +43,7 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
     private long hasDeal;
 
     @JsonProperty("location_information")
+    @JsonDeserialize(using = AddressDeserializer.class)
     @DatabaseField(columnName = Database.ListingsColumns.LISTING_ADDRESS)
     private String address;
 

@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.arcasolutions.api.annotation.ApiModule;
 import com.arcasolutions.api.constant.ModuleName;
+import com.arcasolutions.api.deserializer.AddressDeserializer;
 import com.arcasolutions.api.deserializer.BooleanDeserializer;
 import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
 import com.arcasolutions.api.deserializer.SimpleTimeDeserializer;
@@ -40,6 +41,7 @@ public class Event extends Module implements IContactInfo, IGeoPoint {
     private String title;
 
     @JsonProperty("location_information")
+    @JsonDeserialize(using = AddressDeserializer.class)
     @DatabaseField(columnName = Database.EventsColumns.EVENT_ADDRESS)
     private String address;
 
