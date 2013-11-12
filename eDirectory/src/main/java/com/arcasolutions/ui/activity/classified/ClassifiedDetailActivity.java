@@ -58,15 +58,15 @@ public class ClassifiedDetailActivity extends ActionBarActivity {
 
         // Adds tab Overview
         ClassifiedOverviewFragment overviewFragment = ClassifiedOverviewFragment.newInstance(classified);
-        adapter.add("Overview", ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
+        adapter.add(getString(R.string.tab_overview), ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
 
         // Adds tab Description
         DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(classified.getName(), classified.getDescription());
-        adapter.add("Description", ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
+        adapter.add(getString(R.string.tab_description), ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
 
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(classified.getIGallery());
-        adapter.add("Gallery", ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
+        adapter.add(getString(R.string.tab_gallery), ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
         tabStrip.setBackgroundColor(Color.parseColor("#3d3d3d"));

@@ -66,6 +66,10 @@
     <string name="login_with_your_detail_or_create_a_new_account">Login with you details or create a new account</string>
     <string name="loading">Loading...</string>
     <string name="loading_please_wait">Loading. Please wait...</string>
+    <string name="tab_overview">OVERVIEW</string>
+    <string name="tab_gallery">GALLERY</string>
+    <string name="tab_description">DESCRIPTION</string>
+    <string name="tab_reviews">REVIEWS</string>
 
 
 </resources>

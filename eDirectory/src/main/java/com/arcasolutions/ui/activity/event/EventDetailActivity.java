@@ -58,15 +58,15 @@ public class EventDetailActivity extends ActionBarActivity {
 
         // Adds tab Overview
         EventOverviewFragment overviewFragment = EventOverviewFragment.newInstance(event);
-        adapter.add("Overview", ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
+        adapter.add(getString(R.string.tab_overview), ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
 
         // Adds tab Description
         DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(event.getTitle(), event.getDescription());
-        adapter.add("Description", ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
+        adapter.add(getString(R.string.tab_description), ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
 
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(event.getIGallery());
-        adapter.add("Gallery", ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
+        adapter.add(getString(R.string.tab_gallery), ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
         tabStrip.setBackgroundColor(Color.parseColor("#3d3d3d"));

@@ -57,12 +57,12 @@ public class ArticleDetailActivity extends ActionBarActivity {
 
         // Adds tab Overview
         ArticleOverviewFragment overviewFragment = ArticleOverviewFragment.newInstance(article);
-        adapter.add("OVERVIEW", overviewFragment.getClass(), overviewFragment.getArguments());
+        adapter.add(getString(R.string.tab_overview), overviewFragment.getClass(), overviewFragment.getArguments());
 
 
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(article.getIGallery());
-        adapter.add("GALLERY", galleryFragment.getClass(), galleryFragment.getArguments());
+        adapter.add(getString(R.string.tab_gallery), galleryFragment.getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
         tabStrip.setBackgroundColor(Color.parseColor("#3d3d3d"));

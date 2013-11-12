@@ -60,19 +60,19 @@ public class ListingDetailActivity extends ActionBarActivity {
 
         // Adds tab Overview
         ListingOverviewFragment overviewFragment = ListingOverviewFragment.newInstance(listing);
-        adapter.add("Overview", ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
+        adapter.add(getString(R.string.tab_overview), ((Object) overviewFragment).getClass(), overviewFragment.getArguments());
 
         // Adds tab Description
         DescriptionFragment descriptionFragment = DescriptionFragment.newInstance(listing.getTitle(), listing.getDescription());
-        adapter.add("Description", ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
+        adapter.add(getString(R.string.tab_description), ((Object) descriptionFragment).getClass(), descriptionFragment.getArguments());
 
         // Adds reviews
         ReviewListFragment reviewListFragment = ReviewListFragment.newInstance(listing.getId(), ReviewModule.LISTING);
-        adapter.add("Reviews", reviewListFragment.getClass(), reviewListFragment.getArguments());
+        adapter.add(getString(R.string.tab_reviews), reviewListFragment.getClass(), reviewListFragment.getArguments());
 
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(listing.getIGallery());
-        adapter.add("Gallery", ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
+        adapter.add(getString(R.string.tab_gallery), ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
 
         PagerTabStrip tabStrip = (PagerTabStrip) findViewById(R.id.tabStrip);
         tabStrip.setBackgroundColor(getResources().getColor(R.color.pagerStripBackground));
