@@ -24,7 +24,8 @@
                 android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                android:id="@id/listingOverviewImage" />
+                android:id="@id/listingOverviewImage"
+                android:layout_marginBottom="@dimen/spacingMedium" />
 
             <TextView
                 style="@style/listingOverviewTextTitle"
@@ -34,7 +35,8 @@
                 android:id="@id/listingOverviewTitle"
                 android:layout_below="@id/listingOverviewImage"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/listingOverviewFavorite" />
+                android:layout_toLeftOf="@id/listingOverviewFavorite"
+                android:layout_marginRight="@dimen/spacingSmall" />
 
             <RatingBar
                 style="?android:ratingBarStyleSmall"
@@ -65,7 +67,7 @@
                 android:layout_below="@id/listingOverviewImage"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/spacingSmall"
-                android:layout_marginTop="-20dp" />
+                android:layout_marginTop="-30dp" />
 
         </RelativeLayout>
 
