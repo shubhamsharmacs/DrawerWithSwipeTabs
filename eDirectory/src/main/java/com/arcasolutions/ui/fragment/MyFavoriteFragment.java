@@ -58,7 +58,7 @@ public class MyFavoriteFragment extends Fragment {
                 mAdapter.add(fragment, TITLE_IDS[i]);
             }
 
-            pager.setOffscreenPageLimit(CLASSES.length);
+            pager.setOffscreenPageLimit(1);
         }
 
     }

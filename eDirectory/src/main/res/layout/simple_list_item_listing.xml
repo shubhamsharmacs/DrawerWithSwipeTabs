@@ -7,7 +7,7 @@
     android:showDividers="middle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/list_item_selector">
+    android:background="@drawable/favorite_list_item_selector">
 
     <RelativeLayout
         android:layout_marginBottom="@dimen/spacingMedium"

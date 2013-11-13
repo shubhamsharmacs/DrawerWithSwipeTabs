@@ -72,6 +72,10 @@
     <string name="tab_reviews">REVIEWS</string>
     <string name="drawer_open">Open menu</string>
     <string name="drawer_close">Close menu</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="confirm_deletation_selected_items">Confirm delete selected items?</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
 
 
 </resources>

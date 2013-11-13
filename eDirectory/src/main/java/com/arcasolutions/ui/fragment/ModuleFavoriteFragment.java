@@ -11,12 +11,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.view.ActionMode;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -31,12 +33,21 @@ import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.util.FavoriteHelper;
+import com.arcasolutions.view.BackgroundContainer;
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ModuleFavoriteFragment<T extends Module> extends Fragment implements AdapterView.OnItemClickListener {
+public class ModuleFavoriteFragment<T extends Module> extends Fragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     public static final String ARG_CLASS = "class";
 
@@ -105,20 +116,10 @@ public class ModuleFavoriteFragment<T extends Module> extends Fragment implement
         super.onViewCreated(view, savedInstanceState);
         mListView = (ListView) view.findViewById(android.R.id.list);
         mListView.setOnItemClickListener(this);
+        mListView.setOnItemLongClickListener(this);
         mListView.setAdapter(mAdapter);
         mEmptyListHelper = new EmptyListViewHelper(mListView, getEmptyDrawableResId());
         mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                if (mActionMode == null) {
-                    mActionMode = ((ActionBarActivity) getActivity()).startSupportActionMode(mActionModeCallback);
-                }
-
-                mListView.setItemChecked(position, true);
-                return true;
-            }
-        });
     }
 
     private int getEmptyDrawableResId() {
@@ -152,7 +153,35 @@ public class ModuleFavoriteFragment<T extends Module> extends Fragment implement
         if (mListener != null) {
             Module m = (Module) adapterView.getItemAtPosition(i);
             mListener.onModuleSelected(m, i, l);
+            mListView.setItemChecked(i, mListView.isItemChecked(i));
         }
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+        if (mActionMode == null) {
+            mActionMode = ((ActionBarActivity) getActivity()).startSupportActionMode(mActionModeCallback);
+        }
+
+        long[] checkedItemsId = mListView.getCheckedItemIds();
+        boolean shouldSelected = true;
+        if (checkedItemsId != null && Arrays.binarySearch(checkedItemsId, id) > -1) {
+            shouldSelected = false;
+        }
+        mListView.setItemChecked(position, shouldSelected);
+
+        int size = mListView.getCheckedItemIds() != null
+                ? mListView.getCheckedItemIds().length
+                : 0;
+
+        if (size > 0) {
+            mActionMode.setTitle(Integer.toString(size));
+        } else {
+            mActionMode.finish();
+        }
+
+
+        return true;
     }
 
     // Module selection listener
@@ -162,14 +191,16 @@ public class ModuleFavoriteFragment<T extends Module> extends Fragment implement
 
     private void deleteSelectedItems() {
         final long[] selectedIds = mListView.getCheckedItemIds();
+
         if (selectedIds != null) {
             new AlertDialog.Builder(getActivity())
-                    .setTitle("Confirmation")
-                    .setMessage("Confirm delete selected items?")
-                    .setNegativeButton("Cancel", null)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    .setTitle(R.string.confirmation)
+                    .setMessage(R.string.confirm_deletation_selected_items)
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+
                             List<Long> ids = Lists.newArrayList();
                             for (long id : selectedIds) {
                                 ids.add(id);
@@ -214,8 +245,12 @@ public class ModuleFavoriteFragment<T extends Module> extends Fragment implement
         @Override
         public void onDestroyActionMode(ActionMode mode) {
             mActionMode = null;
+            SparseBooleanArray checkedItemPositions = mListView.getCheckedItemPositions();
+            for (int i=0; i<checkedItemPositions.size(); i++) {
+                mListView.setItemChecked(checkedItemPositions.keyAt(i), false);
+            }
             mListView.clearChoices();
-            mListView.invalidate();
+
         }
     };
 
