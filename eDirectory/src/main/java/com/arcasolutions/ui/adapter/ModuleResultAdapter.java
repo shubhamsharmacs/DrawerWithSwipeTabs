@@ -15,6 +15,7 @@ import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.Module;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,10 +23,10 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
 
     protected final LayoutInflater mInflater;
     protected final Context mContext;
-    private final List<T> mItems;
+    private final LinkedList<T> mItems;
 
 
-    public ModuleResultAdapter(Context context, List<T> items) {
+    public ModuleResultAdapter(Context context, LinkedList<T> items) {
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
         mItems = items;
@@ -39,14 +40,14 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
 
     @Override
     public T getItem(int i) {
-        if (mItems == null) return null;
+        if (mItems == null || i >= mItems.size()) return null;
         return mItems.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        if (getItem(i) == null) return 0;
-        return getItem(i).getId();
+        if (mItems == null || i >= mItems.size()) return 0;
+        return mItems.get(i).getId();
     }
 
     @Override

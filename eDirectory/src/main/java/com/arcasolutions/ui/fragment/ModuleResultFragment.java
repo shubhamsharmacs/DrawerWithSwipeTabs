@@ -24,6 +24,7 @@ import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.util.Util;
 import com.google.common.collect.Lists;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ModuleResultFragment<T extends BaseResult>
@@ -39,7 +40,7 @@ public class ModuleResultFragment<T extends BaseResult>
     private int mPage = 1;
     private Class<T> mType;
 
-    private final List<Module> mModules = Lists.newArrayList();
+    private final LinkedList<Module> mModules = new LinkedList<Module>();
     private ListView mListView;
     private ModuleResultAdapter mAdapter;
 

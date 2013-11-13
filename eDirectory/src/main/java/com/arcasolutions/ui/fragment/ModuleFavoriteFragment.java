@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -32,6 +33,7 @@ import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.util.FavoriteHelper;
 import com.google.common.collect.Lists;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ModuleFavoriteFragment<T extends Module> extends Fragment implements AdapterView.OnItemClickListener {
@@ -41,7 +43,7 @@ public class ModuleFavoriteFragment<T extends Module> extends Fragment implement
     private FavoriteHelper<T> mHelper;
     private Class<T> mClazz;
     private EmptyListViewHelper mEmptyListHelper;
-    private final List<Module> mModules = Lists.newArrayList();
+    private final LinkedList<Module> mModules = new LinkedList<Module>();
     private ModuleResultAdapter mAdapter;
 
     private OnModuleSelectionListener mListener;
@@ -135,11 +137,10 @@ public class ModuleFavoriteFragment<T extends Module> extends Fragment implement
     }
 
     private void loadData() {
-        List<T> modules = mHelper.getFavorites();
         mModules.clear();
+        List<T> modules = mHelper.getFavorites();
         if (modules != null && !modules.isEmpty()) {
             mModules.addAll(modules);
-            mAdapter.notifyDataSetChanged();
         } else {
             mEmptyListHelper.empty();
         }
@@ -213,6 +214,8 @@ public class ModuleFavoriteFragment<T extends Module> extends Fragment implement
         @Override
         public void onDestroyActionMode(ActionMode mode) {
             mActionMode = null;
+            mListView.clearChoices();
+            mListView.invalidate();
         }
     };
 
