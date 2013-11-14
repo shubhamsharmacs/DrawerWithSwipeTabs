@@ -370,10 +370,10 @@ public class Client {
 
         public static IappBuilder newCheckInBuilder(long listingId, long accountId, String name, String tip) {
             IappBuilder builder = new IappBuilder(IAPP_URL + "/checkin/checkinadd.php", Method.POST, IappTask.Service.CHECKIN);
-            builder.put("item_id=", listingId + "");
-            builder.put("account_id=", accountId + "");
-            builder.put("checkin_name=", name);
-            builder.put("quick_tip=", tip);
+            builder.put("item_id", listingId + "");
+            builder.put("account_id", accountId + "");
+            builder.put("checkin_name", name);
+            builder.put("quick_tip", tip);
             return builder;
         }
 

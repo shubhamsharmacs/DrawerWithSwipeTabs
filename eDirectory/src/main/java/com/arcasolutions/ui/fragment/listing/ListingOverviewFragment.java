@@ -88,7 +88,7 @@ public class ListingOverviewFragment extends Fragment {
                     .replace(R.id.listingOverviewContact, f)
                     .commit();
 
-            mCheckInHelper = new CheckInHelper(getActivity(), l.getId());
+            mCheckInHelper = new CheckInHelper(this, l);
             mCheckInHelper.setCheckInButton(aq.id(R.id.listingOverviewCheckIn).getButton());
         }
 

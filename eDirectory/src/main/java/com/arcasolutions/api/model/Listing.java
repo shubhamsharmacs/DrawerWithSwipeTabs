@@ -162,9 +162,9 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
         description = in.readString();
         videoSnippet = in.readString();
         videoDescription = in.readString();
-        gallery = in.readArrayList(ClassLoader.getSystemClassLoader());
+        gallery = in.readArrayList(Photo.class.getClassLoader());
         totalCheckins = in.readInt();
-        categories = in.readArrayList(ClassLoader.getSystemClassLoader());
+        categories = in.readArrayList(ListingCategory.class.getClassLoader());
         friendlyUrl = in.readString();
         email = in.readString();
         fax = in.readString();

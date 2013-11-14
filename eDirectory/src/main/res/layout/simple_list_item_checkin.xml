@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackground"
+    android:paddingTop="@dimen/spacingMedium"
+    android:paddingBottom="@dimen/spacingMedium">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout"
+        android:layout_marginRight="@dimen/spacingMedium">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@id/checkInImage"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageMask"
+            android:src="@drawable/avatar_mask"
+            android:adjustViewBounds="true" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Monica G."
+        style="@style/checkinResultTextTitle"
+        android:id="@id/checkInName"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/frameLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" - "
+        android:id="@+id/textView2"
+        android:layout_toRightOf="@id/checkInName"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@id/checkInName"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="04/22/2013"
+        style="@style/checkinResultTextDate"
+        android:id="@id/checkInDate"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Absolutely perfect! Everything was so beautiful, clean and comfortable. I loved my trip!"
+        android:id="@id/checkInQuickTip"
+        android:layout_below="@id/checkInName"
+        android:layout_toRightOf="@+id/frameLayout"
+        style="@style/checkinResultTextQuickTip" />
+</RelativeLayout>

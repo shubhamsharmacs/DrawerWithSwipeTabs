@@ -19,6 +19,26 @@
         <item name="android:textSize">@dimen/textSizeExtraLarge</item>
     </style>
 
+    <!-- Checkin results -->
+    <style name="checkinResultTextTitle" parent="@android:style/TextAppearance.Large">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+    </style>
+
+    <style name="checkinResultTextDate" parent="@android:style/TextAppearance.Large">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textSize">@dimen/textSizeMedium</item>
+    </style>
+
+    <style name="checkinResultTextQuickTip" parent="@android:style/TextAppearance.Large">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+    </style>
+
+
     <!-- Settings -->
 
     <style name="settingHeader" parent="@android:style/TextAppearance.Large">

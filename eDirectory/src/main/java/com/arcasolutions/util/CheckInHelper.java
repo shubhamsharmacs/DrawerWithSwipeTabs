@@ -19,7 +19,10 @@ import android.widget.Toast;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Account;
+import com.arcasolutions.api.model.CheckIn;
 import com.arcasolutions.api.model.IappResult;
+import com.arcasolutions.api.model.Listing;
+import com.arcasolutions.ui.activity.CheckInActivity;
 import com.arcasolutions.ui.activity.LoginActivity;
 
 public class CheckInHelper implements Client.RestIappListener {
@@ -27,19 +30,30 @@ public class CheckInHelper implements Client.RestIappListener {
     private AccountHelper mAccountHelper;
     private Activity mActivity;
     private Fragment mFragment;
-    private long mId;
+    private Listing mListing;
+    private OnCheckInPostListener mListener;
 
-    public CheckInHelper(Activity activity, long id) {
-        mActivity = activity;
-        mAccountHelper = new AccountHelper(mActivity);
-        mId = id;
+    public interface OnCheckInPostListener {
+        void onCheckInPosted();
     }
 
-    public CheckInHelper(Fragment fragment, long id) {
+    public CheckInHelper(Activity activity, Listing listing) {
+        mActivity = activity;
+        mAccountHelper = new AccountHelper(mActivity);
+        mListing = listing;
+        if (activity instanceof OnCheckInPostListener) {
+            mListener = (OnCheckInPostListener) activity;
+        }
+    }
+
+    public CheckInHelper(Fragment fragment, Listing listing) {
         mActivity = fragment.getActivity();
         mFragment = fragment;
         mAccountHelper = new AccountHelper(mActivity);
-        mId = id;
+        mListing = listing;
+        if (fragment instanceof OnCheckInPostListener) {
+            mListener = (OnCheckInPostListener) fragment;
+        }
     }
 
     public void setCheckInButton(Button checkButton) {
@@ -74,6 +88,13 @@ public class CheckInHelper implements Client.RestIappListener {
     }
 
     private void checkIn() {
+        if (mListing.getTotalCheckins() > 0 && !(mActivity instanceof CheckInActivity)) {
+            Intent intent = new Intent(mActivity, CheckInActivity.class);
+            intent.putExtra(CheckInActivity.EXTRA_LISTING, mListing);
+            mActivity.startActivity(intent);
+            return;
+        }
+
         if (!mAccountHelper.hasAccount()) {
             requestLogin();
             return;
@@ -84,10 +105,10 @@ public class CheckInHelper implements Client.RestIappListener {
         final EditText commentView = (EditText) view.findViewById(R.id.commentView);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity)
-                .setTitle("Check In")
+                .setTitle(R.string.check_in)
                 .setView(view)
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Post", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.post, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         postCheckIn(commentView.getText().toString());
@@ -125,11 +146,11 @@ public class CheckInHelper implements Client.RestIappListener {
 
     private void postCheckIn(String message) {
         mProgress = DialogHelper.from(mActivity)
-                .progress("Posting...");
+                .progress(R.string.posting);
 
         Account account = mAccountHelper.getAccount();
         Client.IappBuilder.newCheckInBuilder(
-                mId,
+                mListing.getId(),
                 account.getId(),
                 account.getFullName(),
                 message
@@ -139,7 +160,11 @@ public class CheckInHelper implements Client.RestIappListener {
     @Override
     public void onSuccess(IappResult iappResult) {
         mProgress.dismiss();
-        Toast.makeText(mActivity, "Check in posted.", Toast.LENGTH_SHORT).show();
+        mListing.setTotalCheckins(mListing.getTotalReviews() + 1);
+        Toast.makeText(mActivity, R.string.checkin_posted, Toast.LENGTH_SHORT).show();
+        if (mListener != null) {
+            mListener.onCheckInPosted();
+        }
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
+import com.google.android.gms.internal.w;
 
 public class EmptyListViewHelper {
 
@@ -76,6 +77,10 @@ public class EmptyListViewHelper {
         ProgressBar progressBar = new ProgressBar(mContext);
         progressBar.setId(android.R.id.empty);
         progressBar.setVisibility(View.GONE);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.gravity = Gravity.CENTER;
+        progressBar.setLayoutParams(layoutParams);
         return progressBar;
     }
 

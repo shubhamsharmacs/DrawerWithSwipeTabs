@@ -76,6 +76,12 @@
     <string name="confirm_deletation_selected_items">Confirm delete selected items?</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
+    <string name="post">Post</string>
+    <string name="check_ins">Check Ins</string>
+    <string name="check_in">Check In</string>
+    <string name="quick_comment">Quick Comment</string>
+    <string name="checkin_posted">Check in posted.</string>
+    <string name="posting">Posting...</string>
 
 
 </resources>

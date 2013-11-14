@@ -68,6 +68,8 @@
 
         <activity android:name=".ui.activity.SettingActivity" />
 
+        <activity android:name=".ui.activity.CheckInActivity" />
+
         <activity android:name=".ui.activity.LoginActivity"
             android:launchMode="singleTop" />
 

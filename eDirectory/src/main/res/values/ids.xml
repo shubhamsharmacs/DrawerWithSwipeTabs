@@ -4,6 +4,12 @@
     <item type="id" name="pager" />
     <item type="id" name="tabStrip" />
 
+    <!-- Check Ins IDs -->
+    <item type="id" name="checkInImage" />
+    <item type="id" name="checkInName" />
+    <item type="id" name="checkInDate" />
+    <item type="id" name="checkInQuickTip" />
+
     <!-- Contact Info IDs -->
     <item type="id" name="contactPhoneNumber" />
     <item type="id" name="contactEmail" />
