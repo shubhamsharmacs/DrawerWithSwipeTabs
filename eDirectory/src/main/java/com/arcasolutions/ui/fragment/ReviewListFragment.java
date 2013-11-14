@@ -1,10 +1,13 @@
 package com.arcasolutions.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
@@ -13,6 +16,8 @@ import com.arcasolutions.api.constant.ReviewModule;
 import com.arcasolutions.api.model.Review;
 import com.arcasolutions.api.model.ReviewResult;
 import com.arcasolutions.ui.adapter.ReviewAdapter;
+import com.arcasolutions.util.EmptyListViewHelper;
+import com.arcasolutions.util.ReviewHelper;
 import com.google.common.collect.Lists;
 
 import java.util.List;
@@ -23,6 +28,9 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
     public static final String ARG_MODULE = "module";
 
     private final List<Review> mReviews = Lists.newArrayList();
+
+    private EmptyListViewHelper mEmptyHelper;
+    private ReviewHelper mReviewHelper;
 
     // arguments
     private int mPage = 1;
@@ -42,23 +50,39 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
         return f;
     }
 
+    public long getModuleId() {
+        return getArguments() != null
+                ? getArguments().getLong(ARG_ID, 0)
+                : 0;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mReviewHelper = new ReviewHelper(this, getModuleId());
         mAdapter = new ReviewAdapter(getActivity(), mReviews);
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mReviewHelper.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.custom_list_view, container, false);
+        return inflater.inflate(R.layout.fragment_reviews, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AQuery aq = new AQuery(view);
-        aq.id(android.R.id.list).adapter(mAdapter);
+        ListView listView = (ListView) view.findViewById(android.R.id.list);
+        listView.setAdapter(mAdapter);
+
+        Button addReviewButton = (Button) view.findViewById(R.id.addReviewButton);
+        mReviewHelper.setAddReviewButton(addReviewButton);
+
+        mEmptyHelper = new EmptyListViewHelper(listView, R.drawable.no_reviews, R.string.no_reviews);
         loadData();
     }
 
@@ -80,14 +104,18 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
                 .id(id);
 
         builder.execAsync(this);
+
+        mEmptyHelper.progress();
     }
 
 
     @Override
     public void onComplete(ReviewResult result) {
         List<Review> reviews = result.getResults();
-        if (reviews != null) {
+        if (reviews != null && !reviews.isEmpty()) {
             mReviews.addAll(reviews);
+        } else {
+            mEmptyHelper.empty();
         }
         mAdapter.notifyDataSetChanged();
     }
@@ -95,5 +123,6 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
     @Override
     public void onFail(Exception ex) {
         ex.printStackTrace();
+        mEmptyHelper.error();
     }
 }

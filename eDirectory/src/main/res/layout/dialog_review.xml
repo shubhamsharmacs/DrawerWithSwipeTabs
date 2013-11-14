@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacingMedium">
+
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/reviewFormRating"
+            android:rating="1"
+            android:layout_gravity="center_horizontal"
+            android:stepSize="1" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="@string/review_your_name"
+            android:ems="10"
+            android:id="@id/reviewFormName"
+            android:layout_marginBottom="@dimen/spacingMedium"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:hint="@string/review_your_email"
+            android:id="@id/reviewFormEmail"
+            android:layout_marginBottom="@dimen/spacingMedium"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="@string/review_your_location"
+            android:ems="10"
+            android:id="@id/reviewFormLocation"
+            android:layout_marginBottom="@dimen/spacingMedium"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:hint="@string/review_title"
+            android:id="@id/reviewFormTitle"
+            android:layout_marginBottom="@dimen/spacingMedium"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:lines="3"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:hint="@string/review_your_comment"
+            android:id="@id/reviewFormComment"
+            android:layout_marginBottom="@dimen/spacingMedium"
+            android:gravity="left|top" />
+
+    </LinearLayout>
+
+</ScrollView>

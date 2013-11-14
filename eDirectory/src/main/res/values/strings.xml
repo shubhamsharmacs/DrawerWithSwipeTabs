@@ -8,6 +8,7 @@
         <item>Event</item>
     </string-array>
 
+    <string name="no_reviews">No reviews add yet.\nAdd your voice to this conversation.</string>
     <string name="oops_something_went_wrong">Oops&#8230; something went wrong.</string>
     <string name="your_search_matched_no_results">Your search matched no results.</string>
     <string name="alert_progress_authenticating">Authenticating&#8230;</string>
@@ -82,6 +83,14 @@
     <string name="quick_comment">Quick Comment</string>
     <string name="checkin_posted">Check in posted.</string>
     <string name="posting">Posting...</string>
+    <string name="add_a_review">Add a review</string>
+    <string name="review_your_name">Your Name</string>
+    <string name="review_your_email">Your Email</string>
+    <string name="review_your_location">Your Location</string>
+    <string name="review_title">Review title</string>
+    <string name="review_your_comment">Your Comment</string>
+    <string name="ok">OK</string>
+    <string name="add_your_review">Add your review</string>
 
 
 </resources>

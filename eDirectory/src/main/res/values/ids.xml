@@ -115,4 +115,13 @@
     <item type="id" name="reviewAuthor" />
     <item type="id" name="reviewDate" />
     <item type="id" name="reviewRating" />
+
+    <!-- Review Form -->
+    <item type="id" name="reviewFormName" />
+    <item type="id" name="reviewFormEmail" />
+    <item type="id" name="reviewFormLocation" />
+    <item type="id" name="reviewFormTitle" />
+    <item type="id" name="reviewFormComment" />
+    <item type="id" name="reviewFormRating" />
+
 </resources>

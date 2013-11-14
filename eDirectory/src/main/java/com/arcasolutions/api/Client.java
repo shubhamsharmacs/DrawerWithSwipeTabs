@@ -346,7 +346,7 @@ public class Client {
             return builder;
         }
 
-        public static IappBuilder newCreateReviewBuilder(int listingId, long accountId, String title, String comment, String name, String email, String location, float rating) {
+        public static IappBuilder newCreateReviewBuilder(long listingId, long accountId, String title, String comment, String name, String email, String location, float rating) {
             IappBuilder builder = new IappBuilder(IAPP_URL + "/reviews/reviewadd.php", Method.POST, IappTask.Service.REVIEW);
             builder.put("item_id", listingId + "");
             builder.put("account_id", accountId + "");
@@ -514,4 +514,7 @@ public class Client {
         return mModuleConf;
     }
 
+    public static EdirectoryConf getConf() {
+        return mEdirectoryConf;
+    }
 }

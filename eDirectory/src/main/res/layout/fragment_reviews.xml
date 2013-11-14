@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/AppBackground"
+    android:padding="@dimen/spacingSmall">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+    <Button
+        style="@style/blueButtonStyle"
+        android:text="@string/add_a_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addReviewButton" />
+
+</LinearLayout>
