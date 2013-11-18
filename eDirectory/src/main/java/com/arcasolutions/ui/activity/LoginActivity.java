@@ -56,6 +56,8 @@ public class LoginActivity extends ActionBarActivity
         if (resultCode == RESULT_OK) {
             if (requestCode == FacebookWebOAuthActivity.REQUEST_FACEBOOK_PERMISSION) {
                 loginWithFacebook();
+            } else if (requestCode == SignUpActivity.REQUEST_CODE_CREATE_ACCOUNT) {
+                finish();
             }
         }
     }
@@ -97,7 +99,8 @@ public class LoginActivity extends ActionBarActivity
     }
 
     public void onCreateAccount(View view) {
-        Toast.makeText(this, "Create account", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivityForResult(intent, SignUpActivity.REQUEST_CODE_CREATE_ACCOUNT);
     }
 
     private void loginWithFacebook() {

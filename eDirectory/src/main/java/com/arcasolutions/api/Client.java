@@ -321,7 +321,7 @@ public class Client {
         }
 
         public static IappBuilder newCreateAcccountBuilder(String email, String password, String firstName, String lastName) {
-            IappBuilder builder = new IappBuilder(IAPP_URL + "/profile/put.json.php", Method.POST, IappTask.Service.ACCOUNT);
+            IappBuilder builder = new IappBuilder(IAPP_URL + "/profile/add.json.php", Method.POST, IappTask.Service.ACCOUNT);
             builder.put("username", email);
             builder.put("first_name", firstName);
             builder.put("last_name", lastName);

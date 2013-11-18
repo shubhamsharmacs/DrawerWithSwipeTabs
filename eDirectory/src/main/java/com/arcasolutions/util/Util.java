@@ -3,6 +3,8 @@ package com.arcasolutions.util;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
+import android.text.TextUtils;
+import android.util.Patterns;
 
 public class Util {
 
@@ -28,4 +30,9 @@ public class Util {
         mMyLocation = myLocation;
     }
 
+    public static boolean isEmailValid(String email) {
+        if (TextUtils.isEmpty(email)) return false;
+
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 }
