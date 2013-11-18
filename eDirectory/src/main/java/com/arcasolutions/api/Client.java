@@ -1,5 +1,6 @@
 package com.arcasolutions.api;
 
+import android.location.Location;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 
@@ -17,6 +18,7 @@ import com.arcasolutions.api.model.Module;
 import com.arcasolutions.api.model.ModuleConf;
 import com.arcasolutions.api.model.ModuleConfResult;
 import com.arcasolutions.api.model.ModuleFeature;
+import com.arcasolutions.util.Util;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.gms.internal.ac;
@@ -221,6 +223,12 @@ public class Client {
                 throw new IllegalArgumentException("ApiResource value can not be null");
 
             mMap.put("resource", resource.toString());
+
+            Location myLocation = Util.getMyLocation();
+            if (myLocation != null) {
+                myLocation(myLocation.getLatitude(), myLocation.getLongitude());
+            }
+
         }
 
         public Builder categoryId(long categoryId) {

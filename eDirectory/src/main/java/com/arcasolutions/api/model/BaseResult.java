@@ -3,7 +3,10 @@ package com.arcasolutions.api.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.arcasolutions.api.constant.OrderBy;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Map;
 
 import lombok.Data;
 
@@ -60,5 +63,15 @@ public abstract class BaseResult<T> implements Parcelable {
         } else {
             out.writeArray(null);
         }
+    }
+
+    /**
+     * Retorna ordenação para cada modulo. Pois cada module pode
+     * ter suas particularidades.
+     * @param orderBy <b>Key:</b> orderBy e <b>Value:</b> orderSequence.
+     * @return
+     */
+    public Map<String, String> getOrderMap(OrderBy orderBy) {
+        throw new UnsupportedOperationException();
     }
 }

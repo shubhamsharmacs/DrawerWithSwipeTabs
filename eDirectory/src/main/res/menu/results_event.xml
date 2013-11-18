@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@id/action_order_by"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_action_az"
+        android:title="@string/sort">
+        <menu>
+            <group>
+
+                <item android:id="@id/action_level"
+                    android:title="@string/level" />
+
+                <item android:id="@id/action_start_date"
+                    android:title="@string/start_date" />
+
+                <item android:id="@id/action_alphabetically"
+                    android:title="@string/alphabetically" />
+
+                <item android:id="@id/action_popular"
+                    android:title="@string/popular" />
+
+                <item android:id="@id/action_distance"
+                    android:title="@string/distance" />
+
+            </group>
+        </menu>
+    </item>
+
+</menu>

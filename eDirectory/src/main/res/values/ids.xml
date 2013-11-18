@@ -124,4 +124,17 @@
     <item type="id" name="reviewFormComment" />
     <item type="id" name="reviewFormRating" />
 
+
+    <!-- Menu Order IDs -->
+    <item type="id" name="action_order_by" />
+    <item type="id" name="action_alphabetically" />
+    <item type="id" name="action_distance" />
+    <item type="id" name="action_end_date" />
+    <item type="id" name="action_last_update" />
+    <item type="id" name="action_level" />
+    <item type="id" name="action_popular" />
+    <item type="id" name="action_publication_date" />
+    <item type="id" name="action_rating" />
+    <item type="id" name="action_start_date" />
+
 </resources>

@@ -3,6 +3,7 @@ package com.arcasolutions.ui.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,26 +15,34 @@ import android.widget.ListView;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
+import com.arcasolutions.api.constant.OrderBy;
 import com.arcasolutions.api.constant.SearchBy;
+import com.arcasolutions.api.model.ArticleResult;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.BaseResult;
+import com.arcasolutions.api.model.ClassifiedResult;
+import com.arcasolutions.api.model.DealResult;
+import com.arcasolutions.api.model.EventResult;
+import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.arcasolutions.util.AbsListViewHelper;
 import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.util.Util;
-import com.google.common.collect.Lists;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class ModuleResultFragment<T extends BaseResult>
         extends Fragment
-        implements  Client.RestListener<T>, AdapterView.OnItemClickListener,
-            AbsListViewHelper.OnNextPageListener {
+        implements Client.RestListener<T>, AdapterView.OnItemClickListener,
+        AbsListViewHelper.OnNextPageListener {
 
     public static final String ARG_CATEGORY = "category";
     public static final String ARG_TYPE = "type";
+
+    private static final String TAG = ModuleResultFragment.class.getSimpleName();
 
     // arguments
     private BaseCategory mCatagory;
@@ -49,7 +58,7 @@ public class ModuleResultFragment<T extends BaseResult>
     private OrderBy mOrderBy;
 
     private AbsListViewHelper mListViewHelper;
-    private MenuItem mOrderItem;
+    private MenuItem mOrderByItem;
 
     private EmptyListViewHelper mEmptyHelper;
 
@@ -108,13 +117,43 @@ public class ModuleResultFragment<T extends BaseResult>
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.results, menu);
-        mOrderItem = menu.findItem(R.id.action_sort);
+
+        if (ArticleResult.class.equals(mType)) {
+            inflater.inflate(R.menu.results_article, menu);
+
+        } else if (ClassifiedResult.class.equals(mType)) {
+            inflater.inflate(R.menu.results_classified, menu);
+
+        } else if (DealResult.class.equals(mType)) {
+            inflater.inflate(R.menu.results_deal, menu);
+
+        } else if (EventResult.class.equals(mType)) {
+            inflater.inflate(R.menu.results_event, menu);
+
+        } else if (ListingResult.class.equals(mType)) {
+            inflater.inflate(R.menu.results_listing, menu);
+
+        }
+
+        mOrderByItem = menu.findItem(R.id.action_order_by);
+        setMenuOrderEnable(false);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_end_date:
+                changeOrder(OrderBy.END_DATE);
+                break;
+
+            case R.id.action_last_update:
+                changeOrder(OrderBy.LAST_UPDATED);
+                break;
+
+            case R.id.action_publication_date:
+                changeOrder(OrderBy.PUBLICATION_DATE);
+                break;
+
             case R.id.action_level:
                 changeOrder(OrderBy.LEVEL);
                 break;
@@ -147,10 +186,15 @@ public class ModuleResultFragment<T extends BaseResult>
         int size = results != null ? results.size() : 0;
         if (size > 0) {
             mModules.addAll(results);
+            if (OrderBy.DISTANCE.equals(mOrderBy)) {
+                Util.orderByDistance(mModules);
+            }
             mAdapter.notifyDataSetChanged();
         } else {
             mEmptyHelper.empty();
         }
+
+        setMenuOrderEnable(!mModules.isEmpty());
     }
 
     @Override
@@ -177,38 +221,54 @@ public class ModuleResultFragment<T extends BaseResult>
         }
 
         if (mOrderBy != null) {
+
+            try {
+                T t = mType.newInstance();
+                Map<String, String> orderMap = t.getOrderMap(mOrderBy);
+                for (Map.Entry<String, String> entry : orderMap.entrySet()) {
+                    builder.orderBy(entry.getKey());
+                    builder.orderSequence(entry.getValue());
+                }
+            } catch (Exception ignored) {
+                Log.e(TAG, ignored.getMessage(), ignored);
+            }
+
+
             CharSequence headerInfo = null;
             switch (mOrderBy) {
 
+                case START_DATE:
+                    break;
+
+                case END_DATE:
+
+                    break;
+
+                case PUBLICATION_DATE:
+                    break;
+
                 case LEVEL:
                     headerInfo = getString(R.string.show_results_by_sort, getString(R.string.level));
-                    builder.orderBy("level,name");
-                    builder.orderSequence("asc,asc");
                     break;
 
                 case ALPHABETICALLY:
                     headerInfo = getString(R.string.show_results_by_sort, getString(R.string.alphabetically));
-                    builder.orderBy("name");
-                    builder.orderSequence("asc");
+                    break;
+
+                case LAST_UPDATED:
+                    headerInfo = getString(R.string.show_results_by_sort, getString(R.string.alphabetically));
                     break;
 
                 case POPULAR:
                     headerInfo = getString(R.string.show_results_by_sort, getString(R.string.popular));
-                    builder.orderBy("name");
-                    builder.orderSequence("asc");
                     break;
 
                 case RATING:
                     headerInfo = getString(R.string.show_results_by_sort, getString(R.string.rating));
-                    builder.orderBy("rate");
-                    builder.orderSequence("desc");
                     break;
 
                 case DISTANCE:
                     headerInfo = getString(R.string.show_results_by_sort, getString(R.string.distance));
-                    builder.orderBy("distance_score");
-                    builder.myLocation(Util.getMyLocation().getLatitude(), Util.getMyLocation().getLongitude());
-                    builder.orderSequence("asc");
                     break;
 
             }
@@ -237,10 +297,10 @@ public class ModuleResultFragment<T extends BaseResult>
         void onModuleSelected(Module module, int position, long id);
     }
 
-    // OrderBy options
-    private enum OrderBy {
-        LEVEL, ALPHABETICALLY, POPULAR, RATING, DISTANCE;
+    private void setMenuOrderEnable(boolean enabled) {
+        if (mOrderByItem != null) {
+            mOrderByItem.setEnabled(enabled);
+        }
     }
-
 
 }

@@ -14,6 +14,7 @@ import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.util.FmtUtil;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -173,6 +174,7 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
             AQuery aq = new AQuery(v);
             aq.id(R.id.listingImage).image(l.getImageUrl(), true, true);
             aq.id(R.id.listingTitle).text(l.getTitle());
+            aq.id(R.id.listingDistance).text(FmtUtil.distance(l.getLatitude(), l.getLongitude()), true);
             aq.id(R.id.listingAddress).text(l.getAddress());
             aq.id(R.id.listingReviews).text(String.format("%d reviews", l.getTotalReviews()));
             aq.id(R.id.listingRatingBar).rating(l.getRating());
