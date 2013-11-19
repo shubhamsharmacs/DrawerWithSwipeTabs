@@ -1,11 +1,14 @@
-package com.arcasolutions.ui.fragment;
+package com.arcasolutions.ui.fragment.map;
 
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -25,6 +28,7 @@ import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.listing.ListingResultActivity;
+import com.arcasolutions.util.LocationUtil;
 import com.arcasolutions.util.Util;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -58,8 +62,9 @@ public class MyMapFragment extends Fragment implements
 
     private LatLng mSearchNearLeftLatLng;
     private LatLng mSearchFarRightLatLng;
+    private Filter mFilter = new Filter();
 
-    private Class<? extends BaseResult> mClass = EventResult.class;
+    private Class<? extends BaseResult> mClass;
 
     private final Map<Marker, IGeoPoint> mListingMap = Maps.newHashMap();
 
@@ -69,7 +74,15 @@ public class MyMapFragment extends Fragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         mBaseActivity = (BaseActivity) getActivity();
+        mClass = Filter.getModuleClass(Filter.ModuleIndex.LISTING);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.map, menu);
     }
 
     @Override
@@ -203,14 +216,24 @@ public class MyMapFragment extends Fragment implements
         };
 
         displayProgress(true);
-        new Client.Builder(mClass)
-                .searchBy(SearchBy.MAP)
+        Client.Builder builder = new Client.Builder(mClass);
+        builder.searchBy(SearchBy.MAP)
                 .region(
                         mSearchNearLeftLatLng.latitude,
                         mSearchNearLeftLatLng.longitude,
                         mSearchFarRightLatLng.latitude,
-                        mSearchFarRightLatLng.longitude)
-                .execAsync(mListener);
+                        mSearchFarRightLatLng.longitude);
+
+        if (mFilter != null) {
+            if (!TextUtils.isEmpty(mFilter.getKeyword())) {
+                builder.keyword(mFilter.getKeyword());
+            }
+
+            builder.ratings(mFilter.getRatings());
+
+        }
+
+        builder.execAsync(mListener);
 
     }
 
@@ -252,25 +275,36 @@ public class MyMapFragment extends Fragment implements
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        switch (i) {
-
-            case 0:
-                mClass = ListingResult.class;
-                break;
-
-            case 1:
-                mClass = DealResult.class;
-                break;
-
-            case 2:
-                mClass = ClassifiedResult.class;
-                break;
-
-            case 3:
-                mClass = EventResult.class;
-                break;
-        }
+        mClass = Filter.getModuleClass(i);
+        mFilter.setModuleIndex(i);
         searchItems();
+    }
+
+    public Filter getFilter() {
+        return mFilter;
+    }
+
+    public void setFilter(Filter filter) {
+        if (mFilter == null) return;
+
+        mFilter = filter;
+        mClass = Filter.getModuleClass(mFilter.getModuleIndex());
+
+        if (!TextUtils.isEmpty(mFilter.getLocation())) {
+            LocationUtil.geocoder(getActivity(), mFilter.getLocation(), new LocationUtil.GeocoderCallback() {
+                @Override
+                public void onLatLng(LatLng point) {
+                    if (point != null) {
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(point, 15));
+                    } else {
+                        Toast.makeText(getActivity(), "Location not found.", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                }
+            });
+        } else {
+            searchItems();
+        }
     }
 
     @Override

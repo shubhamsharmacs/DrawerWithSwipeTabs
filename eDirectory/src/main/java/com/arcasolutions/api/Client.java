@@ -44,6 +44,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.annotation.Annotation;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -287,6 +288,18 @@ public class Client {
 
         public Builder module(ReviewModule module) {
             mMap.put("type", module.toString());
+            return this;
+        }
+
+        public Builder keyword(String keyword) {
+            mMap.put("keyword", keyword);
+            return this;
+        }
+
+        public Builder ratings(List<Float> ratings) {
+            if (ratings != null && !ratings.isEmpty()) {
+                mMap.put("ratings", TextUtils.join(",", ratings));
+            }
             return this;
         }
 
