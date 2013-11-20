@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -74,34 +76,36 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
     }
 
     private void chooseRatingDialog() {
-        final RatingListAdapter adapter = new RatingListAdapter(getActivity(), mFilter);
-        new AlertDialog.Builder(getActivity())
+        final RatingListAdapter adapter = new RatingListAdapter(getActivity());
+        final AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setTitle("Rating")
-                .setAdapter(adapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        List<Float> ratings = mFilter.getRatings();
-                        if (ratings == null) ratings = Lists.newArrayList();
-
-                        float rating = (float) i;
-
-                        if (ratings.contains(rating)) {
-                            ratings.remove(rating);
-                        } else {
-                            ratings.add(rating);
-                        }
-
-                        adapter.notifyDataSetChanged();
-                    }
-                })
+                .setAdapter(adapter, null)
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
-                })
-                .create().show();
+                }).create();
+
+        final ListView listView = dialog.getListView();
+        listView.setItemsCanFocus(true);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                CheckBox checkBox = (CheckBox) view.findViewById(R.id.checkBox);
+                checkBox.setChecked(listView.isItemChecked(position));
+            }
+        });
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {
+                listView.performItemClick(listView.getChildAt(0), 0, 0);
+            }
+        });
+        dialog.show();
+
     }
 
     private void chooseModuleDialog() {
@@ -136,6 +140,7 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
 
     static class FilterAdapter extends BaseAdapter {
 
+        private final Context mContext;
         private final LayoutInflater mInflater;
         private final Filter mFilter;
         private final Resources mResources;
@@ -144,6 +149,7 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
             mInflater = LayoutInflater.from(context);
             mFilter = filter;
             mResources = context.getResources();
+            mContext = context;
         }
 
         @Override
@@ -185,7 +191,7 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
                     aq.id(android.R.id.text1).text("Rating");
                     aq.id(android.R.id.text2).text(
                             mFilter.getRatings() == null || mFilter.getRatings().isEmpty()
-                                ? "Any"
+                                ? mContext.getString(R.string.any)
                                 : TextUtils.join(", ", mFilter.getRatings()) + " stars"
                     );
                     break;
@@ -198,11 +204,9 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
     static class RatingListAdapter extends BaseAdapter {
 
         private final LayoutInflater mInflater;
-        private final Filter mFilter;
 
-        RatingListAdapter(Context context, Filter filter) {
+        RatingListAdapter(Context context) {
             mInflater = LayoutInflater.from(context);
-            mFilter = filter;
         }
 
         @Override
@@ -225,16 +229,12 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
             if (i == 0) {
                 View labelView = mInflater.inflate(R.layout.checked_list_item_label, null);
                 AQuery aq = new AQuery(labelView);
-                aq.id(android.R.id.text1).text("Any");
-                aq.id(R.id.checkBox).checked(mFilter.getRatings() == null
-                        || mFilter.getRatings().isEmpty());
+                aq.id(android.R.id.text1).text(R.string.any);
                 return labelView;
             } else {
                 View labelView = mInflater.inflate(R.layout.checked_list_item_rating, null);
                 AQuery aq = new AQuery(labelView);
                 aq.id(R.id.ratingBar).rating(getItem(i));
-                aq.id(R.id.checkBox).checked(mFilter.getRatings() != null
-                        && mFilter.getRatings().contains(i));
                 return labelView;
             }
         }

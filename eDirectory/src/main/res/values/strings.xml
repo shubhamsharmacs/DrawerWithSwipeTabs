@@ -108,6 +108,7 @@
     <string name="type_a_location">Type a location</string>
     <string name="search">Search</string>
     <string name="section">Section</string>
+    <string name="any">Any</string>
 
 
 </resources>
