@@ -9,6 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ratingBar"
+        android:clickable="false"
+        android:focusable="false"
         style="?android:ratingBarStyleIndicator"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true" />
@@ -17,7 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox"
-        android:checked="false"
+        android:clickable="false"
+        android:focusable="false"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true" />
 </RelativeLayout>
