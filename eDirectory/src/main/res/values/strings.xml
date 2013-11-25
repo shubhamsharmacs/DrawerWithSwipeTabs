@@ -8,6 +8,27 @@
         <item>Event</item>
     </string-array>
 
+    <!-- They are being used by calendar(s) -->
+    <string-array name="DAYS_WEEK_HEBREW">
+        <item>SUN</item>
+        <item>MON</item>
+        <item>TUE</item>
+        <item>WED</item>
+        <item>THU</item>
+        <item>FRI</item>
+        <item>SAT</item>
+    </string-array>
+
+    <string-array name="DAYS_WEEK_GREGORIAN">
+        <item>MON</item>
+        <item>TUE</item>
+        <item>WED</item>
+        <item>THU</item>
+        <item>FRI</item>
+        <item>SAT</item>
+        <item>SUN</item>
+    </string-array>
+
     <string name="no_reviews">No reviews add yet.\nAdd your voice to this conversation.</string>
     <string name="oops_something_went_wrong">Oops&#8230; something went wrong.</string>
     <string name="your_search_matched_no_results">Your search matched no results.</string>

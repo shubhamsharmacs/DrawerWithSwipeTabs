@@ -30,6 +30,7 @@ import com.arcasolutions.api.model.ClassifiedCategoryResult;
 import com.arcasolutions.api.model.DealCategoryResult;
 import com.arcasolutions.api.model.EventCategoryResult;
 import com.arcasolutions.api.model.ListingCategoryResult;
+import com.arcasolutions.ui.activity.event.EventActivity;
 import com.arcasolutions.util.NotificationHelper;
 import com.arcasolutions.util.Util;
 import com.google.android.gms.common.ConnectionResult;
@@ -153,7 +154,7 @@ public abstract class BaseActivity extends ActionBarActivity implements
         options.add(new NavItem(R.drawable.ic_business, R.string.drawerBusiness, CategoryResultActivity.class, buildCatExtras(ListingCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_tag, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_classifieds, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_events, R.string.drawerEvents, CategoryResultActivity.class, buildCatExtras(EventCategoryResult.class)));
+        options.add(new NavItem(R.drawable.ic_events, R.string.drawerEvents, EventActivity.class, null));
         options.add(new NavItem(R.drawable.ic_articles, R.string.drawerArticles, CategoryResultActivity.class, buildCatExtras(ArticleCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_favorites, R.string.drawerMyFavorites, MyFavoriteActivity.class, null));
         options.add(new NavItem(R.drawable.ic_settings, R.string.drawerSetting, SettingActivity.class, null));

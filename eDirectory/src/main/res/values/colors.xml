@@ -15,4 +15,10 @@
 
     <color name="appBackground">#f6f6f7</color>
 
+    <!-- calendar colors -->
+    <color name="calendar_bg_normal">#eee</color> <!-- the normal state of grid cell (day without event) -->
+    <color name="calendar_bg_events">#a9a9a9</color> <!-- color grid cell when has event -->
+    <color name="calendar_text_inmonth">#000</color> <!-- color of the text, when the cell is inside of current month -->
+    <color name="calendar_text_outmonth">#ccc</color> <!-- color of the text on days out of current month, starts/ends of days of calendar -->
+
 </resources>

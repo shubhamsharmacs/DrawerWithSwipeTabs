@@ -303,6 +303,11 @@ public class Client {
             return this;
         }
 
+        public Builder year(int year) {
+            mMap.put("year", Integer.toString(year));
+            return this;
+        }
+
         public <T extends BaseResult> T get(Class<T> clazz) throws Exception {
             T result = new Client().getResult(clazz, mMap);
             List results = result.getResults();
@@ -359,7 +364,14 @@ public class Client {
         }
 
         public static IappBuilder newAuthenticateFacebookBuilder(String uid, String email, String firstName, String lastName) {
-            IappBuilder builder = new IappBuilder(IAPP_URL + "/profile/facebookauth.json.php?uid={uid}&email={email}&first_name={first_name}&last_name={last_name}", Method.GET, IappTask.Service.ACCOUNT);
+            IappBuilder builder = new IappBuilder(IAPP_URL + "/profile/facebookauth.json.php" +
+                        "?uid={uid}" +
+                        "&email={email}" +
+                        "&first_name={first_name}" +
+                        "&last_name={last_name}",
+                    Method.GET,
+                    IappTask.Service.ACCOUNT);
+
             builder.put("uid", uid);
             builder.put("email", email);
             builder.put("first_name", firstName);
