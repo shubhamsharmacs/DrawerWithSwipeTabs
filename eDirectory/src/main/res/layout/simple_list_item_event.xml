@@ -42,7 +42,6 @@
         android:layout_toLeftOf="@id/eventImage" />
 
     <ImageView
-
         android:layout_marginLeft="@dimen/spacingMedium"
         android:layout_width="100dp"
         android:layout_height="80dp"

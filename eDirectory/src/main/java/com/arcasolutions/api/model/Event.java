@@ -20,6 +20,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @ApiModule(ModuleName.EVENT)
 @DatabaseTable(tableName = Database.Tables.EVENTS)
-public class Event extends Module implements IContactInfo, IGeoPoint {
+public class Event extends Module implements IContactInfo, IGeoPoint, Comparable<Event> {
 
     @JsonProperty(value = "event_ID")
     @DatabaseField(id = true, columnName = Database.EventsColumns.EVENT_ID)
@@ -212,4 +213,10 @@ public class Event extends Module implements IContactInfo, IGeoPoint {
             return new Event[i];
         }
     };
+
+    @Override
+    public int compareTo(Event event) {
+        if (getStartDate() == null || event.getStartDate() == null ) return 0;
+        return getStartDate().compareTo(event.getStartDate());
+    }
 }

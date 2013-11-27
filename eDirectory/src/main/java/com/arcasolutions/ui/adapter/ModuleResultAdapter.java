@@ -72,7 +72,7 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
             return getView((Deal) item, convertView, viewGroup);
 
         if (item instanceof Event)
-            return getView((Event) item, convertView, viewGroup);
+            return getView(mInflater, (Event) item, convertView, viewGroup);
 
         if (item instanceof Listing)
             return getView((Listing) item, convertView, viewGroup);
@@ -144,10 +144,10 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
     //
     // Event information
     //
-    public View getView(Event e, View convertView, ViewGroup viewGroup) {
+    public static View getView(LayoutInflater inflater, Event e, View convertView, ViewGroup viewGroup) {
         View v = convertView;
         if (v == null) {
-            v = mInflater.inflate(R.layout.simple_list_item_event, viewGroup, false);
+            v = inflater.inflate(R.layout.simple_list_item_event, viewGroup, false);
         }
 
         if (e != null) {

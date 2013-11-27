@@ -130,6 +130,9 @@
     <string name="search">Search</string>
     <string name="section">Section</string>
     <string name="any">Any</string>
+    <string name="event_tab_categories">Categories</string>
+    <string name="event_tab_calendar">Calendar</string>
+    <string name="event_tab_list">List</string>
 
 
 </resources>

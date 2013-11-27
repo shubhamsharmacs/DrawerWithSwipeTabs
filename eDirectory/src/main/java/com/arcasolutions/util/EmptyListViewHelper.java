@@ -75,7 +75,7 @@ public class EmptyListViewHelper {
 
     public View getProgressBar() {
         ProgressBar progressBar = new ProgressBar(mContext);
-        progressBar.setId(android.R.id.empty);
+        progressBar.setId(R.id.working);
         progressBar.setVisibility(View.GONE);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);

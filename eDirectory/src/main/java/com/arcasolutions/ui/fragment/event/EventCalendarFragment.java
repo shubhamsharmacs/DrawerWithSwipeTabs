@@ -2,7 +2,6 @@ package com.arcasolutions.ui.fragment.event;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +14,13 @@ import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.model.EventSchedule;
 import com.arcasolutions.api.model.EventScheduleResult;
 import com.arcasolutions.ui.adapter.EventCalendarAdapter;
+import com.arcasolutions.ui.fragment.BaseFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class EventCalendarFragment extends Fragment
+public class EventCalendarFragment extends BaseFragment
         implements EventCalendarAdapter.OnYearChangedListener,
             Client.RestListener<EventScheduleResult> {
 
@@ -155,16 +155,19 @@ public class EventCalendarFragment extends Fragment
                 .year(year)
                 .execAsync(this);
         mAdapter.setEventCalendar(new EventSchedule());
+        startProgress();
     }
 
     @Override
     public void onComplete(EventScheduleResult result) {
+        finishProgress();
         EventSchedule schedule = result.getCalendar();
         mAdapter.setEventCalendar(schedule);
     }
 
     @Override
     public void onFail(Exception ex) {
+        finishProgress();
         ex.printStackTrace();
     }
 

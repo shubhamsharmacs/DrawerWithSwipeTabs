@@ -16,11 +16,13 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.BaseCategoryResult;
 import com.arcasolutions.ui.adapter.CategoryResultAdapter;
+import com.arcasolutions.util.EmptyListViewHelper;
 import com.google.common.collect.Lists;
 
 import java.util.List;
 
-public class CategoryResultFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class CategoryResultFragment extends Fragment
+        implements AdapterView.OnItemClickListener {
 
     public static final String ARG_TYPE = "type";
     public static final String ARG_CATEGORY = "category";
@@ -28,9 +30,9 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
     private CategoryResultAdapter mAdapter;
     private final List<BaseCategory> mCategories = Lists.newArrayList();
     private OnCategorySelectionListener mListener;
-    private ProgressBar mProgressBar;
     private ViewGroup mRootView;
     private ListView mListView;
+    private EmptyListViewHelper mEmptyListViewHelper;
 
     public interface OnCategorySelectionListener {
         void onCategorySelected(BaseCategory category);
@@ -81,8 +83,6 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
 
         mAdapter = new CategoryResultAdapter(getActivity(), mCategories);
-        mProgressBar = new ProgressBar(getActivity());
-        mProgressBar.setId(android.R.id.empty);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
         mListView = (ListView) view.findViewById(android.R.id.list);
         mListView.setOnItemClickListener(this);
         mListView.setAdapter(mAdapter);
-
+        mEmptyListViewHelper = new EmptyListViewHelper(mListView, R.drawable.no_results);
         loadCategories();
     }
 
@@ -120,11 +120,13 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
                     mCategories.addAll(categories);
                     mAdapter.notifyDataSetChanged();
                 }
+                mEmptyListViewHelper.empty();
             }
 
             @Override
             public void onFail(Exception ex) {
                 ex.printStackTrace();
+                mEmptyListViewHelper.error();
             }
         };
 
@@ -134,10 +136,8 @@ public class CategoryResultFragment extends Fragment implements AdapterView.OnIt
             builder.fatherId(category.getId());
         }
 
-        mRootView.addView(mProgressBar);
-        mListView.setEmptyView(mProgressBar);
         builder.execAsync(mListener);
-
+        mEmptyListViewHelper.progress();
     }
 
 }

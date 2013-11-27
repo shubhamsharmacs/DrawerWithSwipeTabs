@@ -303,6 +303,16 @@ public class Client {
             return this;
         }
 
+        public Builder day(int day) {
+            mMap.put("day", day);
+            return this;
+        }
+
+        public Builder month(int month) {
+            mMap.put("month", month);
+            return this;
+        }
+
         public Builder year(int year) {
             mMap.put("year", Integer.toString(year));
             return this;
