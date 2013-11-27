@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.arcasolutions.ui.activity.AboutActivity$AboutFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/spacingLarge"
+        android:paddingBottom="@dimen/spacingLarge"
+        android:paddingLeft="@dimen/spacingMedium"
+        android:paddingRight="@dimen/spacingMedium">
+
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:layout_marginLeft="@dimen/spacingMedium"
+            android:layout_marginRight="@dimen/spacingMedium"
+            android:text="@string/about_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:layout_marginLeft="@dimen/spacingMedium"
+            android:layout_marginRight="@dimen/spacingMedium"
+            android:text="@string/app_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:layout_marginLeft="@dimen/spacingMedium"
+            android:layout_marginRight="@dimen/spacingMedium"
+            android:layout_marginTop="@dimen/spacingLarge"
+            android:text="@string/about_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/spacingLarge"
+            android:divider="@drawable/common_line"
+            android:showDividers="middle|end"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:textSize="@dimen/textSizeLarge"
+                android:layout_marginLeft="@dimen/spacingMedium"
+                android:layout_marginRight="@dimen/spacingMedium"
+                android:text="@string/get_in_touch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:onClick="onVisitWebsite"
+                android:clickable="true"
+                android:fontFamily="sans-serif-light"
+                android:background="@drawable/abc_list_selector_holo_light"
+                android:paddingTop="@dimen/spacingMedium"
+                android:paddingBottom="@dimen/spacingMedium"
+                android:paddingLeft="@dimen/spacingMedium"
+                android:paddingRight="@dimen/spacingMedium"
+                android:layout_width="match_parent"
+                android:text="@string/about_visit_website"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:onClick="onSendUsAnEmail"
+                android:clickable="true"
+                android:fontFamily="sans-serif-light"
+                android:background="@drawable/abc_list_selector_holo_light"
+                android:paddingTop="@dimen/spacingMedium"
+                android:paddingBottom="@dimen/spacingMedium"
+                android:paddingLeft="@dimen/spacingMedium"
+                android:paddingRight="@dimen/spacingMedium"
+                android:layout_width="match_parent"
+                android:text="@string/about_send_email"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:onClick="onCallUs"
+                android:clickable="true"
+                android:fontFamily="sans-serif-light"
+                android:background="@drawable/abc_list_selector_holo_light"
+                android:paddingTop="@dimen/spacingMedium"
+                android:paddingBottom="@dimen/spacingMedium"
+                android:paddingLeft="@dimen/spacingMedium"
+                android:paddingRight="@dimen/spacingMedium"
+                android:layout_width="match_parent"
+                android:text="@string/about_call_us"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

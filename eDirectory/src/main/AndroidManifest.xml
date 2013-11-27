@@ -72,6 +72,8 @@
 
         <activity android:name=".ui.activity.event.EventActivity"/>
 
+        <activity android:name=".ui.activity.AboutActivity"/>
+
         <activity android:name=".ui.activity.LoginActivity"
             android:launchMode="singleTop" />
 

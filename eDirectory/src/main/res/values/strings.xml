@@ -133,6 +133,20 @@
     <string name="event_tab_categories">Categories</string>
     <string name="event_tab_calendar">Calendar</string>
     <string name="event_tab_list">List</string>
+    <string name="about_title">eDirectory.com Mobile Application</string>
+    <string name="app_version">v8.1</string><string name="about_description">All data in this application comes direct from demodirectory.com.
+
+eDirectory (Our platform this application is running on) is available from edirectory.com, It\'s also a good place to get more information.
+
+If you want to know more, want to build you own directory or mobile application, then get in touch with us and see how we can help you, we\'re happy to help in any way we can.</string>
+    <string name="get_in_touch">Get in Touch</string>
+    <string name="about_visit_website">Visit Website</string>
+    <string name="about_send_email">Send us an Email</string>
+    <string name="about_call_us">Call Us</string>
+    <string name="about_website_url">http://www.demodirectory.com</string>
+    <string name="about_email_contact">sales@edirectory.com</string>
+    <string name="about_email_contact_subject">Contact</string>
+    <string name="about_telephone">1-800-630-4694</string>
 
 
 </resources>

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Account;
+import com.arcasolutions.ui.activity.AboutActivity;
 import com.arcasolutions.ui.activity.LoginActivity;
 import com.arcasolutions.util.AccountHelper;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -77,6 +78,11 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         switch (position) {
+            case SettingAdapter.ITEM_ABOUT_US:
+                Intent iAbout = new Intent(getActivity(), AboutActivity.class);
+                startActivity(iAbout);
+                break;
+
             case SettingAdapter.ITEM_ABOUT_LEGAL_NOTICES:
                 new AlertDialog.Builder(getActivity())
                         .setTitle(R.string.setting_legal_notices)
