@@ -24,6 +24,13 @@
 
         <include layout="@layout/simple_mapview_detail" />
 
+        <com.arcasolutions.view.DrawView
+            android:id="@+id/drawer"
+            android:background="#20ffffff"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </FrameLayout>
 
 

@@ -21,4 +21,7 @@
     <color name="calendar_text_inmonth">#000</color> <!-- color of the text, when the cell is inside of current month -->
     <color name="calendar_text_outmonth">#ccc</color> <!-- color of the text on days out of current month, starts/ends of days of calendar -->
 
+    <color name="map_draw_fill">#30335500</color>
+    <color name="map_draw_stroke">#FF335500</color>
+
 </resources>

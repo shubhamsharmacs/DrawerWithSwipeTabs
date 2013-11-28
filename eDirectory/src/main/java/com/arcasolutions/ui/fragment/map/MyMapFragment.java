@@ -1,11 +1,19 @@
 package com.arcasolutions.ui.fragment.map;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.RectF;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,23 +30,24 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.api.model.BaseResult;
-import com.arcasolutions.api.model.ClassifiedResult;
-import com.arcasolutions.api.model.DealResult;
-import com.arcasolutions.api.model.EventResult;
-import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.listing.ListingResultActivity;
 import com.arcasolutions.util.LocationUtil;
 import com.arcasolutions.util.Util;
+import com.arcasolutions.view.DrawView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.GroundOverlay;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.VisibleRegion;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
@@ -55,7 +64,8 @@ public class MyMapFragment extends Fragment implements
         GoogleMap.OnMarkerClickListener,
         GoogleMap.OnMapClickListener,
         View.OnClickListener,
-        AdapterView.OnItemSelectedListener {
+        AdapterView.OnItemSelectedListener,
+        DrawView.OnDrawListener {
 
     private BaseActivity mBaseActivity;
     private GoogleMap mMap;
@@ -67,6 +77,14 @@ public class MyMapFragment extends Fragment implements
     private Class<? extends BaseResult> mClass;
 
     private final Map<Marker, IGeoPoint> mListingMap = Maps.newHashMap();
+
+    private DrawView mDrawView;
+    private Polygon mMapPolygon;
+    private GroundOverlay mGroundOverlay;
+    private com.arcasolutions.graphics.Polygon mPolygon;
+    private LatLng mNearLeft;
+    private LatLng mFarRight;
+    private Polygon searchableArea;
 
     public MyMapFragment() {
     }
@@ -89,6 +107,8 @@ public class MyMapFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
 
+        mDrawView = (DrawView) rootView.findViewById(R.id.drawer);
+        mDrawView.setOnDrawListener(this);
 
         final View mapInfo = rootView.findViewById(R.id.mapInfoView);
         mapInfo.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -100,6 +120,8 @@ public class MyMapFragment extends Fragment implements
                 mMap.setPadding(0, 0, 0, h);
             }
         });
+
+
         return rootView;
     }
 
@@ -116,6 +138,7 @@ public class MyMapFragment extends Fragment implements
 
         AQuery aq = new AQuery(view);
         aq.id(R.id.buttonList).clicked(this);
+        aq.id(R.id.buttonDraw).clicked(this);
         aq.id(R.id.spinner).adapter(adapter).itemSelected(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.map);
@@ -144,6 +167,7 @@ public class MyMapFragment extends Fragment implements
         VisibleRegion visibleRegion = projection.getVisibleRegion();
         mSearchNearLeftLatLng = visibleRegion.nearLeft;
         mSearchFarRightLatLng = visibleRegion.farRight;
+        if (mPolygon != null) return;
         searchItems();
     }
 
@@ -152,6 +176,18 @@ public class MyMapFragment extends Fragment implements
         if (items == null) {
             mListingMap.clear();
             mMap.clear();
+        }
+
+        Projection projection = mMap.getProjection();
+        // Descarta itens localizados fora do poligono
+        if (mPolygon != null) {
+            final List<IGeoPoint> discart = Lists.newArrayList();
+            for (IGeoPoint p : items) {
+                if (!mPolygon.inside(projection.toScreenLocation(new LatLng(p.getLatitude(), p.getLongitude())))) {
+                    discart.add(p);
+                }
+            }
+            items.removeAll(discart);
         }
 
         // Ignore existing items
@@ -166,7 +202,9 @@ public class MyMapFragment extends Fragment implements
         // Remove unneeded items
         List<Marker> unneeded = Lists.newArrayList();
         for (Map.Entry<Marker, IGeoPoint> entry : mListingMap.entrySet()) {
-            if (!items.contains(entry.getValue()) && !ignore.contains(entry.getValue())) {
+            if ((!items.contains(entry.getValue()) && !ignore.contains(entry.getValue()))
+                    // Itens fora do poligono
+                    || (mPolygon != null && !mPolygon.inside(projection.toScreenLocation(entry.getKey().getPosition())))) {
                 unneeded.add(entry.getKey());
                 entry.getKey().remove();
             }
@@ -190,6 +228,28 @@ public class MyMapFragment extends Fragment implements
 
     private void searchItems() {
         if (mSearchFarRightLatLng == null || mSearchNearLeftLatLng == null) return;
+
+        double nearLeftLat = mSearchNearLeftLatLng.latitude;
+        double nearLeftLng = mSearchNearLeftLatLng.longitude;
+        double farRightLat = mSearchFarRightLatLng.latitude;
+        double farRightLng = mSearchFarRightLatLng.longitude;
+
+        // Se existing desenho no mapa, utilizar a área desenhada.
+        if (mPolygon != null) {
+            nearLeftLat = mNearLeft.latitude;
+            nearLeftLng = mNearLeft.longitude;
+            farRightLat = mFarRight.latitude;
+            farRightLng = mFarRight.longitude;
+        }
+
+        if (searchableArea != null) searchableArea.remove();
+        searchableArea = mMap.addPolygon(new PolygonOptions()
+            .strokeColor(Color.BLUE)
+            .strokeWidth(3)
+            .add(new LatLng(nearLeftLat, nearLeftLng))
+            .add(new LatLng(farRightLat, nearLeftLng))
+            .add(new LatLng(farRightLat, farRightLng))
+            .add(new LatLng(nearLeftLat, farRightLng)));
 
         Client.RestListener<BaseResult> mListener = new Client.RestListener<BaseResult>() {
             @Override
@@ -219,10 +279,10 @@ public class MyMapFragment extends Fragment implements
         Client.Builder builder = new Client.Builder(mClass);
         builder.searchBy(SearchBy.MAP)
                 .region(
-                        mSearchNearLeftLatLng.latitude,
-                        mSearchNearLeftLatLng.longitude,
-                        mSearchFarRightLatLng.latitude,
-                        mSearchFarRightLatLng.longitude);
+                        nearLeftLat,
+                        nearLeftLng,
+                        farRightLat,
+                        farRightLng);
 
         if (mFilter != null) {
             if (!TextUtils.isEmpty(mFilter.getKeyword())) {
@@ -270,6 +330,10 @@ public class MyMapFragment extends Fragment implements
                 //intent.putExtra(ListingResultActivity.EXTRA_ITEMS, items);
                 startActivity(intent);
                 break;
+
+            case R.id.buttonDraw:
+                onDrawClickButton();
+                break;
         }
     }
 
@@ -315,6 +379,102 @@ public class MyMapFragment extends Fragment implements
         if (getActivity() != null) {
             getActivity().setProgressBarIndeterminateVisibility(display);
         }
+    }
+
+    public void onDrawClickButton() {
+        boolean isMapDrawn = false;
+        if (mPolygon != null) {
+            mPolygon = null;
+        }
+
+        if (mMapPolygon != null) {
+            mMapPolygon.remove();
+            mMapPolygon = null;
+            isMapDrawn = true;
+        }
+
+        if (mGroundOverlay != null) {
+            mGroundOverlay.remove();
+            mGroundOverlay = null;
+            isMapDrawn = true;
+        }
+
+        boolean isDrawViewVisible = false;
+        if (mDrawView.getVisibility() != View.GONE) {
+            mDrawView.setVisibility(View.GONE);
+            isDrawViewVisible = true;
+        }
+
+        // Remove o desenha e refaz a pesquisa
+        if (isMapDrawn || isDrawViewVisible) {
+            searchItems();
+            new AQuery(getView())
+                    .id(R.id.buttonDraw)
+                    .image(R.drawable.ic_action_content_edit);
+            return;
+        }
+
+        mDrawView.setVisibility(View.VISIBLE);
+        new AQuery(getView())
+                .id(R.id.buttonDraw)
+                .image(R.drawable.ic_action_content_edit)
+                .getView().setPressed(true);
+
+    }
+
+    @Override
+    public void onDrawDone(List<Point> points, Bitmap ignored) {
+        if (points == null || ignored == null || points.isEmpty()) return;
+
+        Resources res = getResources();
+        int fillColor = res.getColor(R.color.map_draw_fill);
+        int strokeColor = res.getColor(R.color.map_draw_stroke);
+
+        int width = mDrawView.getWidth();
+        int height = mDrawView.getHeight();
+
+        Projection projection = mMap.getProjection();
+
+        List<LatLng> latLngs = Lists.newArrayList();
+        mPolygon = new com.arcasolutions.graphics.Polygon(points.size());
+
+        for (Point point : points) {
+            mPolygon.addPoint(point.x, point.y);
+            latLngs.add(projection.fromScreenLocation(point));
+        }
+        mPolygon.close();
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(fillColor);
+
+        new Canvas(bitmap).drawPath(mPolygon, paint);
+
+        VisibleRegion visibleRegion = mMap.getProjection().getVisibleRegion();
+        GroundOverlayOptions newarkMap = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromBitmap(bitmap))
+                .positionFromBounds(visibleRegion.latLngBounds);
+
+        mGroundOverlay = mMap.addGroundOverlay(newarkMap);
+        mMapPolygon = mMap.addPolygon(new PolygonOptions()
+                .addAll(latLngs)
+                .strokeWidth(3)
+                .strokeColor(strokeColor));
+
+        mDrawView.setVisibility(View.GONE);
+        mDrawView.clear();
+
+        RectF bounds = mPolygon.getBounds();
+        mNearLeft = projection.fromScreenLocation(new Point((int)bounds.left,  (int)bounds.bottom));
+        mFarRight = projection.fromScreenLocation(new Point((int)bounds.right, (int)bounds.top));
+
+        new AQuery(getView())
+                .id(R.id.buttonDraw)
+                .image(R.drawable.ic_action_content_discard)
+                .getView().setPressed(false);
+
+        searchItems();
     }
 }
 
