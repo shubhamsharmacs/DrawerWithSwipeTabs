@@ -2,6 +2,7 @@ package com.arcasolutions.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -58,6 +59,22 @@ public class MapActivity extends BaseActivity {
             dismissFilter();
             mMyMapFragment.setFilter(filter);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.map, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        boolean isFilterFragmentVisible = getSupportFragmentManager().findFragmentByTag("filter") != null;
+        MenuItem menuFilter = menu.findItem(R.id.action_filter);
+        menuFilter.setVisible(!isFilterFragmentVisible);
+        MenuItem menuCancel = menu.findItem(R.id.action_cancel);
+        menuCancel.setVisible(isFilterFragmentVisible);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

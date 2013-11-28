@@ -49,19 +49,12 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
 
         int sectionIndex = getArguments() != null
                 ? getArguments().getInt(ARG_FILTER_MODULE_INDEX)
                 : null;
         mFilter.setModuleIndex(sectionIndex);
         mFilterAdapter = new FilterAdapter(getActivity(), mFilter);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.map, menu);
     }
 
     @Override
