@@ -2,22 +2,30 @@ package com.arcasolutions.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.arcasolutions.R;
+import com.arcasolutions.api.model.BaseResult;
+import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.fragment.ModuleResultFragment;
 import com.arcasolutions.ui.fragment.map.Filter;
 import com.arcasolutions.ui.fragment.map.MyMapFilterFragment;
 import com.arcasolutions.ui.fragment.map.MyMapFragment;
 
-public class MapActivity extends BaseActivity {
+import java.util.ArrayList;
+
+public class MapActivity extends BaseActivity implements MyMapFragment.OnShowAsListListener, FragmentManager.OnBackStackChangedListener {
 
     private MyMapFragment mMyMapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
 
         mMyMapFragment = (MyMapFragment) getSupportFragmentManager().findFragmentByTag("map");
         if (mMyMapFragment == null) {
@@ -70,8 +78,11 @@ public class MapActivity extends BaseActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean isFilterFragmentVisible = getSupportFragmentManager().findFragmentByTag("filter") != null;
+        boolean isResultListFragmentVisible = getSupportFragmentManager().findFragmentByTag("list") != null;
+
         MenuItem menuFilter = menu.findItem(R.id.action_filter);
-        menuFilter.setVisible(!isFilterFragmentVisible);
+        menuFilter.setVisible(!isFilterFragmentVisible && !isResultListFragmentVisible);
+
         MenuItem menuCancel = menu.findItem(R.id.action_cancel);
         menuCancel.setVisible(isFilterFragmentVisible);
         return super.onPrepareOptionsMenu(menu);
@@ -91,5 +102,20 @@ public class MapActivity extends BaseActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onShowAsList(ArrayList<Module> result, Class<? extends BaseResult> clazz) {
+        ModuleResultFragment fragment = ModuleResultFragment.newInstance(clazz, result);
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.frame_content, fragment, "list")
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        supportInvalidateOptionsMenu();;
     }
 }

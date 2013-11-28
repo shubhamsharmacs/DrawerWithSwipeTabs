@@ -30,6 +30,7 @@ import com.arcasolutions.util.AbsListViewHelper;
 import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.util.Util;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,7 @@ public class ModuleResultFragment<T extends BaseResult>
 
     public static final String ARG_CATEGORY = "category";
     public static final String ARG_TYPE = "type";
+    public static final String ARG_RESULTS = "results";
 
     private static final String TAG = ModuleResultFragment.class.getSimpleName();
 
@@ -61,6 +63,7 @@ public class ModuleResultFragment<T extends BaseResult>
     private MenuItem mOrderByItem;
 
     private EmptyListViewHelper mEmptyHelper;
+    private boolean mIsFixedResults = false;
 
     // Default constructor
     public ModuleResultFragment() {
@@ -70,6 +73,15 @@ public class ModuleResultFragment<T extends BaseResult>
         final Bundle args = new Bundle();
         args.putParcelable(ARG_CATEGORY, category);
         args.putSerializable(ARG_TYPE, clazz);
+        final ModuleResultFragment<F> f = new ModuleResultFragment<F>();
+        f.setArguments(args);
+        return f;
+    }
+
+    public static <F extends BaseResult> ModuleResultFragment<F> newInstance(Class<F> clazz, ArrayList<Module> items) {
+        final Bundle args = new Bundle();
+        args.putSerializable(ARG_TYPE, clazz);
+        args.putParcelableArrayList(ARG_RESULTS, items);
         final ModuleResultFragment<F> f = new ModuleResultFragment<F>();
         f.setArguments(args);
         return f;
@@ -94,6 +106,11 @@ public class ModuleResultFragment<T extends BaseResult>
         if (args != null) {
             mType = (Class<T>) args.getSerializable(ARG_TYPE);
             mCatagory = args.getParcelable(ARG_CATEGORY);
+            List<Module> results = args.getParcelableArrayList(ARG_RESULTS);
+            if (results != null) {
+                mModules.addAll(results);
+                mIsFixedResults = true;
+            }
         }
     }
 
@@ -117,6 +134,8 @@ public class ModuleResultFragment<T extends BaseResult>
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+
+        if (mIsFixedResults) return;
 
         if (ArticleResult.class.equals(mType)) {
             inflater.inflate(R.menu.results_article, menu);
@@ -211,6 +230,7 @@ public class ModuleResultFragment<T extends BaseResult>
     }
 
     private void loadData() {
+        if (mIsFixedResults) return;
 
         Client.Builder builder = new Client.Builder(mType);
         builder.page(mPage);

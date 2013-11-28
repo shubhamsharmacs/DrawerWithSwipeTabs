@@ -1,5 +1,6 @@
 package com.arcasolutions.ui.fragment.map;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -13,10 +14,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -30,6 +28,7 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.api.model.BaseResult;
+import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.listing.ListingResultActivity;
 import com.arcasolutions.util.LocationUtil;
@@ -56,6 +55,8 @@ import com.google.common.collect.Maps;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -67,6 +68,10 @@ public class MyMapFragment extends Fragment implements
         AdapterView.OnItemSelectedListener,
         DrawView.OnDrawListener {
 
+    public interface OnShowAsListListener {
+        void onShowAsList(ArrayList<Module> result, Class<? extends BaseResult> clazz);
+    }
+
     private BaseActivity mBaseActivity;
     private GoogleMap mMap;
 
@@ -76,7 +81,7 @@ public class MyMapFragment extends Fragment implements
 
     private Class<? extends BaseResult> mClass;
 
-    private final Map<Marker, IGeoPoint> mListingMap = Maps.newHashMap();
+    private final Map<Marker, IGeoPoint> mModuleMap = Maps.newHashMap();
 
     private DrawView mDrawView;
     private Polygon mMapPolygon;
@@ -85,8 +90,17 @@ public class MyMapFragment extends Fragment implements
     private LatLng mNearLeft;
     private LatLng mFarRight;
     private Polygon searchableArea;
+    private OnShowAsListListener mListener;
 
     public MyMapFragment() {
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof OnShowAsListListener) {
+            mListener = (OnShowAsListListener) activity;
+        }
     }
 
     @Override
@@ -168,7 +182,7 @@ public class MyMapFragment extends Fragment implements
 
     private void updateMapMarkers(Collection<IGeoPoint> items) {
         if (items == null) {
-            mListingMap.clear();
+            mModuleMap.clear();
             mMap.clear();
         }
 
@@ -187,7 +201,7 @@ public class MyMapFragment extends Fragment implements
         // Ignore existing items
         List<IGeoPoint> ignore = Lists.newArrayList();
         for (IGeoPoint l : items) {
-            if (mListingMap.containsValue(l)) {
+            if (mModuleMap.containsValue(l)) {
                 ignore.add(l);
             }
         }
@@ -195,7 +209,7 @@ public class MyMapFragment extends Fragment implements
 
         // Remove unneeded items
         List<Marker> unneeded = Lists.newArrayList();
-        for (Map.Entry<Marker, IGeoPoint> entry : mListingMap.entrySet()) {
+        for (Map.Entry<Marker, IGeoPoint> entry : mModuleMap.entrySet()) {
             if ((!items.contains(entry.getValue()) && !ignore.contains(entry.getValue()))
                     // Itens fora do poligono
                     || (mPolygon != null && !mPolygon.inside(projection.toScreenLocation(entry.getKey().getPosition())))) {
@@ -204,7 +218,7 @@ public class MyMapFragment extends Fragment implements
             }
         }
         for (Marker m : unneeded) {
-            mListingMap.remove(m);
+            mModuleMap.remove(m);
         }
 
 
@@ -214,7 +228,7 @@ public class MyMapFragment extends Fragment implements
             Marker m = mMap.addMarker(new MarkerOptions()
                     .icon(BitmapDescriptorFactory.defaultMarker())
                     .position(latLng));
-            mListingMap.put(m, l);
+            mModuleMap.put(m, l);
         }
 
 
@@ -293,7 +307,7 @@ public class MyMapFragment extends Fragment implements
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        IGeoPoint item = mListingMap.get(marker);
+        IGeoPoint item = mModuleMap.get(marker);
         if (item != null) {
             AQuery aq = new AQuery(getView());
             aq.id(R.id.mapInfoView).gone();
@@ -316,13 +330,30 @@ public class MyMapFragment extends Fragment implements
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonList:
-                ArrayList<Parcelable> items = new ArrayList<Parcelable>();
-                for (Object i : mListingMap.values()) {
-                    items.add((Parcelable) i);
+                final Collection<IGeoPoint> result = mModuleMap.values();
+                if (mListener != null && result != null) {
+                    List<IGeoPoint> items = Lists.newArrayList(result);
+                    // Ordena por distancia
+                    Collections.sort(items, new Comparator<IGeoPoint>() {
+                        @Override
+                        public int compare(IGeoPoint p1, IGeoPoint p2) {
+                            double d1 = Util.distanceFromMe(p1.getLatitude(), p1.getLongitude());
+                            double d2 = Util.distanceFromMe(p2.getLatitude(), p2.getLongitude());
+
+                            return d1 < d2 ? -1 : (d1 > d2 ? 1 : 0);
+                        }
+                    });
+                    // Converte para module
+                    Collection<Module> modules = Collections2.transform(items, new Function<IGeoPoint, Module>() {
+                        @Override
+                        public Module apply(IGeoPoint point) {
+                            return (Module) point;
+                        }
+                    });
+
+                    mListener.onShowAsList(Lists.newArrayList(modules), mClass);
                 }
-                Intent intent = new Intent(getActivity(), ListingResultActivity.class);
-                //intent.putExtra(ListingResultActivity.EXTRA_ITEMS, items);
-                startActivity(intent);
+
                 break;
 
             case R.id.buttonDraw:
