@@ -47,7 +47,7 @@ public class EmptyListViewHelper {
     public void progress() {
         ViewGroup parent = (ViewGroup) mListView.getParent();
         if (parent != null) {
-            removeExistingEmptyView(parent);
+            removeExistingProgressView(parent);
             View emptyView = getProgressBar();
             parent.addView(emptyView);
             mListView.setEmptyView(emptyView);
@@ -62,6 +62,15 @@ public class EmptyListViewHelper {
             parent.addView(emptyView);
             mListView.setEmptyView(emptyView);
         }
+    }
+
+    private void removeExistingProgressView(ViewGroup parent) {
+        View workingView = parent.findViewById(R.id.working);
+        if (workingView != null) {
+            parent.removeView(workingView);
+        }
+        if (parent.findViewById(R.id.working) != null)
+            removeExistingProgressView(parent);
     }
 
     private void removeExistingEmptyView(ViewGroup parent) {
