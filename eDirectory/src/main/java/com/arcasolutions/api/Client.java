@@ -132,8 +132,8 @@ public class Client {
         String body = responseEntity.getBody();
         JSONObject jsonObject = new JSONObject(body);
 
-        boolean success = jsonObject.has("result")
-                ? jsonObject.getInt("result") == 0
+        boolean success = jsonObject.has("redeem_code")
+                ? !TextUtils.isEmpty(jsonObject.getString("redeem_code"))
                 : false;
 
         String redeemCode = jsonObject.has("redeem_code")

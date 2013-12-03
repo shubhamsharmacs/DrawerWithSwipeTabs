@@ -87,6 +87,9 @@ public class Deal extends Module implements IGeoPoint {
     @JsonProperty("redeem_code")
     private String redeemCode;
 
+    @JsonProperty("friendly_url")
+    private String friendlyUrl;
+
     public int getLevel() {
         return 0;
     }
@@ -124,6 +127,7 @@ public class Deal extends Module implements IGeoPoint {
         endDate = (Date) in.readSerializable();
         amount = in.readInt();
         redeemCode = in.readString();
+        friendlyUrl = in.readString();
     }
 
     @Override
@@ -152,6 +156,7 @@ public class Deal extends Module implements IGeoPoint {
         out.writeSerializable(endDate);
         out.writeInt(amount);
         out.writeString(redeemCode);
+        out.writeString(friendlyUrl);
     }
 
     public static final Creator<Deal> CREATOR

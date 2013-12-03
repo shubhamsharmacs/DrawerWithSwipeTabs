@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
@@ -26,6 +27,7 @@ import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.util.AccountHelper;
 import com.arcasolutions.util.FavoriteHelper;
 import com.arcasolutions.util.FmtUtil;
+import com.arcasolutions.util.RedeemHelper;
 
 import java.util.List;
 import java.util.Locale;
@@ -35,6 +37,7 @@ public class DealOverviewFragment extends Fragment implements Client.RestListene
     public static final String ARG_DEAL_ID = "dealId";
 
     private FavoriteHelper<Deal> mFavoriteHelper;
+    private RedeemHelper mRedeemHelper;
 
     public DealOverviewFragment() {
     }
@@ -57,18 +60,12 @@ public class DealOverviewFragment extends Fragment implements Client.RestListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFavoriteHelper = new FavoriteHelper<Deal>(getActivity(), Deal.class);
+        mRedeemHelper = RedeemHelper.from(this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_deal_overview, container, false);
-    }
-
-    public void showPopup(View v) {
-        PopupMenu popupMenu = new PopupMenu(getActivity(), v);
-        MenuInflater inflater = popupMenu.getMenuInflater();
-        inflater.inflate(R.menu.redeem_share, popupMenu.getMenu());
-        popupMenu.show();
     }
 
     public void showTerms(View v) {
@@ -109,15 +106,11 @@ public class DealOverviewFragment extends Fragment implements Client.RestListene
                 aq.id(R.id.dealOverviewFavorite).margin(0, 0, getResources().getDimension(R.dimen.spacingSmall), 0);
             }
 
-            if (TextUtils.isEmpty(d.getRedeemCode())) {
-                aq.id(R.id.redeemView).gone();
-            }
+            mRedeemHelper.init(R.id.redeemPlace, d);
 
             aq.id(R.id.dealOverviewTitle).text(d.getTitle());
-            aq.id(R.id.dealOverviewShareRedeemButton).clicked(this, "showPopup");
             aq.id(R.id.dealOverviewDescription).text(d.getDescription());
             aq.id(R.id.dealOverviewRatingBar).rating(d.getRating());
-            aq.id(R.id.dealOverviewRedeemCode).text(d.getRedeemCode());
             aq.id(R.id.dealOverviewReviews).text(String.format("%d reviews", d.getTotalReviews()));
             TextView originalPriceView = aq.id(R.id.dealOverviewOriginalPrice).text(String.format("$%.2f", d.getRealValue())).getTextView();
             originalPriceView.setPaintFlags(originalPriceView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); // tacha o texto
@@ -125,7 +118,7 @@ public class DealOverviewFragment extends Fragment implements Client.RestListene
             aq.id(R.id.dealOverviewStartDate).text(String.format(Locale.getDefault(), "%1$ta %1$td, %1$tY", d.getStartDate()));
             aq.id(R.id.dealOverviewEndDate).text(String.format(Locale.getDefault(), "%1$ta %1$td, %1$tY", d.getEndDate()));
             aq.id(R.id.dealOverviewRemain).text(Integer.toString(d.getAmount()));
-            aq.id(R.id.dealOverviewDiscount).text(String.format(Locale.getDefault(), "%1$d%% OFF", (int) ((1 - d.getDealValue() / d.getRealValue()) * 100)));
+            aq.id(R.id.dealOverviewDiscount).text(String.format(Locale.getDefault(), "%1$d%% OFF", (int) ((1 - (d.getDealValue() / d.getRealValue())) * 100)) );
             aq.id(R.id.dealOverviewTerms).tag(d.getConditions()).clicked(this, "showTerms");
 
             final CheckBox favoriteCheckBox = aq.id(R.id.dealOverviewFavorite).getCheckBox();
@@ -145,6 +138,7 @@ public class DealOverviewFragment extends Fragment implements Client.RestListene
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        mRedeemHelper.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

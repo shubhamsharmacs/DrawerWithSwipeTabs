@@ -28,8 +28,14 @@ public class Account implements Parcelable {
     @DatabaseField
     private String lastName;
 
+    public String getUsername() {
+        return isProfile()
+                ? email
+                : String.format("facebook::%1$s%2$s_%3$s", firstName, lastName, uid);
+    }
+
     public boolean isFacebook() {
-        return TextUtils.isEmpty(uid);
+        return !TextUtils.isEmpty(uid);
     }
 
     public boolean isProfile() {

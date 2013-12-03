@@ -181,69 +181,7 @@
                 android:id="@+id/redeemPlace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/remainLabel">
-
-                <Button
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/spacingMedium"
-                    android:layout_marginBottom="@dimen/spacingMedium"
-                    style="@style/blueButtonStyle"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/redeem_deal"
-                    android:id="@id/listingOverviewCheckIn" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/spacingMedium"
-                    android:paddingBottom="@dimen/spacingMedium"
-                    android:id="@+id/redeemView"
-                    android:layout_alignParentEnd="false"
-                    style="@style/RedeemBox">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/deal_redeemed"
-                        android:id="@+id/textView6"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true" />
-
-                    <TextView
-                        style="@style/dealDetailRedeemText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/please_use_the_following_code"
-                        android:id="@+id/textView7"
-                        android:layout_below="@+id/textView6"
-                        android:layout_centerHorizontal="true"
-                        android:paddingTop="@dimen/spacingSmall"
-                        android:paddingBottom="@dimen/spacingSmall" />
-
-                    <TextView
-                        style="@style/dealDetailRedeemTextCode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="A45rtS98B"
-                        android:id="@id/dealOverviewRedeemCode"
-                        android:layout_below="@+id/textView7"
-                        android:layout_centerHorizontal="true" />
-
-                    <ImageButton
-                        android:layout_marginTop="-8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/dealOverviewShareRedeemButton"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentRight="true"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/ic_action_core_overflow" />
-                </RelativeLayout>
-
-            </FrameLayout>
-
-
+                android:layout_below="@+id/remainLabel" />
 
             <TextView
                 style="@style/listingOverviewTextSummary"
