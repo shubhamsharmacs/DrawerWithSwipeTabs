@@ -52,7 +52,12 @@ public class NotificationHelper implements Client.RestListener<NotificationResul
 
             Notification notification = null;
             for (Notification n : notifications) {
-                notification =  dao.createIfNotExists(n);
+                notification = dao.queryForSameId(n);
+                if (notification == null) {
+                    notification =  dao.createIfNotExists(n);
+                } else {
+                    notification = null;
+                }
             }
 
             if (notification != null) {
