@@ -1,6 +1,5 @@
 package com.arcasolutions.ui.activity.listing;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
@@ -10,12 +9,15 @@ import android.view.View;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.ReviewModule;
+import com.arcasolutions.api.model.Deal;
+import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.DescriptionFragment;
 import com.arcasolutions.ui.fragment.GalleryFragment;
 import com.arcasolutions.ui.fragment.ReviewListFragment;
+import com.arcasolutions.ui.fragment.listing.DealOverviewFragment;
 import com.arcasolutions.ui.fragment.listing.ListingOverviewFragment;
 
 import java.util.List;
@@ -23,6 +25,8 @@ import java.util.List;
 public class ListingDetailActivity extends ActionBarActivity {
 
     public static final String EXTRA_ID = "id";
+    public static final String EXTRA_IS_DEAL = "isDeal";
+    private boolean mIsDeal = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +34,16 @@ public class ListingDetailActivity extends ActionBarActivity {
         setContentView(R.layout.activity_detail);
 
 
+        mIsDeal = getIntent().getBooleanExtra(EXTRA_IS_DEAL, false);
         long id = getIntent().getLongExtra(EXTRA_ID, 0);
         if (id > 0) {
-            loadDetail(id);
+            loadListingDetail(id);
         }
+
+
     }
 
-    private void loadDetail(long id) {
+    private void loadListingDetail(long id) {
         new Client.Builder(ListingResult.class).id(id)
                 .execAsync(new Client.RestListener<ListingResult>() {
                     @Override
@@ -56,6 +63,7 @@ public class ListingDetailActivity extends ActionBarActivity {
 
     private void setupFragments(Listing listing) {
 
+        int selectedTabIndex = 0;
         DetailFragmentPagerAdapter adapter = new DetailFragmentPagerAdapter(this);
 
         // Adds tab Overview
@@ -70,6 +78,12 @@ public class ListingDetailActivity extends ActionBarActivity {
         ReviewListFragment reviewListFragment = ReviewListFragment.newInstance(listing.getId(), ReviewModule.LISTING);
         adapter.add(getString(R.string.tab_reviews), reviewListFragment.getClass(), reviewListFragment.getArguments());
 
+        if (listing.getDealId() != 0) {
+            DealOverviewFragment dealOverviewFragment = DealOverviewFragment.newInstance(listing.getDealId());
+            adapter.add(getString(R.string.tab_deal), dealOverviewFragment.getClass(), dealOverviewFragment.getArguments());
+            selectedTabIndex = mIsDeal ? 3 : selectedTabIndex;
+        }
+
         // Adds tab gallery
         GalleryFragment galleryFragment = GalleryFragment.newInstance(listing.getIGallery());
         adapter.add(getString(R.string.tab_gallery), ((Object) galleryFragment).getClass(), galleryFragment.getArguments());
@@ -83,6 +97,7 @@ public class ListingDetailActivity extends ActionBarActivity {
         pager.setAdapter(adapter);
         pager.setVisibility(View.VISIBLE);
         pager.setOffscreenPageLimit(adapter.getCount());
+        pager.setCurrentItem(selectedTabIndex);
 
     }
 }

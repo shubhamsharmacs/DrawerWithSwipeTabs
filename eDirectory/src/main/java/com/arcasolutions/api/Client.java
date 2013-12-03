@@ -242,6 +242,11 @@ public class Client {
             return this;
         }
 
+        public Builder accountId(long id) {
+            mMap.put("account_id", Long.toString(id));
+            return this;
+        }
+
         public Builder region(double nearLeftLatitude,
                               double nearLeftLongitude,
                               double farRightLatitude,

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.arcasolutions.ui.fragment.DealOverviewFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/AppBackground">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/common_line"
+        android:showDividers="middle"
+        android:padding="@dimen/spacingMedium">
+
+        <RelativeLayout
+            android:layout_marginBottom="@dimen/spacingMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:id="@id/dealOverviewImage"
+                android:layout_marginBottom="@dimen/spacingMedium" />
+
+            <TextView
+                style="@style/listingOverviewTextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Annual Rock Festival Agora vou colocar um titulo enorme para ter certeza que não está quebrando o layout"
+                android:id="@id/dealOverviewTitle"
+                android:layout_below="@id/dealOverviewImage"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/dealOverviewFavorite"
+                android:layout_marginRight="@dimen/spacingSmall" />
+
+            <TextView
+                style="@style/listingOverviewTextReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                tools:text="4 reviews"
+                android:id="@id/dealOverviewReviews"
+                android:layout_toRightOf="@id/dealOverviewRatingBar"
+                android:layout_marginRight="@dimen/spacingMedium"
+                android:layout_alignParentBottom="true" />
+
+            <CheckBox
+                style="@style/heartCheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@id/dealOverviewFavorite"
+                android:checked="false"
+                android:layout_below="@id/dealOverviewImage"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:layout_marginTop="-30dp" />
+
+            <TextView
+                android:textSize="@dimen/textSizeMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="30% OFF"
+                android:background="#90000000"
+                android:textColor="#fff"
+                android:padding="4dp"
+                android:id="@id/dealOverviewDiscount"
+                android:layout_alignBottom="@id/dealOverviewImage"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                style="@style/dealDetailOriginalPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginRight="@dimen/spacingSmall"
+                tools:text="$30,00"
+                android:id="@id/dealOverviewOriginalPrice"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/dealOverviewTitle"
+                android:gravity="bottom"
+                android:layout_marginTop="@dimen/spacingSmall"
+                android:layout_marginBottom="@dimen/spacingSmall" />
+
+            <RatingBar
+                style="?android:ratingBarStyleSmall"
+                tools:rating="4"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:id="@id/dealOverviewRatingBar"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/dealOverviewOriginalPrice" />
+
+            <TextView
+                style="@style/dealDetailPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                tools:text="$20,00"
+                android:id="@id/dealOverviewDealPrice"
+                android:gravity="bottom"
+                android:layout_alignTop="@id/dealOverviewOriginalPrice"
+                android:layout_toRightOf="@id/dealOverviewOriginalPrice" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/spacingMedium"
+            android:layout_marginBottom="@dimen/spacingMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/event_label_started"
+                android:id="@+id/startDateLabel"
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:layout_marginBottom="@dimen/spacingMedium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Jun 01, 2013"
+                android:id="@id/dealOverviewStartDate"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/startDateLabel"
+                style="@style/checkinResultTextDate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/event_date_separator"
+                android:id="@+id/dateDivider"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@id/dealOverviewStartDate"
+                android:layout_marginLeft="@dimen/spacingMedium"
+                android:layout_marginRight="@dimen/spacingMedium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/event_label_expires"
+                android:id="@+id/textView3"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/dateDivider"
+                android:layout_marginRight="@dimen/spacingSmall" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Jun 20, 2013"
+                android:id="@id/dealOverviewEndDate"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/textView3"
+                style="@style/checkinResultTextDate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/event_label_deals_remain"
+                android:id="@+id/remainLabel"
+                android:layout_below="@+id/startDateLabel"
+                android:layout_marginRight="@dimen/spacingSmall" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="25"
+                android:id="@id/dealOverviewRemain"
+                android:layout_above="@+id/redeemPlace"
+                android:layout_toRightOf="@+id/remainLabel"
+                style="@style/checkinResultTextDate" />
+
+            <FrameLayout
+                android:id="@+id/redeemPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/remainLabel">
+
+                <Button
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacingMedium"
+                    android:layout_marginBottom="@dimen/spacingMedium"
+                    style="@style/blueButtonStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/redeem_deal"
+                    android:id="@id/listingOverviewCheckIn" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/spacingMedium"
+                    android:paddingBottom="@dimen/spacingMedium"
+                    android:id="@+id/redeemView"
+                    android:layout_alignParentEnd="false"
+                    style="@style/RedeemBox">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/deal_redeemed"
+                        android:id="@+id/textView6"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        style="@style/dealDetailRedeemText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/please_use_the_following_code"
+                        android:id="@+id/textView7"
+                        android:layout_below="@+id/textView6"
+                        android:layout_centerHorizontal="true"
+                        android:paddingTop="@dimen/spacingSmall"
+                        android:paddingBottom="@dimen/spacingSmall" />
+
+                    <TextView
+                        style="@style/dealDetailRedeemTextCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="A45rtS98B"
+                        android:id="@id/dealOverviewRedeemCode"
+                        android:layout_below="@+id/textView7"
+                        android:layout_centerHorizontal="true" />
+
+                    <ImageButton
+                        android:layout_marginTop="-8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dealOverviewShareRedeemButton"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_action_core_overflow" />
+                </RelativeLayout>
+
+            </FrameLayout>
+
+
+
+            <TextView
+                style="@style/listingOverviewTextSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Lorem ipsum, pitsumily in on the verily we did fly to the  place of the people that were doing  soom-stuff we did not  quite understand, etc etc. Lorem ipsum, pitsumily in on the  verily we did fly to the place of the people that were doing  soom-stuff we did not quite understand, etc etc. Lorem ipsum, pitsumily in on the verily we did fly to the  place of the people that were doing  soom-stuff we did not  quite understand, etc etc. Lorem ipsum, pitsumily in on the  verily we did fly to the place of the people that were doing  soom-stuff we did not quite understand, etc etc."
+                android:id="@id/dealOverviewDescription"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="@dimen/spacingMedium"
+                android:layout_below="@+id/redeemPlace" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@id/dealOverviewTerms"
+            android:paddingTop="@dimen/spacingMedium"
+            android:paddingBottom="@dimen/spacingMedium"
+            android:clickable="true"
+            android:background="@drawable/abc_list_selector_holo_light"
+            android:gravity="center_vertical"
+            android:text="@string/terms_and_conditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_arrow_black"
+            android:layout_marginTop="@dimen/spacingMedium" />
+
+
+
+    </LinearLayout>
+</ScrollView>

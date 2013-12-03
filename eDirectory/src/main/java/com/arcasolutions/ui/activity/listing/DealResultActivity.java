@@ -33,6 +33,7 @@ public class DealResultActivity extends BaseActivity implements ModuleResultFrag
         if (module != null) {
             Intent intent = new Intent(this, ListingDetailActivity.class);
             intent.putExtra(ListingDetailActivity.EXTRA_ID, ((Deal)module).getListingId());
+            intent.putExtra(ListingDetailActivity.EXTRA_IS_DEAL, true);
             startActivity(intent);
         }
     }

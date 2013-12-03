@@ -138,6 +138,33 @@
         <item name="android:textColor">@color/textColorExtras</item>
     </style>
 
+    <!-- Deal Detail -->
+    <style name="dealDetailOriginalPriceText" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="dealDetailPriceText" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+        <item name="android:textColor">@color/textColorExtras</item>
+    </style>
+
+    <style name="dealDetailRedeemText" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeMedium</item>
+        <item name="android:textColor">@color/textColorExtras</item>
+    </style>
+
+    <style name="dealDetailRedeemTextCode" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/textSizeExtraLarge</item>
+        <item name="android:textColor">@color/textColorExtras</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
     <!-- Listing Result -->
 
     <style name="listingResultTextTitle" parent="@android:style/TextAppearance.Small">
@@ -460,5 +487,12 @@
         <item name="android:background">#eee</item>
     </style>
     <!-- /calendar -->
+
+    <!-- Redeem -->
+    <style name="RedeemBox">
+        <item name="android:background">@drawable/background_redeem</item>
+        <item name="android:layout_marginTop">@dimen/spacingLarge</item>
+        <item name="android:layout_marginBottom">@dimen/spacingLarge</item>
+    </style>
 
 </resources>

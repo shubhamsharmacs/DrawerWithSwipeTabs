@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Article;
 import com.arcasolutions.api.model.Classified;
+import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.Module;
@@ -37,9 +38,10 @@ public class MyFavoriteActivity extends BaseActivity implements ModuleFavoriteFr
     @Override
     public void onModuleSelected(Module module, int position, long id) {
         if (module != null) {
-            if (module instanceof Listing) {
+            if (module instanceof Listing || module instanceof Deal) {
                 Intent intent = new Intent(this, ListingDetailActivity.class);
                 intent.putExtra(ListingDetailActivity.EXTRA_ID, module.getId());
+                intent.putExtra(ListingDetailActivity.EXTRA_IS_DEAL, module instanceof Deal);
                 startActivity(intent);
             } else if (module instanceof Article) {
                 Intent intent = new Intent(this, ArticleDetailActivity.class);

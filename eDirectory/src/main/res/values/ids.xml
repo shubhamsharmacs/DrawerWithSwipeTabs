@@ -54,6 +54,24 @@
     <item type="id" name="listingDealBadge" />
     <item type="id" name="listingImage" />
 
+    <!-- Deal Overview IDs -->
+    <item type="id" name="dealOverviewImage" />
+    <item type="id" name="dealOverviewTitle" />
+    <item type="id" name="dealOverviewOriginalPrice" />
+    <item type="id" name="dealOverviewDealPrice" />
+    <item type="id" name="dealOverviewRatingBar" />
+    <item type="id" name="dealOverviewReviews" />
+    <item type="id" name="dealOverviewFavorite" />
+    <item type="id" name="dealOverviewDiscount" />
+    <item type="id" name="dealOverviewStartDate" />
+    <item type="id" name="dealOverviewEndDate" />
+    <item type="id" name="dealOverviewRemain" />
+    <item type="id" name="dealOverviewDescription" />
+    <item type="id" name="dealOverviewRedeemButton" />
+    <item type="id" name="dealOverviewRedeemCode" />
+    <item type="id" name="dealOverviewShareRedeemButton" />
+    <item type="id" name="dealOverviewTerms" />
+
     <!--   Listing Overview IDs -->
     <item type="id" name="listingOverviewImage" />
     <item type="id" name="listingOverviewTitle" />

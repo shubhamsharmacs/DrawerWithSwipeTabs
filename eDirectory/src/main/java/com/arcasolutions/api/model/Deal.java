@@ -2,13 +2,15 @@ package com.arcasolutions.api.model;
 
 import android.os.Parcel;
 
+import com.arcasolutions.api.deserializer.SimpleDateDeserializer;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.database.Database;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.collect.Maps;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.Date;
 import java.util.Map;
 
 import lombok.Data;
@@ -68,6 +70,23 @@ public class Deal extends Module implements IGeoPoint {
     @JsonProperty("total_reviews")
     private int totalReviews;
 
+    @JsonProperty("long_description")
+    private String description;
+
+    @JsonProperty("start_date")
+    @JsonDeserialize(using = SimpleDateDeserializer.class)
+    private Date startDate;
+
+    @JsonProperty("end_date")
+    @JsonDeserialize(using = SimpleDateDeserializer.class)
+    private Date endDate;
+
+    @JsonProperty("amount")
+    private int amount;
+
+    @JsonProperty("redeem_code")
+    private String redeemCode;
+
     public int getLevel() {
         return 0;
     }
@@ -100,6 +119,11 @@ public class Deal extends Module implements IGeoPoint {
         conditions = in.readString();
         summary = in.readString();
         totalReviews = in.readInt();
+        description = in.readString();
+        startDate = (Date) in.readSerializable();
+        endDate = (Date) in.readSerializable();
+        amount = in.readInt();
+        redeemCode = in.readString();
     }
 
     @Override
@@ -123,6 +147,11 @@ public class Deal extends Module implements IGeoPoint {
         out.writeString(conditions);
         out.writeString(summary);
         out.writeInt(totalReviews);
+        out.writeString(description);
+        out.writeSerializable(startDate);
+        out.writeSerializable(endDate);
+        out.writeInt(amount);
+        out.writeString(redeemCode);
     }
 
     public static final Creator<Deal> CREATOR

@@ -147,6 +147,15 @@ If you want to know more, want to build you own directory or mobile application,
     <string name="about_email_contact">sales@edirectory.com</string>
     <string name="about_email_contact_subject">Contact</string>
     <string name="about_telephone">1-800-630-4694</string>
+    <string name="tab_deal">DEAL</string>
+    <string name="event_label_started">Started:</string>
+    <string name="event_date_separator">/</string>
+    <string name="event_label_expires">Expires:</string>
+    <string name="event_label_deals_remain">Deals left:</string>
+    <string name="redeem_deal">Redeem Deal</string>
+    <string name="deal_redeemed">DEAL REDEEMED</string>
+    <string name="please_use_the_following_code">Please use the following code</string>
+    <string name="terms_and_conditions">Terms and conditions</string>
 
 
 </resources>
