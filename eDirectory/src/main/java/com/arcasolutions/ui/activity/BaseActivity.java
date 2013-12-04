@@ -31,6 +31,7 @@ import com.arcasolutions.api.model.DealCategoryResult;
 import com.arcasolutions.api.model.EventCategoryResult;
 import com.arcasolutions.api.model.ListingCategoryResult;
 import com.arcasolutions.ui.activity.event.EventActivity;
+import com.arcasolutions.util.BannerHelper;
 import com.arcasolutions.util.NotificationHelper;
 import com.arcasolutions.util.Util;
 import com.google.android.gms.common.ConnectionResult;
@@ -108,10 +109,13 @@ public abstract class BaseActivity extends ActionBarActivity implements
      */
     boolean mUpdatesRequested = true;
 
+    private BannerHelper mBannerHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mBannerHelper = new BannerHelper(this);
 
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
@@ -216,6 +220,8 @@ public abstract class BaseActivity extends ActionBarActivity implements
     @Override
     public void onStop() {
 
+        mBannerHelper.onStop();
+
         // If the client is connected
         if (mLocationClient.isConnected()) {
             stopPeriodicUpdates();
@@ -247,6 +253,8 @@ public abstract class BaseActivity extends ActionBarActivity implements
     public void onStart() {
 
         super.onStart();
+
+        mBannerHelper.onStart();
 
         /*
          * Connect the client. Don't re-start any requests here;

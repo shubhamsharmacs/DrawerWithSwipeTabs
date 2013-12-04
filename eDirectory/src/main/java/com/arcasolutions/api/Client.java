@@ -51,7 +51,7 @@ import java.util.Map;
 
 public class Client {
 
-    private static final String BASE_URL = "http://demodirectory.com";
+    private static final String BASE_URL = "http://demodirectory-nextversion-design.basecode.arcasolutions.com";
 
     private static final String API_URL = BASE_URL + "/API/api2.php";
     private static final String IAPP_URL = BASE_URL + "/iapp/m6400";
@@ -199,6 +199,7 @@ public class Client {
         Class mClass;
 
         public Builder(Class<? extends BaseResult> clazz) {
+            mMap.put("device", "android");
             mClass = clazz;
 
             if (mClass == null)
@@ -224,6 +225,10 @@ public class Client {
                 throw new IllegalArgumentException("ApiResource value can not be null");
 
             mMap.put("resource", resource.toString());
+
+            if (Resource.AD.equals(resource)) {
+                mMap.put("qtd", "100");
+            }
 
             Location myLocation = Util.getMyLocation();
             if (myLocation != null) {

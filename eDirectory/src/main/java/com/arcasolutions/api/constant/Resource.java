@@ -16,7 +16,8 @@ public enum Resource {
     MODULES_CONF("modulesConf"),
     EDIRECTORY_CONF("getConf"),
     NOTIFICATION("notification"),
-    CHECKIN("checkin");
+    CHECKIN("checkin"),
+    AD("advert");
 
     private String val;
 
