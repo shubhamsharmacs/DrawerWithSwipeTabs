@@ -16,7 +16,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:ellipsize="end"
-        android:lines="1" />
+        android:lines="1"
+        android:layout_toLeftOf="@id/articleImage" />
 
     <TextView
         style="@style/articleResultTextBy"
@@ -45,5 +46,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="@dimen/spacingMedium" />
 </RelativeLayout>
