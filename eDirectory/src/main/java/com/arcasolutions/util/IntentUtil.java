@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.ShareCompat;
+import android.text.TextUtils;
 
 public final class IntentUtil {
 
@@ -27,6 +28,18 @@ public final class IntentUtil {
             .setSubject(subject)
             .setHtmlText(message)
             .startChooser();
+    }
+
+    public static Intent share(String message, String friendlyUrl) {
+        if (TextUtils.isEmpty(message)) message = "";
+        if (!TextUtils.isEmpty(friendlyUrl)) message += " " + friendlyUrl;
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, message);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, message + " " + friendlyUrl);
+        shareIntent.putExtra("message", message);
+        return shareIntent;
     }
 
 }

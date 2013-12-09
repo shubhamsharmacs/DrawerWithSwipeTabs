@@ -85,6 +85,7 @@ public class BannerHelper implements Client.RestListener<AdResult> {
             AQuery aq = new AQuery(bannerView);
             aq.id(android.R.id.icon1).tag(ad).image(ad.getImageUrl()).clicked(this, "onOpenUrl");
             aq.id(android.R.id.icon2).image(R.drawable.banner_closer).clicked(this, "onCloseBanner");
+            removeBanner();
             mBannerPlace.addView(bannerView);
         } else {
             new Client.Builder(AdResult.class)

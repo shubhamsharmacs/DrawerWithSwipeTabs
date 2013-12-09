@@ -14,12 +14,14 @@ import android.widget.CompoundButton;
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Article;
+import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.util.FavoriteHelper;
+import com.arcasolutions.util.IntentUtil;
 import com.google.common.base.Charsets;
 
 import java.util.Locale;
 
-public class ArticleOverviewFragment extends Fragment {
+public class ArticleOverviewFragment extends BaseFragment {
 
     public static final String ARG_ARTICLE = "article";
     private FavoriteHelper<Article> mFavoriteHelper;
@@ -58,6 +60,7 @@ public class ArticleOverviewFragment extends Fragment {
 
         final Article a = getShownArticle();
         if (a != null) {
+            doShare(IntentUtil.share(a.getName(), a.getFriendlyUrl()));
             mFavoriteHelper.updateFavorite(a);
             AQuery aq = new AQuery(view);
             aq.id(R.id.articleOverviewImage).image(a.getImageUrl(), true, true);

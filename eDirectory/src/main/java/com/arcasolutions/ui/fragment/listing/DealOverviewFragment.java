@@ -24,15 +24,17 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.DealResult;
+import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.util.AccountHelper;
 import com.arcasolutions.util.FavoriteHelper;
 import com.arcasolutions.util.FmtUtil;
+import com.arcasolutions.util.IntentUtil;
 import com.arcasolutions.util.RedeemHelper;
 
 import java.util.List;
 import java.util.Locale;
 
-public class DealOverviewFragment extends Fragment implements Client.RestListener<BaseResult> {
+public class DealOverviewFragment extends BaseFragment implements Client.RestListener<BaseResult> {
 
     public static final String ARG_DEAL_ID = "dealId";
 
@@ -97,6 +99,8 @@ public class DealOverviewFragment extends Fragment implements Client.RestListene
 
     private void populate(final Deal d) {
         if (d != null) {
+            doShare(IntentUtil.share(d.getTitle(), d.getFriendlyUrl()));
+
             mFavoriteHelper.updateFavorite(d);
 
             AQuery aq = new AQuery(getView());

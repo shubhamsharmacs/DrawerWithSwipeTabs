@@ -12,12 +12,14 @@ import android.widget.CompoundButton;
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Classified;
+import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.ui.fragment.ContactInfoFragment;
 import com.arcasolutions.util.FavoriteHelper;
+import com.arcasolutions.util.IntentUtil;
 
 import java.util.Locale;
 
-public class ClassifiedOverviewFragment extends Fragment {
+public class ClassifiedOverviewFragment extends BaseFragment {
 
     public static final String ARG_CLASSIFIED = "classified";
     private FavoriteHelper<Classified> mFavoriteHelper;
@@ -56,6 +58,7 @@ public class ClassifiedOverviewFragment extends Fragment {
 
         final Classified c = getShownClassified();
         if (c != null) {
+            doShare(IntentUtil.share(c.getName(), c.getFriendlyUrl()));
             mFavoriteHelper.updateFavorite(c);
 
             AQuery aq = new AQuery(view);

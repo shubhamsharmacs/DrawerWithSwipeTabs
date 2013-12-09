@@ -12,12 +12,14 @@ import android.widget.CompoundButton;
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Event;
+import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.ui.fragment.ContactInfoFragment;
 import com.arcasolutions.util.FavoriteHelper;
+import com.arcasolutions.util.IntentUtil;
 
 import java.util.Locale;
 
-public class EventOverviewFragment extends Fragment {
+public class EventOverviewFragment extends BaseFragment {
 
     public static final String ARG_EVENT = "event";
     private FavoriteHelper<Event> mFavoriteHelper;
@@ -56,6 +58,7 @@ public class EventOverviewFragment extends Fragment {
 
         final Event e = getShownEvent();
         if (e != null) {
+            doShare(IntentUtil.share(e.getTitle(), e.getFriendlyUrl()));
             mFavoriteHelper.updateFavorite(e);
 
             AQuery aq = new AQuery(view);
