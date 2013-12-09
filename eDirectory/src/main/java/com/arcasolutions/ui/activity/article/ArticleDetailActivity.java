@@ -11,13 +11,14 @@ import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Article;
 import com.arcasolutions.api.model.ArticleResult;
+import com.arcasolutions.ui.activity.SecondLevelActivity;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.GalleryFragment;
 import com.arcasolutions.ui.fragment.article.ArticleOverviewFragment;
 
 import java.util.List;
 
-public class ArticleDetailActivity extends ActionBarActivity {
+public class ArticleDetailActivity extends SecondLevelActivity {
 
     public static final String EXTRA_ID = "id";
 

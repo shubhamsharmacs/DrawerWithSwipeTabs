@@ -11,6 +11,7 @@ import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.EventResult;
+import com.arcasolutions.ui.activity.SecondLevelActivity;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.DescriptionFragment;
 import com.arcasolutions.ui.fragment.GalleryFragment;
@@ -18,7 +19,7 @@ import com.arcasolutions.ui.fragment.event.EventOverviewFragment;
 
 import java.util.List;
 
-public class EventDetailActivity extends ActionBarActivity {
+public class EventDetailActivity extends SecondLevelActivity {
 
     public static final String EXTRA_ID = "id";
 

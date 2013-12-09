@@ -11,6 +11,7 @@ import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.ClassifiedResult;
+import com.arcasolutions.ui.activity.SecondLevelActivity;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.DescriptionFragment;
 import com.arcasolutions.ui.fragment.GalleryFragment;
@@ -18,7 +19,7 @@ import com.arcasolutions.ui.fragment.classified.ClassifiedOverviewFragment;
 
 import java.util.List;
 
-public class ClassifiedDetailActivity extends ActionBarActivity {
+public class ClassifiedDetailActivity extends SecondLevelActivity {
 
     public static final String EXTRA_ID = "id";
 

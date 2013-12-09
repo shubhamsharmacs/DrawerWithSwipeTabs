@@ -1,11 +1,13 @@
 package com.arcasolutions.util;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -110,9 +112,12 @@ public class BannerHelper implements Client.RestListener<AdResult> {
                 mBannerFrame.setId(R.id.bannerFrame);
             }
 
+            mBannerFrame.setBackgroundColor(Color.CYAN);
+
             ImageView bannerImage = new ImageView(mActivity);
             bannerImage.setId(android.R.id.icon1);
             bannerImage.setAdjustViewBounds(true);
+            bannerImage.setBackgroundColor(Color.RED);
             bannerImage.setScaleType(ImageView.ScaleType.FIT_XY);
 
             ImageView closerImage = new ImageView(mActivity);
@@ -120,8 +125,11 @@ public class BannerHelper implements Client.RestListener<AdResult> {
             closerImage.setAdjustViewBounds(true);
             closerImage.setImageResource(R.drawable.banner_closer);
 
+            Resources res = mActivity.getResources();
             mBannerFrame.setOrientation(LinearLayout.HORIZONTAL);
-            mBannerFrame.addView(bannerImage, 290, 50);
+            mBannerFrame.addView(bannerImage,
+                    res.getDimensionPixelSize(R.dimen.bannerWidth),
+                    res.getDimensionPixelSize(R.dimen.bannerHeight));
             mBannerFrame.addView(closerImage);
         }
 

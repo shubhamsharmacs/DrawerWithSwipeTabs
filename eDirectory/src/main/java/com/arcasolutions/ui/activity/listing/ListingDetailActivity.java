@@ -13,6 +13,7 @@ import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.ListingResult;
+import com.arcasolutions.ui.activity.SecondLevelActivity;
 import com.arcasolutions.ui.adapter.DetailFragmentPagerAdapter;
 import com.arcasolutions.ui.fragment.DescriptionFragment;
 import com.arcasolutions.ui.fragment.GalleryFragment;
@@ -22,7 +23,7 @@ import com.arcasolutions.ui.fragment.listing.ListingOverviewFragment;
 
 import java.util.List;
 
-public class ListingDetailActivity extends ActionBarActivity {
+public class ListingDetailActivity extends SecondLevelActivity {
 
     public static final String EXTRA_ID = "id";
     public static final String EXTRA_IS_DEAL = "isDeal";

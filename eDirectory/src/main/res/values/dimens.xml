@@ -23,4 +23,8 @@
 
     <dimen name="drawer_list_width">260dp</dimen>
 
+    <!-- Banner -->
+    <dimen name="bannerHeight">50dp</dimen>
+    <dimen name="bannerWidth">290dp</dimen>
+
 </resources>
