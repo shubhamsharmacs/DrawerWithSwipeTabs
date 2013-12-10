@@ -155,6 +155,7 @@ public class ModuleResultFragment<T extends BaseResult>
         }
 
         mOrderByItem = menu.findItem(R.id.action_order_by);
+        mOrderByItem.setVisible(false);
         setMenuOrderEnable(false);
     }
 
@@ -204,6 +205,7 @@ public class ModuleResultFragment<T extends BaseResult>
         List results = result.getResults();
         int size = results != null ? results.size() : 0;
         if (size > 0) {
+            if (mOrderByItem != null) mOrderByItem.setVisible(true);
             mModules.addAll(results);
             if (OrderBy.DISTANCE.equals(mOrderBy)) {
                 Util.orderByDistance(mModules);
