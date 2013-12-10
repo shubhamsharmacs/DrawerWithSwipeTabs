@@ -30,7 +30,7 @@
                 style="@style/eventOverviewTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Annual Rock Festival"
+                tools:text="Annual Rock Festival with description e more then i expected"
                 android:id="@id/eventOverviewTitle"
                 android:layout_below="@id/eventOverviewImage"
                 android:layout_alignParentLeft="true"
@@ -63,7 +63,8 @@
                 android:layout_below="@id/eventOverviewImage"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="-20dp"
-                android:layout_marginRight="@dimen/spacingSmall" />
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:layout_marginLeft="@dimen/spacingSmall"/>
         </RelativeLayout>
 
         <RelativeLayout

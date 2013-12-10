@@ -2,6 +2,7 @@ package com.arcasolutions.api.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import com.arcasolutions.api.annotation.ApiModule;
 import com.arcasolutions.api.constant.ModuleName;
@@ -41,7 +42,7 @@ public class Event extends Module implements IContactInfo, IGeoPoint, Comparable
     @DatabaseField(columnName = Database.EventsColumns.EVENT_TITLE)
     private String title;
 
-    @JsonProperty("location_information")
+    @JsonProperty("address")
     @JsonDeserialize(using = AddressDeserializer.class)
     @DatabaseField(columnName = Database.EventsColumns.EVENT_ADDRESS)
     private String address;
@@ -119,6 +120,10 @@ public class Event extends Module implements IContactInfo, IGeoPoint, Comparable
     @JsonProperty("gallery")
     private ArrayList<Photo> gallery;
 
+    @JsonProperty("location_information")
+    @JsonDeserialize(using = AddressDeserializer.class)
+    private String locationInformation;
+
     @Override
     public Map<String, String> getLevelFieldsMap() {
         Map<String, String> map = Maps.newHashMap();
@@ -142,6 +147,12 @@ public class Event extends Module implements IContactInfo, IGeoPoint, Comparable
     }
 
     public Event() {
+    }
+
+    public String getAddress() {
+        return TextUtils.isEmpty(locationInformation)
+                ? address
+                : locationInformation;
     }
 
     private Event(Parcel in) {

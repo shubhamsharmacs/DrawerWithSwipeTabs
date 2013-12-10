@@ -46,6 +46,8 @@
 
     <TextView
         style="@style/eventResultTextAddress"
+        android:gravity="bottom|left"
+        android:layout_marginTop="@dimen/spacingSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="3461 SW Beaverton Hillsdale  HWY Portland, Oregon, USA"

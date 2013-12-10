@@ -161,7 +161,7 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
                 aq.id(R.id.label1).visible();
                 aq.id(R.id.eventDate).text(String.format(Locale.getDefault(), "%1$tD", e.getStartDate()));
             }
-            aq.id(R.id.classifiedAddress).text(e.getAddress());
+            aq.id(R.id.eventAddress).text(e.getAddress());
         }
 
         return v;
