@@ -225,7 +225,7 @@ public class MyMapFragment extends Fragment implements
         for (IGeoPoint l : items) {
             LatLng latLng = new LatLng(l.getLatitude(), l.getLongitude());
             Marker m = mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.defaultMarker())
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker))
                     .position(latLng));
             mModuleMap.put(m, l);
         }
