@@ -430,10 +430,11 @@ public class MyMapFragment extends Fragment implements
         }
 
         mDrawView.setVisibility(View.VISIBLE);
-        new AQuery(getView())
-                .id(R.id.buttonDraw)
-                .image(R.drawable.ic_action_content_edit)
-                .getView().setPressed(true);
+        AQuery aq = new AQuery(getView());
+        aq.id(R.id.mapInfoView).gone();
+        aq.id(R.id.buttonDraw)
+            .image(R.drawable.ic_action_content_edit)
+            .getView().setPressed(true);
 
     }
 
