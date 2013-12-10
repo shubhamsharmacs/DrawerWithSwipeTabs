@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.androidquery.AQuery;
+import com.androidquery.callback.ImageOptions;
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.Review;
 
@@ -18,12 +19,16 @@ public class ReviewAdapter extends BaseAdapter {
     protected final LayoutInflater mInflater;
     protected final Context mContext;
     private final List<Review> mItems;
-
+    private final ImageOptions mImageOptions;
 
     public ReviewAdapter(Context context, List<Review> items) {
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
         mItems = items;
+        mImageOptions = new ImageOptions();
+        mImageOptions.fileCache = true;
+        mImageOptions.memCache = true;
+        mImageOptions.round = context.getResources().getDimensionPixelSize(R.dimen.reviewImageBoxSize);
     }
 
     @Override
@@ -55,7 +60,7 @@ public class ReviewAdapter extends BaseAdapter {
 
         if (r != null) {
             AQuery aq = new AQuery(v);
-            aq.id(R.id.reviewImage).image(r.getReviewerAvatarUrl(), true, true);
+            aq.id(R.id.reviewImage).image(r.getReviewerAvatarUrl(), mImageOptions);
             aq.id(R.id.reviewTitle).text(r.getTitle());
             aq.id(R.id.reviewDescription).text(r.getContent());
             aq.id(R.id.reviewAuthor).text(r.getReviewerName());
