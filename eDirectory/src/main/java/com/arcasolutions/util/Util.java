@@ -5,7 +5,12 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.arcasolutions.R;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.api.model.Module;
 
@@ -62,6 +67,28 @@ public class Util {
                 return 0;
             }
         });
+    }
+
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight
+                + (listView.getDividerHeight() * (listAdapter.getCount() - 1))
+                + listView.getResources().getDimensionPixelSize(R.dimen.spacingMedium);
+        listView.setLayoutParams(params);
+        listView.requestLayout();
     }
 
 }

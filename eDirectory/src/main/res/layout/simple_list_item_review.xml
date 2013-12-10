@@ -35,7 +35,7 @@
 
     <TextView
         android:layout_marginTop="@dimen/spacingSmall"
-        android:layout_marginBottom="@dimen/spacingMedium"
+        android:layout_marginBottom="@dimen/spacingSmall"
         style="@style/reviewTextDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
         android:layout_toRightOf="@+id/textView" />
 
     <RatingBar
-        android:layout_marginTop="@dimen/spacingMedium"
+        android:layout_marginTop="@dimen/spacingSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="?android:ratingBarStyleSmall"

@@ -13,23 +13,31 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.webkit.URLUtil;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
+import com.arcasolutions.api.constant.ReviewModule;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.DealResult;
+import com.arcasolutions.api.model.Review;
+import com.arcasolutions.api.model.ReviewResult;
+import com.arcasolutions.ui.adapter.ReviewAdapter;
 import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.util.AccountHelper;
 import com.arcasolutions.util.FavoriteHelper;
 import com.arcasolutions.util.FmtUtil;
 import com.arcasolutions.util.IntentUtil;
 import com.arcasolutions.util.RedeemHelper;
+import com.arcasolutions.util.Util;
 
 import java.util.List;
 import java.util.Locale;
@@ -103,7 +111,7 @@ public class DealOverviewFragment extends BaseFragment implements Client.RestLis
 
             mFavoriteHelper.updateFavorite(d);
 
-            AQuery aq = new AQuery(getView());
+            final AQuery aq = new AQuery(getView());
             aq.id(R.id.dealOverviewImage).image(d.getImageUrl(), true, true);
             if (!URLUtil.isValidUrl(d.getImageUrl())) {
                 aq.id(R.id.dealOverviewImage).gone();
@@ -125,6 +133,43 @@ public class DealOverviewFragment extends BaseFragment implements Client.RestLis
             aq.id(R.id.dealOverviewRemain).text(Integer.toString(d.getAmount()));
             aq.id(R.id.dealOverviewDiscount).text(String.format(Locale.getDefault(), "%1$d%% OFF", (int) ((1 - (d.getDealValue() / d.getRealValue())) * 100)) );
             aq.id(R.id.dealOverviewTerms).tag(d.getConditions()).clicked(this, "showTerms");
+
+            if (d.getTotalReviews() > 0) {
+                aq.id(R.id.reviewPlace).visible();
+                new Client.Builder(ReviewResult.class)
+                        .module(ReviewModule.DEAL)
+                        .id(d.getId())
+                        .execAsync(new Client.RestListener<ReviewResult>() {
+                            @Override
+                            public void onComplete(ReviewResult result) {
+                                List<Review> reviews = result.getResults();
+                                int size = reviews != null ? reviews.size() : 0;
+                                if (size == 0) {
+                                    aq.id(R.id.reviewPlace).gone();
+                                    return;
+                                }
+
+                                if (size > 2) {
+                                    size = 2;
+                                    aq.id(R.id.viewAll).visible();
+                                } else {
+                                    aq.id(R.id.viewAll).gone();
+                                }
+
+                                final ReviewAdapter adapter = new ReviewAdapter(getActivity(), reviews);
+                                ListView listView = aq.id(android.R.id.list).getListView();
+                                listView.setAdapter(adapter);
+                                Util.setListViewHeightBasedOnChildren(listView);
+                            }
+
+                            @Override
+                            public void onFail(Exception ex) {
+                                aq.id(R.id.reviewPlace).gone();
+                            }
+                        });
+            } else {
+                aq.id(R.id.reviewPlace).gone();
+            }
 
             final CheckBox favoriteCheckBox = aq.id(R.id.dealOverviewFavorite).getCheckBox();
             favoriteCheckBox.setChecked(mFavoriteHelper.isFavorited(d));

@@ -3,7 +3,7 @@ package com.arcasolutions.api.constant;
 
 public enum ReviewModule {
 
-    LISTING("listing");
+    LISTING("listing"), DEAL("promotion");
 
     private String val;
 
