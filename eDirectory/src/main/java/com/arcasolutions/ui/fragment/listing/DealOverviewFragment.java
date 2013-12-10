@@ -112,6 +112,7 @@ public class DealOverviewFragment extends BaseFragment implements Client.RestLis
 
             mRedeemHelper.init(R.id.redeemPlace, d);
 
+            aq.id(R.id.progressView).gone();
             aq.id(R.id.dealOverviewTitle).text(d.getTitle());
             aq.id(R.id.dealOverviewDescription).text(d.getDescription());
             aq.id(R.id.dealOverviewRatingBar).rating(d.getRating());
