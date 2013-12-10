@@ -51,11 +51,15 @@ import java.util.Map;
 
 public class Client {
 
-    private static final String BASE_URL = "http://demodirectory-nextversion-design.basecode.arcasolutions.com";
+    private static final String BASE_URL = "http://demodirectory.com";
 
     private static final String API_URL = BASE_URL + "/API/api2.php";
     private static final String IAPP_URL = BASE_URL + "/iapp/m6400";
 
+    /**
+     * It's changed by {@link com.arcasolutions.App}
+     */
+    public static String EDIR_LANG = "en_us";
 
     private final RestTemplate mRestTemplate = new RestTemplate();
 
@@ -235,6 +239,7 @@ public class Client {
                 myLocation(myLocation.getLatitude(), myLocation.getLongitude());
             }
 
+            mMap.put("edir_lang", EDIR_LANG);
         }
 
         public Builder categoryId(long categoryId) {

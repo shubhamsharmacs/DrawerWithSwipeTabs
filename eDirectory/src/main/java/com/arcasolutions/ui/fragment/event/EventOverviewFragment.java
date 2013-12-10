@@ -2,6 +2,7 @@ package com.arcasolutions.ui.fragment.event;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,9 @@ import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.ui.fragment.ContactInfoFragment;
 import com.arcasolutions.util.FavoriteHelper;
 import com.arcasolutions.util.IntentUtil;
+import com.google.common.collect.Lists;
 
+import java.util.List;
 import java.util.Locale;
 
 public class EventOverviewFragment extends BaseFragment {
@@ -70,8 +73,14 @@ public class EventOverviewFragment extends BaseFragment {
             aq.id(R.id.eventOverviewTitle).text(e.getTitle());
             aq.id(R.id.eventOverviewDescription).text(e.getSummary());
             aq.id(R.id.eventOverviewAddress).text(e.getAddress()).getView().invalidate();
-            aq.id(R.id.eventOverviewStartDate).text(String.format(Locale.getDefault(), "%tD", e.getStartDate()));
-            aq.id(R.id.eventOverviewEndDate).text(String.format(Locale.getDefault(), "%tD", e.getEndDate()));
+            if (e.isRecurring()) {
+                aq.id(R.id.eventOverviewDate).text(e.getRecurringString());
+            } else {
+                List<String> dates = Lists.newArrayList();
+                if (e.getStartDate() != null) dates.add(String.format(Locale.getDefault(), "%tD", e.getStartDate()));
+                if (e.getEndDate() != null) dates.add(String.format(Locale.getDefault(), "%tD", e.getEndDate()));
+                aq.id(R.id.eventOverviewDate).text(TextUtils.join(" - ", dates));
+            }
 
             final CheckBox favoriteCheckBox = aq.id(R.id.eventOverviewFavorite).getCheckBox();
             favoriteCheckBox.setChecked(mFavoriteHelper.isFavorited(e));

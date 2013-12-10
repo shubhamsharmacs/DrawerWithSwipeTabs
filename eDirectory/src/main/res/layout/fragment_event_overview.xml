@@ -40,40 +40,20 @@
                 style="@style/eventOverviewTextDateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="When:"
+                android:text="@string/event_date"
                 android:layout_marginRight="@dimen/spacingSmall"
-                android:id="@+id/textView2"
+                android:id="@+id/eventDate"
                 android:layout_below="@id/eventOverviewTitle"
                 android:layout_alignParentLeft="true" />
-
-            <TextView
-                style="@style/eventOverviewTextDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="10/10/2013"
-                android:id="@id/eventOverviewStartDate"
-                android:layout_alignTop="@+id/textView2"
-                android:layout_toRightOf="@+id/textView2"
-                android:layout_marginRight="@dimen/spacingMedium" />
 
             <TextView
                 style="@style/eventOverviewTextDateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To:"
-                android:layout_marginRight="@dimen/spacingSmall"
-                android:id="@+id/textView4"
-                android:layout_alignTop="@id/eventOverviewStartDate"
-                android:layout_toRightOf="@id/eventOverviewStartDate" />
-
-            <TextView
-                style="@style/eventOverviewTextDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 tools:text="12/10/2013"
-                android:id="@id/eventOverviewEndDate"
+                android:id="@id/eventOverviewDate"
                 android:layout_below="@id/eventOverviewTitle"
-                android:layout_toRightOf="@+id/textView4" />
+                android:layout_toRightOf="@+id/eventDate" />
 
             <CheckBox
                 style="@style/heartCheckBoxStyle"

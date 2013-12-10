@@ -121,8 +121,7 @@
     <!--   Event Overview IDs -->
     <item type="id" name="eventOverviewImage" />
     <item type="id" name="eventOverviewTitle" />
-    <item type="id" name="eventOverviewStartDate" />
-    <item type="id" name="eventOverviewEndDate" />
+    <item type="id" name="eventOverviewDate" />
     <item type="id" name="eventOverviewFavorite" />
     <item type="id" name="eventOverviewDescription" />
     <item type="id" name="eventOverviewAddress" />

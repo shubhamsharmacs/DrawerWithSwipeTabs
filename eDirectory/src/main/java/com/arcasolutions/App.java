@@ -3,6 +3,8 @@ package com.arcasolutions;
 import android.app.Application;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.arcasolutions.api.Client;
+
 import org.springframework.security.crypto.encrypt.AndroidEncryptors;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.sqlite.SQLiteConnectionRepository;
@@ -30,6 +32,7 @@ public class App extends Application {
                 mConnectionFactoryRegistry,
                 AndroidEncryptors.text("password", "5c0744940b5c369b"));
 
+        Client.EDIR_LANG = getEdirLang();
     }
 
     public ConnectionRepository getConnectionRepository() {
@@ -59,5 +62,9 @@ public class App extends Application {
 
     private String getFacebookAppSecret() {
         return getString(R.string.facebookAppSecret);
+    }
+
+    private String getEdirLang() {
+        return getString(R.string.edir_lang);
     }
 }

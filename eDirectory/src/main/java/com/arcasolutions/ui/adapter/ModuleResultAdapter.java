@@ -152,9 +152,15 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
 
         if (e != null) {
             AQuery aq = new AQuery(v);
-            aq.id(R.id.eventImage).image(e.getImageUrl(), true, true);
             aq.id(R.id.eventTitle).text(e.getTitle());
-            aq.id(R.id.eventDate).text(String.format(Locale.getDefault(), "%1$tD", e.getStartDate()));
+            aq.id(R.id.eventImage).image(e.getImageUrl(), true, true);
+            if (e.isRecurring()) {
+                aq.id(R.id.label1).gone();
+                aq.id(R.id.eventDate).text("(" + e.getRecurringString() + ")");
+            } else {
+                aq.id(R.id.label1).visible();
+                aq.id(R.id.eventDate).text(String.format(Locale.getDefault(), "%1$tD", e.getStartDate()));
+            }
             aq.id(R.id.classifiedAddress).text(e.getAddress());
         }
 

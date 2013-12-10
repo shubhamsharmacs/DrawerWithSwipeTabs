@@ -29,6 +29,7 @@
         <item>SUN</item>
     </string-array>
 
+    <string name="edir_lang">en_us</string>
     <string name="no_reviews">No reviews add yet.\nAdd your voice to this conversation.</string>
     <string name="oops_something_went_wrong">Oops&#8230; something went wrong.</string>
     <string name="your_search_matched_no_results">Your search matched no results.</string>
@@ -156,6 +157,8 @@ If you want to know more, want to build you own directory or mobile application,
     <string name="deal_redeemed">DEAL REDEEMED</string>
     <string name="please_use_the_following_code">Please use the following code</string>
     <string name="terms_and_conditions">Terms and conditions</string>
+    <string name="event_date_from">From:</string>
+    <string name="event_date">Date:</string>
 
 
 </resources>
