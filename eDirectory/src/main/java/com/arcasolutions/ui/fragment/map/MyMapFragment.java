@@ -89,7 +89,6 @@ public class MyMapFragment extends Fragment implements
     private com.arcasolutions.graphics.Polygon mPolygon;
     private LatLng mNearLeft;
     private LatLng mFarRight;
-    private Polygon searchableArea;
     private OnShowAsListListener mListener;
 
     public MyMapFragment() {
@@ -249,15 +248,6 @@ public class MyMapFragment extends Fragment implements
             farRightLat = mFarRight.latitude;
             farRightLng = mFarRight.longitude;
         }
-
-        if (searchableArea != null) searchableArea.remove();
-        searchableArea = mMap.addPolygon(new PolygonOptions()
-            .strokeColor(Color.BLUE)
-            .strokeWidth(3)
-            .add(new LatLng(nearLeftLat, nearLeftLng))
-            .add(new LatLng(farRightLat, nearLeftLng))
-            .add(new LatLng(farRightLat, farRightLng))
-            .add(new LatLng(nearLeftLat, farRightLng)));
 
         Client.RestListener<BaseResult> mListener = new Client.RestListener<BaseResult>() {
             @Override
