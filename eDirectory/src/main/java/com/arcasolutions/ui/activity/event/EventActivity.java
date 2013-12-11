@@ -72,6 +72,8 @@ public class EventActivity extends BaseActivity
         mCalendarMonth = Calendar.getInstance();
         mListArgs.putSerializable(EventSectionListFragment.ARG_INITIAL_DATE, mCalendarMonth);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.event_tab_list), EventSectionListFragment.class, mListArgs);
+
+        bar.setSelectedNavigationItem(1);
     }
 
     @Override
