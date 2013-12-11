@@ -24,6 +24,7 @@
                 android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
+                android:layout_marginBottom="@dimen/spacingMedium"
                 android:id="@id/classifiedOverviewImage" />
 
             <TextView
@@ -34,7 +35,8 @@
                 android:id="@id/classifiedOverviewTitle"
                 android:layout_below="@id/classifiedOverviewImage"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/classifiedOverviewFavorite" />
+                android:layout_toLeftOf="@id/classifiedOverviewFavorite"
+                android:layout_marginRight="@dimen/spacingSmall" />
 
             <TextView
                 style="@style/classifiedOverviewTextLabel"
@@ -64,7 +66,7 @@
                 android:checked="false"
                 android:layout_below="@id/classifiedOverviewImage"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="-20dp"
+                android:layout_marginTop="-30dp"
                 android:layout_marginRight="@dimen/spacingSmall" />
 
         </RelativeLayout>
