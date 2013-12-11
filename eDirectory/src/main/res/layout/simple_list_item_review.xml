@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:clickable="false"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/spacingSmall"
@@ -28,7 +28,7 @@
         style="@style/reviewTextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nice deal"
+        tools:text="Nice deal"
         android:id="@id/reviewTitle"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/frameLayout" />
@@ -39,7 +39,7 @@
         style="@style/reviewTextDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sent those roses to my girlfriend, she  loved it. Beautiful roses."
+        tools:text="Sent those roses to my girlfriend, she  loved it. Beautiful roses."
         android:id="@id/reviewDescription"
         android:layout_below="@id/reviewTitle"
         android:layout_toRightOf="@+id/frameLayout" />
@@ -48,7 +48,7 @@
         style="@style/reviewTextAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Peter Johnson"
+        tools:text="Peter Johnson"
         android:id="@id/reviewAuthor"
         android:layout_below="@id/reviewDescription"
         android:layout_toRightOf="@+id/frameLayout" />
@@ -66,7 +66,7 @@
         style="@style/reviewTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="03/22/2013"
+        tools:text="03/22/2013"
         android:id="@+id/reviewDate"
         android:layout_below="@id/reviewDescription"
         android:layout_toRightOf="@+id/textView" />
