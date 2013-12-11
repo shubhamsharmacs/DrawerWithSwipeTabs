@@ -111,6 +111,8 @@ public class CategoryResultFragment extends Fragment
 
     private void loadCategories() {
 
+        if (!mCategories.isEmpty()) return;
+
         Client.RestListener<BaseCategoryResult> mListener = new Client.RestListener<BaseCategoryResult>() {
 
             @Override
