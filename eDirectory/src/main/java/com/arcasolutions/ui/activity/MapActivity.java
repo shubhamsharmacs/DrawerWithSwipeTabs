@@ -67,6 +67,7 @@ public class MapActivity extends BaseActivity implements MyMapFragment.OnShowAsL
             dismissFilter();
             mMyMapFragment.setFilter(filter);
         }
+        supportInvalidateOptionsMenu();
     }
 
     @Override
