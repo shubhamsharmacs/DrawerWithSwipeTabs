@@ -155,7 +155,7 @@ public class ModuleResultFragment<T extends BaseResult>
         }
 
         mOrderByItem = menu.findItem(R.id.action_order_by);
-        mOrderByItem.setVisible(false);
+        mOrderByItem.setVisible(!mModules.isEmpty());
         setMenuOrderEnable(false);
     }
 
