@@ -19,12 +19,11 @@
             android:padding="@dimen/spacingMedium">
 
             <TextView
+                style="@style/categoryResultTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/what_are_you_looking_for"
-                android:labelFor="@+id/keyword"
-                android:fontFamily="sans-serif"
-                android:textSize="@dimen/textSizeLarge" />
+                android:labelFor="@+id/keyword" />
 
             <EditText
                 android:layout_width="fill_parent"
@@ -32,11 +31,11 @@
                 android:id="@+id/keyword"
                 android:hint="@string/type_a_keyword"
                 android:inputType="textCapSentences"
-                android:lines="1" />
+                android:lines="1"
+                android:textSize="16sp" />
 
             <TextView
-                android:fontFamily="sans-serif"
-                android:textSize="@dimen/textSizeLarge"
+                style="@style/categoryResultTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/where"
@@ -49,7 +48,8 @@
                 android:id="@+id/location"
                 android:hint="@string/type_a_location"
                 android:lines="1"
-                android:inputType="textCapSentences" />
+                android:inputType="textCapSentences"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <ListView
