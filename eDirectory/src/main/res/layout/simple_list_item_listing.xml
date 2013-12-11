@@ -93,6 +93,7 @@
             android:layout_toLeftOf="@id/listingImage" />
 
         <ImageView
+            android:layout_marginTop="@dimen/spacingSmall"
             android:layout_marginLeft="@dimen/spacingMedium"
             android:layout_width="120dp"
             android:layout_height="60dp"
