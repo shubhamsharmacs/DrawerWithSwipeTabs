@@ -180,9 +180,10 @@ public class MyMapFragment extends Fragment implements
 
 
     private void updateMapMarkers(Collection<IGeoPoint> items) {
-        if (items == null) {
+        if (items == null || items.isEmpty()) {
             mModuleMap.clear();
             mMap.clear();
+            return;
         }
 
         Projection projection = mMap.getProjection();
@@ -254,15 +255,16 @@ public class MyMapFragment extends Fragment implements
             public void onComplete(BaseResult result) {
                 displayProgress(false);
                 List listings = result.getResults();
+                Collection<IGeoPoint> items = null;
                 if (listings != null) {
-                    Collection<IGeoPoint> items = Collections2.transform(listings, new Function<Object, IGeoPoint>() {
+                    items = Collections2.transform(listings, new Function<Object, IGeoPoint>() {
                         @Override
                         public IGeoPoint apply(Object geoPoint) {
                             return (IGeoPoint) geoPoint;
                         }
                     });
-                    updateMapMarkers(items);
                 }
+                updateMapMarkers(items);
             }
 
             @Override

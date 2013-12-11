@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.model.BaseResult;
@@ -107,6 +108,11 @@ public class MapActivity extends BaseActivity implements MyMapFragment.OnShowAsL
 
     @Override
     public void onShowAsList(ArrayList<Module> result, Class<? extends BaseResult> clazz) {
+        if (result == null || result.isEmpty()) {
+            Toast.makeText(this, "No results to be shown", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         ModuleResultFragment fragment = ModuleResultFragment.newInstance(clazz, result);
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.frame_content, fragment, "list")
