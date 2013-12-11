@@ -369,6 +369,9 @@ public class MyMapFragment extends Fragment implements
         mFilter = filter;
         mClass = Filter.getModuleClass(mFilter.getModuleIndex());
 
+        AQuery aq = new AQuery(getView());
+        aq.id(R.id.spinner).setSelection(mFilter.getModuleIndex());
+
         if (!TextUtils.isEmpty(mFilter.getLocation())) {
             LocationUtil.geocoder(getActivity(), mFilter.getLocation(), new LocationUtil.GeocoderCallback() {
                 @Override
