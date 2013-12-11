@@ -80,6 +80,8 @@
         <activity android:name=".ui.activity.SignUpActivity"
             android:launchMode="singleTop" />
 
+        <activity android:name=".ui.activity.ReviewListActivity"/>
+
         <activity android:name=".web.FacebookWebOAuthActivity"
             android:excludeFromRecents="true"
             android:noHistory="true"/>

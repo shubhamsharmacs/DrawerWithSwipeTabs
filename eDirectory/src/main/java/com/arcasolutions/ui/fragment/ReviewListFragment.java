@@ -83,6 +83,11 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
         mReviewHelper.setAddReviewButton(addReviewButton);
 
         mEmptyHelper = new EmptyListViewHelper(listView, R.drawable.no_reviews, R.string.no_reviews);
+
+        if (ReviewModule.LISTING.equals(getShownModule())) {
+            new AQuery(getView()).id(R.id.addReviewButton).visible();
+        }
+
         loadData();
     }
 
@@ -92,9 +97,7 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
                 ? getArguments().getLong(ARG_ID)
                 : 0;
 
-        ReviewModule module = getArguments() != null
-                ? (ReviewModule) getArguments().getSerializable(ARG_MODULE)
-                : null;
+        ReviewModule module = getShownModule();
 
         if (id == 0 || module == null) return;
 
@@ -106,6 +109,12 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
         builder.execAsync(this);
 
         mEmptyHelper.progress();
+    }
+
+    private ReviewModule getShownModule() {
+        return getArguments() != null
+                ? (ReviewModule) getArguments().getSerializable(ARG_MODULE)
+                : null;
     }
 
 

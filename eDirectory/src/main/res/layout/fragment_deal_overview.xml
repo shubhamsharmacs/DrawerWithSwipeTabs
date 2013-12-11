@@ -229,7 +229,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Reviews"
+                        android:text="@string/reviews"
                         android:id="@+id/textView"
                         android:layout_alignParentStart="true"
                         android:gravity="center_vertical" />
@@ -238,7 +238,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
-                        android:text="view all"
+                        android:clickable="true"
+                        android:background="@drawable/abc_list_selector_holo_light"
+                        android:text="@string/view_all"
                         android:drawableEnd="@drawable/ic_arrow_black"
                         android:id="@+id/viewAll"
                         android:gravity="center_vertical" />
@@ -249,6 +251,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dip"
                     android:id="@android:id/list"
+                    android:footerDividersEnabled="false"
                     android:layout_weight="1" />
 
             </LinearLayout>

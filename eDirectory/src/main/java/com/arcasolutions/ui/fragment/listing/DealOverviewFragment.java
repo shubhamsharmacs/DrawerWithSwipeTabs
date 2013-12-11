@@ -30,6 +30,7 @@ import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.Review;
 import com.arcasolutions.api.model.ReviewResult;
+import com.arcasolutions.ui.activity.ReviewListActivity;
 import com.arcasolutions.ui.adapter.ReviewAdapter;
 import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.util.AccountHelper;
@@ -151,7 +152,8 @@ public class DealOverviewFragment extends BaseFragment implements Client.RestLis
 
                                 if (size > 2) {
                                     size = 2;
-                                    aq.id(R.id.viewAll).visible();
+                                    aq.id(R.id.viewAll).tag(d).visible().clicked(DealOverviewFragment.this, "showReviews");
+                                    reviews = reviews.subList(0, 2);
                                 } else {
                                     aq.id(R.id.viewAll).gone();
                                 }
@@ -182,6 +184,17 @@ public class DealOverviewFragment extends BaseFragment implements Client.RestLis
                 }
             });
 
+        }
+    }
+
+    public void showReviews(View view) {
+        Object tag = view.getTag();
+        if (tag != null) {
+            Deal deal = (Deal) tag;
+            Intent intent = new Intent(getActivity(), ReviewListActivity.class);
+            intent.putExtra(ReviewListActivity.EXTRA_MODULE, ReviewModule.DEAL);
+            intent.putExtra(ReviewListActivity.EXTRA_ITEM_ID, deal.getId());
+            startActivity(intent);
         }
     }
 

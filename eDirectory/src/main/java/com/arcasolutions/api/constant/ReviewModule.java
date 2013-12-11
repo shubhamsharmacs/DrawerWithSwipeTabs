@@ -1,7 +1,9 @@
 package com.arcasolutions.api.constant;
 
 
-public enum ReviewModule {
+import java.io.Serializable;
+
+public enum ReviewModule implements Serializable {
 
     LISTING("listing"), DEAL("promotion");
 
