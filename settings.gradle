@@ -1,1 +1,1 @@
-include ':eDirectory'
+include ':libraries:StaggeredGridView', ':eDirectory'
