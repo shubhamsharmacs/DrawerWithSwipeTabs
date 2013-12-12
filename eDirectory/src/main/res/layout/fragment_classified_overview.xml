@@ -100,14 +100,25 @@
                 android:layout_toLeftOf="@id/classifiedOverviewGetDirections"
                 android:layout_marginRight="@dimen/spacingMedium" />
 
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/mapHeight"
+                android:layout_below="@id/classifiedOverviewAddress"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/spacingMedium"
+                android:id="@id/mapPlace"
+                android:visibility="gone" />
+
             <Button
                 style="@style/blueButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="38dp"
                 android:text="Get Directions"
                 android:id="@id/classifiedOverviewGetDirections"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true" />
+                android:layout_alignBottom="@id/classifiedOverviewAddress"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
 

@@ -95,6 +95,8 @@ public class ListingOverviewFragment extends BaseFragment {
                     IntentUtil.call(getActivity(), l.getPhoneNumber());
                 }
             });
+
+            showMapIfNeeded(l);
         }
 
     }

@@ -97,6 +97,8 @@ public class EventOverviewFragment extends BaseFragment {
             getChildFragmentManager().beginTransaction()
                     .replace(R.id.eventOverviewContact, f)
                     .commit();
+
+            showMapIfNeeded(e);
         }
 
     }

@@ -86,6 +86,8 @@ public class ClassifiedOverviewFragment extends BaseFragment {
             getChildFragmentManager().beginTransaction()
                     .replace(R.id.classifiedOverviewContact, f)
                     .commit();
+
+            showMapIfNeeded(c);
         }
 
     }
