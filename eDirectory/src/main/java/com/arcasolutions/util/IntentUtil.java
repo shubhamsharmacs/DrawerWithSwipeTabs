@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.ShareCompat;
 import android.text.TextUtils;
+import android.util.Patterns;
 
 public final class IntentUtil {
 
@@ -24,9 +25,9 @@ public final class IntentUtil {
     public static void email(Activity activity, String to, String subject, String message) {
         ShareCompat.IntentBuilder builder = ShareCompat.IntentBuilder.from(activity);
         builder.setType("message/rfc822")
-            .addEmailTo(to)
-            .setSubject(subject)
-            .setHtmlText(message)
+            .addEmailTo(Util.isEmailValid(to) ? to : "")
+            .setSubject(subject != null ? subject : "")
+            .setHtmlText(message != null ? message : "")
             .startChooser();
     }
 

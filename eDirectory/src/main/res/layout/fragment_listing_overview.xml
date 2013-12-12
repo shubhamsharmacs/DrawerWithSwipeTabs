@@ -124,8 +124,8 @@
             style="@style/blueButtonStyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Check in"
-            android:id="@id/listingOverviewCheckIn" />
+            android:text="Call business"
+            android:id="@id/listingOverviewCall" />
 
     </LinearLayout>
 </ScrollView>

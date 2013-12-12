@@ -1,14 +1,11 @@
 package com.arcasolutions.ui.fragment.listing;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
@@ -17,14 +14,12 @@ import com.arcasolutions.R;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.ui.fragment.ContactInfoFragment;
-import com.arcasolutions.util.CheckInHelper;
 import com.arcasolutions.util.FavoriteHelper;
 import com.arcasolutions.util.IntentUtil;
 
 public class ListingOverviewFragment extends BaseFragment {
 
     public static final String ARG_LISTING = "listing";
-    private CheckInHelper mCheckInHelper;
 
     private FavoriteHelper<Listing> mFavoriteHelper;
 
@@ -94,15 +89,14 @@ public class ListingOverviewFragment extends BaseFragment {
                     .replace(R.id.listingOverviewContact, f)
                     .commit();
 
-            mCheckInHelper = new CheckInHelper(this, l);
-            mCheckInHelper.setCheckInButton(aq.id(R.id.listingOverviewCheckIn).getButton());
+            aq.id(R.id.listingOverviewCall).clicked(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    IntentUtil.call(getActivity(), l.getPhoneNumber());
+                }
+            });
         }
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        mCheckInHelper.onActivityResult(requestCode, resultCode, data);
-    }
 }

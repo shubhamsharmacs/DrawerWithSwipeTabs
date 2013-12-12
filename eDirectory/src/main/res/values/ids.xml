@@ -19,6 +19,7 @@
     <item type="id" name="contactPhoneNumber" />
     <item type="id" name="contactEmail" />
     <item type="id" name="contactUrl" />
+    <item type="id" name="contactCheckIn" />
 
     <!-- Category IDs -->
     <item type="id" name="categoryTitle" />
@@ -83,7 +84,7 @@
     <item type="id" name="listingOverviewAddress" />
     <item type="id" name="listingOverviewGetDirections" />
     <item type="id" name="listingOverviewContact" />
-    <item type="id" name="listingOverviewCheckIn" />
+    <item type="id" name="listingOverviewCall" />
     <item type="id" name="listingOverviewRatingBar" />
     <item type="id" name="listingOverviewReviews" />
 

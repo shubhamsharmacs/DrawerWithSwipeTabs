@@ -25,7 +25,7 @@ import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.ui.activity.CheckInActivity;
 import com.arcasolutions.ui.activity.LoginActivity;
 
-public class CheckInHelper implements Client.RestIappListener {
+public class CheckInHelper implements Client.RestIappListener, View.OnClickListener {
 
     private AccountHelper mAccountHelper;
     private Activity mActivity;
@@ -59,12 +59,7 @@ public class CheckInHelper implements Client.RestIappListener {
     public void setCheckInButton(Button checkButton) {
         if (checkButton == null) return;
 
-        checkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkIn();
-            }
-        });
+        checkButton.setOnClickListener(this);
 
     }
 
@@ -140,6 +135,11 @@ public class CheckInHelper implements Client.RestIappListener {
         if (postButton != null)
             postButton.setEnabled(false);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        checkIn();
     }
 
     private ProgressDialog mProgress;
