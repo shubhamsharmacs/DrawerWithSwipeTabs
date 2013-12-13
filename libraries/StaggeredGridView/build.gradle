@@ -27,4 +27,6 @@ dependencies {
     // android libraries
     compile 'com.android.support:support-v4:18.0.0'
 
+    compile 'com.squareup.picasso:picasso:2.0.0'
+
 }

@@ -14,43 +14,23 @@
         android:layout_width="match_parent"
         android:minHeight="100dp"
         android:layout_height="wrap_content"
-        android:id="@id/listingImage" />
+        android:id="@id/classifiedImage" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@id/listingTitle"
+        android:id="@id/classifiedTitle"
         android:layout_alignParentStart="true"
         tools:text="Maria's Coffee shop and bakery"
         android:fontFamily="sans-serif-light"
         android:layout_margin="@dimen/spacingSmall" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:id="@id/classifiedPrice"
         android:layout_marginLeft="@dimen/spacingSmall"
-        android:layout_marginRight="@dimen/spacingSmall"
-        android:layout_marginBottom="@dimen/spacingSmall">
-
-        <RatingBar
-            style="?android:ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@id/listingRatingBar" />
-
-        <View
-            android:layout_width="0dip"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/listingResultTextDealBadge"
-            android:text="deal"
-            android:id="@id/listingDealBadge" />
-    </LinearLayout>
+        android:layout_marginBottom="@dimen/spacingSmall"
+        android:layout_marginRight="@dimen/spacingSmall" />
 
 </LinearLayout>

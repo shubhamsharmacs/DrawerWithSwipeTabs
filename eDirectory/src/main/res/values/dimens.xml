@@ -30,4 +30,6 @@
     <!-- Map detail -->
     <dimen name="mapHeight">150dp</dimen>
 
+    <dimen name="homeImageGridHeight">100dp</dimen>
+
 </resources>

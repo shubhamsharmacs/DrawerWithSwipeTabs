@@ -14,12 +14,12 @@
         android:layout_width="match_parent"
         android:minHeight="100dp"
         android:layout_height="wrap_content"
-        android:id="@id/listingImage" />
+        android:id="@id/articleImage" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@id/listingTitle"
+        android:id="@id/articleTitle"
         android:layout_alignParentStart="true"
         tools:text="Maria's Coffee shop and bakery"
         android:fontFamily="sans-serif-light"
@@ -29,28 +29,25 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:layout_marginLeft="@dimen/spacingSmall"
         android:layout_marginRight="@dimen/spacingSmall"
-        android:layout_marginBottom="@dimen/spacingSmall">
-
-        <RatingBar
-            style="?android:ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@id/listingRatingBar" />
-
-        <View
-            android:layout_width="0dip"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
+        android:layout_marginBottom="@dimen/spacingSmall"
+        android:gravity="left|top">
 
         <TextView
+            android:text="By"
+            android:fontFamily="sans-serif-light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/listingResultTextDealBadge"
-            android:text="deal"
-            android:id="@id/listingDealBadge" />
+            android:layout_marginRight="@dimen/spacingSmall" />
+
+        <TextView
+            style="@style/articleResultTextAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/articleAuthor" />
+
+
     </LinearLayout>
 
 </LinearLayout>

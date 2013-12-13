@@ -127,7 +127,7 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">@dimen/textSizeMicro</item>
         <item name="android:textColor">@color/textColorPrimaryInverse</item>
-        <item name="android:background">#2ecc71</item>
+        <item name="android:background">@color/dealGreen</item>
         <item name="android:paddingLeft">@dimen/spacingSmall</item>
         <item name="android:paddingRight">@dimen/spacingSmall</item>
     </style>
@@ -199,7 +199,7 @@
         <item name="android:textSize">@dimen/textSizeSmall</item>
         <item name="android:textColor">@color/textColorPrimaryInverse</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:background">#2ecc71</item>
+        <item name="android:background">@color/dealGreen</item>
     </style>
 
     <!-- Listing Overview -->

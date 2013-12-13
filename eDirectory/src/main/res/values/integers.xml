@@ -2,4 +2,5 @@
 
 <resources>
     <integer name="numColumnsGallery">2</integer>
+    <integer name="numHomeColumns">2</integer>
 </resources>
