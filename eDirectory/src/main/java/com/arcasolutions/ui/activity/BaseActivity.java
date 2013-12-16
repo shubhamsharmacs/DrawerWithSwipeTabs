@@ -17,9 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -284,6 +286,8 @@ public abstract class BaseActivity extends ActionBarActivity implements
             mEditor.commit();
         }
 
+        selectCurrentActivityOnDrawerList();
+
     }
 
     /*
@@ -466,6 +470,33 @@ public abstract class BaseActivity extends ActionBarActivity implements
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return mDialog;
+        }
+    }
+
+    private void selectCurrentActivityOnDrawerList() {
+        ListAdapter adapter = mDrawerList.getAdapter();
+        int size = adapter.getCount();
+        for (int i=0; i<size; i++) {
+            NavItem navItem = (NavItem) adapter.getItem(i);
+
+            boolean isSameExtras = true ;
+            if (this instanceof CategoryResultActivity) {
+                if (navItem.extras != null) {
+                    Class eType = (Class) navItem.extras.getSerializable(CategoryResultActivity.EXTRA_TYPE);
+                    Class cType = (Class) getIntent().getSerializableExtra(CategoryResultActivity.EXTRA_TYPE);
+                    if (eType != null && cType != null && eType.equals(cType)) {
+                        isSameExtras = true;
+                    } else {
+                        isSameExtras = false;
+                    }
+                }
+            }
+
+            if (navItem.clazz.equals(this.getClass()) && isSameExtras) {
+                mDrawerList.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+                mDrawerList.setItemChecked(i, true);
+                break;
+            }
         }
     }
 
