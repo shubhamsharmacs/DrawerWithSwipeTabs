@@ -94,7 +94,7 @@ public class RedeemHelper implements Client.RestIappListener<String>, PopupMenu.
             Client.IappBuilder
                     .newRedeemBuilder(account.getUsername(), mDeal.getId(), account.isFacebook())
                     .execAsync(this);
-            mProgressDialog = DialogHelper.from(mActivity).progress("Redeeming Deal...");
+            mProgressDialog = DialogHelper.from(mActivity).progress(mActivity.getString(R.string.redeeming_deal));
         } else {
             Intent intent = new Intent(mActivity, LoginActivity.class);
 
@@ -107,10 +107,10 @@ public class RedeemHelper implements Client.RestIappListener<String>, PopupMenu.
 
     public void onRedeemClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity)
-                .setTitle("Redeem")
-                .setMessage("Are you sure you want redeem this Deal?")
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setTitle(mActivity.getString(R.string.redeem))
+                .setMessage(mActivity.getString(R.string.are_you_sure_you_want_redeem_this_deal))
+                .setNegativeButton(mActivity.getString(R.string.no), null)
+                .setPositiveButton(mActivity.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         redeemDeal();

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="modules">
+        <item>Empresa</item>
+        <item>Promoção</item>
+        <item>Classificado</item>
+        <item>Evento</item>
+    </string-array>
+
+    <!-- They are being used by calendar(s) -->
+    <string-array name="DAYS_WEEK_HEBREW">
+        <item>DOM</item>
+        <item>SEG</item>
+        <item>TER</item>
+        <item>QUA</item>
+        <item>QUI</item>
+        <item>SEX</item>
+        <item>SAB</item>
+    </string-array>
+
+    <string-array name="DAYS_WEEK_GREGORIAN">
+        <item>SEG</item>
+        <item>TER</item>
+        <item>QUA</item>
+        <item>QUI</item>
+        <item>SEX</item>
+        <item>SAB</item>
+        <item>DOM</item>
+    </string-array>
+
+    <string name="edir_lang">pt_br</string>
+    <string name="no_reviews">Nenhum opnião adicionada ainda.\nDê sua opnião.</string>
+    <string name="oops_something_went_wrong">Oops&#8230; houve algum problema.</string>
+    <string name="your_search_matched_no_results">Não houve resultados para sua pesquisa.</string>
+    <string name="alert_progress_authenticating">Autenticando&#8230;</string>
+    <string name="alert_title_fail">Falhou</string>
+    <string name="alert_message_fail">Houve um problema.\n<xliff:g id="detail">%1$s</xliff:g></string>
+
+    <string name="app_name">eDirectory</string>
+
+    <string name="rating">Avaliação</string>
+    <string name="alphabetically">Alphabetically</string>
+    <string name="distance">Distancia</string>
+    <string name="recently_added">Recentes</string>
+    <string name="show_results_by_sort">Showing results by \"<xliff:g id="sort">%1$s</xliff:g>\"</string>
+
+    <!-- setting -->
+    <string name="setting_account">Conta</string>
+    <string name="setting_about">Sobre</string>
+    <string name="setting_about_us">Sobre nós</string>
+    <string name="setting_legal_notices">Aviso Legal</string>
+    <string name="setting_what_app_tutorial">Watch app tutorial</string>
+    <string name="setting_appVersion">Versão <xliff:g id="versionName">%1$s</xliff:g></string>
+
+    <!-- Navigation Drawer -->
+    <string name="drawerHome">Principal</string>
+    <string name="drawerMap">Mapa</string>
+    <string name="drawerBusiness">Empresa</string>
+    <string name="drawerDeals">Promoções</string>
+    <string name="drawerClassifieds">Classificados</string>
+    <string name="drawerEvents">Eventos</string>
+    <string name="drawerArticles">Artigos</string>
+    <string name="drawerMyFavorites">Meus favoritos</string>
+    <string name="drawerSetting">Configurações</string>
+
+    <!-- Lib String -->
+    <string name="connection_error_code">Conexão falhou com código de erro: %1$d</string>
+    <string name="connection_error_disabled">Google Play services está desabilitado</string>
+    <string name="connection_error_internal">Ocorreu um erro interno</string>
+    <string name="connection_error_invalid">A versão do Google Play services deste dispositivo não está autenticada</string>
+    <string name="connection_error_invalid_account">O nome de conta especificado é inváido</string>
+    <string name="connection_error_license_check_failed">O aplicativo não está licensiado ao usuário</string>
+    <string name="connection_error_message">Connection failure error message: %1$s</string>
+    <string name="connection_error_misconfigured">A aplicação não está configurado corretamente</string>
+    <string name="connection_error_missing">Esta faltando Google Play services</string>
+    <string name="connection_error_needs_resolution">Resolução adicional é requerida</string>
+    <string name="connection_error_network">Ocorreu um erro de rede</string>
+    <string name="connection_error_outdated">Google Play services está desatualilzado</string>
+    <string name="connection_error_sign_in_required">Usuário não está conectado</string>
+    <string name="connection_error_unknown">Ocorreu um erro desconhecido</string>
+    <string name="something_was_wrong">HOUVE ALGUM PROBLEMA!</string>
+    <string name="try_again">Tente novamente!</string>
+    <string name="level">Nível</string>
+    <string name="popular">Popular</string>
+    <string name="sign_out">Desconectar</string>
+    <string name="sign_in">Conectar</string>
+    <string name="you_are_logged_in_as">Você está conectado como </string>
+    <string name="you_are_not_logged_in">Você não está conectado</string>
+    <string name="login_with_your_detail_or_create_a_new_account">Conectar com suas informações ou criar uma conta</string>
+    <string name="loading">Carregando&#8230;</string>
+    <string name="loading_please_wait">Carregando. por favor aguarde &#8230;</string>
+    <string name="tab_overview">DETALHE</string>
+    <string name="tab_gallery">GALERIA</string>
+    <string name="tab_description">DESCRIÇÃO</string>
+    <string name="tab_reviews">OPNIÕES</string>
+    <string name="drawer_open">Abrir menu</string>
+    <string name="drawer_close">Fechar menu</string>
+    <string name="confirmation">Confirmação</string>
+    <string name="confirm_deletation_selected_items">Deseja apagar os itens selecionados?</string>
+    <string name="cancel">Cancelar</string>
+    <string name="yes">Sim</string>
+    <string name="post">Postar</string>
+    <string name="check_ins">Check In\'s</string>
+    <string name="check_in">Check In</string>
+    <string name="quick_comment">Breve comentário</string>
+    <string name="checkin_posted">Check in enviado.</string>
+    <string name="posting">Enviando &#8230;</string>
+    <string name="add_a_review">Adicionar opninão</string>
+    <string name="review_your_name">Seu nome</string>
+    <string name="review_your_email">Seu e-mail</string>
+    <string name="review_your_location">Sua localização</string>
+    <string name="review_title">Título</string>
+    <string name="review_your_comment">Seu comentário</string>
+    <string name="ok">OK</string>
+    <string name="add_your_review">Incluir opnião</string>
+    <string name="first_name">Nome</string>
+    <string name="last_name">Sobrenome</string>
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="confirm_password">Confirmar senha</string>
+    <string name="submit">Enviar</string>
+    <string name="publication_date">Data de publicação</string>
+    <string name="last_updated">Última atualização</string>
+    <string name="end_date">Data final</string>
+    <string name="start_date">Data inicial</string>
+    <string name="sort">Ordernar</string>
+    <string name="what_are_you_looking_for">O que você está procurando?</string>
+    <string name="type_a_keyword">Digite uma palavra</string>
+    <string name="where">Onde?</string>
+    <string name="type_a_location">Digite um localização</string>
+    <string name="search">Pesquisa</string>
+    <string name="section">Seção</string>
+    <string name="any">Qualquer</string>
+    <string name="event_tab_categories">Categorias</string>
+    <string name="event_tab_calendar">Calendário</string>
+    <string name="event_tab_list">Lista</string>
+    <string name="about_title">eDirectory.com Mobile Application</string>
+    <string name="app_version">v8.1</string><string name="about_description">All data in this application comes direct from demodirectory.com.
+
+eDirectory (Our platform this application is running on) is available from edirectory.com, It\'s also a good place to get more information.
+
+If you want to know more, want to build you own directory or mobile application, then get in touch with us and see how we can help you, we\'re happy to help in any way we can.</string>
+    <string name="get_in_touch">Contato</string>
+    <string name="about_visit_website">Visitar página</string>
+    <string name="about_send_email">Envie nos um email</string>
+    <string name="about_call_us">Contactar nos</string>
+    <string name="about_website_url">http://www.demodirectory.com</string>
+    <string name="about_email_contact">sales@edirectory.com</string>
+    <string name="about_email_contact_subject">Contato</string>
+    <string name="about_telephone">1-800-630-4694</string>
+    <string name="tab_deal">CUPOM</string>
+    <string name="event_label_started">Iniciado:</string>
+    <string name="event_date_separator">/</string>
+    <string name="event_label_expires">Validade:</string>
+    <string name="event_label_deals_remain">Cupons restantes:</string>
+    <string name="redeem_deal">Resgatar Cupom</string>
+    <string name="deal_redeemed">CUPOM RESGATADO</string>
+    <string name="please_use_the_following_code">Por favor, utilize o seguind código</string>
+    <string name="terms_and_conditions">Termos e Condições</string>
+    <string name="event_date_from">De:</string>
+    <string name="event_date">Data:</string>
+    <string name="view_all">ver todos</string>
+    <string name="reviews">Opniões</string>
+    <string name="name_is_required">Nome é obrigatório.</string>
+    <string name="last_name_is_required">Sobrenome é obrigatório.</string>
+    <string name="email_is_required">E-mail é obrigatório.</string>
+    <string name="enter_a_valid_email">Entre com um e-mail válido.</string>
+    <string name="creating_account">Criando conta &#8230;</string>
+    <string name="confirm_password_does_not_match">Confirmação de senha não confere.</string>
+    <string name="minimum_of_4_chars">Minímo de 4 carateres.</string>
+    <string name="password_is_required">Senha é obrigatória.</string>
+    <string name="no_results_to_be_shown">Nenhum resultado à ser exibido.</string>
+    <string name="email_should_be_filled">E-mail deve ser preenchido.</string>
+    <string name="password_should_be_filled">Senha deve ser preenchida.</string>
+    <string name="you_are_not_connected_on_facebook">Você não está conectado no Facebook.</string>
+    <string name="categories">categories</string>
+    <string name="published_at_X_by">Publicado em %tD por</string>
+    <string name="stars">estrelas</string>
+    <string name="call">Discar</string>
+    <string name="send_email">Enviar e-mail</string>
+    <string name="visit_webpage">Visitar página</string>
+    <string name="check_in_here">Check in aqui</string>
+    <string name="contact">Contato</string>
+    <string name="redeeming_deal">Resgatando promoção &#8230;</string>
+    <string name="redeem">Resgate</string>
+    <string name="are_you_sure_you_want_redeem_this_deal">Tem certeza que deseja resgatar esta Promoção?</string>
+    <string name="no">Não</string>
+    <string name="name_is_empty">Nome está vazio.</string>
+    <string name="email_is_empty">E-mail está vazio.</string>
+    <string name="location_is_empty">Localização está vazio.</string>
+    <string name="title_is_empty">Título está vazio.</string>
+    <string name="comment_is_empty">Comentário está vazio.</string>
+    <string name="rating_must_be_at_least_1">Avaliação deve ser pelo menos 1</string>
+    <string name="review_posted">Avaliação enviada!</string>
+    <string name="no_internet_connection">Sem conexão com a internet.</string>
+
+
+</resources>

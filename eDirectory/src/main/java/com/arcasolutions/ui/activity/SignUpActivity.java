@@ -54,7 +54,7 @@ public class SignUpActivity extends ActionBarActivity
         // first name
         String firstName = mFirstNameView.getText().toString();
         if (TextUtils.isEmpty(firstName)) {
-            mFirstNameView.setError("Name is required.");
+            mFirstNameView.setError(getString(R.string.name_is_required));
             valid = false;
         } else {
             mFirstNameView.setError(null);
@@ -63,7 +63,7 @@ public class SignUpActivity extends ActionBarActivity
         // last name
         String lastName = mLastNameView.getText().toString();
         if (TextUtils.isEmpty(lastName)) {
-            mLastNameView.setError("Last name is required.");
+            mLastNameView.setError(getString(R.string.last_name_is_required));
             valid = false;
         } else {
             mLastNameView.setError(null);
@@ -72,10 +72,10 @@ public class SignUpActivity extends ActionBarActivity
         // email
         String email = mEmailView.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError("Email is required.");
+            mEmailView.setError(getString(R.string.email_is_required));
             valid = false;
         } else if (!Util.isEmailValid(email)) {
-            mEmailView.setError("Enter a valid email");
+            mEmailView.setError(getString(R.string.enter_a_valid_email));
             valid = false;
         } else {
             mEmailView.setError(null);
@@ -84,10 +84,10 @@ public class SignUpActivity extends ActionBarActivity
         // password
         String password = mPasswordView.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mPasswordView.setError("Password is required.");
+            mPasswordView.setError(getString(R.string.password_is_required));
             valid = false;
         } else if (password.length() < 4) {
-            mPasswordView.setError("Minimum of 4 characters.");
+            mPasswordView.setError(getString(R.string.minimum_of_4_chars));
             valid = false;
         } else {
             mPasswordView.setError(null);
@@ -96,7 +96,7 @@ public class SignUpActivity extends ActionBarActivity
         // confirm password
         String cofirmPassword = mConfirmPasswordView.getText().toString();
         if (!password.equals(cofirmPassword)) {
-            mConfirmPasswordView.setError("Confirm password do not match.");
+            mConfirmPasswordView.setError(getString(R.string.confirm_password_does_not_match));
             valid = false;
         } else {
             mConfirmPasswordView.setError(null);
@@ -107,7 +107,7 @@ public class SignUpActivity extends ActionBarActivity
             Client.IappBuilder.newCreateAcccountBuilder(
                     email, password, firstName, lastName)
                         .execAsync(this);
-            mProgress = DialogHelper.from(this).progress("Creating account...");
+            mProgress = DialogHelper.from(this).progress(getString(R.string.creating_account));
         }
 
     }

@@ -69,14 +69,14 @@ public class LoginActivity extends ActionBarActivity
 
         boolean valid = true;
         if (TextUtils.isEmpty(email)) {
-            emailView.setError("Email should be filled.");
+            emailView.setError(getString(R.string.email_should_be_filled));
             valid = false;
         } else {
             emailView.setError(null);
         }
 
         if (TextUtils.isEmpty(password)) {
-            passwordView.setError("Password should be filled.");
+            passwordView.setError(getString(R.string.password_should_be_filled));
             valid = false;
         } else {
             passwordView.setError(null);
@@ -105,7 +105,7 @@ public class LoginActivity extends ActionBarActivity
 
     private void loginWithFacebook() {
         if (!mApp.isFacebookConnected()) {
-            DialogHelper.from(this).fail("You are not connected on facebook.");
+            DialogHelper.from(this).fail(getString(R.string.you_are_not_connected_on_facebook));
             return;
         }
 

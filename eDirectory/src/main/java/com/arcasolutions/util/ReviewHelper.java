@@ -110,31 +110,31 @@ public class ReviewHelper implements Client.RestIappListener<ReviewResult> {
 
                         String name = (String) aq.id(R.id.reviewFormName).getEditable().toString();
                         if (TextUtils.isEmpty(name)) {
-                            aq.id(R.id.reviewFormName).getTextView().setError("Name is empty.");
+                            aq.id(R.id.reviewFormName).getTextView().setError(mActivity.getString(R.string.name_is_empty));
                             valid = false;
                         }
 
                         String email = (String) aq.id(R.id.reviewFormEmail).getEditable().toString();
                         if (TextUtils.isEmpty(email)) {
-                            aq.id(R.id.reviewFormEmail).getTextView().setError("Email is empty.");
+                            aq.id(R.id.reviewFormEmail).getTextView().setError(mActivity.getString(R.string.email_is_empty));
                             valid = false;
                         }
 
                         String location = (String) aq.id(R.id.reviewFormLocation).getEditable().toString();
                         if (TextUtils.isEmpty(location)) {
-                            aq.id(R.id.reviewFormLocation).getTextView().setError("Location is empty.");
+                            aq.id(R.id.reviewFormLocation).getTextView().setError(mActivity.getString(R.string.location_is_empty));
                             valid = false;
                         }
 
                         String title = (String) aq.id(R.id.reviewFormTitle).getEditable().toString();
                         if (TextUtils.isEmpty(title)) {
-                            aq.id(R.id.reviewFormTitle).getTextView().setError("Title is empty.");
+                            aq.id(R.id.reviewFormTitle).getTextView().setError(mActivity.getString(R.string.title_is_empty));
                             valid = false;
                         }
 
                         String comment = (String) aq.id(R.id.reviewFormComment).getEditable().toString();
                         if (TextUtils.isEmpty(comment)) {
-                            aq.id(R.id.reviewFormComment).getTextView().setError("Comment is empty.");
+                            aq.id(R.id.reviewFormComment).getTextView().setError(mActivity.getString(R.string.comment_is_empty));
                             valid = false;
                         }
 
@@ -142,7 +142,7 @@ public class ReviewHelper implements Client.RestIappListener<ReviewResult> {
                         if (rating == 0) {
                             RatingBar ratingBar = aq.id(R.id.reviewFormRating).getRatingBar();
 
-                            Toast.makeText(mActivity, "Rating must at least 1", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mActivity, mActivity.getString(R.string.rating_must_be_at_least_1), Toast.LENGTH_SHORT).show();
                             valid = false;
                         }
 
@@ -182,7 +182,7 @@ public class ReviewHelper implements Client.RestIappListener<ReviewResult> {
     public void onSuccess(IappResult<ReviewResult> iappResult) {
         mProgress.dismiss();
         if (iappResult.isSuccess()) {
-            Toast.makeText(mActivity, "Review posted!", Toast.LENGTH_SHORT)
+            Toast.makeText(mActivity, mActivity.getString(R.string.review_posted), Toast.LENGTH_SHORT)
                     .show();
         } else {
             DialogHelper.from(mActivity)

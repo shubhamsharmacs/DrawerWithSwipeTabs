@@ -123,7 +123,7 @@ public class MapActivity extends BaseActivity
     @Override
     public void onShowAsList(ArrayList<Module> result, Class<? extends BaseResult> clazz) {
         if (result == null || result.isEmpty()) {
-            Toast.makeText(this, "No results to be shown", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.no_results_to_be_shown), Toast.LENGTH_SHORT).show();
             return;
         }
 

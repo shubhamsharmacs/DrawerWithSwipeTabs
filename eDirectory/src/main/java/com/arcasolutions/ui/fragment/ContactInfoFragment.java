@@ -71,7 +71,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
                 addContactInfo(
                         R.id.contactPhoneNumber,
                         R.drawable.ic_action_device_access_call,
-                        "Call",
+                        getString(R.string.call),
                         contactInfo.getPhoneNumber());
             }
 
@@ -79,7 +79,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
                 addContactInfo(
                         R.id.contactEmail,
                         R.drawable.ic_action_content_email,
-                        "Send Email",
+                        getString(R.string.send_email),
                         contactInfo.getEmail());
             }
 
@@ -87,7 +87,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
                 addContactInfo(
                         R.id.contactUrl,
                         R.drawable.ic_action_location_web_site,
-                        "Visit Webpage",
+                        getString(R.string.visit_webpage),
                         contactInfo.getUrl());
             }
 
@@ -95,7 +95,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
                 View v = addContactInfo(
                         R.id.contactCheckIn,
                         R.drawable.ic_action_marker,
-                        "Check in here",
+                        getString(R.string.check_in_here),
                         null
                 );
                 v.setClickable(true);
@@ -129,7 +129,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
             case R.id.contactEmail:
                 IntentUtil.email(getActivity(),
                         getShownContactInfo().getEmail(),
-                        "Contact", null);
+                        getString(R.string.contact), null);
                 break;
 
             case R.id.contactUrl:

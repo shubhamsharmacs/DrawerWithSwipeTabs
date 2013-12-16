@@ -182,7 +182,7 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
             aq.id(R.id.listingTitle).text(l.getTitle());
             aq.id(R.id.listingDistance).text(FmtUtil.distance(l.getLatitude(), l.getLongitude()), true);
             aq.id(R.id.listingAddress).text(l.getAddress());
-            aq.id(R.id.listingReviews).text(String.format("%d reviews", l.getTotalReviews()));
+            aq.id(R.id.listingReviews).text(String.format("%d " + mContext.getString(R.string.reviews), l.getTotalReviews()));
             aq.id(R.id.listingRatingBar).rating(l.getRating());
             aq.id(R.id.listingDealBadge).getView()
                     .setVisibility(l.getDealId() != 0 ? View.VISIBLE : View.GONE);

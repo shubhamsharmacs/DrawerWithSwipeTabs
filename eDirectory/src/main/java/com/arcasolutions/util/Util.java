@@ -3,6 +3,7 @@ package com.arcasolutions.util;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -21,6 +22,7 @@ import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.api.model.Module;
 
+import java.net.InetAddress;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -133,5 +135,29 @@ public class Util {
         }
 
         return homeBaseResult;
+    }
+
+    public interface ConnectionCallback {
+        void onConnection(boolean hasInternet);
+    }
+
+    public static void verifyIntenetConnection(final Context context, final ConnectionCallback callback) {
+        new AsyncTask<Void, Void, Boolean>() {
+
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                String domain = context.getString(R.string.edirectoryUrl);
+                try {
+                    return InetAddress.getByName(domain).isReachable(5 * 1000);
+                } catch (Exception ignored) {}
+                return false;
+            }
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                callback.onConnection(aBoolean);
+            }
+        }.execute();
+
     }
 }

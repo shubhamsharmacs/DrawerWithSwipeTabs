@@ -162,6 +162,38 @@ If you want to know more, want to build you own directory or mobile application,
     <string name="event_date">Date:</string>
     <string name="view_all">view all</string>
     <string name="reviews">Reviews</string>
+    <string name="name_is_required">Name is required.</string>
+    <string name="last_name_is_required">Last name is required.</string>
+    <string name="email_is_required">Email is required.</string>
+    <string name="enter_a_valid_email">Enter a valid email</string>
+    <string name="creating_account">Creating account...</string>
+    <string name="confirm_password_does_not_match">Confirm password does not match.</string>
+    <string name="minimum_of_4_chars">Minimum of 4 characters.</string>
+    <string name="password_is_required">Password is required.</string>
+    <string name="no_results_to_be_shown">No results to be shown.</string>
+    <string name="email_should_be_filled">Email should be filled.</string>
+    <string name="password_should_be_filled">Password should be filled.</string>
+    <string name="you_are_not_connected_on_facebook">You are not connected on facebook.</string>
+    <string name="categories">categories</string>
+    <string name="published_at_X_by">Published at %tD by</string>
+    <string name="stars">stars</string>
+    <string name="call">Call</string>
+    <string name="send_email">Send Email</string>
+    <string name="visit_webpage">Visit Webpage</string>
+    <string name="check_in_here">Check in here</string>
+    <string name="contact">Contact</string>
+    <string name="redeeming_deal">Redeeming Deal...</string>
+    <string name="redeem">Redeem</string>
+    <string name="are_you_sure_you_want_redeem_this_deal">Are you sure you want redeem this Deal?</string>
+    <string name="no">No</string>
+    <string name="name_is_empty">Name is empty.</string>
+    <string name="email_is_empty">Email is empty.</string>
+    <string name="location_is_empty">Location is empty.</string>
+    <string name="title_is_empty">Title is empty.</string>
+    <string name="comment_is_empty">Comment is empty.</string>
+    <string name="rating_must_be_at_least_1">Rating must be at least 1</string>
+    <string name="review_posted">Review posted!</string>
+    <string name="no_internet_connection">No internet connection.</string>
 
 
 </resources>

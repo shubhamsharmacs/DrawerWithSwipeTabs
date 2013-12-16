@@ -69,7 +69,7 @@ public class ArticleOverviewFragment extends BaseFragment {
                 aq.id(R.id.articleOverviewFavorite).margin(0, 0, getResources().getDimension(R.dimen.spacingSmall), 0);
             }
             aq.id(R.id.articleOverviewTitle).text(a.getName());
-            aq.id(R.id.articleOverviewPublishDate).text(String.format(Locale.getDefault(), "Published at %tD by", a.getPubDate()));
+            aq.id(R.id.articleOverviewPublishDate).text(String.format(Locale.getDefault(), getString(R.string.published_at_X_by), a.getPubDate()));
             aq.id(R.id.articleOverviewAuthor).text(a.getAuthor());
             final CheckBox favoriteCheckBox = aq.id(R.id.articleOverviewFavorite).getCheckBox();
             favoriteCheckBox.setChecked(mFavoriteHelper.isFavorited(a));

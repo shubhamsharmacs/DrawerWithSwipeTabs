@@ -72,7 +72,7 @@ public class ListingOverviewFragment extends BaseFragment {
             aq.id(R.id.listingOverviewSummary).text(l.getSummary());
             aq.id(R.id.listingOverviewAddress).text(l.getAddress()).getView().invalidate();
             aq.id(R.id.listingOverviewRatingBar).rating(l.getRating());
-            aq.id(R.id.listingOverviewReviews).text(String.format("%d reviews", l.getTotalReviews()));
+            aq.id(R.id.listingOverviewReviews).text(String.format("%d " + getString(R.string.reviews), l.getTotalReviews()));
             final CheckBox favoriteCheckBox = aq.id(R.id.listingOverviewFavorite).getCheckBox();
             favoriteCheckBox.setChecked(mFavoriteHelper.isFavorited(l));
             favoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

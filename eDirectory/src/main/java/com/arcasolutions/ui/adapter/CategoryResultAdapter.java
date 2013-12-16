@@ -55,7 +55,7 @@ public class CategoryResultAdapter extends BaseAdapter {
         if (c != null) {
             AQuery aq = new AQuery(v);
             aq.id(R.id.categoryTitle).text(c.getName());
-            aq.id(R.id.categorySubcategories).text(c.getTotalSubs() + " categories");
+            aq.id(R.id.categorySubcategories).text(c.getTotalSubs() + " " + v.getContext().getString(R.string.categories));
             aq.id(R.id.categoryActiveItems).text(c.getActiveItems() + "");
             if (c.getTotalSubs() > 0) {
                 aq.id(R.id.categorySubcategories).visible();

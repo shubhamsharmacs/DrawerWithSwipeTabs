@@ -125,7 +125,7 @@ public class DealOverviewFragment extends BaseFragment implements Client.RestLis
             aq.id(R.id.dealOverviewTitle).text(d.getTitle());
             aq.id(R.id.dealOverviewDescription).text(d.getDescription());
             aq.id(R.id.dealOverviewRatingBar).rating(d.getRating());
-            aq.id(R.id.dealOverviewReviews).text(String.format("%d reviews", d.getTotalReviews()));
+            aq.id(R.id.dealOverviewReviews).text(String.format("%d " + getString(R.string.reviews), d.getTotalReviews()));
             TextView originalPriceView = aq.id(R.id.dealOverviewOriginalPrice).text(String.format("$%.2f", d.getRealValue())).getTextView();
             originalPriceView.setPaintFlags(originalPriceView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); // tacha o texto
             aq.id(R.id.dealOverviewDealPrice).text(String.format("$%.2f", d.getDealValue()));

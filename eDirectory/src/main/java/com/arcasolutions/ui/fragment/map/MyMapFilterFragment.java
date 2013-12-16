@@ -71,7 +71,7 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
     private void chooseRatingDialog() {
         final RatingListAdapter adapter = new RatingListAdapter(getActivity());
         final AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                .setTitle("Rating")
+                .setTitle(R.string.rating)
                 .setAdapter(adapter, null)
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -176,16 +176,16 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
             AQuery aq = new AQuery(v);
             switch (i) {
                 case 0:
-                    aq.id(android.R.id.text1).text("Section");
+                    aq.id(android.R.id.text1).text(R.string.section);
                     aq.id(android.R.id.text2).text(mResources.getStringArray(R.array.modules)[mFilter.getModuleIndex()]);
                     break;
 
                 case 1:
-                    aq.id(android.R.id.text1).text("Rating");
+                    aq.id(android.R.id.text1).text(R.string.rating);
                     aq.id(android.R.id.text2).text(
                             mFilter.getRatings() == null || mFilter.getRatings().isEmpty()
-                                ? mContext.getString(R.string.any)
-                                : TextUtils.join(", ", mFilter.getRatings()) + " stars"
+                                    ? mContext.getString(R.string.any)
+                                    : TextUtils.join(", ", mFilter.getRatings()) + " " + mContext.getString(R.string.stars)
                     );
                     break;
             }
