@@ -8,6 +8,7 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.ReviewModule;
 import com.arcasolutions.api.model.Article;
 import com.arcasolutions.api.model.ArticleResult;
+import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.ClassifiedResult;
 import com.arcasolutions.api.model.Deal;
@@ -25,12 +26,14 @@ import com.arcasolutions.ui.activity.event.EventDetailActivity;
 import com.arcasolutions.ui.activity.listing.ListingDetailActivity;
 import com.arcasolutions.ui.adapter.ReviewAdapter;
 import com.arcasolutions.ui.fragment.HomeResultFragment;
+import com.arcasolutions.util.Util;
 import com.google.common.collect.Lists;
 import com.origamilabs.library.views.StaggeredGridView;
 
 import java.util.List;
 
-public class HomeActivity extends BaseActivity implements HomeResultFragment.OnModuleSelectionListener {
+public class HomeActivity extends BaseActivity
+        implements HomeResultFragment.OnModuleSelectionListener {
 
     private HomeResultFragment mHomeResultFragment;
 
@@ -40,7 +43,8 @@ public class HomeActivity extends BaseActivity implements HomeResultFragment.OnM
 
         mHomeResultFragment = (HomeResultFragment) getSupportFragmentManager().findFragmentByTag("home");
         if (mHomeResultFragment == null) {
-            mHomeResultFragment = HomeResultFragment.newInstance(ArticleResult.class);
+            Class<? extends BaseResult> homeBaseResultClass = Util.getHomeClassResult(this);
+            mHomeResultFragment = HomeResultFragment.newInstance(homeBaseResultClass);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_content, mHomeResultFragment, "home")
                     .commit();

@@ -154,7 +154,11 @@ public abstract class BaseActivity extends ActionBarActivity implements
 
 
         List<NavItem> options = Lists.newArrayList();
-        options.add(new NavItem(R.drawable.ic_map, R.string.drawerMap, MapActivity.class, null));
+        if (Util.isNonLocationApp(this)) {
+            options.add(new NavItem(R.drawable.ic_home, R.string.drawerHome, HomeActivity.class, null));
+        } else {
+            options.add(new NavItem(R.drawable.ic_map, R.string.drawerMap, MapActivity.class, null));
+        }
         options.add(new NavItem(R.drawable.ic_business, R.string.drawerBusiness, CategoryResultActivity.class, buildCatExtras(ListingCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_tag, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_classifieds, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));

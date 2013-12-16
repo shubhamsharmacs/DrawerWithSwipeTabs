@@ -19,6 +19,17 @@
     <string name="facebook_scope">"publish_stream,offline_access,read_stream,user_about_me,email"</string>
 
     <!-- eDirectory non-location -->
-    <bool name="isNonLocation">true</bool>
+    <bool name="hasMapOnDetail">false</bool>
+
+    <!--
+        eDirectory Home Screen
+        0 - Map
+        1 - Home Listing
+        2 - Home Deal
+        3 - Home Article
+        4 - Home Classified
+        5 - Home Event
+    -->
+    <integer name="defaultHomeScreen">5</integer>
 
 </resources>

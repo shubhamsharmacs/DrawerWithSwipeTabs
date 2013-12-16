@@ -3,22 +3,20 @@ package com.arcasolutions.ui.fragment;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.ShareActionProvider;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.implementation.IGeoPoint;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -36,6 +34,11 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        try {
+            MapsInitializer.initialize(getActivity());
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -88,10 +91,10 @@ public abstract class BaseFragment extends Fragment {
         if (point == null) return;
 
         Resources res = getResources();
-        boolean isNonLocation = res.getBoolean(R.bool.isNonLocation);
+        boolean isNonLocation = res.getBoolean(R.bool.hasMapOnDetail);
         if (!isNonLocation) return;
 
-        final LatLng center = new LatLng(point.getLatitude(),  point.getLongitude());
+        final LatLng center = new LatLng(point.getLatitude(), point.getLongitude());
 
         View mapPlaceView = getView().findViewById(R.id.mapPlace);
         if (mapPlaceView != null) mapPlaceView.setVisibility(View.VISIBLE);
@@ -122,7 +125,8 @@ public abstract class BaseFragment extends Fragment {
                     if (map == null) {
                         try {
                             Thread.sleep(1000);
-                        } catch (InterruptedException ignored) { }
+                        } catch (InterruptedException ignored) {
+                        }
                     }
                 } while (map == null);
 
@@ -138,8 +142,6 @@ public abstract class BaseFragment extends Fragment {
 
 
     }
-
-
 
 
 }

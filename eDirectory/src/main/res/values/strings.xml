@@ -54,6 +54,7 @@
     <string name="setting_appVersion">version <xliff:g id="versionName">%1$s</xliff:g></string>
 
     <!-- Navigation Drawer -->
+    <string name="drawerHome">Home</string>
     <string name="drawerMap">Map</string>
     <string name="drawerBusiness">Business</string>
     <string name="drawerDeals">Deals</string>

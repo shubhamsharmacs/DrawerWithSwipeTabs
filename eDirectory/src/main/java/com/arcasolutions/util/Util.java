@@ -1,5 +1,6 @@
 package com.arcasolutions.util;
 
+import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
@@ -12,6 +13,12 @@ import android.widget.ListView;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.implementation.IGeoPoint;
+import com.arcasolutions.api.model.ArticleResult;
+import com.arcasolutions.api.model.BaseResult;
+import com.arcasolutions.api.model.ClassifiedResult;
+import com.arcasolutions.api.model.DealResult;
+import com.arcasolutions.api.model.EventResult;
+import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.api.model.Module;
 
 import java.util.Collections;
@@ -91,4 +98,40 @@ public class Util {
         listView.requestLayout();
     }
 
+    public static boolean isNonLocationApp(Context context) {
+        int defaultHomeScreen = context.getResources()
+                .getInteger(R.integer.defaultHomeScreen);
+        return defaultHomeScreen != 0;
+    }
+
+    public static Class<? extends BaseResult> getHomeClassResult(Context context) {
+        int defaultHomeScreen = context.getResources()
+                .getInteger(R.integer.defaultHomeScreen);
+
+        Class<? extends BaseResult> homeBaseResult = ListingResult.class;
+
+        switch (defaultHomeScreen) {
+            case 1: // Listing
+                homeBaseResult = ListingResult.class;
+                break;
+
+            case 2: // Deal
+                homeBaseResult = DealResult.class;
+                break;
+
+            case 3: // Article
+                homeBaseResult = ArticleResult.class;
+                break;
+
+            case 4: // Classified
+                homeBaseResult = ClassifiedResult.class;
+                break;
+
+            case 5: // Event
+                homeBaseResult = EventResult.class;
+                break;
+        }
+
+        return homeBaseResult;
+    }
 }
