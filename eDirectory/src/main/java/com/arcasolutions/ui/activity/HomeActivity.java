@@ -20,6 +20,7 @@ import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.api.model.Review;
 import com.arcasolutions.api.model.ReviewResult;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.article.ArticleDetailActivity;
 import com.arcasolutions.ui.activity.classified.ClassifiedDetailActivity;
 import com.arcasolutions.ui.activity.event.EventDetailActivity;
@@ -33,7 +34,7 @@ import com.origamilabs.library.views.StaggeredGridView;
 import java.util.List;
 
 public class HomeActivity extends BaseActivity
-        implements HomeResultFragment.OnModuleSelectionListener {
+        implements OnModuleSelectionListener {
 
     private HomeResultFragment mHomeResultFragment;
 

@@ -25,6 +25,7 @@ import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.arcasolutions.util.AbsListViewHelper;
 import com.arcasolutions.util.EmptyListViewHelper;
@@ -312,11 +313,6 @@ public class ModuleResultFragment<T extends BaseResult>
     public void onNextPage() {
         mPage += 1;
         loadData();
-    }
-
-    // Module selection listener
-    public interface OnModuleSelectionListener {
-        void onModuleSelected(Module module, int position, long id);
     }
 
     private void setMenuOrderEnable(boolean enabled) {

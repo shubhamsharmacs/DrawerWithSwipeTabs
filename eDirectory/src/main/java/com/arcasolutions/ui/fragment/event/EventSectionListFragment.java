@@ -14,6 +14,7 @@ import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.adapter.EventSectionAdapter;
 import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.ui.fragment.ModuleResultFragment;
@@ -27,12 +28,6 @@ import java.util.List;
 
 public class EventSectionListFragment extends BaseFragment
         implements Client.RestListener<EventResult>, AdapterView.OnItemClickListener {
-
-
-    // Module selection listener
-    public interface OnModuleSelectionListener {
-        void onModuleSelected(Module module, int position, long id);
-    }
 
     private static final String TAG = "EventSectionListFragment";
 

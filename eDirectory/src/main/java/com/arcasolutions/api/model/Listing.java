@@ -2,6 +2,7 @@ package com.arcasolutions.api.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import com.arcasolutions.api.annotation.ApiModule;
 import com.arcasolutions.api.constant.ModuleName;
@@ -42,7 +43,7 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
     @DatabaseField(columnName = Database.ListingsColumns.LISTING_HAS_DEAL)
     private long hasDeal;
 
-    @JsonProperty("location_information")
+    @JsonProperty("address")
     @JsonDeserialize(using = AddressDeserializer.class)
     @DatabaseField(columnName = Database.ListingsColumns.LISTING_ADDRESS)
     private String address;
@@ -123,6 +124,10 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
     @JsonProperty
     private String url;
 
+    @JsonProperty("location_information")
+    @JsonDeserialize(using = AddressDeserializer.class)
+    private String locationInformation;
+
     @Override
     public Map<String, String> getLevelFieldsMap() {
         Map<String, String> map = Maps.newHashMap();
@@ -142,6 +147,12 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
     }
 
     public Listing() {
+    }
+
+    public String getAddress() {
+        return TextUtils.isEmpty(locationInformation)
+                ? address
+                : locationInformation;
     }
 
     private Listing(Parcel in) {

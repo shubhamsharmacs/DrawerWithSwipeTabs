@@ -30,6 +30,7 @@ import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.util.FavoriteHelper;
@@ -182,11 +183,6 @@ public class ModuleFavoriteFragment<T extends Module> extends Fragment implement
 
 
         return true;
-    }
-
-    // Module selection listener
-    public interface OnModuleSelectionListener {
-        void onModuleSelected(Module module, int position, long id);
     }
 
     private void deleteSelectedItems() {

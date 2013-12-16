@@ -7,10 +7,12 @@ import com.arcasolutions.R;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.fragment.ModuleResultFragment;
 
-public class EventResultActivity extends BaseActivity implements ModuleResultFragment.OnModuleSelectionListener {
+public class EventResultActivity extends BaseActivity
+        implements OnModuleSelectionListener {
 
     public static final String EXTRA_CATEGORY = "category";
 

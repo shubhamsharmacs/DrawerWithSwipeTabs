@@ -8,10 +8,12 @@ import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.fragment.ModuleResultFragment;
 
-public class DealResultActivity extends BaseActivity implements ModuleResultFragment.OnModuleSelectionListener {
+public class DealResultActivity extends BaseActivity
+        implements OnModuleSelectionListener {
 
     public static final String EXTRA_CATEGORY = "category";
 

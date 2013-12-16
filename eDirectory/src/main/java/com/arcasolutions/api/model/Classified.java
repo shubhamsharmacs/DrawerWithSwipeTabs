@@ -1,6 +1,7 @@
 package com.arcasolutions.api.model;
 
 import android.os.Parcel;
+import android.text.TextUtils;
 
 import com.arcasolutions.api.deserializer.AddressDeserializer;
 import com.arcasolutions.api.implementation.IContactInfo;
@@ -31,7 +32,7 @@ public class Classified extends Module implements IGeoPoint, IContactInfo {
     @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_TITLE)
     private String name;
 
-    @JsonProperty("location_information")
+    @JsonProperty("address")
     @JsonDeserialize(using = AddressDeserializer.class)
     @DatabaseField(columnName = Database.ClassifiedsColumns.CLASSIFIED_ADDRESS1)
     private String address;
@@ -76,6 +77,10 @@ public class Classified extends Module implements IGeoPoint, IContactInfo {
     @JsonProperty
     private int level;
 
+    @JsonProperty("location_information")
+    @JsonDeserialize(using = AddressDeserializer.class)
+    private String locationInformation;
+
     @Override
     public Map<String, String> getLevelFieldsMap() {
         Map<String, String> map = Maps.newHashMap();
@@ -92,6 +97,12 @@ public class Classified extends Module implements IGeoPoint, IContactInfo {
     }
 
     public Classified() {
+    }
+
+    public String getAddress() {
+        return TextUtils.isEmpty(locationInformation)
+                ? address
+                : locationInformation;
     }
 
     private Classified(Parcel in) {

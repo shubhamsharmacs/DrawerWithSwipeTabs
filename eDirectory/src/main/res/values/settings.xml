@@ -30,6 +30,6 @@
         4 - Home Classified
         5 - Home Event
     -->
-    <integer name="defaultHomeScreen">5</integer>
+    <integer name="defaultHomeScreen">0</integer>
 
 </resources>

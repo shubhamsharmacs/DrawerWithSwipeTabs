@@ -10,6 +10,7 @@ import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.article.ArticleDetailActivity;
 import com.arcasolutions.ui.activity.classified.ClassifiedDetailActivity;
 import com.arcasolutions.ui.activity.event.EventDetailActivity;
@@ -17,7 +18,8 @@ import com.arcasolutions.ui.activity.listing.ListingDetailActivity;
 import com.arcasolutions.ui.fragment.ModuleFavoriteFragment;
 import com.arcasolutions.ui.fragment.MyFavoriteFragment;
 
-public class MyFavoriteActivity extends BaseActivity implements ModuleFavoriteFragment.OnModuleSelectionListener {
+public class MyFavoriteActivity extends BaseActivity
+        implements OnModuleSelectionListener {
 
     private MyFavoriteFragment mFavoriteFragment;
 

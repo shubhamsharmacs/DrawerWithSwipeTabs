@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/mapInfoView"
     android:visibility="gone"
     android:animateLayoutChanges="false"
@@ -15,7 +16,7 @@
         style="@style/mapInfoTextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Listing Title Listing Title Listing Title Listing Title Listing Title Listing Title Listing Title"
+        tools:text="Listing Title Listing Title Listing Title Listing Title Listing Title Listing Title Listing Title"
         android:id="@id/mapInfoTitle"
         android:lines="1"
         android:ellipsize="end"
@@ -29,7 +30,9 @@
         style="@style/mapInfoTextDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2.2 quilometros"
+        tools:text="2.2 quilometros"
+        android:drawableLeft="@drawable/ic_whitepin_context"
+        android:drawablePadding="@dimen/spacingSmall"
         android:id="@id/mapInfoDistance"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true" />
@@ -47,7 +50,7 @@
         android:layout_marginLeft="@dimen/spacingLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="407 South Main Street Grove Oklahoma United States 74344"
+        tools:text="407 South Main Street Grove Oklahoma United States 74344"
         android:id="@id/mapInfoAddress"
         android:maxLines="2"
         android:ellipsize="end"

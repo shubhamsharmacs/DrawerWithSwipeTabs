@@ -22,6 +22,7 @@ import com.arcasolutions.api.model.EventCategory;
 import com.arcasolutions.api.model.EventCategoryResult;
 import com.arcasolutions.api.model.ListingCategory;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.CategoryResultActivity;
 import com.arcasolutions.ui.activity.article.ArticleResultActivity;
@@ -40,8 +41,7 @@ import java.util.Calendar;
 public class EventActivity extends BaseActivity
         implements EventCalendarFragment.OnDateChangeListener,
         CategoryResultFragment.OnCategorySelectionListener,
-        ModuleResultFragment.OnModuleSelectionListener,
-        EventSectionListFragment.OnModuleSelectionListener {
+        OnModuleSelectionListener {
 
     private ViewPager mViewPager;
     private TabsAdapter mTabsAdapter;

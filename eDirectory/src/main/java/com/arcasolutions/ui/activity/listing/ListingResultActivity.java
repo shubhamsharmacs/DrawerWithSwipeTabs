@@ -7,10 +7,12 @@ import com.arcasolutions.R;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.fragment.ModuleResultFragment;
 
-public class ListingResultActivity extends BaseActivity implements ModuleResultFragment.OnModuleSelectionListener {
+public class ListingResultActivity extends BaseActivity
+        implements OnModuleSelectionListener {
 
     public static final String EXTRA_CATEGORY = "category";
 

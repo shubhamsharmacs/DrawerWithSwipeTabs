@@ -28,9 +28,14 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.api.model.BaseResult;
+import com.arcasolutions.api.model.Classified;
+import com.arcasolutions.api.model.Deal;
+import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Module;
+import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.listing.ListingResultActivity;
+import com.arcasolutions.util.FmtUtil;
 import com.arcasolutions.util.LocationUtil;
 import com.arcasolutions.util.Util;
 import com.arcasolutions.view.DrawView;
@@ -90,6 +95,7 @@ public class MyMapFragment extends Fragment implements
     private LatLng mNearLeft;
     private LatLng mFarRight;
     private OnShowAsListListener mListener;
+    private OnModuleSelectionListener mSelectionListener;
 
     public MyMapFragment() {
     }
@@ -99,6 +105,9 @@ public class MyMapFragment extends Fragment implements
         super.onAttach(activity);
         if (activity instanceof OnShowAsListListener) {
             mListener = (OnShowAsListListener) activity;
+        }
+        if (activity instanceof OnModuleSelectionListener) {
+            mSelectionListener = (OnModuleSelectionListener) activity;
         }
     }
 
@@ -178,10 +187,25 @@ public class MyMapFragment extends Fragment implements
         searchItems();
     }
 
+    private void removeMarker(Object... markers) {
+        if (markers != null) {
+            for (Object object : markers) {
+                AQuery aq = new AQuery(getView());
+                Object tag = aq.id(R.id.mapInfoView).getTag();
+                if (object.equals(tag)) {
+                    aq.gone();
+                }
+                mModuleMap.remove(object);
+                if (object instanceof Marker)
+                    ((Marker)object).remove();
+            }
+        }
+    }
 
     private void updateMapMarkers(Collection<IGeoPoint> items) {
         if (items == null || items.isEmpty()) {
-            mModuleMap.clear();
+            //mModuleMap.clear();
+            removeMarker(mModuleMap.keySet().toArray());
             mMap.clear();
             return;
         }
@@ -217,9 +241,10 @@ public class MyMapFragment extends Fragment implements
                 entry.getKey().remove();
             }
         }
-        for (Marker m : unneeded) {
-            mModuleMap.remove(m);
-        }
+        removeMarker(unneeded.toArray());
+//        for (Marker m : unneeded) {
+//            mModuleMap.remove(m);
+//        }
 
 
         // Adds news items as Marker
@@ -299,15 +324,23 @@ public class MyMapFragment extends Fragment implements
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        IGeoPoint item = mModuleMap.get(marker);
+        final IGeoPoint item = mModuleMap.get(marker);
         if (item != null) {
             AQuery aq = new AQuery(getView());
             aq.id(R.id.mapInfoView).gone();
-            aq.id(R.id.mapInfoTitle).text(item.getTitle());
-            aq.id(R.id.mapInfoRatingBar).rating(item.getRating());
-            aq.id(R.id.mapInfoDistance).text("2.2 miles");
-            aq.id(R.id.mapInfoAddress).text(item.getAddress());
-            aq.id(R.id.mapInfoView).visible().animate(android.R.anim.fade_in);
+            aq.id(R.id.mapInfoTitle).visible().text(item.getTitle());
+            aq.id(R.id.mapInfoRatingBar).visible().rating(item.getRating());
+            aq.id(R.id.mapInfoDistance).visible().text(FmtUtil.distance(item.getLatitude(), item.getLongitude()));
+            aq.id(R.id.mapInfoAddress).visible().text(item.getAddress());
+
+            if (item instanceof Deal) {
+                aq.id(R.id.mapInfoDistance).invisible();
+                aq.id(R.id.mapInfoAddress).invisible();
+            } else if (item instanceof Classified || item instanceof Event) {
+                aq.id(R.id.mapInfoRatingBar).invisible();
+            }
+
+            aq.id(R.id.mapInfoView).tag(marker).clicked(this, "onClick").visible().animate(android.R.anim.fade_in);
         }
         return false;
     }
@@ -321,6 +354,14 @@ public class MyMapFragment extends Fragment implements
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.mapInfoView:
+                Object tag = view.getTag();
+                if (tag instanceof Marker) {
+                    IGeoPoint point = mModuleMap.get(tag);
+                    mSelectionListener.onModuleSelected((Module) point, 0, 0);
+                }
+                break;
+
             case R.id.buttonList:
                 final Collection<IGeoPoint> result = mModuleMap.values();
                 if (mListener != null && result != null) {
