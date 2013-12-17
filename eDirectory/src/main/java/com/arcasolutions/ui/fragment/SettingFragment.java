@@ -106,8 +106,7 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
         static final int ITEM_ABOUT_HEADER = 2;
         static final int ITEM_ABOUT_US = 3;
         static final int ITEM_ABOUT_LEGAL_NOTICES = 4;
-        static final int ITEM_ABOUT_WATCH_APP_TUTORIAL = 5;
-        static final int ITEM_ABOUT_VERSION = 6;
+        static final int ITEM_ABOUT_VERSION = 5;
 
         private static final int VIEW_TYPE_HEADER = 0;
         private static final int VIEW_TYPE_TWO_LINES = 1;
@@ -125,7 +124,7 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
 
         @Override
         public int getCount() {
-            return 7;
+            return 6;
         }
 
         @Override
@@ -217,12 +216,6 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
                             aq.id(R.id.settingText2).gone();
                             break;
 
-                        case ITEM_ABOUT_WATCH_APP_TUTORIAL:
-                            aq.id(R.id.settingText1).visible()
-                                    .text(R.string.setting_what_app_tutorial);
-                            aq.id(R.id.settingText2).gone();
-                            break;
-
                         case ITEM_ABOUT_VERSION:
                             String versionName = "";
                             try {
@@ -259,7 +252,6 @@ public class SettingFragment extends Fragment implements AdapterView.OnItemClick
 
                 case ITEM_ABOUT_US:
                 case ITEM_ABOUT_LEGAL_NOTICES:
-                case ITEM_ABOUT_WATCH_APP_TUTORIAL:
                 case ITEM_ABOUT_VERSION:
                     return VIEW_TYPE_TWO_LINES;
 

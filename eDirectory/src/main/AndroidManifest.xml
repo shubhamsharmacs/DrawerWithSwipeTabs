@@ -42,55 +42,98 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.HomeActivity" />
-
-        <activity android:name=".ui.activity.MapActivity" />
-
-        <activity android:name=".ui.activity.CategoryResultActivity" />
-
-        <activity android:name=".ui.activity.listing.ListingResultActivity" />
-
-        <activity android:name=".ui.activity.listing.ListingDetailActivity" />
-
-        <activity android:name=".ui.activity.listing.DealResultActivity" />
-
-        <activity android:name=".ui.activity.article.ArticleResultActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.HomeActivity"
+            android:configChanges="orientation|screenSize" />
 
         <activity
-            android:name=".ui.activity.article.ArticleDetailActivity"
-            android:hardwareAccelerated="false" />
+            android:name="com.arcasolutions.ui.activity.MapActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.classified.ClassifiedResultActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.CategoryResultActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.classified.ClassifiedDetailActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.listing.ListingResultActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.event.EventResultActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.listing.ListingDetailActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.event.EventDetailActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.listing.DealResultActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.GalleryViewActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.article.ArticleResultActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.MyFavoriteActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.article.ArticleDetailActivity"
+            android:hardwareAccelerated="false"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.SettingActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.classified.ClassifiedResultActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.CheckInActivity" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.classified.ClassifiedDetailActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.event.EventActivity"/>
+        <activity
+            android:name="com.arcasolutions.ui.activity.event.EventResultActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.AboutActivity"/>
+        <activity
+            android:name="com.arcasolutions.ui.activity.event.EventDetailActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.LoginActivity"
-            android:launchMode="singleTop" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.GalleryViewActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.SignUpActivity"
-            android:launchMode="singleTop" />
+        <activity
+            android:name="com.arcasolutions.ui.activity.MyFavoriteActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".ui.activity.ReviewListActivity"/>
+        <activity
+            android:name="com.arcasolutions.ui.activity.SettingActivity"
+            android:configChanges="orientation|screenSize" />
 
-        <activity android:name=".web.FacebookWebOAuthActivity"
+        <activity
+            android:name="com.arcasolutions.ui.activity.CheckInActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name="com.arcasolutions.ui.activity.event.EventActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name="com.arcasolutions.ui.activity.AboutActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name="com.arcasolutions.ui.activity.LoginActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name="com.arcasolutions.ui.activity.SignUpActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name="com.arcasolutions.ui.activity.ReviewListActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name="com.arcasolutions.web.FacebookWebOAuthActivity"
             android:excludeFromRecents="true"
-            android:noHistory="true"/>
+            android:configChanges="orientation|screenSize"
+            android:noHistory="true" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

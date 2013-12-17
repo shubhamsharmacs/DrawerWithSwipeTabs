@@ -105,7 +105,7 @@
                 style="@style/blueButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="38dp"
-                android:text="Get Directions"
+                android:text="@string/get_directions"
                 android:id="@id/listingOverviewGetDirections"
                 android:layout_alignBottom="@id/listingOverviewAddress"
                 android:layout_alignParentRight="true"
@@ -135,7 +135,7 @@
             style="@style/blueButtonStyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Call business"
+            android:text="@string/call_business"
             android:id="@id/listingOverviewCall" />
 
     </LinearLayout>

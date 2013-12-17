@@ -38,8 +38,9 @@
         android:layout_height="wrap_content"
         android:text="$20.00"
         android:id="@id/dealPrice"
-        android:layout_above="@id/dealListing"
-        android:layout_toRightOf="@id/dealImage" />
+        android:layout_below="@id/dealName"
+        android:layout_alignLeft="@id/dealName"
+        android:layout_alignStart="@id/dealName" />
 
     <TextView
         style="@style/dealResultTextDiscount"
@@ -59,5 +60,7 @@
         android:layout_alignBottom="@id/dealDiscount"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/dealDiscount"
-        android:gravity="right" />
+        android:gravity="right"
+        android:lines="1"
+        android:ellipsize="end" />
 </RelativeLayout>

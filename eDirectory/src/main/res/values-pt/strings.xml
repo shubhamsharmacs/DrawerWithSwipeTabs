@@ -2,10 +2,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string-array name="modules">
-        <item>Empresa</item>
-        <item>Promoção</item>
+        <item>Empresas</item>
+        <item>Ofertas</item>
         <item>Classificado</item>
-        <item>Evento</item>
+        <item>Eventos</item>
     </string-array>
 
     <!-- They are being used by calendar(s) -->
@@ -50,14 +50,13 @@
     <string name="setting_about">Sobre</string>
     <string name="setting_about_us">Sobre nós</string>
     <string name="setting_legal_notices">Aviso Legal</string>
-    <string name="setting_what_app_tutorial">Watch app tutorial</string>
     <string name="setting_appVersion">Versão <xliff:g id="versionName">%1$s</xliff:g></string>
 
     <!-- Navigation Drawer -->
     <string name="drawerHome">Principal</string>
     <string name="drawerMap">Mapa</string>
-    <string name="drawerBusiness">Empresa</string>
-    <string name="drawerDeals">Promoções</string>
+    <string name="drawerBusiness">Empresas</string>
+    <string name="drawerDeals">Ofertas</string>
     <string name="drawerClassifieds">Classificados</string>
     <string name="drawerEvents">Eventos</string>
     <string name="drawerArticles">Artigos</string>
@@ -93,7 +92,7 @@
     <string name="tab_overview">DETALHE</string>
     <string name="tab_gallery">GALERIA</string>
     <string name="tab_description">DESCRIÇÃO</string>
-    <string name="tab_reviews">OPNIÕES</string>
+    <string name="tab_reviews">AVALIAÇÕES</string>
     <string name="drawer_open">Abrir menu</string>
     <string name="drawer_close">Fechar menu</string>
     <string name="confirmation">Confirmação</string>
@@ -118,33 +117,33 @@
     <string name="last_name">Sobrenome</string>
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
-    <string name="confirm_password">Confirmar senha</string>
+    <string name="confirm_password">Confirmação de Senha</string>
     <string name="submit">Enviar</string>
     <string name="publication_date">Data de publicação</string>
     <string name="last_updated">Última atualização</string>
     <string name="end_date">Data final</string>
     <string name="start_date">Data inicial</string>
     <string name="sort">Ordernar</string>
-    <string name="what_are_you_looking_for">O que você está procurando?</string>
-    <string name="type_a_keyword">Digite uma palavra</string>
+    <string name="what_are_you_looking_for">O que você procura?</string>
+    <string name="type_a_keyword"> </string>
     <string name="where">Onde?</string>
-    <string name="type_a_location">Digite um localização</string>
-    <string name="search">Pesquisa</string>
+    <string name="type_a_location">Na área atual do mapa</string>
+    <string name="search">Buscar</string>
     <string name="section">Seção</string>
     <string name="any">Qualquer</string>
     <string name="event_tab_categories">Categorias</string>
     <string name="event_tab_calendar">Calendário</string>
     <string name="event_tab_list">Lista</string>
     <string name="about_title">eDirectory.com Mobile Application</string>
-    <string name="app_version">v8.1</string><string name="about_description">All data in this application comes direct from demodirectory.com.
+    <string name="app_version">v8.1</string><string name="about_description">Todos os dados nesta aplicação vêm diretamente de demodirectory.com.br.
 
-eDirectory (Our platform this application is running on) is available from edirectory.com, It\'s also a good place to get more information.
+eDirectory está disponível em edirectory.com.br, também é um bom lugar para ter mais informações.
 
-If you want to know more, want to build you own directory or mobile application, then get in touch with us and see how we can help you, we\'re happy to help in any way we can.</string>
+Se você quer saber mais, quer construir seu próprio diretório ou aplicativo móvel, entre em contato, estaremos felizes em ajudar em qualquer maneira que pudermos.</string>
     <string name="get_in_touch">Contato</string>
-    <string name="about_visit_website">Visitar página</string>
-    <string name="about_send_email">Envie nos um email</string>
-    <string name="about_call_us">Contactar nos</string>
+    <string name="about_visit_website">Visitar site</string>
+    <string name="about_send_email">Email</string>
+    <string name="about_call_us">Telefone</string>
     <string name="about_website_url">http://www.demodirectory.com</string>
     <string name="about_email_contact">sales@edirectory.com</string>
     <string name="about_email_contact_subject">Contato</string>
@@ -161,26 +160,34 @@ If you want to know more, want to build you own directory or mobile application,
     <string name="event_date_from">De:</string>
     <string name="event_date">Data:</string>
     <string name="view_all">ver todos</string>
-    <string name="reviews">Opniões</string>
+    <plurals name="X_reviews">
+        <item quantity="zero"><xliff:g id="numRevies">%1$d</xliff:g> avaliações</item>
+        <item quantity="one"><xliff:g id="numRevies">%1$d</xliff:g> avaliação</item>
+        <item quantity="other"><xliff:g id="numRevies">%1$d</xliff:g> avaliações</item>
+    </plurals>
+
+    <!-- Sign Up -->
     <string name="name_is_required">Nome é obrigatório.</string>
     <string name="last_name_is_required">Sobrenome é obrigatório.</string>
     <string name="email_is_required">E-mail é obrigatório.</string>
     <string name="enter_a_valid_email">Entre com um e-mail válido.</string>
-    <string name="creating_account">Criando conta &#8230;</string>
     <string name="confirm_password_does_not_match">Confirmação de senha não confere.</string>
+    <string name="creating_account">Criando conta &#8230;</string>
     <string name="minimum_of_4_chars">Minímo de 4 carateres.</string>
     <string name="password_is_required">Senha é obrigatória.</string>
+
+
     <string name="no_results_to_be_shown">Nenhum resultado à ser exibido.</string>
     <string name="email_should_be_filled">E-mail deve ser preenchido.</string>
     <string name="password_should_be_filled">Senha deve ser preenchida.</string>
     <string name="you_are_not_connected_on_facebook">Você não está conectado no Facebook.</string>
-    <string name="categories">categories</string>
+    <string name="categories">categorias</string>
     <string name="published_at_X_by">Publicado em %tD por</string>
     <string name="stars">estrelas</string>
     <string name="call">Discar</string>
-    <string name="send_email">Enviar e-mail</string>
+    <string name="send_email">Enviar email</string>
     <string name="visit_webpage">Visitar página</string>
-    <string name="check_in_here">Check in aqui</string>
+    <string name="check_in_here">Check in</string>
     <string name="contact">Contato</string>
     <string name="redeeming_deal">Resgatando promoção &#8230;</string>
     <string name="redeem">Resgate</string>
@@ -194,6 +201,14 @@ If you want to know more, want to build you own directory or mobile application,
     <string name="rating_must_be_at_least_1">Avaliação deve ser pelo menos 1</string>
     <string name="review_posted">Avaliação enviada!</string>
     <string name="no_internet_connection">Sem conexão com a internet.</string>
+    <string name="login_with_your_detail">Entrar com seus dados</string>
+    <string name="log_in">Entrar</string>
+    <string name="or">OU</string>
+    <string name="sign_in_with_facebook">Entrar ou registrar-se com Facebook</string>
+    <string name="sign_up">Registrar-se</string>
+    <string name="call_business">Ligar para a Empresa</string>
+    <string name="get_directions">Traçar rota</string>
+    <string name="reviews">Avaliações</string>
 
 
 </resources>

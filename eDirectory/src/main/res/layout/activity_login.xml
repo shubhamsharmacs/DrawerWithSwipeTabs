@@ -17,7 +17,7 @@
 
         <TextView
             style="@style/loginTextContent"
-            android:text="Login with your details"
+            android:text="@string/login_with_your_detail"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/textView2"
@@ -30,7 +30,7 @@
 
         <EditText
             android:id="@+id/loginEmail"
-            android:hint="Email address"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
 
         <EditText
             android:id="@+id/loginPassword"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -51,7 +51,7 @@
         <Button
             style="@style/blueButtonStyle"
             android:id="@+id/loginLogin"
-            android:text="Login"
+            android:text="@string/log_in"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:onClick="onLogin"
@@ -60,7 +60,7 @@
             android:layout_marginLeft="70dp" />
 
         <TextView
-            android:text="OR"
+            android:text="@string/or"
             style="@style/loginTextContent"
             android:gravity="center"
             android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
         <Button
             style="@style/blueFacebookButtonStyle"
             android:id="@+id/loginFacebook"
-            android:text="Sign in with Facebook"
+            android:text="@string/sign_in_with_facebook"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:onClick="onLoginWithFacebook"
@@ -85,7 +85,7 @@
             style="@style/blueButtonStyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Create new account"
+            android:text="@string/sign_up"
             android:id="@+id/createAccount"
             android:onClick="onCreateAccount"
             android:layout_alignParentBottom="true"
