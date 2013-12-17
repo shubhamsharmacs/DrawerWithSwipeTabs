@@ -93,7 +93,8 @@ public class ArticleOverviewFragment extends BaseFragment {
 
         StringBuilder builder = new StringBuilder();
         builder.append("<html><head>");
-        builder.append("<style>body {color: black; margin:0px}</style>");
+        builder.append("<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>");
+        builder.append("<style>body {color: black; margin:0px; font-family: 'Roboto', sans-serif;}</style>");
         builder.append("</head><body>");
         builder.append(content);
         builder.append("</body></html>");
