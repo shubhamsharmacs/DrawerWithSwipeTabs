@@ -6,18 +6,16 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RatingBar;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
@@ -74,30 +72,73 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
                 .setTitle(R.string.rating)
                 .setAdapter(adapter, null)
                 .setNegativeButton(R.string.cancel, null)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                }).create();
+                .setPositiveButton(R.string.ok, null).create();
 
         final ListView listView = dialog.getListView();
-        listView.setItemsCanFocus(true);
-        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                CheckBox checkBox = (CheckBox) view.findViewById(R.id.checkBox);
-                checkBox.setChecked(listView.isItemChecked(position));
+                View currentView = listView.getChildAt(position);
+                CheckBox checkBox = (CheckBox) currentView.findViewById(R.id.checkBox);
+                checkBox.setChecked(!checkBox.isChecked());
+
+
+                if (position == 0) {
+                    if (checkBox.isChecked()) {
+                        for (int i=1; i<listView.getChildCount(); i++) {
+                            View c = listView.getChildAt(i);
+                            CheckBox box = (CheckBox) c.findViewById(R.id.checkBox);
+                            box.setChecked(false);
+                        }
+                    }
+                }
+
+                boolean thereIsOptionsChecked = false;
+                for (int i=1; i<listView.getChildCount(); i++) {
+                    View c = listView.getChildAt(i);
+                    CheckBox box = (CheckBox) c.findViewById(R.id.checkBox);
+                    if (box.isChecked()) {
+                        thereIsOptionsChecked = true;
+                        break;
+                    }
+                }
+                View m = listView.getChildAt(0);
+                CheckBox mbox = (CheckBox) m.findViewById(R.id.checkBox);
+                mbox.setChecked(!thereIsOptionsChecked);
+
             }
         });
+
+
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
                 listView.performItemClick(listView.getChildAt(0), 0, 0);
             }
         });
+
         dialog.show();
+
+        Button okButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Integer> ratings = Lists.newArrayList();
+                for (int i=0; i<listView.getChildCount(); i++) {
+                    View childView = listView.getChildAt(i);
+                    CheckBox checkBox = (CheckBox) childView.findViewById(R.id.checkBox);
+                    RatingBar ratingBar = (RatingBar) childView.findViewById(R.id.ratingBar);
+                    if (i == 0 && checkBox.isChecked()) {
+                        break;
+                    } else if (checkBox.isChecked()) {
+                        ratings.add((int)ratingBar.getRating());
+                    }
+                }
+                mFilter.setRatings(ratings);
+                mFilterAdapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+        });
 
     }
 
@@ -181,12 +222,24 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
                     break;
 
                 case 1:
+                    String starsLabel = mContext.getString(R.string.any);
+                    List<Integer> ratings = mFilter.getRatings();
+                    int size = ratings != null
+                            ? ratings.size()
+                            : 0;
+
+                    if (size > 0) {
+                        starsLabel = "";
+                        for (int j=0; j<size; j++) {
+                            starsLabel += ratings.get(j);
+                            if (size > 1 && j == (size - 2)) starsLabel += " & ";
+                            else if (j < size - 2) starsLabel += ", ";
+                        }
+                        starsLabel += " " + mContext.getString(R.string.stars);
+                    }
+
                     aq.id(android.R.id.text1).text(R.string.rating);
-                    aq.id(android.R.id.text2).text(
-                            mFilter.getRatings() == null || mFilter.getRatings().isEmpty()
-                                    ? mContext.getString(R.string.any)
-                                    : TextUtils.join(", ", mFilter.getRatings()) + " " + mContext.getString(R.string.stars)
-                    );
+                    aq.id(android.R.id.text2).text(starsLabel);
                     break;
             }
 

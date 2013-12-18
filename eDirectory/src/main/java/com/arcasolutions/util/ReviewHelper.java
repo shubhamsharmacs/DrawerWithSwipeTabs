@@ -20,7 +20,6 @@ import com.arcasolutions.api.model.Account;
 import com.arcasolutions.api.model.IappResult;
 import com.arcasolutions.api.model.ReviewResult;
 import com.arcasolutions.ui.activity.LoginActivity;
-import com.google.android.gms.internal.al;
 
 public class ReviewHelper implements Client.RestIappListener<ReviewResult> {
 

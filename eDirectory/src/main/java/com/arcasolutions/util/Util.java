@@ -52,9 +52,8 @@ public class Util {
     }
 
     public static boolean isEmailValid(String email) {
-        if (TextUtils.isEmpty(email)) return false;
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
 
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     public static void orderByDistance(LinkedList<Module> modules) {

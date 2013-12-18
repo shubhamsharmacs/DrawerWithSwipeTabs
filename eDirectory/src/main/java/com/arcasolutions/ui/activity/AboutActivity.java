@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.arcasolutions.R;
 import com.arcasolutions.ui.fragment.BaseFragment;
@@ -12,13 +11,11 @@ import com.arcasolutions.util.IntentUtil;
 
 public class AboutActivity extends BaseActivity {
 
-    private AboutFragment mAboutFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAboutFragment = (AboutFragment) getSupportFragmentManager().findFragmentByTag("about");
+        AboutFragment mAboutFragment = (AboutFragment) getSupportFragmentManager().findFragmentByTag("about");
         if (mAboutFragment == null) {
             mAboutFragment = new AboutFragment();
             getSupportFragmentManager().beginTransaction()

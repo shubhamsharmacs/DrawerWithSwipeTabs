@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@drawable/favorite_list_item_selector"
     android:padding="@dimen/spacingMedium"
@@ -11,7 +12,7 @@
         style="@style/articleResultTextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How to relax and be zen"
+        tools:text="How to relax and be zen"
         android:id="@id/articleTitle"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -24,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/spacingSmall"
-        android:text="By"
+        android:text="@string/by"
         android:id="@+id/label1"
         android:layout_below="@id/articleTitle"
         android:layout_alignParentLeft="true" />
@@ -33,7 +34,7 @@
         style="@style/articleResultTextAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Laura Green"
+        tools:text="Laura Green"
         android:id="@id/articleAuthor"
         android:layout_alignTop="@+id/label1"
         android:layout_toRightOf="@+id/label1" />

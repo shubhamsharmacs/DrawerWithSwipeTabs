@@ -1,7 +1,6 @@
 package com.arcasolutions.api.annotation;
 
 import com.arcasolutions.api.constant.ModuleName;
-import com.arcasolutions.api.constant.Resource;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

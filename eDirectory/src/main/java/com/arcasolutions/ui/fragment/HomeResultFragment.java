@@ -4,40 +4,23 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
-import com.arcasolutions.api.constant.OrderBy;
-import com.arcasolutions.api.constant.SearchBy;
-import com.arcasolutions.api.model.ArticleResult;
-import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.BaseResult;
-import com.arcasolutions.api.model.ClassifiedResult;
-import com.arcasolutions.api.model.DealResult;
-import com.arcasolutions.api.model.EventResult;
-import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.adapter.HomeResultAdapter;
-import com.arcasolutions.ui.adapter.ModuleResultAdapter;
-import com.arcasolutions.util.AbsListViewHelper;
-import com.arcasolutions.util.EmptyListViewHelper;
-import com.arcasolutions.util.Util;
 import com.origamilabs.library.views.StaggeredGridView;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class HomeResultFragment<T extends BaseResult>
         extends Fragment implements

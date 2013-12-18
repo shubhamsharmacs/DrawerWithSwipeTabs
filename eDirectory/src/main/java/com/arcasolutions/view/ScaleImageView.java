@@ -18,7 +18,6 @@ import android.widget.ImageView;
  */
 public class ScaleImageView extends ImageView {
     private ImageChangeListener imageChangeListener;
-    private boolean scaleToWidth = false; // this flag determines if should measure height manually dependent of width
 
     public ScaleImageView(Context context) {
         super(context);
@@ -84,9 +83,9 @@ public class ScaleImageView extends ImageView {
          */
 
         if (widthMode == MeasureSpec.EXACTLY || widthMode == MeasureSpec.AT_MOST) {
-            scaleToWidth = true;
+            boolean scaleToWidth = true;
         } else if (heightMode == MeasureSpec.EXACTLY || heightMode == MeasureSpec.AT_MOST) {
-            scaleToWidth = false;
+            boolean scaleToWidth = false;
         } else
             throw new IllegalStateException("width or height needs to be set to match_parent or a specific dimension:" + getTag());
 
@@ -95,6 +94,7 @@ public class ScaleImageView extends ImageView {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             return;
         } else {
+            boolean scaleToWidth = false;
             if (scaleToWidth) {
                 int iw = this.getDrawable().getIntrinsicWidth();
                 int ih = this.getDrawable().getIntrinsicHeight();

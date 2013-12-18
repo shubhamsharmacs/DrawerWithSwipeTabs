@@ -13,25 +13,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.ViewGroup;
 
 import com.arcasolutions.R;
-import com.arcasolutions.api.model.ArticleCategory;
 import com.arcasolutions.api.model.BaseCategory;
-import com.arcasolutions.api.model.ClassifiedCategory;
-import com.arcasolutions.api.model.DealCategory;
-import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.EventCategory;
 import com.arcasolutions.api.model.EventCategoryResult;
-import com.arcasolutions.api.model.ListingCategory;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.BaseActivity;
 import com.arcasolutions.ui.activity.CategoryResultActivity;
-import com.arcasolutions.ui.activity.article.ArticleResultActivity;
-import com.arcasolutions.ui.activity.classified.ClassifiedResultActivity;
-import com.arcasolutions.ui.activity.listing.DealResultActivity;
 import com.arcasolutions.ui.activity.listing.ListingResultActivity;
-import com.arcasolutions.ui.adapter.EventCalendarAdapter;
 import com.arcasolutions.ui.fragment.CategoryResultFragment;
-import com.arcasolutions.ui.fragment.ModuleResultFragment;
 import com.arcasolutions.ui.fragment.event.EventCalendarFragment;
 import com.arcasolutions.ui.fragment.event.EventSectionListFragment;
 
@@ -44,7 +34,6 @@ public class EventActivity extends BaseActivity
         OnModuleSelectionListener {
 
     private ViewPager mViewPager;
-    private TabsAdapter mTabsAdapter;
     private Calendar mCalendarMonth;
 
     private final Bundle mListArgs = new Bundle();
@@ -61,7 +50,7 @@ public class EventActivity extends BaseActivity
         final ActionBar bar = getSupportActionBar();
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        mTabsAdapter = new TabsAdapter(this, mViewPager);
+        TabsAdapter mTabsAdapter = new TabsAdapter(this, mViewPager);
 
         CategoryResultFragment categoryFragment = CategoryResultFragment.newInstance(EventCategoryResult.class);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.event_tab_categories), categoryFragment.getClass(), categoryFragment.getArguments());

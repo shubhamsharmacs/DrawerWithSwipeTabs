@@ -13,11 +13,9 @@ import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.EventResult;
-import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.adapter.EventSectionAdapter;
 import com.arcasolutions.ui.fragment.BaseFragment;
-import com.arcasolutions.ui.fragment.ModuleResultFragment;
 import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.view.amazing.AmazingAdapter;
 import com.arcasolutions.view.amazing.AmazingListView;
@@ -36,7 +34,6 @@ public class EventSectionListFragment extends BaseFragment
 
     private int MONTHS_LOADED_COUNT = 1;
 
-    private AmazingListView mListView;
     private AmazingAdapter mAdapter;
     private final List<Event> mEvents = Lists.newArrayList();
     private boolean mIsThisFragmentVisible = false;
@@ -81,7 +78,7 @@ public class EventSectionListFragment extends BaseFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_event_list, container, false);
-        mListView = (AmazingListView) rootView.findViewById(android.R.id.list);
+        AmazingListView mListView = (AmazingListView) rootView.findViewById(android.R.id.list);
         mListView.setPinnedHeaderView(inflater.inflate(R.layout.simple_list_section_event, mListView, false));
         mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);

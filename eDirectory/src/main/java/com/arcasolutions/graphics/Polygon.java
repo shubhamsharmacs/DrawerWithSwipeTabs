@@ -111,11 +111,7 @@ public class Polygon extends Path implements Serializable {
      * @return true if the Polygon contains the Point; false otherwise
      */
     public boolean contains(Point p) {
-        if (bounds != null) {
-            return bounds.contains(p.x, p.y);
-        } else {
-            return false;
-        }
+        return bounds != null && bounds.contains(p.x, p.y);
     }
 
     public boolean inside(Point p) {
@@ -180,11 +176,7 @@ public class Polygon extends Path implements Serializable {
      *         false otherwise
      */
     public boolean contains(int x, int y) {
-        if (bounds != null) {
-            return bounds.contains(x, y);
-        } else {
-            return false;
-        }
+        return bounds != null && bounds.contains(x, y);
     }
 
     /**
@@ -240,11 +232,7 @@ public class Polygon extends Path implements Serializable {
      *         otherwise.
      */
     public boolean contains(RectF r) {
-        if (bounds != null) {
-            return bounds.contains(r);
-        } else {
-            return false;
-        }
+        return bounds != null && bounds.contains(r);
     }
 
     /**
@@ -299,11 +287,7 @@ public class Polygon extends Path implements Serializable {
      *         intersect each other; false otherwise
      */
     public boolean intersects(RectF r) {
-        if (bounds != null) {
-            return RectF.intersects(bounds, r);
-        } else {
-            return false;
-        }
+        return bounds != null && RectF.intersects(bounds, r);
     }
 
     /**

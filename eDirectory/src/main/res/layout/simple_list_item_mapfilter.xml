@@ -8,7 +8,8 @@
     android:minHeight="?listPreferredItemHeight"
     android:paddingLeft="@dimen/spacingMedium"
     android:paddingTop="@dimen/spacingMedium"
-    android:paddingBottom="@dimen/spacingMedium">
+    android:paddingBottom="@dimen/spacingMedium"
+    android:baselineAligned="false">
 
     <LinearLayout
         android:orientation="horizontal"

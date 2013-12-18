@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:id="@id/listingOverviewAddress"
                 android:layout_weight="1"
-                android:text="Rua Domingues Carmelingo Caló, 21-20, Jardim Vila Santa Tereza, CEP 17.055-453, Bauru, SP"
+                tools:text="Rua Domingues Carmelingo Caló, 21-20, Jardim Vila Santa Tereza, CEP 17.055-453, Bauru, SP"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/listingOverviewSummary"
                 android:layout_toLeftOf="@id/listingOverviewGetDirections"

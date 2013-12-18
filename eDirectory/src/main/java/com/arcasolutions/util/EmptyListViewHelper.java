@@ -11,7 +11,6 @@ import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.R;
-import com.google.android.gms.internal.w;
 
 public class EmptyListViewHelper {
 
@@ -19,9 +18,6 @@ public class EmptyListViewHelper {
     private ListView mListView;
     private int mEmptyDrawableId;
     private int mEmptyStringId;
-
-    private final int mOopsDrawableId = R.drawable.oops;
-    private final int mOopsStringId = R.string.oops_something_went_wrong;
 
     public EmptyListViewHelper(ListView listView, int emptyDrawableId, int emptyStringId) {
         mListView = listView;
@@ -58,6 +54,8 @@ public class EmptyListViewHelper {
         ViewGroup parent = (ViewGroup) mListView.getParent();
         if (parent != null) {
             removeExistingEmptyView(parent);
+            int mOopsDrawableId = R.drawable.oops;
+            int mOopsStringId = R.string.oops_something_went_wrong;
             View emptyView = getEmptyView(mOopsDrawableId, mOopsStringId);
             parent.addView(emptyView);
             mListView.setEmptyView(emptyView);

@@ -3,8 +3,6 @@ package com.arcasolutions.api.model;
 import android.os.Parcelable;
 import android.webkit.URLUtil;
 
-import com.google.android.gms.internal.ab;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;

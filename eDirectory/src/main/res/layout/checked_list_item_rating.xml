@@ -2,6 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
+    android:clickable="false"
     android:layout_height="match_parent"
     android:padding="@dimen/spacingSmall">
 
@@ -13,7 +14,10 @@
         android:focusable="false"
         style="?android:ratingBarStyleIndicator"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:numStars="5"
+        android:stepSize="1"
+        android:focusableInTouchMode="false" />
 
     <CheckBox
         android:layout_width="wrap_content"

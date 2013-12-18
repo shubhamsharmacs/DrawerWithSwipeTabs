@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/spacingMedium"
     android:background="@drawable/favorite_list_item_selector"
     android:layout_width="match_parent"
@@ -23,7 +24,7 @@
         style="@style/dealResultTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buy two delicious pizzas for the  price of one!"
+        tools:text="Buy two delicious pizzas for the  price of one!"
         android:id="@id/dealName"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/dealImage"
@@ -36,7 +37,7 @@
         style="@style/dealResultTextPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$20.00"
+        tools:text="$20.00"
         android:id="@id/dealPrice"
         android:layout_below="@id/dealName"
         android:layout_alignLeft="@id/dealName"
@@ -46,7 +47,7 @@
         style="@style/dealResultTextDiscount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="50%"
+        tools:text="50%"
         android:id="@id/dealDiscount"
         android:layout_alignBottom="@id/dealImage"
         android:layout_toRightOf="@id/dealImage" />
@@ -55,7 +56,7 @@
         style="@style/dealResultTextListing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pizza’s Downtown"
+        tools:text="Pizza’s Downtown"
         android:id="@id/dealListing"
         android:layout_alignBottom="@id/dealDiscount"
         android:layout_alignParentRight="true"

@@ -41,10 +41,8 @@ public class EventCalendarAdapter extends BaseAdapter {
     private static final int VIEW_LABEL = 0x2;
     private static final int VIEW_VALUE = 0x3;
 
-    private Calendar mCal;
     private Calendar mSelectedMonth = null;
     private LayoutInflater mInflater;
-    private Context mContext;
     private List<Calendar> mDates = Lists.newArrayList();
 
     /**
@@ -59,12 +57,6 @@ public class EventCalendarAdapter extends BaseAdapter {
      * and/or next month
      */
     private int size;
-    /** First day of week on current month */
-    private int fdw;
-    /** Last day of week on current month */
-    private int ldw;
-    /** Last day on current month */
-    private int lastDate;
 
     private OnYearChangedListener mListener;
 
@@ -80,7 +72,7 @@ public class EventCalendarAdapter extends BaseAdapter {
 
     public EventCalendarAdapter(Context context, Calendar monthCalendar,
                            OnYearChangedListener listener) {
-        mContext = context;
+        Context mContext = context;
         mInflater = LayoutInflater.from(mContext);
 
         Resources res = mContext.getResources();
@@ -115,10 +107,13 @@ public class EventCalendarAdapter extends BaseAdapter {
         mSelectedMonth = monthCalendar;
         mSelectedMonth.set(Calendar.DAY_OF_MONTH, 1);
 
-        fdw = mSelectedMonth.get(Calendar.DAY_OF_WEEK);
-        lastDate = mSelectedMonth.getActualMaximum(Calendar.DAY_OF_MONTH);
+        /* First day of week on current month */
+        int fdw = mSelectedMonth.get(Calendar.DAY_OF_WEEK);
+        /* Last day on current month */
+        int lastDate = mSelectedMonth.getActualMaximum(Calendar.DAY_OF_MONTH);
         mSelectedMonth.set(Calendar.DAY_OF_MONTH, lastDate);
-        ldw = mSelectedMonth.get(Calendar.DAY_OF_WEEK);
+        /* Last day of week on current month */
+        int ldw = mSelectedMonth.get(Calendar.DAY_OF_WEEK);
 
         int nd2cfw = FIRST_DAY_OF_WEEK != MONDAY // number of days necessary to
                 // complete first week
@@ -134,7 +129,7 @@ public class EventCalendarAdapter extends BaseAdapter {
         size += nd2cfw;
         size += nd2clw;
 
-        mCal = (Calendar) monthCalendar.clone();
+        Calendar mCal = (Calendar) monthCalendar.clone();
 
         mDates.clear();
         mCal.setLenient(true);

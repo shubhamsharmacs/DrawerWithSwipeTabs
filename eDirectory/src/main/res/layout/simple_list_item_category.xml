@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="?listPreferredItemHeight"
+    android:minHeight="?android:listPreferredItemHeight"
     android:paddingLeft="@dimen/spacingMedium"
     android:paddingTop="@dimen/spacingMedium"
-    android:paddingBottom="@dimen/spacingMedium">
+    android:paddingBottom="@dimen/spacingMedium"
+    android:baselineAligned="false">
 
     <LinearLayout
         android:orientation="vertical"
@@ -22,14 +24,14 @@
             android:layout_height="wrap_content"
             android:lines="1"
             android:ellipsize="end"
-            android:text="Beauty and Fitness"
+            tools:text="Beauty and Fitness"
             android:id="@id/categoryTitle" />
 
         <TextView
             style="@style/categoryResultTextSubcategories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4 subcategories"
+            tools:text="4 subcategories"
             android:id="@id/categorySubcategories" />
     </LinearLayout>
 
@@ -43,7 +45,7 @@
             android:gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="400"
+            tools:text="400"
             android:layout_marginRight="@dimen/spacingMedium"
             android:id="@id/categoryActiveItems" />
 

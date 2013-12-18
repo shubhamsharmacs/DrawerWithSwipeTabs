@@ -8,7 +8,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.arcasolutions.App;

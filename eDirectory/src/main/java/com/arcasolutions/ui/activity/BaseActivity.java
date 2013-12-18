@@ -12,7 +12,6 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,6 @@ import com.arcasolutions.api.model.ArticleCategoryResult;
 import com.arcasolutions.api.model.BaseCategoryResult;
 import com.arcasolutions.api.model.ClassifiedCategoryResult;
 import com.arcasolutions.api.model.DealCategoryResult;
-import com.arcasolutions.api.model.EventCategoryResult;
 import com.arcasolutions.api.model.ListingCategoryResult;
 import com.arcasolutions.ui.activity.event.EventActivity;
 import com.arcasolutions.util.BannerHelper;
@@ -50,7 +48,6 @@ public abstract class BaseActivity extends ActionBarActivity implements
         LocationClient.ConnectionCallbacks,
         LocationClient.OnConnectionFailedListener, AdapterView.OnItemClickListener {
 
-    private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
@@ -170,7 +167,7 @@ public abstract class BaseActivity extends ActionBarActivity implements
         options.add(new NavItem(R.drawable.ic_settings, R.string.drawerSetting, SettingActivity.class, null));
 
         mTitle = mDrawerTitle = getTitle();
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             @Override
@@ -484,11 +481,7 @@ public abstract class BaseActivity extends ActionBarActivity implements
                 if (navItem.extras != null) {
                     Class eType = (Class) navItem.extras.getSerializable(CategoryResultActivity.EXTRA_TYPE);
                     Class cType = (Class) getIntent().getSerializableExtra(CategoryResultActivity.EXTRA_TYPE);
-                    if (eType != null && cType != null && eType.equals(cType)) {
-                        isSameExtras = true;
-                    } else {
-                        isSameExtras = false;
-                    }
+                    isSameExtras = eType != null && cType != null && eType.equals(cType);
                 }
             }
 

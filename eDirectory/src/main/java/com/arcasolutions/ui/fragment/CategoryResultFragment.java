@@ -8,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
-import com.androidquery.AQuery;
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.BaseCategory;
@@ -30,8 +28,6 @@ public class CategoryResultFragment extends Fragment
     private CategoryResultAdapter mAdapter;
     private final List<BaseCategory> mCategories = Lists.newArrayList();
     private OnCategorySelectionListener mListener;
-    private ViewGroup mRootView;
-    private ListView mListView;
     private EmptyListViewHelper mEmptyListViewHelper;
 
     public interface OnCategorySelectionListener {
@@ -87,14 +83,14 @@ public class CategoryResultFragment extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mRootView = (ViewGroup) inflater.inflate(R.layout.simple_list_view, container, false);
+        ViewGroup mRootView = (ViewGroup) inflater.inflate(R.layout.simple_list_view, container, false);
         return mRootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mListView = (ListView) view.findViewById(android.R.id.list);
+        ListView mListView = (ListView) view.findViewById(android.R.id.list);
         mListView.setOnItemClickListener(this);
         mListView.setAdapter(mAdapter);
         mEmptyListViewHelper = new EmptyListViewHelper(mListView, R.drawable.no_results);

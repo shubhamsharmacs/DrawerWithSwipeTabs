@@ -1,17 +1,14 @@
 package com.arcasolutions.ui.fragment.map;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -34,7 +31,6 @@ import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Module;
 import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.activity.BaseActivity;
-import com.arcasolutions.ui.activity.listing.ListingResultActivity;
 import com.arcasolutions.util.FmtUtil;
 import com.arcasolutions.util.LocationUtil;
 import com.arcasolutions.util.Util;

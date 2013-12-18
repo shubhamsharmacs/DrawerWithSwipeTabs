@@ -9,7 +9,6 @@
     <color name="textColorNoResults">#ffc2c2c2</color>
 
     <color name="textColorPrimaryInverse">#ffffffff</color>
-    <color name="textColorSecondaryInverse">#ffDDDDDD</color>
 
     <color name="pagerStripBackground">#3d3d3d</color>
     <color name="pagerStripIndicator">#33b5e5</color>

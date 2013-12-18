@@ -1,7 +1,6 @@
 package com.arcasolutions.ui.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +15,9 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class EventSectionAdapter extends AmazingAdapter {
 
@@ -143,8 +139,8 @@ public class EventSectionAdapter extends AmazingAdapter {
     @Override
     public int getCount() {
         int res = 0;
-        for (int i = 0; i < all.size(); i++) {
-            res += all.get(i).second.size();
+        for (Pair<String, List<Event>> anAll : all) {
+            res += anAll.second.size();
         }
         return res;
     }
@@ -152,11 +148,11 @@ public class EventSectionAdapter extends AmazingAdapter {
     @Override
     public Event getItem(int position) {
         int c = 0;
-        for (int i = 0; i < all.size(); i++) {
-            if (position >= c && position < c + all.get(i).second.size()) {
-                return all.get(i).second.get(position - c);
+        for (Pair<String, List<Event>> anAll : all) {
+            if (position >= c && position < c + anAll.second.size()) {
+                return anAll.second.get(position - c);
             }
-            c += all.get(i).second.size();
+            c += anAll.second.size();
         }
         return null;
     }

@@ -57,7 +57,7 @@
         style="@style/reviewTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" - "
+        android:text="@string/hairline"
         android:id="@+id/textView"
         android:layout_below="@id/reviewDescription"
         android:layout_toRightOf="@id/reviewAuthor" />

@@ -42,7 +42,6 @@
     <string name="rating">Avaliação</string>
     <string name="alphabetically">Alphabetically</string>
     <string name="distance">Distancia</string>
-    <string name="recently_added">Recentes</string>
     <string name="show_results_by_sort">Showing results by \"<xliff:g id="sort">%1$s</xliff:g>\"</string>
 
     <!-- setting -->
@@ -79,7 +78,6 @@
     <string name="connection_error_sign_in_required">Usuário não está conectado</string>
     <string name="connection_error_unknown">Ocorreu um erro desconhecido</string>
     <string name="something_was_wrong">HOUVE ALGUM PROBLEMA!</string>
-    <string name="try_again">Tente novamente!</string>
     <string name="level">Nível</string>
     <string name="popular">Popular</string>
     <string name="sign_out">Desconectar</string>
@@ -209,6 +207,13 @@ Se você quer saber mais, quer construir seu próprio diretório ou aplicativo m
     <string name="call_business">Ligar para a Empresa</string>
     <string name="get_directions">Traçar rota</string>
     <string name="reviews">Avaliações</string>
+    <string name="send_by_email">Enviar por email</string>
+    <string name="delete">Deletar</string>
+    <string name="share">Compartilhar</string>
+    <string name="hairline"> - </string>
+    <string name="by">Por</string>
+    <string name="loadin_more_results"><![CDATA[Carregando mais resultados&#8320;]]></string>
+    <string name="price">Preço:</string>
 
 
 </resources>

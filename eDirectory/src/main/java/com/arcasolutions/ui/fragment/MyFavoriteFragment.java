@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
@@ -18,7 +17,6 @@ import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Listing;
-import com.google.android.gms.internal.ac;
 import com.google.common.collect.Lists;
 
 import java.util.List;

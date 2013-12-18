@@ -16,7 +16,6 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class ImageViewFragment extends Fragment {
 
     public static final String ARG_PHOTO = "photo";
-    private PhotoViewAttacher mAttacher;
 
     public ImageViewFragment() {
     }
@@ -48,7 +47,7 @@ public class ImageViewFragment extends Fragment {
             ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
             AQuery aq = new AQuery(imageView);
             aq.image(getShownPhoto().getImageUrl(), true, true);
-            mAttacher = new PhotoViewAttacher(imageView);
+            PhotoViewAttacher mAttacher = new PhotoViewAttacher(imageView);
             mAttacher.update();
         }
     }

@@ -18,8 +18,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -34,17 +32,9 @@ import com.arcasolutions.ui.OnModuleSelectionListener;
 import com.arcasolutions.ui.adapter.ModuleResultAdapter;
 import com.arcasolutions.util.EmptyListViewHelper;
 import com.arcasolutions.util.FavoriteHelper;
-import com.arcasolutions.view.BackgroundContainer;
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 

@@ -15,19 +15,16 @@ import com.arcasolutions.ui.activity.article.ArticleDetailActivity;
 import com.arcasolutions.ui.activity.classified.ClassifiedDetailActivity;
 import com.arcasolutions.ui.activity.event.EventDetailActivity;
 import com.arcasolutions.ui.activity.listing.ListingDetailActivity;
-import com.arcasolutions.ui.fragment.ModuleFavoriteFragment;
 import com.arcasolutions.ui.fragment.MyFavoriteFragment;
 
 public class MyFavoriteActivity extends BaseActivity
         implements OnModuleSelectionListener {
 
-    private MyFavoriteFragment mFavoriteFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mFavoriteFragment = (MyFavoriteFragment) getSupportFragmentManager().findFragmentByTag("favorite");
+        MyFavoriteFragment mFavoriteFragment = (MyFavoriteFragment) getSupportFragmentManager().findFragmentByTag("favorite");
         if (mFavoriteFragment == null) {
             mFavoriteFragment = new MyFavoriteFragment();
             getSupportFragmentManager().beginTransaction()

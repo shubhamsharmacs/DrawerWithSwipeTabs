@@ -14,13 +14,12 @@ import java.util.List;
 
 public class GalleryAdapter extends BaseAdapter {
 
-    private final Context mContext;
     private final LayoutInflater mInflater;
     private final List<Photo> mPhotos;
     private final int mSize;
 
     public GalleryAdapter(Context context, List<Photo> objects, int size) {
-        mContext = context;
+        Context mContext = context;
         mInflater = LayoutInflater.from(mContext);
         mPhotos = objects;
         mSize = size;

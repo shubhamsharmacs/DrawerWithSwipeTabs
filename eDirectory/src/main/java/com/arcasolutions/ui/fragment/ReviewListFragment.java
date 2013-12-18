@@ -32,9 +32,6 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
     private EmptyListViewHelper mEmptyHelper;
     private ReviewHelper mReviewHelper;
 
-    // arguments
-    private int mPage = 1;
-
     private ReviewAdapter mAdapter;
 
 
@@ -101,6 +98,7 @@ public class ReviewListFragment extends Fragment implements Client.RestListener<
 
         if (id == 0 || module == null) return;
 
+        int mPage = 1;
         Client.Builder builder = new Client.Builder(ReviewResult.class)
                 .page(mPage)
                 .module(module)

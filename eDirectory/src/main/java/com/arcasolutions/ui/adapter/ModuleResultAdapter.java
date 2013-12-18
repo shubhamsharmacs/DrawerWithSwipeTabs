@@ -17,7 +17,6 @@ import com.arcasolutions.api.model.Module;
 import com.arcasolutions.util.FmtUtil;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
 
 public class ModuleResultAdapter<T extends Module> extends BaseAdapter {

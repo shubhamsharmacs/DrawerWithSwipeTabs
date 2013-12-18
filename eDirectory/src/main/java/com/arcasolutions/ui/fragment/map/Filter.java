@@ -9,7 +9,6 @@ import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.api.model.ListingResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -37,7 +36,7 @@ public class Filter implements Parcelable {
 
     private int moduleIndex;
 
-    private List<Float> ratings;
+    private List<Integer> ratings;
 
     @Override
     public int describeContents() {
@@ -50,7 +49,7 @@ public class Filter implements Parcelable {
         keyword = in.readString();
         location = in.readString();
         moduleIndex = in.readInt();
-        in.readList(ratings, Float.class.getClassLoader());
+        in.readList(ratings, Integer.class.getClassLoader());
     }
 
     @Override

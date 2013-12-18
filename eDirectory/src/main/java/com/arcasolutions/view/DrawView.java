@@ -28,9 +28,6 @@ public class DrawView extends View {
     private float mX;
     private float mY;
 
-    private Polygon mPolygon;
-    private Paint mPaint;
-
     private int mFillColor;
     private int mStrokeColor;
 
@@ -69,12 +66,12 @@ public class DrawView extends View {
     public void draw(Canvas canvas) {
         int size = mPoints.size();
         if (size > 1) {
-            mPolygon = new Polygon(size);
+            Polygon mPolygon = new Polygon(size);
             for (Point p : mPoints) mPolygon.addPoint(p.x, p.y);
             mPolygon.close();
 
             // filling the polygon
-            mPaint = new Paint();
+            Paint mPaint = new Paint();
             mPaint.setStyle(Paint.Style.FILL);
             mPaint.setColor(mFillColor);
             canvas.drawPath(mPolygon, mPaint);

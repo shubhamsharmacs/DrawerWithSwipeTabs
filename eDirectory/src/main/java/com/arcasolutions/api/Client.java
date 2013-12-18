@@ -21,9 +21,6 @@ import com.arcasolutions.api.model.ModuleFeature;
 import com.arcasolutions.util.Util;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.android.gms.internal.ac;
-import com.google.android.gms.internal.bo;
-import com.google.android.gms.internal.bu;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -37,14 +34,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.xml.SimpleXmlHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.annotation.Annotation;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -136,9 +131,7 @@ public class Client {
         String body = responseEntity.getBody();
         JSONObject jsonObject = new JSONObject(body);
 
-        boolean success = jsonObject.has("redeem_code")
-                ? !TextUtils.isEmpty(jsonObject.getString("redeem_code"))
-                : false;
+        boolean success = jsonObject.has("redeem_code") && !TextUtils.isEmpty(jsonObject.getString("redeem_code"));
 
         String redeemCode = jsonObject.has("redeem_code")
                 ? jsonObject.getString("redeem_code")
@@ -311,7 +304,7 @@ public class Client {
             return this;
         }
 
-        public Builder ratings(List<Float> ratings) {
+        public Builder ratings(List<Integer> ratings) {
             if (ratings != null && !ratings.isEmpty()) {
                 mMap.put("ratings", TextUtils.join(",", ratings));
             }
@@ -353,7 +346,7 @@ public class Client {
 
     public static class IappBuilder {
 
-        private enum Method { POST, GET };
+        private enum Method { POST, GET }
 
         private final String mUrl;
         private final MultiValueMap<String, String> mParams;
@@ -445,7 +438,7 @@ public class Client {
         private RestIappListener<?> mListener;
         private IappBuilder mBuilder;
 
-        public static enum Service { ACCOUNT, REDEEM, CHECKIN, REVIEW };
+        public static enum Service { ACCOUNT, REDEEM, CHECKIN, REVIEW }
 
         public IappTask(IappBuilder builder, RestIappListener listener) {
             mListener = listener;

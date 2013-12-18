@@ -2,13 +2,11 @@ package com.arcasolutions.util;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.arcasolutions.R;
 import com.arcasolutions.api.model.BaseResult;
 
 public class AbsListViewHelper implements AbsListView.OnScrollListener {

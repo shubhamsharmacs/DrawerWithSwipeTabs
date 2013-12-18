@@ -17,7 +17,6 @@ import com.arcasolutions.api.model.Deal;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.Module;
-import com.arcasolutions.util.FmtUtil;
 
 import java.util.LinkedList;
 import java.util.Locale;

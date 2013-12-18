@@ -18,8 +18,6 @@ public class AbstractWebViewActivity extends ActionBarActivity implements AsyncA
 
     private ProgressDialog mProgressDialog = null;
 
-    private boolean destroyed = false;
-
     private Activity mActivity;
 
     @Override
@@ -65,6 +63,7 @@ public class AbstractWebViewActivity extends ActionBarActivity implements AsyncA
 
     @Override
     public void dismissProgressDialog() {
+        boolean destroyed = false;
         if (mProgressDialog != null && !destroyed) {
             mProgressDialog.dismiss();
         }

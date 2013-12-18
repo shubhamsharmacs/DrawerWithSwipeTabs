@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.Window;
 
 import com.arcasolutions.R;
-import com.arcasolutions.util.DialogHelper;
 import com.arcasolutions.util.Util;
 
 public class StartUpActivity extends Activity {

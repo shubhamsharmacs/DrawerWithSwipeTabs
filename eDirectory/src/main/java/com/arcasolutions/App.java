@@ -16,7 +16,6 @@ import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 public class App extends Application {
 
     private ConnectionFactoryRegistry mConnectionFactoryRegistry;
-    private SQLiteOpenHelper mRepositoryHelper;
     private ConnectionRepository mConnectionRepository;
 
     @Override
@@ -26,7 +25,7 @@ public class App extends Application {
         mConnectionFactoryRegistry.addConnectionFactory(
                 new FacebookConnectionFactory(getFacebookAppId(), getFacebookAppSecret()));
 
-        mRepositoryHelper = new SQLiteConnectionRepositoryHelper(this);
+        SQLiteOpenHelper mRepositoryHelper = new SQLiteConnectionRepositoryHelper(this);
         mConnectionRepository = new SQLiteConnectionRepository(
                 mRepositoryHelper,
                 mConnectionFactoryRegistry,

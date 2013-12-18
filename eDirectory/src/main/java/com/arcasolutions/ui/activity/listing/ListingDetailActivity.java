@@ -3,14 +3,11 @@ package com.arcasolutions.ui.activity.listing;
 import android.os.Bundle;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.ReviewModule;
-import com.arcasolutions.api.model.Deal;
-import com.arcasolutions.api.model.DealResult;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.api.model.ListingResult;
 import com.arcasolutions.ui.activity.SecondLevelActivity;

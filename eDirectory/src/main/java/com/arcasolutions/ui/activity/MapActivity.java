@@ -137,7 +137,7 @@ public class MapActivity extends BaseActivity
 
     @Override
     public void onBackStackChanged() {
-        supportInvalidateOptionsMenu();;
+        supportInvalidateOptionsMenu();
     }
 
     @Override

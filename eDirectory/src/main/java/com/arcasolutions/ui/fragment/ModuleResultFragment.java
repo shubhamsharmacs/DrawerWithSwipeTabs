@@ -53,7 +53,6 @@ public class ModuleResultFragment<T extends BaseResult>
     private Class<T> mType;
 
     private final LinkedList<Module> mModules = new LinkedList<Module>();
-    private ListView mListView;
     private ModuleResultAdapter mAdapter;
 
     private OnModuleSelectionListener mListener;
@@ -124,7 +123,7 @@ public class ModuleResultFragment<T extends BaseResult>
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mListView = (ListView) view.findViewById(android.R.id.list);
+        ListView mListView = (ListView) view.findViewById(android.R.id.list);
         mListViewHelper = new AbsListViewHelper(mListView, this);
         mListView.setOnItemClickListener(this);
         mListView.setAdapter(mAdapter);

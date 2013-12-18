@@ -25,7 +25,6 @@ public class CategoryResultActivity extends BaseActivity
     public static final String EXTRA_CATEGORY = "category";
 
     private Class mType;
-    private BaseCategory mCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,7 @@ public class CategoryResultActivity extends BaseActivity
             return;
         }
 
-        mCategory = (BaseCategory) getIntent().getParcelableExtra(EXTRA_CATEGORY);
+        BaseCategory mCategory = (BaseCategory) getIntent().getParcelableExtra(EXTRA_CATEGORY);
 
         CategoryResultFragment f = CategoryResultFragment.newInstance(mType, mCategory);
         getSupportFragmentManager().beginTransaction()

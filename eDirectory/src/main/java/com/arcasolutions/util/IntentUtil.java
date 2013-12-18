@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.ShareCompat;
 import android.text.TextUtils;
-import android.util.Patterns;
 
 public final class IntentUtil {
 
