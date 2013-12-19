@@ -1,0 +1,146 @@
+def projectDir = file(new File('eDirectory'), PathValidation.DIRECTORY)
+def androidManifest = file(new File(projectDir, 'src/main/AndroidManifest.xml'))
+def mainJavaSrc = file(new File(projectDir, 'src/main/java'), PathValidation.DIRECTORY)
+def mainJavaRes = file(new File(projectDir, 'src/main/res'), PathValidation.DIRECTORY)
+def stringsXmlFile = file(new File(mainJavaRes, 'values/strings.xml'))
+def releaseKeystore = file(new File(projectDir, 'certified.jks'))
+
+def newPackageName='rbt.edirectory'
+def appName = 'Betorcs App'
+def appAboutTitle = 'This is the about title'
+def appAboutDescription = 'This is my new about description'
+def appAboutWebsite = 'http://www.uol.com.br'
+def appAboutEmail = 'betorcs@gmail.com'
+def appAboutPhone = '1-900-322-9999'
+
+ant.taskdef (
+    name: 'xmltask',
+    classname: 'com.oopsconsultancy.xmltask.ant.XmlTask',
+    classpath: 'libs/xmltask.jar'
+)
+
+task doManifestChanges << {
+
+    println '\nMakes following changes on AndroidManifest.xml:'
+    println '\t- Replaces package name.'
+    println '\t- Replaces map permission.'
+    println '\t- Replaces map users permission.'
+
+    ant.xmltask (
+        encoding: 'UTF-8',
+        source: androidManifest.absolutePath,
+        dest: androidManifest.absolutePath
+            ) {
+            // Get the current package name.
+            copy (
+                path: '/manifest/@package',
+                property: 'oldPackageName'
+            )
+
+            // Replace package name
+            replace (
+                path: '/manifest/@package',
+                withText: newPackageName
+            )
+
+            // Replace map receiver permission
+            replace (
+                path: '/manifest/permission[@android:name=\'com.arcasolutions.permission.MAPS_RECEIVE\']/@android:name',
+                withText: newPackageName + '.permission.MAPS_RECEIVE'
+            )
+
+            // Repalce map uses permission
+            replace (
+                path: '/manifest/uses-permission[@android:name=\'com.arcasolutions.permission.MAPS_RECEIVE\']/@android:name',
+                withText: newPackageName + '.permission.MAPS_RECEIVE'
+            )
+        }
+}
+
+task doJavaRefactor(dependsOn: doManifestChanges) << {
+
+    println '\nMakes following java code refactor:'
+    println '\t- Moves ' + ant.properties.oldPackageName + '.R to ' + newPackageName + '.R'
+    println '\t- Moves ' + ant.properties.oldPackageName + '.BuildConfig to ' + newPackageName + '.BuildConfig'
+
+    ant.replace (
+        dir: mainJavaSrc.absolutePath,
+        value: newPackageName + '.R'
+            ) {
+            include (name: '**/*.java')
+            replacefilter (
+                token: ant.properties.oldPackageName + '.R',
+                value: newPackageName + '.R'
+        )}
+
+    ant.replace (
+            dir: mainJavaSrc.absolutePath,
+            value: newPackageName + '.BuildConfig'
+            ) {
+            include (name: '**/*.java')
+            replacefilter (
+                    token: ant.properties.oldPackageName + '.BuildConfig',
+                    value: newPackageName + '.BuildConfig'
+        )}
+}
+
+task changeAboutInformation << {
+
+    ant.xmltask (
+            encoding: 'UTF-8',
+            source: stringsXmlFile.absolutePath,
+            dest: stringsXmlFile.absolutePath
+        ) {
+
+        // Changes about title
+        replace ( path: '/resources/string[@name=\'about_title\']/text()', withText: appAboutTitle )
+
+        // Changes about description
+        replace ( path: '/resources/string[@name=\'about_description\']/text()', withText: appAboutDescription )
+
+        // Changes about web site
+        replace ( path: '/resources/string[@name=\'about_website_url\']/text()', withText: appAboutWebsite )
+
+        // Chages about email
+        replace ( path: '/resources/string[@name=\'about_email_contact\']/text()', withText: appAboutEmail )
+
+        // Chages about phone
+        replace ( path: '/resources/string[@name=\'about_telephone\']/text()', withText: appAboutPhone )
+
+    }
+
+}
+
+task changeApplicationName << {
+    ant.replace (
+            dir: mainJavaRes.absolutePath,
+            value: appName
+        ) {
+        include (name: '**/strings.xml')
+        replacefilter (token: 'eDirectory', value: appName)
+    }
+}
+
+
+
+// Creates a keystore if needed
+task createKeystoreIfNeeded << {
+
+    if (!releaseKeystore.exists())
+    {
+        ant.genkey(
+                alias: 'release',
+                storepass: 'arcarelease',
+                keypass: 'arcarelease',
+                keystore: releaseKeystore.absolutePath,
+                validity: 10 * 365,
+                sigalg: 'MD5withRSA',
+                keyalg: 'RSA',
+                storetype: 'JKS',
+                dname: 'CN=Arca Solutions Inc,O=eDirectory,C=US',
+                keysize: 2048
+        )
+    }
+
+}
+
