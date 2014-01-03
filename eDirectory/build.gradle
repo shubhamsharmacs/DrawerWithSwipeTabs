@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.+'
+        classpath 'com.android.tools.build:gradle:0.7.+'
     }
 }
 apply plugin: 'android'
@@ -12,29 +12,22 @@ repositories {
     mavenCentral()
 }
 
-android {
-    compileSdkVersion 18
-    buildToolsVersion "18.1.0"
-
-    defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 18
-    }
+configurations {
+    apt
 }
 
 dependencies {
 
     compile project(':libraries:StaggeredGridView')
 
+    //compile files('libs/lombok-api.jar')
+
     // android libraries
-    compile 'com.android.support:appcompat-v7:18.0.0'
-    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:appcompat-v7:19.0.0'
+    compile 'com.android.support:support-v4:19.0.0'
 
     // google libraries
-    compile 'com.google.android.gms:play-services:3.2.65'
-
-    // lombok
-    compile 'org.projectlombok:lombok:0.12.0'
+    compile 'com.google.android.gms:play-services:4.0.30'
 
     // guava
     compile 'com.google.guava:guava:15.0'
@@ -65,4 +58,47 @@ dependencies {
     // Orm Lite
     compile 'com.j256.ormlite:ormlite-android:4.25'
 
+
+    // lombok
+    compile 'org.projectlombok:lombok:0.12.0'
+
 }
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+    }
+
+    packagingOptions {
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+android.applicationVariants.each { variant ->
+    aptOutput = file("${project.buildDir}/source/apt_generated/${variant.dirName}")
+    println "****************************"
+    println "variant: ${variant.name}"
+    println "manifest:  ${variant.processResources.manifestFile}"
+    println "aptOutput:  ${aptOutput}"
+    println "****************************"
+
+    variant.javaCompile.doFirst {
+        println "*** compile doFirst ${variant.name}"
+        aptOutput.mkdirs()
+        variant.javaCompile.options.compilerArgs += [
+                '-processorpath', configurations.apt.getAsPath(),
+                '-AandroidManifestFile=' + variant.processResources.manifestFile,
+                '-s', aptOutput
+        ]
+    }
+}
+
+
