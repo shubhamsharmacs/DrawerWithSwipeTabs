@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Module;

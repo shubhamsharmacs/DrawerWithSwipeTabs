@@ -18,7 +18,8 @@
             android:layout_marginBottom="@dimen/spacingMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text1" />
+            android:id="@+id/text1"
+            android:textColor="@color/white_weedfinder"/>
 
         <TextView
             style="@style/commonTextDescription"
@@ -33,7 +34,8 @@ Sed iaculis molestie purus, id commodo dolor pretium eu. Mauris quis tincidunt m
 Nunc ac ligula a sapien dapibus eleifend. Duis hendrerit laoreet accumsan. Morbi suscipit turpis id tellus varius, consequat hendrerit turpis cursus. Cras erat odio, porta vel pellentesque vel, viverra ac diam. Sed laoreet tellus id turpis adipiscing lacinia vel eget ante. Etiam quis dapibus nibh. Mauris a imperdiet nibh. Proin ut risus leo. Donec congue elit vitae elementum hendrerit. Vestibulum blandit posuere dui. Vivamus tristique quam suscipit, pellentesque nisl eget, lacinia nunc. Morbi suscipit est erat, a dignissim lorem tempus nec. Praesent sodales lobortis eleifend. Nam accumsan condimentum ipsum ut pellentesque."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text2" />
+            android:id="@+id/text2"
+            android:textColor="@color/gray_weedfinder"/>
 
     </LinearLayout>
 

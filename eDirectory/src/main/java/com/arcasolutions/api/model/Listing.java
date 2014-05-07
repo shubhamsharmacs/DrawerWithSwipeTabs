@@ -56,6 +56,9 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
     @DatabaseField(columnName = Database.ListingsColumns.LISTING_ICON)
     private String imageUrl;
 
+    @JsonProperty("imageurlcat")
+    private String imageUrlCat;
+
     @JsonProperty("phonenumber")
     private String phoneNumber;
 
@@ -155,6 +158,10 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
                 : locationInformation;
     }
 
+    public String getImageUrlCat() {
+        return imageUrlCat;
+    }
+
     private Listing(Parcel in) {
         id = in.readLong();
         title = in.readString();
@@ -163,6 +170,7 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
         address = in.readString();
         rating = in.readFloat();
         imageUrl = in.readString();
+        imageUrlCat = in.readString();
         phoneNumber = in.readString();
         latitude = in.readDouble();
         longitude = in.readDouble();
@@ -204,6 +212,7 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
         out.writeString(address);
         out.writeFloat(rating);
         out.writeString(imageUrl);
+        out.writeString(imageUrlCat);
         out.writeString(phoneNumber);
         out.writeDouble(latitude);
         out.writeDouble(longitude);

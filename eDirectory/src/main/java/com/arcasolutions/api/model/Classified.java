@@ -168,4 +168,9 @@ public class Classified extends Module implements IGeoPoint, IContactInfo {
             return new Classified[i];
         }
     };
+
+    @Override
+    public String getImageUrlCat() {
+        return null;
+    }
 }

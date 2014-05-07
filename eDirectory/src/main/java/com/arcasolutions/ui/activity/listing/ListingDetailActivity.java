@@ -5,7 +5,7 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.ReviewModule;
 import com.arcasolutions.api.model.Listing;

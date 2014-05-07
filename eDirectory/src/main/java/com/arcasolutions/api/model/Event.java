@@ -229,4 +229,9 @@ public class Event extends Module implements IContactInfo, IGeoPoint, Comparable
         if (getStartDate() == null || event.getStartDate() == null ) return 0;
         return getStartDate().compareTo(event.getStartDate());
     }
+
+    @Override
+    public String getImageUrlCat() {
+        return null;
+    }
 }

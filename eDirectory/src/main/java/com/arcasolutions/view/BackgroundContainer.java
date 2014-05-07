@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 
 public class BackgroundContainer extends FrameLayout {
 

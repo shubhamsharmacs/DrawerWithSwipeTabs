@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 
 public class DescriptionFragment extends Fragment {
 

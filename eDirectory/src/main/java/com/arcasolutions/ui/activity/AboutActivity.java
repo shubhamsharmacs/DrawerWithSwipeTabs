@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.util.IntentUtil;
 

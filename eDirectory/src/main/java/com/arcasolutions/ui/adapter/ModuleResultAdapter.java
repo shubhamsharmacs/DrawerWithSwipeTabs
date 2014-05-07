@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Article;
 import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.Deal;
@@ -178,6 +178,13 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
         if (l != null) {
             AQuery aq = new AQuery(v);
             aq.id(R.id.listingImage).image(l.getImageUrl(), true, true);
+
+            if (l.getImageUrl() != null) {
+                aq.id(R.id.listingImage).visible();
+            } else {
+                aq.id(R.id.listingImage).gone();
+            }
+
             aq.id(R.id.listingTitle).text(l.getTitle());
             aq.id(R.id.listingDistance).text(FmtUtil.distance(l.getLatitude(), l.getLongitude()), true);
             aq.id(R.id.listingAddress).text(l.getAddress());

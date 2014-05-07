@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Account;
 import com.arcasolutions.api.model.Deal;

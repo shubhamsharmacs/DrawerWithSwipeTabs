@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Account;
 import com.arcasolutions.api.model.IappResult;

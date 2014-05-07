@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Ad;
 import com.arcasolutions.api.model.AdResult;

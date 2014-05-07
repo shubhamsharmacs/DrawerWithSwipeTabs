@@ -6,10 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?android:listPreferredItemHeight"
-    android:paddingLeft="@dimen/spacingMedium"
+    android:paddingLeft="4dp"
     android:paddingTop="@dimen/spacingMedium"
     android:paddingBottom="@dimen/spacingMedium"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:background="#0A0A0A">
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="5dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:id="@+id/image"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_favorites"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -25,14 +41,16 @@
             android:lines="1"
             android:ellipsize="end"
             tools:text="Beauty and Fitness"
-            android:id="@id/categoryTitle" />
+            android:id="@id/categoryTitle"
+            android:textColor="#858585"/>
 
         <TextView
             style="@style/categoryResultTextSubcategories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="4 subcategories"
-            android:id="@id/categorySubcategories" />
+            android:id="@id/categorySubcategories"
+            android:textColor="#858585"/>
     </LinearLayout>
 
     <FrameLayout
@@ -47,7 +65,8 @@
             android:layout_height="wrap_content"
             tools:text="400"
             android:layout_marginRight="@dimen/spacingMedium"
-            android:id="@id/categoryActiveItems" />
+            android:id="@id/categoryActiveItems"
+            android:textColor="#858585"/>
 
         <ImageView
             android:layout_marginTop="-2dp"

@@ -3,9 +3,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/spacingMedium"
-    android:background="@drawable/favorite_list_item_selector"
+    android:background="@color/black_weefinder"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!--android:background="@drawable/favorite_list_item_selector"-->
 
     <ImageView
         android:padding="4dp"
@@ -31,7 +32,8 @@
         android:maxLines="2"
         android:lineSpacingExtra="-2sp"
         android:layout_alignRight="@id/dealListing"
-        android:ellipsize="end" />
+        android:ellipsize="end"
+        android:textColor="@color/white_weedfinder"/>
 
     <TextView
         style="@style/dealResultTextPrice"
@@ -41,7 +43,8 @@
         android:id="@id/dealPrice"
         android:layout_below="@id/dealName"
         android:layout_alignLeft="@id/dealName"
-        android:layout_alignStart="@id/dealName" />
+        android:layout_alignStart="@id/dealName"
+        android:textColor="@color/gray_weedfinder"/>
 
     <TextView
         style="@style/dealResultTextDiscount"
@@ -50,7 +53,8 @@
         tools:text="50%"
         android:id="@id/dealDiscount"
         android:layout_alignBottom="@id/dealImage"
-        android:layout_toRightOf="@id/dealImage" />
+        android:layout_toRightOf="@id/dealImage"
+        android:background="@color/orange_weefinder"/>
 
     <TextView
         style="@style/dealResultTextListing"

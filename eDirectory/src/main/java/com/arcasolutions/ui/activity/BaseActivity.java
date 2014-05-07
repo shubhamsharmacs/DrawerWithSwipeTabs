@@ -7,6 +7,7 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.DialogFragment;
@@ -24,7 +25,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.ArticleCategoryResult;
 import com.arcasolutions.api.model.BaseCategoryResult;
 import com.arcasolutions.api.model.ClassifiedCategoryResult;
@@ -159,10 +160,13 @@ public abstract class BaseActivity extends ActionBarActivity implements
             options.add(new NavItem(R.drawable.ic_map, R.string.drawerMap, MapActivity.class, null));
         }
         options.add(new NavItem(R.drawable.ic_business, R.string.drawerBusiness, CategoryResultActivity.class, buildCatExtras(ListingCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_tag, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_classifieds, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));
-        options.add(new NavItem(R.drawable.ic_events, R.string.drawerEvents, EventActivity.class, null));
-        options.add(new NavItem(R.drawable.ic_articles, R.string.drawerArticles, CategoryResultActivity.class, buildCatExtras(ArticleCategoryResult.class)));
+        //options.add(new NavItem(R.drawable.ic_tag, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
+        //options.add(new NavItem(R.drawable.ic_classifieds, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));
+        //options.add(new NavItem(R.drawable.ic_events, R.string.drawerEvents, EventActivity.class, null));
+        options.add(new NavItem(R.drawable.icon_link, R.string.drawerWFGear, null, null));
+        options.add(new NavItem(R.drawable.icon_link, R.string.drawerNews, null, null));
+        options.add(new NavItem(R.drawable.icon_link, R.string.drawerWFTV, null, null));
+        //options.add(new NavItem(R.drawable.ic_articles, R.string.drawerArticles, CategoryResultActivity.class, buildCatExtras(ArticleCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_favorites, R.string.drawerMyFavorites, MyFavoriteActivity.class, null));
         options.add(new NavItem(R.drawable.ic_settings, R.string.drawerSetting, SettingActivity.class, null));
 
@@ -400,11 +404,24 @@ public abstract class BaseActivity extends ActionBarActivity implements
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         NavItem navItem = (NavItem) adapterView.getItemAtPosition(i);
-        Intent intent = new Intent(this, navItem.clazz);
-        if (navItem.extras != null)
-            intent.putExtras(navItem.extras);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
+        if (navItem.clazz != null) {
+            Intent intent = new Intent(this, navItem.clazz);
+            if (navItem.extras != null)
+                intent.putExtras(navItem.extras);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+        } else {
+            if (i == 2) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder10200.arcasolutions.com/gear"));
+                startActivity(intent);
+            } else if (i == 3) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder10200.arcasolutions.com/dash/news"));
+                startActivity(intent);
+            } else if (i == 4) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/user/WeedFinderTV"));
+                startActivity(intent);
+            }
+        }
     }
 
     /**
@@ -485,10 +502,12 @@ public abstract class BaseActivity extends ActionBarActivity implements
                 }
             }
 
-            if (navItem.clazz.equals(this.getClass()) && isSameExtras) {
-                mDrawerList.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
-                mDrawerList.setItemChecked(i, true);
-                break;
+            if (navItem.clazz != null) {
+                if (navItem.clazz.equals(this.getClass()) && isSameExtras) {
+                    mDrawerList.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+                    mDrawerList.setItemChecked(i, true);
+                    break;
+                }
             }
         }
     }

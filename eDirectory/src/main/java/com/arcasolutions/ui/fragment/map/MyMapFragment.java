@@ -3,11 +3,13 @@ package com.arcasolutions.ui.fragment.map;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -20,7 +22,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.constant.SearchBy;
 import com.arcasolutions.api.implementation.IGeoPoint;
@@ -53,7 +54,10 @@ import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.weedfinder.R;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -92,6 +96,8 @@ public class MyMapFragment extends Fragment implements
     private LatLng mFarRight;
     private OnShowAsListListener mListener;
     private OnModuleSelectionListener mSelectionListener;
+
+    private final Map<String, Bitmap> mUrlBitmapMap = Maps.newHashMap();
 
     public MyMapFragment() {
     }
@@ -198,7 +204,7 @@ public class MyMapFragment extends Fragment implements
         }
     }
 
-    private void updateMapMarkers(Collection<IGeoPoint> items) {
+    private void updateMapMarkers(final Collection<IGeoPoint> items) {
         if (items == null || items.isEmpty()) {
             //mModuleMap.clear();
             removeMarker(mModuleMap.keySet().toArray());
@@ -243,14 +249,40 @@ public class MyMapFragment extends Fragment implements
 //        }
 
 
+
         // Adds news items as Marker
-        for (IGeoPoint l : items) {
-            LatLng latLng = new LatLng(l.getLatitude(), l.getLongitude());
-            Marker m = mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker))
-                    .position(latLng));
-            mModuleMap.put(m, l);
-        }
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                for (IGeoPoint p : items) {
+                    String imageUrl = p.getImageUrlCat();
+                    if (!mUrlBitmapMap.containsKey(imageUrl)) {
+                        try {
+                            InputStream inputStream = new URL(imageUrl).openStream();
+                            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                            Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, 40, 40, true);
+                            mUrlBitmapMap.put(imageUrl, scaledBitmap);
+                        } catch (Exception e) {
+                            mUrlBitmapMap.put(imageUrl, BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_marker));
+                        }
+                    }
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                for (IGeoPoint l : items) {
+                    LatLng latLng = new LatLng(l.getLatitude(), l.getLongitude());
+                    Marker m = mMap.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.fromBitmap(mUrlBitmapMap.get(l.getImageUrlCat())))
+                            .position(latLng));
+                    mModuleMap.put(m, l);
+                }
+            }
+        }.execute();
 
 
     }

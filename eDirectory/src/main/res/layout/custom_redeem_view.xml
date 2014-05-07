@@ -14,7 +14,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/redeem_deal"
-        android:id="@id/dealOverviewRedeemButton" />
+        android:id="@id/dealOverviewRedeemButton"
+        android:background="@color/green_weedfinder" />
 
     <RelativeLayout
         android:layout_width="match_parent"

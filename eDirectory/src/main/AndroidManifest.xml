@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.arcasolutions"
+    package="com.weedfinder"
     android:versionCode="1"
     android:versionName="1.0">
 
@@ -45,6 +45,10 @@
 
         <activity
             android:name="com.arcasolutions.ui.activity.HomeActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <activity
+            android:name="com.arcasolutions.ui.activity.MenuWebviewActivity"
             android:configChanges="orientation|screenSize" />
 
         <activity

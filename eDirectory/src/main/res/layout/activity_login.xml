@@ -32,21 +32,26 @@
             android:id="@+id/loginEmail"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_width="match_parent"
             android:layout_below="@+id/textView2"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/login_button_style"
+            android:paddingLeft="10dp"
+            />
 
         <EditText
             android:id="@+id/loginPassword"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_width="match_parent"
             android:layout_below="@+id/loginEmail"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/login_button_style"/>
 
         <Button
             style="@style/blueButtonStyle"
@@ -57,7 +62,8 @@
             android:onClick="onLogin"
             android:layout_below="@+id/loginPassword"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="70dp" />
+            android:layout_marginLeft="70dp"
+            android:background="@color/green_weedfinder"/>
 
         <TextView
             android:text="@string/or"
@@ -68,7 +74,8 @@
             android:id="@+id/textView"
             android:layout_below="@+id/loginLogin"
             android:layout_centerHorizontal="true"
-            android:layout_margin="20dp" />
+            android:layout_margin="20dp"
+            android:textColor="@color/gray_weedfinder"/>
 
         <Button
             style="@style/blueFacebookButtonStyle"
@@ -89,7 +96,8 @@
             android:id="@+id/createAccount"
             android:onClick="onCreateAccount"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:background="@color/green_weedfinder"/>
 
     </RelativeLayout>
 

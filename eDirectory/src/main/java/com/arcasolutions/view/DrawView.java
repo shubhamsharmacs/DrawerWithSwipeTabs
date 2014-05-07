@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.graphics.Polygon;
 import com.google.common.collect.Lists;
 

@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.google.common.collect.Lists;
 
 import java.util.List;

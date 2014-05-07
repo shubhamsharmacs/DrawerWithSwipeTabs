@@ -75,7 +75,7 @@
     <!-- Category results -->
     <style name="categoryResultTextTitle" parent="@android:style/TextAppearance.Large">
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColor">@color/textColorTertiary</item>
         <item name="android:textSize">@dimen/textSizeExtraLarge</item>
     </style>
 

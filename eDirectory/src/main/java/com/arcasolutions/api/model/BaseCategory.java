@@ -19,7 +19,7 @@ public abstract class BaseCategory implements Parcelable {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("image")
+    @JsonProperty("imageurl")
     private String imageUrl;
 
     @JsonProperty("total_sub")

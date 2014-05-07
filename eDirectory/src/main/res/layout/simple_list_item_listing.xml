@@ -8,7 +8,9 @@
     android:showDividers="middle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/favorite_list_item_selector">
+    android:background="#0D0D0D">
+    <!--android:background="@drawable/favorite_list_item_selector"-->
+
 
     <RelativeLayout
         android:layout_marginBottom="@dimen/spacingMedium"
@@ -26,7 +28,8 @@
             android:layout_toLeftOf="@id/listingDealBadge"
             android:autoText="false"
             android:ellipsize="end"
-            android:lines="1" />
+            android:lines="1"
+            android:textColor="#E9E9E9"/>
 
         <RatingBar
             android:layout_marginRight="@dimen/spacingSmall"
@@ -55,7 +58,8 @@
             android:id="@id/listingDealBadge"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_alignWithParentIfMissing="false" />
+            android:layout_alignWithParentIfMissing="false"
+            android:background="#C63E06"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -91,7 +95,8 @@
             android:id="@id/listingAddress"
             android:layout_below="@+id/imagePin"
             android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@id/listingImage" />
+            android:layout_toLeftOf="@id/listingImage"
+            android:textColor="#807B73"/>
 
         <ImageView
             android:layout_marginTop="@dimen/spacingSmall"

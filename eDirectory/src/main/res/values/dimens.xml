@@ -2,6 +2,7 @@
 
     <!-- Spacing -->
     <dimen name="spacingSmall">5dp</dimen>
+    <dimen name="spacingWeedfinder">8dp</dimen>
     <dimen name="spacingMedium">10dp</dimen>
     <dimen name="spacingLarge">15dp</dimen>
 

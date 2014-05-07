@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/spacingSmall"
     android:paddingRight="@dimen/spacingSmall"
     android:paddingTop="@dimen/spacingMedium"
-    android:paddingBottom="@dimen/spacingMedium">
+    android:paddingBottom="@dimen/spacingMedium"
+    android:background="@color/black_weefinder">
 
     <FrameLayout
         android:layout_marginRight="@dimen/spacingMedium"
@@ -31,7 +32,8 @@
         tools:text="Nice deal"
         android:id="@id/reviewTitle"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/frameLayout" />
+        android:layout_toRightOf="@+id/frameLayout"
+        android:textColor="@color/white_weedfinder"/>
 
     <TextView
         android:layout_marginTop="@dimen/spacingSmall"
@@ -42,7 +44,8 @@
         tools:text="Sent those roses to my girlfriend, she  loved it. Beautiful roses."
         android:id="@id/reviewDescription"
         android:layout_below="@id/reviewTitle"
-        android:layout_toRightOf="@+id/frameLayout" />
+        android:layout_toRightOf="@+id/frameLayout"
+        android:textColor="@color/gray_weedfinder"/>
 
     <TextView
         style="@style/reviewTextAuthor"
@@ -51,7 +54,8 @@
         tools:text="Peter Johnson"
         android:id="@id/reviewAuthor"
         android:layout_below="@id/reviewDescription"
-        android:layout_toRightOf="@+id/frameLayout" />
+        android:layout_toRightOf="@+id/frameLayout"
+        />
 
     <TextView
         style="@style/reviewTextDate"

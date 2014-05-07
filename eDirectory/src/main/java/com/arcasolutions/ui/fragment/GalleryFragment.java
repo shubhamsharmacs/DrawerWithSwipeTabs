@@ -17,7 +17,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Photo;
 import com.arcasolutions.ui.activity.GalleryViewActivity;
 import com.arcasolutions.ui.adapter.GalleryAdapter;

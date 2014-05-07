@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.EventSchedule;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

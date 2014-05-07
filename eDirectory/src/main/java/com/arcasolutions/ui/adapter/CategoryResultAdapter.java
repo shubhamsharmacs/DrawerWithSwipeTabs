@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.DealCategory;
 
@@ -54,6 +54,15 @@ public class CategoryResultAdapter extends BaseAdapter {
         BaseCategory c = getItem(i);
         if (c != null) {
             AQuery aq = new AQuery(v);
+
+            aq.id(R.id.image).image(c.getImageUrl(), true, true);
+
+            if (c.getImageUrl() != null) {
+               aq.id(R.id.image).visible();
+            } else {
+                aq.id(R.id.image).gone();
+            }
+
             aq.id(R.id.categoryTitle).text(c.getName());
             aq.id(R.id.categorySubcategories).text(c.getTotalSubs() + " " + v.getContext().getString(R.string.categories));
             aq.id(R.id.categoryActiveItems).text(c.getActiveItems() + "");

@@ -27,12 +27,16 @@
 
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:id="@+id/keyword"
                 android:hint="@string/type_a_keyword"
                 android:inputType="textCapSentences"
                 android:lines="1"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/button_signup_style"
+                android:paddingLeft="5dp"
+                android:textColor="@color/gray_weedfinder"
+                />
 
             <TextView
                 style="@style/categoryResultTextTitle"
@@ -44,19 +48,24 @@
 
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:id="@+id/location"
                 android:hint="@string/type_a_location"
                 android:lines="1"
                 android:inputType="textCapSentences"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/button_signup_style"
+                android:paddingLeft="5dp"
+                android:textColor="@color/gray_weedfinder"/>
         </LinearLayout>
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:id="@android:id/list"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:dividerHeight="1dp"
+            android:divider="@color/gray_weedfinder"/>
 
         <Button
             style="@style/blueButtonStyle"
@@ -64,7 +73,8 @@
             android:layout_height="wrap_content"
             android:text="@string/search"
             android:onClick="onSearch"
-            android:id="@+id/search_button" />
+            android:id="@+id/search_button"
+            android:background="@color/green_weedfinder"/>
 
     </LinearLayout>
 </ScrollView>

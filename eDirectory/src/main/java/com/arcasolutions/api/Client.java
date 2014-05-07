@@ -46,7 +46,7 @@ import java.util.Map;
 
 public class Client {
 
-    private static final String BASE_URL = "http://demodirectory-nextversion-design.basecode.arcasolutions.com";
+    private static final String BASE_URL = "http://weedfinder10200.arcasolutions.com";
 
     private static final String API_URL = BASE_URL + "/API/api2.php";
     private static final String IAPP_URL = BASE_URL + "/iapp/m6400";
@@ -197,6 +197,7 @@ public class Client {
 
         public Builder(Class<? extends BaseResult> clazz) {
             mMap.put("device", "android");
+            mMap.put("key", "3bc2-aa21-e3c2-6e6e-a426-a3cc-d8b6-33b4");
             mClass = clazz;
 
             if (mClass == null)
@@ -364,13 +365,14 @@ public class Client {
             mParams.add(param, value);
         }
 
-        public static IappBuilder newCreateAcccountBuilder(String email, String password, String firstName, String lastName) {
+        public static IappBuilder newCreateAcccountBuilder(String email, String password, String firstName, String lastName, String nickname) {
             IappBuilder builder = new IappBuilder(IAPP_URL + "/profile/add.json.php", Method.POST, IappTask.Service.ACCOUNT);
             builder.put("username", email);
             builder.put("first_name", firstName);
             builder.put("last_name", lastName);
             builder.put("password", password);
             builder.put("retype_password", password);
+            builder.put("nickname", nickname);
             return builder;
         }
 

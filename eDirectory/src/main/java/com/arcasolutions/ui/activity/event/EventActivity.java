@@ -12,7 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.ViewGroup;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.EventCategory;
 import com.arcasolutions.api.model.EventCategoryResult;

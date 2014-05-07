@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 
 public class EmptyListViewHelper {
 

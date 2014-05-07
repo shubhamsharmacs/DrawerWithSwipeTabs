@@ -12,15 +12,15 @@
     <!-- width / height -->
 
     <!-- Text Sizes -->
-    <item name="textSizeMicro">12sp</item>
+    <dimen name="textSizeMicro">12sp</dimen>
     <!-- 24pt -->
-    <item name="textSizeSmall">13sp</item>
+    <dimen name="textSizeSmall">13sp</dimen>
     <!-- 26pt  -->
-    <item name="textSizeMedium">13.5sp</item>
+    <dimen name="textSizeMedium">13.5sp</dimen>
     <!-- 27pt -->
-    <item name="textSizeLarge">15sp</item>
+    <dimen name="textSizeLarge">15sp</dimen>
     <!-- 30pt -->
-    <item name="textSizeExtraLarge">18sp</item>
+    <dimen name="textSizeExtraLarge">18sp</dimen>
     <!-- 36pt -->
 
 </resources>

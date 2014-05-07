@@ -9,7 +9,8 @@
     android:paddingLeft="@dimen/spacingMedium"
     android:paddingTop="@dimen/spacingMedium"
     android:paddingBottom="@dimen/spacingMedium"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:background="@color/black_weefinder">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -26,7 +27,8 @@
             android:lines="1"
             android:ellipsize="end"
             tools:text="Beauty and Fitness"
-            android:id="@android:id/text1" />
+            android:id="@android:id/text1"
+            android:textColor="@color/gray_weedfinder"/>
 
         <TextView
             style="@style/categoryResultTextActiveItems"
@@ -52,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@id/categoryArrow"
-            android:src="@drawable/ic_arrow_black" />
+            android:src="@drawable/ic_arrow_black"
+            android:background="@color/gray_weedfinder"/>
     </FrameLayout>
 </LinearLayout>

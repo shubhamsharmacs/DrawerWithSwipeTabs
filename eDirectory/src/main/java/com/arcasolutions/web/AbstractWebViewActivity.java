@@ -9,7 +9,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 import com.arcasolutions.App;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.util.DialogHelper;
 
 public class AbstractWebViewActivity extends ActionBarActivity implements AsyncActivity {

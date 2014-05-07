@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.ImageOptions;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Review;
 
 import java.util.List;

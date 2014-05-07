@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.arcasolutions.ui.activity.SignUpActivity">
+    tools:context="com.arcasolutions.ui.activity.SignUpActivity"
+    android:background="@color/black_weefinder">
 
     <LinearLayout
         android:padding="@dimen/spacingMedium"
@@ -19,62 +20,93 @@
 
             <EditText
                 android:layout_width="0dip"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:inputType="textCapWords"
                 android:hint="@string/first_name"
+                android:paddingLeft="5dp"
                 android:id="@+id/createAccountFirstName"
-                android:nextFocusDown="@+id/createAccountLastName"/>
+                android:nextFocusDown="@+id/createAccountLastName"
+                android:background="@drawable/button_signup_style"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/gray_weedfinder"/>
 
             <EditText
                 android:layout_width="0dip"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:hint="@string/last_name"
                 android:inputType="textCapWords"
                 android:id="@+id/createAccountLastName"
-                android:nextFocusDown="@+id/createAccountEmail"/>
+                android:background="@drawable/button_signup_style"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="5dp"
+                android:nextFocusDown="@+id/createAccountEmail"
+                android:textColor="@color/gray_weedfinder"/>
 
         </LinearLayout>
 
         <EditText
-            android:layout_marginTop="@dimen/spacingSmall"
+            android:layout_marginTop="@dimen/spacingWeedfinder"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:hint="@string/email"
             android:id="@+id/createAccountEmail"
-            android:nextFocusDown="@+id/createAccountPassword"/>
+            android:nextFocusDown="@+id/createAccountNickName"
+            android:background="@drawable/button_signup_style"
+            android:paddingLeft="5dp"
+            android:textColor="@color/gray_weedfinder"/>
 
         <EditText
-            android:layout_marginTop="@dimen/spacingSmall"
+            android:layout_marginTop="@dimen/spacingWeedfinder"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:inputType="textCapWords"
+            android:ems="10"
+            android:hint="@string/Nickname"
+            android:id="@+id/createAccountNickName"
+            android:nextFocusDown="@+id/createAccountPassword"
+            android:background="@drawable/button_signup_style"
+            android:paddingLeft="5dp"
+            android:textColor="@color/gray_weedfinder"/>
+
+        <EditText
+            android:layout_marginTop="@dimen/spacingWeedfinder"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
             android:inputType="textPassword"
             android:ems="10"
             android:hint="@string/password"
             android:id="@+id/createAccountPassword"
-            android:nextFocusDown="@+id/createAccountConfirmPassword"/>
+            android:nextFocusDown="@+id/createAccountConfirmPassword"
+            android:paddingLeft="5dp"
+            android:background="@drawable/button_signup_style"
+            android:textColor="@color/gray_weedfinder"/>
 
         <EditText
-            android:layout_marginTop="@dimen/spacingSmall"
+            android:layout_marginTop="@dimen/spacingWeedfinder"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:inputType="textPassword"
             android:ems="10"
             android:hint="@string/confirm_password"
             android:id="@+id/createAccountConfirmPassword"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionDone"
+            android:paddingLeft="5dp"
+            android:background="@drawable/button_signup_style"
+            android:textColor="@color/gray_weedfinder"/>
 
         <Button
             style="@style/blueButtonStyle"
-            android:layout_marginTop="@dimen/spacingSmall"
+            android:layout_marginTop="@dimen/spacingWeedfinder"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/submit"
             android:id="@+id/createAccountSubmit"
-            android:onClick="onSubmit"/>
+            android:onClick="onSubmit"
+            android:background="@color/green_weedfinder"/>
 
 
     </LinearLayout>

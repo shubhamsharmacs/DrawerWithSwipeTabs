@@ -14,7 +14,7 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Account;
 import com.arcasolutions.api.model.IappResult;

@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Article;
 import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.Deal;

@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.arcasolutions.ui.activity.AboutActivity$AboutFragment">
+    tools:context="com.arcasolutions.ui.activity.AboutActivity$AboutFragment"
+    android:background="@color/black_weefinder">
 
     <LinearLayout
         android:orientation="vertical"
@@ -22,7 +23,8 @@
             android:layout_marginRight="@dimen/spacingMedium"
             android:text="@string/about_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_weedfinder"/>
 
         <TextView
             android:fontFamily="sans-serif-light"
@@ -30,7 +32,8 @@
             android:layout_marginRight="@dimen/spacingMedium"
             android:text="@string/app_version"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_weedfinder"/>
 
         <TextView
             android:fontFamily="sans-serif-light"
@@ -39,7 +42,8 @@
             android:layout_marginTop="@dimen/spacingLarge"
             android:text="@string/about_description"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_weedfinder"/>
 
         <LinearLayout
             android:layout_marginTop="@dimen/spacingLarge"
@@ -57,7 +61,8 @@
                 android:layout_marginRight="@dimen/spacingMedium"
                 android:text="@string/get_in_touch"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_weedfinder"/>
 
             <TextView
                 android:onClick="onVisitWebsite"
@@ -70,7 +75,8 @@
                 android:paddingRight="@dimen/spacingMedium"
                 android:layout_width="match_parent"
                 android:text="@string/about_visit_website"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_weedfinder"/>
 
             <TextView
                 android:onClick="onSendUsAnEmail"
@@ -83,7 +89,8 @@
                 android:paddingRight="@dimen/spacingMedium"
                 android:layout_width="match_parent"
                 android:text="@string/about_send_email"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_weedfinder"/>
 
             <TextView
                 android:onClick="onCallUs"
@@ -96,7 +103,8 @@
                 android:paddingRight="@dimen/spacingMedium"
                 android:layout_width="match_parent"
                 android:text="@string/about_call_us"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_weedfinder"/>
 
         </LinearLayout>
 

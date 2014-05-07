@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?attr/listPreferredItemHeight"
-    android:padding="@dimen/spacingSmall">
+    android:padding="@dimen/spacingSmall"
+    android:background="@color/black_weefinder">
 
     <LinearLayout
         android:layout_height="wrap_content"
@@ -20,7 +21,8 @@
             tools:text="eDirectory"
             style="@style/settingText1"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+            android:layout_width="wrap_content"
+            android:textColor="@color/white_weedfinder"/>
 
         <TextView
             android:id="@+id/settingText2"
@@ -28,7 +30,8 @@
             style="@style/settingText2"
             android:visibility="gone"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+            android:layout_width="wrap_content"
+            android:textColor="@color/white_weedfinder"/>
 
     </LinearLayout>
 
@@ -38,6 +41,7 @@
         style="@style/blueButtonStyle"
         android:layout_height="38dp"
         android:layout_width="0dip"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="@color/green_weedfinder"/>
 
 </LinearLayout>

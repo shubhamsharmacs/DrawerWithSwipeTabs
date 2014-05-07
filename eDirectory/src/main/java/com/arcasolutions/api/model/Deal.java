@@ -173,4 +173,8 @@ public class Deal extends Module implements IGeoPoint {
         }
     };
 
+    @Override
+    public String getImageUrlCat() {
+        return null;
+    }
 }

@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 
 public class DialogHelper {
 

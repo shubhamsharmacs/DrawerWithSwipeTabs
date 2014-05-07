@@ -3,7 +3,7 @@ package com.arcasolutions.ui.activity.classified;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.ClassifiedResult;
 import com.arcasolutions.api.model.Module;

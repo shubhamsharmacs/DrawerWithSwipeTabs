@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.implementation.IContactInfo;
 import com.arcasolutions.api.model.Listing;
 import com.arcasolutions.util.CheckInHelper;
@@ -22,6 +22,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
     private LayoutInflater mInflater;
     private LinearLayout mLinearLayout;
     private CheckInHelper mCheckInHelper;
+    private long listingId;
 
     public ContactInfoFragment() {
     }
@@ -51,6 +52,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
         if (contact instanceof  Listing) {
             Listing listing = (Listing) contact;
             mCheckInHelper = new CheckInHelper(this, listing);
+            listingId = listing.getId();
         }
     }
 
@@ -101,6 +103,11 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
                 v.setClickable(true);
                 v.setOnClickListener(mCheckInHelper);
             }
+
+            addContactInfo(R.id.webview_menu,
+                    R.drawable.icon_menu,
+                    getString(R.string.web_view_menu),
+                    null);
         }
     }
 
@@ -139,6 +146,12 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
             case R.id.contactCheckIn:
 
                 break;
+
+            case R.id.webview_menu:
+                IntentUtil.openWebView(getActivity(),
+                        "http://weedfinder10200.arcasolutions.com/API/listingmenu.php?id=" + String.valueOf(listingId));
+                break;
+
         }
     }
 

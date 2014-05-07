@@ -4,12 +4,12 @@
     <!-- eDirectory settings -->
     <string name="edirectoryScheme" tools:ignore="MissingTranslation">http://</string>
 
-    <string name="edirectoryUrl" tools:ignore="MissingTranslation">www.demodirectory.com</string>
+    <string name="edirectoryUrl" tools:ignore="MissingTranslation">weedfinder10200.arcasolutions.com</string>
 
-    <string name="edirectoryApiKey" tools:ignore="MissingTranslation,TypographyDashes">a585-11c0-9dd7-0702-161b-e47a-92a6-90f0</string>
+    <string name="edirectoryApiKey" tools:ignore="MissingTranslation,TypographyDashes">3bc2-aa21-e3c2-6e6e-a426-a3cc-d8b6-33b4</string>
 
     <!-- Key for Android apps -->
-    <string name="androidApiKey" tools:ignore="MissingTranslation">AIzaSyDYB91N3rZLtb4931i0oahyTDLwmG8CzqM</string>
+    <string name="androidApiKey" tools:ignore="MissingTranslation">AIzaSyDtdNQJKgDGCPYscjNNBIXdwuY9LzI_19Y</string>
 
 
     <!-- Facebook settings -->

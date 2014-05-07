@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.ShareCompat;
 import android.text.TextUtils;
+import android.webkit.WebView;
+import android.widget.Toast;
+
+import com.arcasolutions.ui.activity.MenuWebviewActivity;
 
 public final class IntentUtil {
 
@@ -40,6 +44,13 @@ public final class IntentUtil {
         shareIntent.putExtra(Intent.EXTRA_TEXT, message + " " + friendlyUrl);
         shareIntent.putExtra("message", message);
         return shareIntent;
+    }
+
+    public static void openWebView(Context context, String url) {
+        Intent intent = new Intent(context, MenuWebviewActivity.class);
+        intent.putExtra(MenuWebviewActivity.EXTRA_URL, url);
+        context.startActivity(intent);
+
     }
 
 }

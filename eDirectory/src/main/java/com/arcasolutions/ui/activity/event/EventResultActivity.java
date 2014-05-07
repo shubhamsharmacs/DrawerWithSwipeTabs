@@ -3,7 +3,7 @@ package com.arcasolutions.ui.activity.event;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.EventResult;
 import com.arcasolutions.api.model.Module;

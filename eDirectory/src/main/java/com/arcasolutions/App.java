@@ -4,6 +4,7 @@ import android.app.Application;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.arcasolutions.api.Client;
+import com.weedfinder.R;
 
 import org.springframework.security.crypto.encrypt.AndroidEncryptors;
 import org.springframework.social.connect.ConnectionRepository;

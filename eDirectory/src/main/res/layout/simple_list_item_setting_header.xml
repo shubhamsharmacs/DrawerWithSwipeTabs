@@ -7,4 +7,6 @@
     android:layout_height="match_parent"
     style="@style/settingHeader"
     tools:text="Account"
-    android:padding="@dimen/spacingSmall" />
+    android:padding="@dimen/spacingSmall"
+    android:textColor="@color/white_weedfinder"
+    android:background="@color/black_weefinder"/>

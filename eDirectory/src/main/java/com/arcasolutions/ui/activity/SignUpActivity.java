@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.Account;
 import com.arcasolutions.api.model.IappResult;
@@ -25,6 +25,7 @@ public class SignUpActivity extends ActionBarActivity
     private EditText mFirstNameView;
     private EditText mLastNameView;
     private EditText mEmailView;
+    private EditText mNickNameView;
     private EditText mPasswordView;
     private EditText mConfirmPasswordView;
     private Button mSubmit;
@@ -40,6 +41,7 @@ public class SignUpActivity extends ActionBarActivity
         mFirstNameView = (EditText) findViewById(R.id.createAccountFirstName);
         mLastNameView = (EditText) findViewById(R.id.createAccountLastName);
         mEmailView = (EditText) findViewById(R.id.createAccountEmail);
+        mNickNameView = (EditText) findViewById(R.id.createAccountNickName);
         mPasswordView = (EditText) findViewById(R.id.createAccountPassword);
         mConfirmPasswordView = (EditText) findViewById(R.id.createAccountConfirmPassword);
         mSubmit = (Button) findViewById(R.id.createAccountSubmit);
@@ -81,6 +83,15 @@ public class SignUpActivity extends ActionBarActivity
             mEmailView.setError(null);
         }
 
+        // Nickname
+        String nickname = mNickNameView.getText().toString();
+        if (TextUtils.isEmpty(nickname)) {
+            mNickNameView.setError(getString(R.string.nickname_is_required));
+            valid = false;
+        } else {
+            mNickNameView.setError(null);
+        }
+
         // password
         String password = mPasswordView.getText().toString();
         if (TextUtils.isEmpty(password)) {
@@ -105,7 +116,7 @@ public class SignUpActivity extends ActionBarActivity
         if (valid) {
             setEnable(false);
             Client.IappBuilder.newCreateAcccountBuilder(
-                    email, password, firstName, lastName)
+                    email, password, firstName, lastName, nickname)
                         .execAsync(this);
             mProgress = DialogHelper.from(this).progress(getString(R.string.creating_account));
         }
@@ -115,6 +126,7 @@ public class SignUpActivity extends ActionBarActivity
     private void setEnable(boolean enable) {
         mFirstNameView.setEnabled(enable);
         mLastNameView.setEnabled(enable);
+        mNickNameView.setEnabled(enable);
         mEmailView.setEnabled(enable);
         mPasswordView.setEnabled(enable);
         mConfirmPasswordView.setEnabled(enable);

@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.Client;
 import com.arcasolutions.api.model.CheckIn;
 import com.arcasolutions.api.model.CheckInResult;

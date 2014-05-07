@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.ui.fragment.BaseFragment;
 import com.arcasolutions.ui.fragment.ContactInfoFragment;

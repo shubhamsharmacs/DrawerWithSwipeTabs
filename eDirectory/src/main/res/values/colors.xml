@@ -5,15 +5,15 @@
     <color name="textColorPrimary">#ff000000</color>
     <color name="textColorSecondary">#ff363536</color>
     <color name="textColorTertiary">#ff686868</color>
-    <color name="textColorExtras">#ff3498db</color>
+    <color name="textColorExtras">#438107</color>
     <color name="textColorNoResults">#ffc2c2c2</color>
 
     <color name="textColorPrimaryInverse">#ffffffff</color>
 
     <color name="pagerStripBackground">#3d3d3d</color>
-    <color name="pagerStripIndicator">#33b5e5</color>
+    <color name="pagerStripIndicator">#438107</color>
 
-    <color name="appBackground">#f6f6f7</color>
+    <color name="appBackground">@color/black_weefinder</color>
 
     <!-- calendar colors -->
     <color name="calendar_bg_normal">#eee</color> <!-- the normal state of grid cell (day without event) -->
@@ -23,6 +23,14 @@
 
     <color name="map_draw_fill">#30335500</color>
     <color name="map_draw_stroke">#FF335500</color>
+
+    <color name="gray_weedfinder">#858585</color>
+    <color name="white_weedfinder">#E9E9E9</color>
+    <color name="green_weedfinder">#19AD04</color>
+    <color name="orange_weefinder">#C63E06</color>
+    <color name="dark_gray_weefinder">#0D0D0D</color>
+    <color name="black_weefinder">#0A0A0A</color>
+
 
 
 </resources>

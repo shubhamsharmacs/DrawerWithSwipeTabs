@@ -12,4 +12,6 @@ public interface IGeoPoint {
 
     public double getLongitude();
 
+    public String getImageUrlCat();
+
 }

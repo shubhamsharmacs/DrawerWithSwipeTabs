@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Event;
 import com.arcasolutions.view.amazing.AmazingAdapter;
 import com.google.common.collect.Lists;

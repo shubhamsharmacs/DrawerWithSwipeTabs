@@ -54,7 +54,8 @@
                     android:layout_below="@id/dealOverviewImage"
                     android:layout_alignParentLeft="true"
                     android:layout_toLeftOf="@id/dealOverviewFavorite"
-                    android:layout_marginRight="@dimen/spacingSmall" />
+                    android:layout_marginRight="@dimen/spacingSmall"
+                    android:textColor="@color/white_weedfinder"/>
 
                 <TextView
                     style="@style/listingOverviewTextReviews"
@@ -64,7 +65,8 @@
                     android:id="@id/dealOverviewReviews"
                     android:layout_toRightOf="@id/dealOverviewRatingBar"
                     android:layout_marginRight="@dimen/spacingMedium"
-                    android:layout_alignParentBottom="true" />
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/gray_weedfinder"/>
 
                 <CheckBox
                     style="@style/heartCheckBoxStyle"
@@ -138,7 +140,8 @@
                     android:text="@string/event_label_started"
                     android:id="@+id/startDateLabel"
                     android:layout_marginRight="@dimen/spacingSmall"
-                    android:layout_marginBottom="@dimen/spacingMedium" />
+                    android:layout_marginBottom="@dimen/spacingMedium"
+                    android:textColor="@color/gray_weedfinder"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -147,7 +150,8 @@
                     android:id="@id/dealOverviewStartDate"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/startDateLabel"
-                    style="@style/checkinResultTextDate" />
+                    style="@style/checkinResultTextDate"
+                    android:textColor="@color/gray_weedfinder"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -166,6 +170,7 @@
                     android:id="@+id/textView3"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/dateDivider"
+                    android:textColor="@color/gray_weedfinder"
                     android:layout_marginRight="@dimen/spacingSmall" />
 
                 <TextView
@@ -175,7 +180,8 @@
                     android:id="@id/dealOverviewEndDate"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/textView3"
-                    style="@style/checkinResultTextDate" />
+                    style="@style/checkinResultTextDate"
+                    android:textColor="@color/gray_weedfinder"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -183,7 +189,8 @@
                     android:text="@string/event_label_deals_remain"
                     android:id="@+id/remainLabel"
                     android:layout_below="@+id/startDateLabel"
-                    android:layout_marginRight="@dimen/spacingSmall" />
+                    android:layout_marginRight="@dimen/spacingSmall"
+                    android:textColor="@color/gray_weedfinder"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -192,7 +199,8 @@
                     android:id="@id/dealOverviewRemain"
                     android:layout_above="@+id/redeemPlace"
                     android:layout_toRightOf="@+id/remainLabel"
-                    style="@style/checkinResultTextDate" />
+                    style="@style/checkinResultTextDate"
+                    android:textColor="@color/gray_weedfinder"/>
 
                 <FrameLayout
                     android:id="@+id/redeemPlace"
@@ -208,7 +216,8 @@
                     android:id="@id/dealOverviewDescription"
                     android:layout_alignParentLeft="true"
                     android:layout_marginBottom="@dimen/spacingMedium"
-                    android:layout_below="@+id/redeemPlace" />
+                    android:layout_below="@+id/redeemPlace"
+                    android:textColor="@color/gray_weedfinder"/>
 
             </RelativeLayout>
 
@@ -233,7 +242,8 @@
                         android:text="@string/reviews"
                         android:id="@+id/textView"
                         android:layout_alignParentStart="true"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:textColor="@color/white_weedfinder"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -244,7 +254,8 @@
                         android:text="@string/view_all"
                         android:drawableEnd="@drawable/ic_arrow_black"
                         android:id="@+id/viewAll"
-                        android:gravity="center_vertical" />
+                        android:gravity="center_vertical"
+                        android:textColor="@color/white_weedfinder"/>
 
                 </LinearLayout>
 
@@ -274,7 +285,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/ic_arrow_black"
-                android:layout_marginTop="@dimen/spacingMedium" />
+                android:layout_marginTop="@dimen/spacingMedium"
+                android:textColor="@color/white_weedfinder"/>
 
         </LinearLayout>
 

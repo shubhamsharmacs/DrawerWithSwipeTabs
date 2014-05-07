@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.util.Util;
 
 public class StartUpActivity extends Activity {
@@ -24,11 +24,12 @@ public class StartUpActivity extends Activity {
         Util.verifyIntenetConnection(this, new Util.ConnectionCallback() {
             @Override
             public void onConnection(boolean hasInternet) {
-                if (hasInternet) {
+               /* if (hasInternet) {
                     openApp();
                 } else {
                     alertNoInternet();
-                }
+                }*/
+                openApp();
             }
         });
 

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.implementation.IGeoPoint;
 import com.arcasolutions.api.model.ArticleResult;
 import com.arcasolutions.api.model.BaseResult;

@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Article;
 import com.arcasolutions.api.model.Classified;
 import com.arcasolutions.api.model.Deal;

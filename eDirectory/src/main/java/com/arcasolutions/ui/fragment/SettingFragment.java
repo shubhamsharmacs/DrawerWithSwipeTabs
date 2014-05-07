@@ -16,7 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Account;
 import com.arcasolutions.ui.activity.AboutActivity;
 import com.arcasolutions.ui.activity.LoginActivity;

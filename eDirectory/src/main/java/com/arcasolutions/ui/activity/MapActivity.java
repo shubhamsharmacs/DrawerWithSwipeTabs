@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.arcasolutions.R;
+import com.weedfinder.R;
 import com.arcasolutions.api.model.Article;
 import com.arcasolutions.api.model.BaseResult;
 import com.arcasolutions.api.model.Classified;
