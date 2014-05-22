@@ -1,10 +1,13 @@
 package com.arcasolutions.ui.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.weedfinder.R;
 
@@ -17,6 +20,8 @@ public class MenuWebviewActivity extends SecondLevelActivity{
 
     private WebView webView;
     private String url;
+    private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,7 @@ public class MenuWebviewActivity extends SecondLevelActivity{
     }
 
     private class Browser extends WebViewClient {
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
