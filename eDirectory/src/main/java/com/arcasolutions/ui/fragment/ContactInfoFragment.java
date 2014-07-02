@@ -77,6 +77,11 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
                         contactInfo.getPhoneNumber());
             }
 
+            addContactInfo(R.id.webview_menu,
+                    R.drawable.icon_menu,
+                    getString(R.string.web_view_menu),
+                    null);
+
             if (!TextUtils.isEmpty(contactInfo.getEmail())) {
                 addContactInfo(
                         R.id.contactEmail,
@@ -104,10 +109,7 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
                 v.setOnClickListener(mCheckInHelper);
             }
 
-            addContactInfo(R.id.webview_menu,
-                    R.drawable.icon_menu,
-                    getString(R.string.web_view_menu),
-                    null);
+
         }
     }
 

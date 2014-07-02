@@ -59,7 +59,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_alignWithParentIfMissing="false"
-            android:background="#C63E06"/>
+            android:background="#69006C"/>
     </RelativeLayout>
 
     <RelativeLayout

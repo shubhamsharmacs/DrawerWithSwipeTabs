@@ -37,7 +37,7 @@
     <string name="alert_title_fail">Fail</string>
     <string name="alert_message_fail">Something was wrong.\n<xliff:g id="detail">%1$s</xliff:g></string>
 
-    <string name="app_name">eDirectory</string>
+    <string name="app_name">Weed Finder</string>
 
     <string name="rating">Rating</string>
     <string name="alphabetically">Alphabetically</string>
