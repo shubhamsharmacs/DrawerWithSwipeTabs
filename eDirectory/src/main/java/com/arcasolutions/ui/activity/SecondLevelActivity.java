@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
 import com.arcasolutions.util.BannerHelper;
+import com.weedfinder.R;
 
 public abstract class SecondLevelActivity extends ActionBarActivity {
 
@@ -13,6 +14,9 @@ public abstract class SecondLevelActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBannerHelper = new BannerHelper(this);
+
+        getSupportActionBar().setIcon(R.drawable.weedfinder);
+
     }
 
     @Override

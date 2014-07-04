@@ -152,6 +152,8 @@ public abstract class BaseActivity extends ActionBarActivity implements
          */
         mLocationClient = new LocationClient(this, this, this);
 
+        getSupportActionBar().setIcon(R.drawable.weedfinder);
+
 
         List<NavItem> options = Lists.newArrayList();
         if (Util.isNonLocationApp(this)) {
