@@ -414,10 +414,10 @@ public abstract class BaseActivity extends ActionBarActivity implements
             overridePendingTransition(0, 0);
         } else {
             if (i == 2) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder10200.arcasolutions.com/gear"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder.arcastaging.com/gear"));
                 startActivity(intent);
             } else if (i == 3) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder10200.arcasolutions.com/dash/news"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder.arcastaging.com/dash/news"));
                 startActivity(intent);
             } else if (i == 4) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/user/WeedFinderTV"));

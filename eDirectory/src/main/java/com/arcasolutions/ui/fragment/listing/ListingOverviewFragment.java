@@ -95,6 +95,14 @@ public class ListingOverviewFragment extends BaseFragment {
                 }
             });
 
+            aq.id(R.id.listingOverviewGetDirections).clicked(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    IntentUtil.getDirections(getActivity(), l.getLatitude(), l.getLongitude());
+                }
+            });
+
+
             showMapIfNeeded(l);
         }
 

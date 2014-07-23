@@ -3,6 +3,7 @@ package com.arcasolutions.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.support.v4.app.ShareCompat;
 import android.text.TextUtils;
@@ -10,6 +11,9 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.arcasolutions.ui.activity.MenuWebviewActivity;
+import com.weedfinder.R;
+
+import java.util.Locale;
 
 public final class IntentUtil {
 
@@ -52,5 +56,23 @@ public final class IntentUtil {
         context.startActivity(intent);
 
     }
+
+    public static void  getDirections(Context context, double lat, double lng) {
+        Location myLocation = Util.getMyLocation();
+        if (myLocation == null) return;
+
+        try {
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse(String.format(Locale.US, "http://maps.google.com/maps?saddr=%1$.9f,%2$.9f&daddr=%3$.9f,%4$.9f",
+                            myLocation.getLatitude(),
+                            myLocation.getLongitude(),
+                            lat,
+                            lng)));
+            context.startActivity(intent);
+        }  catch (Exception e) {
+            Toast.makeText(context, context.getText(R.string.no_app_to_handle_this_operation), Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }

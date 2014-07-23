@@ -216,6 +216,7 @@ If you want to know more, want to build you own directory or mobile application,
     <string name="by">By</string>
     <string name="loadin_more_results"><![CDATA[Loading more results&#8320;]]></string>
     <string name="price">Price:</string>
+    <string name="no_app_to_handle_this_operation">There is no app registered to handle this operation type.</string>
 
 
 </resources>
