@@ -38,6 +38,11 @@ public class Filter implements Parcelable {
 
     private List<Integer> ratings;
 
+    private String category;
+
+    private int categoryIndex = 0;
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -50,6 +55,8 @@ public class Filter implements Parcelable {
         location = in.readString();
         moduleIndex = in.readInt();
         in.readList(ratings, Integer.class.getClassLoader());
+        category = in.readString();
+        categoryIndex = in.readInt();
     }
 
     @Override
@@ -58,6 +65,8 @@ public class Filter implements Parcelable {
         out.writeString(location);
         out.writeInt(moduleIndex);
         out.writeList(ratings);
+        out.writeString(category);
+        out.writeInt(categoryIndex);
     }
 
     public static Class<? extends BaseResult> getModuleClass(int moduleIndex) {

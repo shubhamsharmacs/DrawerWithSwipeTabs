@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
@@ -77,6 +78,10 @@ public class MyMapFragment extends Fragment implements
         void onShowAsList(ArrayList<Module> result, Class<? extends BaseResult> clazz);
     }
 
+    public interface OnSearchFilterListener {
+        void onSearchFilter();
+    }
+
     private BaseActivity mBaseActivity;
     private GoogleMap mMap;
 
@@ -96,6 +101,7 @@ public class MyMapFragment extends Fragment implements
     private LatLng mFarRight;
     private OnShowAsListListener mListener;
     private OnModuleSelectionListener mSelectionListener;
+    private OnSearchFilterListener mSearchFilterListener;
 
     private final Map<String, Bitmap> mUrlBitmapMap = Maps.newHashMap();
 
@@ -110,6 +116,9 @@ public class MyMapFragment extends Fragment implements
         }
         if (activity instanceof OnModuleSelectionListener) {
             mSelectionListener = (OnModuleSelectionListener) activity;
+        }
+        if (activity instanceof OnSearchFilterListener) {
+            mSearchFilterListener = (OnSearchFilterListener) activity;
         }
     }
 
@@ -157,7 +166,8 @@ public class MyMapFragment extends Fragment implements
         AQuery aq = new AQuery(view);
         aq.id(R.id.buttonList).clicked(this);
         aq.id(R.id.buttonDraw).clicked(this);
-        aq.id(R.id.spinner).adapter(adapter).itemSelected(this);
+        aq.id(R.id.action_filter_search).clicked(this);
+       // aq.id(R.id.spinner).adapter(adapter).itemSelected(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.map);
         mMap = mapFragment.getMap();
@@ -342,6 +352,11 @@ public class MyMapFragment extends Fragment implements
                 builder.keyword(mFilter.getKeyword());
             }
 
+
+            if (mFilter.getCategory() != null && !TextUtils.isEmpty((mFilter.getCategory()))) {
+                builder.category(mFilter.getCategory());
+            }
+
             builder.ratings(mFilter.getRatings());
 
         }
@@ -382,6 +397,11 @@ public class MyMapFragment extends Fragment implements
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+
+            case R.id.action_filter_search:
+                mSearchFilterListener.onSearchFilter();
+                break;
+
             case R.id.mapInfoView:
                 Object tag = view.getTag();
                 if (tag instanceof Marker) {
@@ -420,6 +440,8 @@ public class MyMapFragment extends Fragment implements
             case R.id.buttonDraw:
                 onDrawClickButton();
                 break;
+
+
         }
     }
 
@@ -441,7 +463,7 @@ public class MyMapFragment extends Fragment implements
         mClass = Filter.getModuleClass(mFilter.getModuleIndex());
 
         AQuery aq = new AQuery(getView());
-        aq.id(R.id.spinner).setSelection(mFilter.getModuleIndex());
+       // aq.id(R.id.spinner).setSelection(mFilter.getModuleIndex());
 
         if (!TextUtils.isEmpty(mFilter.getLocation())) {
             LocationUtil.geocoder(getActivity(), mFilter.getLocation(), new LocationUtil.GeocoderCallback() {

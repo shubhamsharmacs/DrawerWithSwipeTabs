@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 public class MapActivity extends BaseActivity
         implements MyMapFragment.OnShowAsListListener,
+            MyMapFragment.OnSearchFilterListener,
             FragmentManager.OnBackStackChangedListener,
         OnModuleSelectionListener {
 
@@ -91,13 +92,13 @@ public class MapActivity extends BaseActivity
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
+   @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean isFilterFragmentVisible = getSupportFragmentManager().findFragmentByTag("filter") != null;
         boolean isResultListFragmentVisible = getSupportFragmentManager().findFragmentByTag("list") != null;
 
-        MenuItem menuFilter = menu.findItem(R.id.action_filter);
-        menuFilter.setVisible(!isFilterFragmentVisible && !isResultListFragmentVisible);
+       // MenuItem menuFilter = menu.findItem(R.id.action_filter);
+       // menuFilter.setVisible(!isFilterFragmentVisible && !isResultListFragmentVisible);
 
         MenuItem menuCancel = menu.findItem(R.id.action_cancel);
         menuCancel.setVisible(isFilterFragmentVisible);
@@ -135,6 +136,7 @@ public class MapActivity extends BaseActivity
 
     }
 
+
     @Override
     public void onBackStackChanged() {
         supportInvalidateOptionsMenu();
@@ -163,4 +165,28 @@ public class MapActivity extends BaseActivity
             }
         }
     }
+
+    @Override
+    public void onSearchFilter() {
+        Fragment filterFragment = getSupportFragmentManager().findFragmentByTag("filter");
+        if (filterFragment == null) {
+            filterFragment = MyMapFilterFragment.newInstance(mMyMapFragment.getFilter().getModuleIndex());
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_content, filterFragment, "filter")
+                    .commit();
+        }
+
+        supportInvalidateOptionsMenu();
+    }
+
+  /*  @Override
+    public void onSearchFilter() {
+        MyMapFilterFragment filterFragment = (MyMapFilterFragment) getSupportFragmentManager().findFragmentByTag("filter");
+        if (filterFragment != null) {
+            Filter filter = filterFragment.getFilter();
+            dismissFilter();
+            mMyMapFragment.setFilter(filter);
+        }
+        supportInvalidateOptionsMenu();
+    }*/
 }

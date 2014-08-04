@@ -275,6 +275,11 @@ public class Client {
             return this;
         }
 
+        public Builder filterMap() {
+            mMap.put("filter", "map");
+            return this;
+        }
+
         public Builder page(int page) {
             mMap.put("page", page);
             return this;
@@ -302,6 +307,11 @@ public class Client {
 
         public Builder keyword(String keyword) {
             mMap.put("keyword", keyword);
+            return this;
+        }
+
+        public Builder category(String category) {
+            mMap.put("category_id", category);
             return this;
         }
 

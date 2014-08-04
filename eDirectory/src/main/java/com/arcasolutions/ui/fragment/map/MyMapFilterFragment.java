@@ -18,14 +18,23 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 
 import com.androidquery.AQuery;
+import com.arcasolutions.api.Client;
+import com.arcasolutions.api.model.BaseCategory;
+import com.arcasolutions.api.model.BaseCategoryResult;
+import com.arcasolutions.api.model.ListingCategoryResult;
+import com.arcasolutions.ui.adapter.CategoryResultAdapter;
+import com.arcasolutions.util.EmptyListViewHelper;
 import com.weedfinder.R;
 import com.google.common.collect.Lists;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     public static final String ARG_FILTER_MODULE_INDEX = "module_class";
+    private final List<BaseCategory> mCategories = Lists.newArrayList();
+    private CategoryResultAdapter mAdapter;
 
     private final Filter mFilter = new Filter();
 
@@ -44,6 +53,8 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
         return f;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,19 +62,70 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
         int sectionIndex = getArguments() != null
                 ? getArguments().getInt(ARG_FILTER_MODULE_INDEX)
                 : null;
+
         mFilter.setModuleIndex(sectionIndex);
-        mFilterAdapter = new FilterAdapter(getActivity(), mFilter);
+
+        mFilterAdapter = new FilterAdapter(getActivity(), mFilter, mCategories);
+
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map_filter, container, false);
+        return view;
+    }
+
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mKeywordView = (EditText) view.findViewById(R.id.keyword);
         mLocationView = (EditText) view.findViewById(R.id.location);
         ListView listView = (ListView) view.findViewById(android.R.id.list);
         listView.setAdapter(mFilterAdapter);
         listView.setOnItemClickListener(this);
-        return view;
+        displayProgress(true);
+        loadCategories();
+    }
+
+
+   private void loadCategories() {
+
+        Client.RestListener<BaseCategoryResult> mListener = new Client.RestListener<BaseCategoryResult>() {
+
+            @Override
+            public void onComplete(BaseCategoryResult result) {
+                List<BaseCategory> categories = result.getResults();
+                if (categories != null) {
+                    mCategories.clear();
+                    mCategories.addAll(categories);
+                    mFilter.setCategory(String.valueOf(mCategories.get(0).getId()));
+                    mFilterAdapter.notifyDataSetChanged();
+                    displayProgress(false);
+                }
+            }
+
+            @Override
+            public void onFail(Exception ex) {
+                ex.printStackTrace();
+                displayProgress(false);
+            }
+        };
+
+        Client.Builder builder = new Client.Builder(ListingCategoryResult.class);
+        builder.filterMap();
+
+        builder.execAsync(mListener);
+
+    }
+
+
+    private void displayProgress(boolean display) {
+        if (getActivity() != null) {
+            getActivity().setProgressBarIndeterminateVisibility(display);
+        }
     }
 
     private void chooseRatingDialog() {
@@ -157,6 +219,30 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
                 .create().show();
     }
 
+    private void chooseCategory() {
+
+        List<String> list = Lists.newArrayList();
+        for (int i=0; i<mCategories.size(); i++) {
+            list.add(mCategories.get(i).getName());
+        }
+
+        CharSequence[] cs = list.toArray(new CharSequence[list.size()]);
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.category_title)
+
+                .setSingleChoiceItems(cs, mFilter.getCategoryIndex(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mFilter.setCategory(String.valueOf(mCategories.get(i).getId()));
+                        mFilter.setCategoryIndex(i);
+                        mFilterAdapter.notifyDataSetChanged();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .create().show();
+    }
+
     public Filter getFilter() {
         mFilter.setKeyword(mKeywordView.getText().toString());
         mFilter.setLocation(mLocationView.getText().toString());
@@ -170,7 +256,13 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
 
         else if (i == 1)
             chooseRatingDialog();
+
+        else if (i == 2)
+            chooseCategory();
+
     }
+
+
 
     static class FilterAdapter extends BaseAdapter {
 
@@ -178,22 +270,28 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
         private final LayoutInflater mInflater;
         private final Filter mFilter;
         private final Resources mResources;
+        private final List<? extends BaseCategory> mCategoriesAdapter;
 
-        FilterAdapter(Context context, Filter filter) {
+        FilterAdapter(Context context, Filter filter, List<? extends BaseCategory> categories) {
             mInflater = LayoutInflater.from(context);
             mFilter = filter;
             mResources = context.getResources();
             mContext = context;
+            mCategoriesAdapter = categories;
         }
 
         @Override
         public int getCount() {
             switch (mFilter.getModuleIndex()) {
                 case Filter.ModuleIndex.LISTING:
+                    return 3;
+
                 case Filter.ModuleIndex.DEAL:
+                    mFilter.setCategory(null);
                     return 2;
 
                 default:
+                    mFilter.setCategory(null);
                     return 1;
             }
         }
@@ -240,6 +338,14 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
 
                     aq.id(android.R.id.text1).text(R.string.rating);
                     aq.id(android.R.id.text2).text(starsLabel);
+                    break;
+
+                case 2:
+                    aq.id(android.R.id.text1).text(R.string.categories);
+                    if (mCategoriesAdapter.size() > 0) {
+                        aq.id(android.R.id.text2).text(mCategoriesAdapter.get(mFilter.getCategoryIndex()).getName());
+                    }
+
                     break;
             }
 

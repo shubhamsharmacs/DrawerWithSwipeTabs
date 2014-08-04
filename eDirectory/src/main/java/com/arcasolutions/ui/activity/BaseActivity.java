@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -152,7 +154,7 @@ public abstract class BaseActivity extends ActionBarActivity implements
          */
         mLocationClient = new LocationClient(this, this, this);
 
-        getSupportActionBar().setIcon(R.drawable.weedfinder);
+
 
 
         List<NavItem> options = Lists.newArrayList();
@@ -172,26 +174,40 @@ public abstract class BaseActivity extends ActionBarActivity implements
         options.add(new NavItem(R.drawable.ic_favorites, R.string.drawerMyFavorites, MyFavoriteActivity.class, null));
         options.add(new NavItem(R.drawable.ic_settings, R.string.drawerSetting, SettingActivity.class, null));
 
-        mTitle = mDrawerTitle = getTitle();
+        //mTitle = mDrawerTitle = getTitle();
         DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+                R.drawable.ic_drawer_test, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerClosed(View drawerView) {
-                getSupportActionBar().setTitle(mTitle);
-                invalidateOptionsMenu();
+                //getSupportActionBar().setTitle(mTitle);
+               // invalidateOptionsMenu();
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle(mDrawerTitle);
-                invalidateOptionsMenu();
+                //getSupportActionBar().setTitle(mDrawerTitle);
+              //  invalidateOptionsMenu();
             }
         };
+
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+       // getSupportActionBar().setDisplayUseLogoEnabled(true);
+       // getSupportActionBar().setIcon(R.drawable.weedfinder);
+
+        getSupportActionBar().setIcon(android.R.color.transparent);
+
+        LayoutInflater inflator = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflator.inflate(R.layout.activity_test, null);
+
+        ActionBar.LayoutParams layout = new ActionBar.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.FILL_PARENT);
+        getSupportActionBar().setCustomView(v, layout);
 
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
         mDrawerList.setAdapter(new NavigationAdapter(this, options));

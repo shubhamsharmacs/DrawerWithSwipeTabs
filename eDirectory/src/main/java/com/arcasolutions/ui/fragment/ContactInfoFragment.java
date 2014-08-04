@@ -146,14 +146,12 @@ public class ContactInfoFragment extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.contactCheckIn:
-
                 break;
 
             case R.id.webview_menu:
                 IntentUtil.openWebView(getActivity(),
-                        "http://weedfinder10200.arcasolutions.com/API/listingmenu.php?id=" + String.valueOf(listingId));
+                        "http://weedfinder.arcastaging.com/API/listingmenu.php?id=" + String.valueOf(listingId));
                 break;
-
         }
     }
 

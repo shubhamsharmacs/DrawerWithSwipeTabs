@@ -132,6 +132,8 @@
     <string name="type_a_location">Type a location</string>
     <string name="search">Search</string>
     <string name="section">Section</string>
+    <string name="category">Category</string>
+    <string name="category_title">Category</string>
     <string name="any">Any</string>
     <string name="event_tab_categories">Categories</string>
     <string name="event_tab_calendar">Calendar</string>
@@ -180,7 +182,7 @@ If you want to know more, want to build you own directory or mobile application,
     <string name="email_should_be_filled">Email should be filled.</string>
     <string name="password_should_be_filled">Password should be filled.</string>
     <string name="you_are_not_connected_on_facebook">You are not connected on facebook.</string>
-    <string name="categories">categories</string>
+    <string name="categories">Category</string>
     <string name="published_at_X_by">Published at %tD by</string>
     <string name="stars">stars</string>
     <string name="call">Call</string>
