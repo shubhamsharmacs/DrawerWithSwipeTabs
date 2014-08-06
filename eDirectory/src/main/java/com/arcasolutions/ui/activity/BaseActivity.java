@@ -164,8 +164,8 @@ public abstract class BaseActivity extends ActionBarActivity implements
             options.add(new NavItem(R.drawable.ic_map, R.string.drawerMap, MapActivity.class, null));
         }
         options.add(new NavItem(R.drawable.ic_business, R.string.drawerBusiness, CategoryResultActivity.class, buildCatExtras(ListingCategoryResult.class)));
-        //options.add(new NavItem(R.drawable.ic_tag, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
-        //options.add(new NavItem(R.drawable.ic_classifieds, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));
+        options.add(new NavItem(R.drawable.ic_tag, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
+        options.add(new NavItem(R.drawable.ic_classifieds, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));
         //options.add(new NavItem(R.drawable.ic_events, R.string.drawerEvents, EventActivity.class, null));
         options.add(new NavItem(R.drawable.icon_link, R.string.drawerWFGear, null, null));
         options.add(new NavItem(R.drawable.icon_link, R.string.drawerNews, null, null));
