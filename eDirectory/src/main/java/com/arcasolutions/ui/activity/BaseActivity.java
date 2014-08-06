@@ -198,8 +198,8 @@ public abstract class BaseActivity extends ActionBarActivity implements
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
-       // getSupportActionBar().setDisplayUseLogoEnabled(true);
-       // getSupportActionBar().setIcon(R.drawable.weedfinder);
+        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+        //getSupportActionBar().setIcon(R.drawable.weedfinder);
 
         getSupportActionBar().setIcon(android.R.color.transparent);
 

@@ -90,6 +90,9 @@ public class Deal extends Module implements IGeoPoint {
     @JsonProperty("friendly_url")
     private String friendlyUrl;
 
+    @JsonProperty("color")
+    private String color;
+
     public int getLevel() {
         return 0;
     }
@@ -128,6 +131,7 @@ public class Deal extends Module implements IGeoPoint {
         amount = in.readInt();
         redeemCode = in.readString();
         friendlyUrl = in.readString();
+        color = in.readString();
     }
 
     @Override
@@ -157,6 +161,7 @@ public class Deal extends Module implements IGeoPoint {
         out.writeInt(amount);
         out.writeString(redeemCode);
         out.writeString(friendlyUrl);
+        out.writeString(color);
     }
 
     public static final Creator<Deal> CREATOR

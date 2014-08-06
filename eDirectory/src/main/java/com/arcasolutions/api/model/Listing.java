@@ -131,6 +131,9 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
     @JsonDeserialize(using = AddressDeserializer.class)
     private String locationInformation;
 
+    @JsonProperty("color")
+    private String color;
+
     @Override
     public Map<String, String> getLevelFieldsMap() {
         Map<String, String> map = Maps.newHashMap();
@@ -195,6 +198,7 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
         dealRemaining = in.readInt();
         dealDescription = in.readString();
         url = in.readString();
+        color = in.readString();
 
     }
 
@@ -236,6 +240,7 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
         out.writeInt(dealRemaining);
         out.writeString(dealDescription);
         out.writeString(url);
+        out.writeString(color);
     }
 
     public static final Parcelable.Creator<Listing> CREATOR

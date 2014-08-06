@@ -100,6 +100,15 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
                 List<BaseCategory> categories = result.getResults();
                 if (categories != null) {
                     mCategories.clear();
+                    BaseCategory baseCategory = new BaseCategory() {
+                        @Override
+                        public int getActiveItems() {
+                            return 0;
+                        }
+                    };
+
+                    baseCategory.setName("Select a Category");
+                    mCategories.add(baseCategory);
                     mCategories.addAll(categories);
                     mFilter.setCategory(String.valueOf(mCategories.get(0).getId()));
                     mFilterAdapter.notifyDataSetChanged();
@@ -110,6 +119,8 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
             @Override
             public void onFail(Exception ex) {
                 ex.printStackTrace();
+                mFilter.setCategory(null);
+                mFilterAdapter.notifyDataSetChanged();
                 displayProgress(false);
             }
         };
@@ -222,6 +233,7 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
     private void chooseCategory() {
 
         List<String> list = Lists.newArrayList();
+
         for (int i=0; i<mCategories.size(); i++) {
             list.add(mCategories.get(i).getName());
         }
@@ -230,11 +242,14 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
 
         new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.category_title)
-
                 .setSingleChoiceItems(cs, mFilter.getCategoryIndex(), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        mFilter.setCategory(String.valueOf(mCategories.get(i).getId()));
+                        if (i > 0) {
+                            mFilter.setCategory(String.valueOf(mCategories.get(i).getId()));
+                        } else {
+                            mFilter.setCategory(null);
+                        }
                         mFilter.setCategoryIndex(i);
                         mFilterAdapter.notifyDataSetChanged();
                         dialogInterface.dismiss();
@@ -259,7 +274,6 @@ public class MyMapFilterFragment extends Fragment implements AdapterView.OnItemC
 
         else if (i == 2)
             chooseCategory();
-
     }
 
 

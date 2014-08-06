@@ -133,7 +133,6 @@ public class MapActivity extends BaseActivity
                 .add(R.id.frame_content, fragment, "list")
                 .addToBackStack(null)
                 .commit();
-
     }
 
 

@@ -123,6 +123,9 @@ public class Event extends Module implements IContactInfo, IGeoPoint, Comparable
     @JsonDeserialize(using = AddressDeserializer.class)
     private String locationInformation;
 
+    @JsonProperty("color")
+    private String color;
+
     @Override
     public Map<String, String> getLevelFieldsMap() {
         Map<String, String> map = Maps.newHashMap();
@@ -179,6 +182,7 @@ public class Event extends Module implements IContactInfo, IGeoPoint, Comparable
         level = in.readInt();
         friendlyUrl = in.readString();
         gallery = in.readArrayList(Photo.class.getClassLoader());
+        color = in.readString();
     }
 
 
@@ -208,6 +212,7 @@ public class Event extends Module implements IContactInfo, IGeoPoint, Comparable
         out.writeInt(level);
         out.writeString(friendlyUrl);
         out.writeList(gallery);
+        out.writeString(color);
     }
 
     public static final Parcelable.Creator<Event> CREATOR

@@ -20,6 +20,7 @@ import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
@@ -258,10 +259,43 @@ public class MyMapFragment extends Fragment implements
 //            mModuleMap.remove(m);
 //        }
 
+        for (IGeoPoint l : items) {
 
+            String color = l.getColor();
+            int image = R.drawable.ic_marker_blue;
+
+            if (color.equals("black")) {
+                image = R.drawable.ic_marker_black;
+            } else if (color.equals("blue")) {
+                image = R.drawable.ic_marker_blue;
+            } else if (color.equals("brown")) {
+                image = R.drawable.ic_marker_brown;
+            } else if (color.equals("gray")) {
+                image = R.drawable.ic_marker_gray;
+            } else if (color.equals("green")) {
+                image = R.drawable.ic_marker_green;
+            } else if (color.equals("orange")) {
+                image = R.drawable.ic_marker_orange;
+            } else if (color.equals("pink")) {
+                image = R.drawable.ic_marker_pink;
+            } else if (color.equals("purple")) {
+                image = R.drawable.ic_marker_purple;
+            } else if (color.equals("red")) {
+                image = R.drawable.ic_marker_red;
+            } else {
+                image = R.drawable.ic_marker_yellow;
+            }
+
+            LatLng latLng = new LatLng(l.getLatitude(), l.getLongitude());
+            Marker m = mMap.addMarker(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromResource(image))
+                    .position(latLng));
+            mModuleMap.put(m, l);
+
+        }
 
         // Adds news items as Marker
-        new AsyncTask<Void, Void, Void>() {
+        /*new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... voids) {
@@ -292,7 +326,7 @@ public class MyMapFragment extends Fragment implements
                     mModuleMap.put(m, l);
                 }
             }
-        }.execute();
+        }.execute();*/
 
 
     }
@@ -370,9 +404,40 @@ public class MyMapFragment extends Fragment implements
         final IGeoPoint item = mModuleMap.get(marker);
         if (item != null) {
             AQuery aq = new AQuery(getView());
+
+
+            String color = item.getColor();
+            int image = R.drawable.ic_marker_blue;
+
+            if (color.equals("black")) {
+                image = R.drawable.ic_blackpin;
+            } else if (color.equals("blue")) {
+                image = R.drawable.ic_bluepin;
+            } else if (color.equals("brown")) {
+                image = R.drawable.ic_brownpin;
+            } else if (color.equals("gray")) {
+                image = R.drawable.ic_graypin;
+            } else if (color.equals("green")) {
+                image = R.drawable.ic_greenpin;
+            } else if (color.equals("orange")) {
+                image = R.drawable.ic_orangepin;
+            } else if (color.equals("pink")) {
+                image = R.drawable.ic_pinkpin;
+            } else if (color.equals("purple")) {
+                image = R.drawable.ic_purplepin;
+            } else if (color.equals("red")) {
+                image = R.drawable.ic_redpin;
+            } else if (color.equals("yellow")) {
+                image = R.drawable.ic_yellowpin;
+            }
+
+            TextView txtDistance = (TextView) getView().findViewById(R.id.mapInfoDistance);
+            txtDistance.setCompoundDrawablesWithIntrinsicBounds(image, 0, 0, 0);
+
             aq.id(R.id.mapInfoView).gone();
             aq.id(R.id.mapInfoTitle).visible().text(item.getTitle());
             aq.id(R.id.mapInfoRatingBar).visible().rating(item.getRating());
+
             aq.id(R.id.mapInfoDistance).visible().text(FmtUtil.distance(item.getLatitude(), item.getLongitude()));
             aq.id(R.id.mapInfoAddress).visible().text(item.getAddress());
 

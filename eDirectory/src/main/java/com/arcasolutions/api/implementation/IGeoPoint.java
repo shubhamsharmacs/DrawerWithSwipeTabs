@@ -14,4 +14,7 @@ public interface IGeoPoint {
 
     public String getImageUrlCat();
 
+    public String getColor();
+
+
 }

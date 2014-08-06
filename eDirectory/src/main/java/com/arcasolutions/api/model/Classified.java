@@ -81,6 +81,9 @@ public class Classified extends Module implements IGeoPoint, IContactInfo {
     @JsonDeserialize(using = AddressDeserializer.class)
     private String locationInformation;
 
+    @JsonProperty("color")
+    private String color;
+
     @Override
     public Map<String, String> getLevelFieldsMap() {
         Map<String, String> map = Maps.newHashMap();
@@ -121,6 +124,7 @@ public class Classified extends Module implements IGeoPoint, IContactInfo {
         url = in.readString();
         email = in.readString();
         level = in.readInt();
+        color = in.readString();
     }
 
     public float getRating() {
@@ -153,6 +157,7 @@ public class Classified extends Module implements IGeoPoint, IContactInfo {
         out.writeString(url);
         out.writeString(email);
         out.writeInt(level);
+        out.writeString(color);
     }
 
     public static final Creator<Classified> CREATOR
