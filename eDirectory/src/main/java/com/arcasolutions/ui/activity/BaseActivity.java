@@ -429,15 +429,18 @@ public abstract class BaseActivity extends ActionBarActivity implements
             startActivity(intent);
             overridePendingTransition(0, 0);
         } else {
-            if (i == 2) {
+            if (i == 4) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder.arcastaging.com/gear"));
                 startActivity(intent);
-            } else if (i == 3) {
+                overridePendingTransition(0, 0);
+            } else if (i == 5) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder.arcastaging.com/dash/news"));
                 startActivity(intent);
-            } else if (i == 4) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/user/WeedFinderTV"));
+                overridePendingTransition(0, 0);
+            } else if (i == 6) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/user/WeedFinderTV"));
                 startActivity(intent);
+                overridePendingTransition(0, 0);
             }
         }
     }

@@ -66,9 +66,18 @@ public class ClassifiedOverviewFragment extends BaseFragment {
                 aq.id(R.id.classifiedOverviewImage).gone();
                 aq.id(R.id.classifiedOverviewFavorite).margin(0, 0, getResources().getDimension(R.dimen.spacingSmall), 0);
             }
+
             aq.id(R.id.classifiedOverviewTitle).text(c.getName());
             aq.id(R.id.classifiedOverviewDescription).text(c.getSummary());
             aq.id(R.id.classifiedOverviewAddress).text(c.getAddress()).getView().invalidate();
+
+            if (c.getAddress() == null || c.getAddress().equals("")) {
+                aq.id(R.id.classifiedOverviewGetDirections).getView().setVisibility(View.GONE);
+            } else {
+                aq.id(R.id.classifiedOverviewGetDirections).getView().setVisibility(View.VISIBLE);
+            }
+
+
             aq.id(R.id.classifiedOverviewPrice).text(String.format(Locale.getDefault(), "%.2f", c.getPrice()));
             final CheckBox favoriteCheckBox = aq.id(R.id.classifiedOverviewFavorite).getCheckBox();
             favoriteCheckBox.setChecked(mFavoriteHelper.isFavorited(c));
@@ -78,6 +87,13 @@ public class ClassifiedOverviewFragment extends BaseFragment {
                     if (!mFavoriteHelper.toggleFavorite(c)) {
                         favoriteCheckBox.setChecked(!b);
                     }
+                }
+            });
+
+            aq.id(R.id.classifiedOverviewGetDirections).clicked(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    IntentUtil.getDirections(getActivity(), c.getLatitude(), c.getLongitude());
                 }
             });
 
