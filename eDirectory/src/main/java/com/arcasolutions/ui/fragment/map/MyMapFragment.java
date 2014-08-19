@@ -75,6 +75,7 @@ public class MyMapFragment extends Fragment implements
         AdapterView.OnItemSelectedListener,
         DrawView.OnDrawListener {
 
+
     public interface OnShowAsListListener {
         void onShowAsList(ArrayList<Module> result, Class<? extends BaseResult> clazz);
     }
@@ -89,6 +90,9 @@ public class MyMapFragment extends Fragment implements
     private LatLng mSearchNearLeftLatLng;
     private LatLng mSearchFarRightLatLng;
     private Filter mFilter = new Filter();
+    LatLng pointFilter;
+    int zoomFactor = 15;
+
 
     private Class<? extends BaseResult> mClass;
 
@@ -360,8 +364,12 @@ public class MyMapFragment extends Fragment implements
                             return (IGeoPoint) geoPoint;
                         }
                     });
+                    updateMapMarkers(items);
+                } else if (mFilter != null && zoomFactor >= 0){
+                    zoomFactor = zoomFactor - 2;
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pointFilter, zoomFactor));
                 }
-                updateMapMarkers(items);
+
             }
 
             @Override
@@ -535,6 +543,8 @@ public class MyMapFragment extends Fragment implements
                 @Override
                 public void onLatLng(LatLng point) {
                     if (point != null) {
+                        pointFilter = point;
+                        zoomFactor = 15;
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(point, 15));
                     } else {
                         Toast.makeText(getActivity(), "Location not found.", Toast.LENGTH_SHORT)
