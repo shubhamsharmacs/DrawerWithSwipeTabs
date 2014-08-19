@@ -37,6 +37,7 @@
 
     <style name="ActionBar.Solid.Default" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="background">@drawable/ab_solid_default</item>
+        <item name="android:paddingLeft">40dp</item>
         <item name="backgroundStacked">@drawable/ab_stacked_solid_default</item>
         <item name="backgroundSplit">@drawable/ab_bottom_solid_default</item>
         <item name="progressBarStyle">@style/ProgressBar.Default</item>
@@ -44,6 +45,7 @@
 
     <style name="ActionBar.Transparent.Default" parent="@style/Widget.AppCompat.ActionBar">
         <item name="background">@drawable/ab_transparent_default</item>
+        <item name="android:paddingLeft">40dp</item>
         <item name="progressBarStyle">@style/ProgressBar.Default</item>
     </style>
 	

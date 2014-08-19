@@ -27,6 +27,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.arcasolutions.util.IntentUtil;
 import com.weedfinder.R;
 import com.arcasolutions.api.model.ArticleCategoryResult;
 import com.arcasolutions.api.model.BaseCategoryResult;
@@ -163,6 +164,7 @@ public abstract class BaseActivity extends ActionBarActivity implements
         } else {
             options.add(new NavItem(R.drawable.ic_map, R.string.drawerMap, MapActivity.class, null));
         }
+
         options.add(new NavItem(R.drawable.ic_business, R.string.drawerBusiness, CategoryResultActivity.class, buildCatExtras(ListingCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_tag, R.string.drawerDeals, CategoryResultActivity.class, buildCatExtras(DealCategoryResult.class)));
         options.add(new NavItem(R.drawable.ic_classifieds, R.string.drawerClassifieds, CategoryResultActivity.class, buildCatExtras(ClassifiedCategoryResult.class)));
@@ -430,16 +432,13 @@ public abstract class BaseActivity extends ActionBarActivity implements
             overridePendingTransition(0, 0);
         } else {
             if (i == 4) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder.arcastaging.com/gear"));
-                startActivity(intent);
+                IntentUtil.openWebView(this, "http://weedfinder.arcastaging.com/gear");
                 overridePendingTransition(0, 0);
             } else if (i == 5) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://weedfinder.arcastaging.com/dash/news"));
-                startActivity(intent);
+                IntentUtil.openWebView(this, "http://weedfinder.arcastaging.com/dash/news");
                 overridePendingTransition(0, 0);
             } else if (i == 6) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/user/WeedFinderTV"));
-                startActivity(intent);
+                IntentUtil.openWebView(this, "http://youtube.com/user/WeedFinderTV");
                 overridePendingTransition(0, 0);
             }
         }
