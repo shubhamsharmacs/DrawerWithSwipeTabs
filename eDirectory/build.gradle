@@ -1,15 +1,19 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven { url 'http://download.crashlytics.com/maven' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
     }
 }
 apply plugin: 'android'
+apply plugin: 'crashlytics'
 
 repositories {
     mavenCentral()
+    maven { url 'http://download.crashlytics.com/maven' }
 }
 
 configurations {
@@ -61,6 +65,7 @@ dependencies {
 
     // lombok
     compile 'org.projectlombok:lombok:0.12.0'
+    compile 'com.crashlytics.android:crashlytics:1.+'
 
 }
 

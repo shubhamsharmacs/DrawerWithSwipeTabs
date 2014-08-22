@@ -90,7 +90,7 @@ public class MyMapFragment extends Fragment implements
     private LatLng mSearchNearLeftLatLng;
     private LatLng mSearchFarRightLatLng;
     private Filter mFilter = new Filter();
-    LatLng pointFilter;
+    LatLng lastLocation;
     int zoomFactor = 15;
 
 
@@ -182,6 +182,7 @@ public class MyMapFragment extends Fragment implements
         mMap.setOnMapClickListener(this);
 
         LatLng center = getMyPosition();
+        lastLocation = center;
         if (center != null) mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(center, 15f));
 
     }
@@ -265,29 +266,33 @@ public class MyMapFragment extends Fragment implements
 
         for (IGeoPoint l : items) {
 
-            String color = l.getColor();
-            int image = R.drawable.ic_marker_blue;
+            int image;
+            image = R.drawable.ic_marker_blue;
 
-            if (color.equals("black")) {
-                image = R.drawable.ic_marker_black;
-            } else if (color.equals("blue")) {
-                image = R.drawable.ic_marker_blue;
-            } else if (color.equals("brown")) {
-                image = R.drawable.ic_marker_brown;
-            } else if (color.equals("gray")) {
-                image = R.drawable.ic_marker_gray;
-            } else if (color.equals("green")) {
-                image = R.drawable.ic_marker_green;
-            } else if (color.equals("orange")) {
-                image = R.drawable.ic_marker_orange;
-            } else if (color.equals("pink")) {
-                image = R.drawable.ic_marker_pink;
-            } else if (color.equals("purple")) {
-                image = R.drawable.ic_marker_purple;
-            } else if (color.equals("red")) {
-                image = R.drawable.ic_marker_red;
-            } else {
-                image = R.drawable.ic_marker_yellow;
+            if (l.getColor() != null) {
+                String color = l.getColor();
+
+                if (color.equals("black")) {
+                    image = R.drawable.ic_marker_black;
+                } else if (color.equals("blue")) {
+                    image = R.drawable.ic_marker_blue;
+                } else if (color.equals("brown")) {
+                    image = R.drawable.ic_marker_brown;
+                } else if (color.equals("gray")) {
+                    image = R.drawable.ic_marker_gray;
+                } else if (color.equals("green")) {
+                    image = R.drawable.ic_marker_green;
+                } else if (color.equals("orange")) {
+                    image = R.drawable.ic_marker_orange;
+                } else if (color.equals("pink")) {
+                    image = R.drawable.ic_marker_pink;
+                } else if (color.equals("purple")) {
+                    image = R.drawable.ic_marker_purple;
+                } else if (color.equals("red")) {
+                    image = R.drawable.ic_marker_red;
+                } else {
+                    image = R.drawable.ic_marker_yellow;
+                }
             }
 
             LatLng latLng = new LatLng(l.getLatitude(), l.getLongitude());
@@ -364,12 +369,11 @@ public class MyMapFragment extends Fragment implements
                             return (IGeoPoint) geoPoint;
                         }
                     });
-                    updateMapMarkers(items);
-                } else if (mFilter != null && zoomFactor >= 0){
-                    zoomFactor = zoomFactor - 2;
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pointFilter, zoomFactor));
+                } else if (mFilter != null && TextUtils.isEmpty(mFilter.getLocation()) && zoomFactor >= 0){
+                    zoomFactor = zoomFactor - 4;
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomFactor));
                 }
-
+                updateMapMarkers(items);
             }
 
             @Override
@@ -413,30 +417,32 @@ public class MyMapFragment extends Fragment implements
         if (item != null) {
             AQuery aq = new AQuery(getView());
 
-
-            String color = item.getColor();
             int image = R.drawable.ic_marker_blue;
 
-            if (color.equals("black")) {
-                image = R.drawable.ic_blackpin;
-            } else if (color.equals("blue")) {
-                image = R.drawable.ic_bluepin;
-            } else if (color.equals("brown")) {
-                image = R.drawable.ic_brownpin;
-            } else if (color.equals("gray")) {
-                image = R.drawable.ic_graypin;
-            } else if (color.equals("green")) {
-                image = R.drawable.ic_greenpin;
-            } else if (color.equals("orange")) {
-                image = R.drawable.ic_orangepin;
-            } else if (color.equals("pink")) {
-                image = R.drawable.ic_pinkpin;
-            } else if (color.equals("purple")) {
-                image = R.drawable.ic_purplepin;
-            } else if (color.equals("red")) {
-                image = R.drawable.ic_redpin;
-            } else if (color.equals("yellow")) {
-                image = R.drawable.ic_yellowpin;
+            if (item.getColor() != null) {
+                String color = item.getColor();
+
+                if (color.equals("black")) {
+                    image = R.drawable.ic_blackpin;
+                } else if (color.equals("blue")) {
+                    image = R.drawable.ic_bluepin;
+                } else if (color.equals("brown")) {
+                    image = R.drawable.ic_brownpin;
+                } else if (color.equals("gray")) {
+                    image = R.drawable.ic_graypin;
+                } else if (color.equals("green")) {
+                    image = R.drawable.ic_greenpin;
+                } else if (color.equals("orange")) {
+                    image = R.drawable.ic_orangepin;
+                } else if (color.equals("pink")) {
+                    image = R.drawable.ic_pinkpin;
+                } else if (color.equals("purple")) {
+                    image = R.drawable.ic_purplepin;
+                } else if (color.equals("red")) {
+                    image = R.drawable.ic_redpin;
+                } else if (color.equals("yellow")) {
+                    image = R.drawable.ic_yellowpin;
+                }
             }
 
             TextView txtDistance = (TextView) getView().findViewById(R.id.mapInfoDistance);
@@ -514,7 +520,6 @@ public class MyMapFragment extends Fragment implements
                 onDrawClickButton();
                 break;
 
-
         }
     }
 
@@ -543,8 +548,7 @@ public class MyMapFragment extends Fragment implements
                 @Override
                 public void onLatLng(LatLng point) {
                     if (point != null) {
-                        pointFilter = point;
-                        zoomFactor = 15;
+                        //lastLocation = point;
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(point, 15));
                     } else {
                         Toast.makeText(getActivity(), "Location not found.", Toast.LENGTH_SHORT)
@@ -553,6 +557,7 @@ public class MyMapFragment extends Fragment implements
                 }
             });
         } else {
+            zoomFactor = 15;
             searchItems();
         }
     }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
+import com.crashlytics.android.Crashlytics;
 import com.weedfinder.R;
 import com.arcasolutions.util.Util;
 
@@ -16,6 +17,7 @@ public class StartUpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Crashlytics.start(this);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         View view = new View(this);

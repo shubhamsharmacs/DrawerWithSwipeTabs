@@ -93,6 +93,11 @@ public class Deal extends Module implements IGeoPoint {
     @JsonProperty("color")
     private String color;
 
+    @Override
+    public String getListingId() {
+        return String.valueOf(listingId);
+    }
+
     public int getLevel() {
         return 0;
     }

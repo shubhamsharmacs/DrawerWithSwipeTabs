@@ -24,7 +24,10 @@ public class ListingDetailActivity extends SecondLevelActivity {
 
     public static final String EXTRA_ID = "id";
     public static final String EXTRA_IS_DEAL = "isDeal";
+    public static final String EXTRA_LISTING_ID = "listing_id";
+
     private boolean mIsDeal = false;
+    private String listingId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,17 @@ public class ListingDetailActivity extends SecondLevelActivity {
         setContentView(R.layout.activity_detail);
 
 
+        long id;
         mIsDeal = getIntent().getBooleanExtra(EXTRA_IS_DEAL, false);
-        long id = getIntent().getLongExtra(EXTRA_ID, 0);
+
+        if (mIsDeal) {
+            listingId = getIntent().getStringExtra(EXTRA_LISTING_ID);
+            id = Long.valueOf(listingId);
+        } else {
+            id = getIntent().getLongExtra(EXTRA_ID, 0);
+        }
+
+
         if (id > 0) {
             loadListingDetail(id);
         }

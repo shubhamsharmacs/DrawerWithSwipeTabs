@@ -148,6 +148,9 @@ public class MapActivity extends BaseActivity
                 Intent intent = new Intent(this, ListingDetailActivity.class);
                 intent.putExtra(ListingDetailActivity.EXTRA_ID, module.getId());
                 intent.putExtra(ListingDetailActivity.EXTRA_IS_DEAL, module instanceof Deal);
+                if (module.getListingId() != null) {
+                    intent.putExtra(ListingDetailActivity.EXTRA_LISTING_ID, module.getListingId());
+                }
                 startActivity(intent);
             } else if (module instanceof Article) {
                 Intent intent = new Intent(this, ArticleDetailActivity.class);

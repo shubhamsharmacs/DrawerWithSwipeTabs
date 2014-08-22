@@ -36,6 +36,9 @@ public class DealResultActivity extends BaseActivity
             Intent intent = new Intent(this, ListingDetailActivity.class);
             intent.putExtra(ListingDetailActivity.EXTRA_ID, ((Deal)module).getListingId());
             intent.putExtra(ListingDetailActivity.EXTRA_IS_DEAL, true);
+            if (module.getListingId() != null) {
+                intent.putExtra(ListingDetailActivity.EXTRA_LISTING_ID, module.getListingId());
+            }
             startActivity(intent);
         }
     }

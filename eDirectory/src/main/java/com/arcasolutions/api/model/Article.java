@@ -67,6 +67,11 @@ public class Article extends Module {
     private String friendlyUrl;
 
     @Override
+    public String getListingId() {
+        return null;
+    }
+
+    @Override
     public Map<String, String> getLevelFieldsMap() {
         return null;
     }

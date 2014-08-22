@@ -127,6 +127,11 @@ public class Event extends Module implements IContactInfo, IGeoPoint, Comparable
     private String color;
 
     @Override
+    public String getListingId() {
+        return null;
+    }
+
+    @Override
     public Map<String, String> getLevelFieldsMap() {
         Map<String, String> map = Maps.newHashMap();
         map.put("summary_description", "summary");

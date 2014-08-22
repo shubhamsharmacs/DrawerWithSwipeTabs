@@ -147,6 +147,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="4030500" />
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="275b02273f431cf8ed5a80abe7e18fb3964ddc3d"/>
 
     </application>
 

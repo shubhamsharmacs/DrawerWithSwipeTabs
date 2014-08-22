@@ -3,6 +3,7 @@ package com.arcasolutions.ui.activity.listing;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.arcasolutions.api.model.Deal;
 import com.weedfinder.R;
 import com.arcasolutions.api.model.BaseCategory;
 import com.arcasolutions.api.model.ListingResult;
@@ -34,6 +35,7 @@ public class ListingResultActivity extends BaseActivity
         if (module != null) {
             Intent intent = new Intent(this, ListingDetailActivity.class);
             intent.putExtra(ListingDetailActivity.EXTRA_ID, module.getId());
+            intent.putExtra(ListingDetailActivity.EXTRA_IS_DEAL, module instanceof Deal);
             startActivity(intent);
         }
     }
