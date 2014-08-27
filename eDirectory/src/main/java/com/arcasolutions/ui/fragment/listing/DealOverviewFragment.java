@@ -198,7 +198,7 @@ public class DealOverviewFragment extends BaseFragment implements Client.RestLis
     @Override
     public void onComplete(BaseResult result) {
         List<Deal> deals = result.getResults();
-        if (deals != null && !deals.isEmpty()) {
+        if (deals != null && !deals.isEmpty() && isAdded()) {
             populate(deals.get(0));
         }
     }

@@ -187,29 +187,33 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
 
             aq.id(R.id.listingTitle).text(l.getTitle());
 
-            String color = l.getColor();
-            int image = R.drawable.ic_marker_blue;
+            int image;
+            image = R.drawable.ic_marker_blue;
 
-            if (color.equals("black")) {
-                image = R.drawable.ic_marker_black;
-            } else if (color.equals("blue")) {
-                image = R.drawable.ic_marker_blue;
-            } else if (color.equals("brown")) {
-                image = R.drawable.ic_marker_brown;
-            } else if (color.equals("gray")) {
-                image = R.drawable.ic_marker_gray;
-            } else if (color.equals("green")) {
-                image = R.drawable.ic_marker_green;
-            } else if (color.equals("orange")) {
-                image = R.drawable.ic_marker_orange;
-            } else if (color.equals("pink")) {
-                image = R.drawable.ic_marker_pink;
-            } else if (color.equals("purple")) {
-                image = R.drawable.ic_marker_purple;
-            } else if (color.equals("red")) {
-                image = R.drawable.ic_marker_red;
-            } else {
-                image = R.drawable.ic_marker_yellow;
+            if (l.getColor() != null) {
+                String color = l.getColor();
+
+                if (color.equals("black")) {
+                    image = R.drawable.ic_marker_black;
+                } else if (color.equals("blue")) {
+                    image = R.drawable.ic_marker_blue;
+                } else if (color.equals("brown")) {
+                    image = R.drawable.ic_marker_brown;
+                } else if (color.equals("gray")) {
+                    image = R.drawable.ic_marker_gray;
+                } else if (color.equals("green")) {
+                    image = R.drawable.ic_marker_green;
+                } else if (color.equals("orange")) {
+                    image = R.drawable.ic_marker_orange;
+                } else if (color.equals("pink")) {
+                    image = R.drawable.ic_marker_pink;
+                } else if (color.equals("purple")) {
+                    image = R.drawable.ic_marker_purple;
+                } else if (color.equals("red")) {
+                    image = R.drawable.ic_marker_red;
+                } else {
+                    image = R.drawable.ic_marker_yellow;
+                }
             }
 
             aq.id(R.id.imagePin).image(image);
