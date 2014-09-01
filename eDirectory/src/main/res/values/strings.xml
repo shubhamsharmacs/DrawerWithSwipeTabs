@@ -5,7 +5,7 @@
         <item>Business</item>
         <item>Deal</item>
         <item>Classified</item>
-        <item>Event</item>
+       <!-- <item>Event</item>-->
     </string-array>
 
     <!-- They are being used by calendar(s) -->

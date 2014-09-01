@@ -5,7 +5,7 @@
     android:padding="@dimen/spacingMedium"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_weefinder">
+    android:background="@drawable/border_results">
     <!--android:background="@drawable/favorite_list_item_selector"-->
 
     <ImageView

@@ -6,7 +6,8 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/AppBackground">
+    style="@style/AppBackground"
+    android:background="@drawable/bgbody">
 
     <android.support.v4.view.ViewPager
         android:visibility="gone"

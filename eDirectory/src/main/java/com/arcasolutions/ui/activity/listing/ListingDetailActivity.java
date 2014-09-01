@@ -50,6 +50,12 @@ public class ListingDetailActivity extends SecondLevelActivity {
             loadListingDetail(id);
         }
 
+       /* mIsDeal = getIntent().getBooleanExtra(EXTRA_IS_DEAL, false);
+        long id = getIntent().getLongExtra(EXTRA_ID, 0);
+        if (id > 0) {
+            loadListingDetail(id);
+        }*/
+
 
     }
 

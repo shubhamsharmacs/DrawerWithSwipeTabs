@@ -5,15 +5,17 @@
     android:gravity="center"
     style="@style/AppBackground"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bgbody_results">
 
     <ListView
         android:id="@android:id/list"
         android:drawSelectorOnTop="true"
-        android:divider="@drawable/common_line_pair"
-        android:dividerHeight="10dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="15dp"
         android:listSelector="@drawable/list_selector"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"/>
 
 </LinearLayout>

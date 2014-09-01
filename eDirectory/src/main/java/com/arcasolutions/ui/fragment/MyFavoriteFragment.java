@@ -23,8 +23,12 @@ import java.util.List;
 
 public class MyFavoriteFragment extends Fragment {
 
-    private static final int[] TITLE_IDS = new int[] {R.string.drawerBusiness, R.string.drawerDeals, R.string.drawerEvents, R.string.drawerClassifieds, R.string.drawerArticles};
-    private static final Class[] CLASSES = new Class[]{Listing.class, Deal.class, Event.class, Classified.class, Article.class};
+    //private static final int[] TITLE_IDS = new int[] {R.string.drawerBusiness, R.string.drawerDeals, R.string.drawerEvents, R.string.drawerClassifieds, R.string.drawerArticles};
+    //private static final Class[] CLASSES = new Class[]{Listing.class, Deal.class, Event.class, Classified.class, Article.class};
+
+    private static final int[] TITLE_IDS = new int[] {R.string.drawerBusiness, R.string.drawerDeals, R.string.drawerClassifieds};
+    private static final Class[] CLASSES = new Class[]{Listing.class, Deal.class, Classified.class};
+
     private FavoriteAdapter mAdapter;
 
     @Override

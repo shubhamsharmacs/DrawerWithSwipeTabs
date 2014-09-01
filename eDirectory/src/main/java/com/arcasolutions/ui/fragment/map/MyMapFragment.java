@@ -1,6 +1,7 @@
 package com.arcasolutions.ui.fragment.map;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -92,6 +94,7 @@ public class MyMapFragment extends Fragment implements
     private Filter mFilter = new Filter();
     LatLng lastLocation;
     int zoomFactor = 15;
+    private boolean searchByFilter = false;
 
 
     private Class<? extends BaseResult> mClass;
@@ -369,7 +372,7 @@ public class MyMapFragment extends Fragment implements
                             return (IGeoPoint) geoPoint;
                         }
                     });
-                } else if (mFilter != null && TextUtils.isEmpty(mFilter.getLocation()) && zoomFactor >= 0){
+                } else if (searchByFilter && TextUtils.isEmpty(mFilter.getLocation()) && zoomFactor >= 0){
                     zoomFactor = zoomFactor - 4;
                     mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomFactor));
                 }
@@ -537,6 +540,9 @@ public class MyMapFragment extends Fragment implements
     public void setFilter(Filter filter) {
         if (mFilter == null) return;
 
+        InputMethodManager imm =(InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+
         mFilter = filter;
         mClass = Filter.getModuleClass(mFilter.getModuleIndex());
 
@@ -559,6 +565,7 @@ public class MyMapFragment extends Fragment implements
         } else {
             zoomFactor = 15;
             searchItems();
+            searchByFilter = true;
         }
     }
 

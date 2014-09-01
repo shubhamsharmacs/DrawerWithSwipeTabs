@@ -34,6 +34,7 @@ public class Deal extends Module implements IGeoPoint {
     private String imageUrl;
 
     @JsonProperty("listing_id")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_LISTING_ID)
     private long listingId;
 
     @JsonProperty("listing_title")
@@ -49,13 +50,14 @@ public class Deal extends Module implements IGeoPoint {
     private double longitude;
 
     @JsonProperty("avg_review")
-    @DatabaseField(columnName = Database.DealsColumns.DEAL_RATE)
     private float rating;
 
     @JsonProperty("realvalue")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_REAL_VALUE)
     private float realValue;
 
     @JsonProperty("dealvalue")
+    @DatabaseField(columnName = Database.DealsColumns.DEAL_VALUE)
     private float dealValue;
 
     @JsonProperty("total_amount")

@@ -158,11 +158,14 @@ public class Database extends OrmLiteSqliteOpenHelper {
                 + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + DealsColumns.DEAL_ID + " INTEGER,"
                 + DealsColumns.DEAL_ICON + " TEXT,"
+                + DealsColumns.DEAL_LISTING_ID + " INTEGER,"
                 + DealsColumns.DEAL_TITLE + " TEXT,"
                 + DealsColumns.DEAL_LISTING_TITLE + " TEXT,"
                 + DealsColumns.DEAL_LATITUDE + " DOUBLE,"
                 + DealsColumns.DEAL_LONGITUDE + " DOUBLE,"
                 + DealsColumns.DEAL_RATE + " DOUBLE,"
+                + DealsColumns.DEAL_REAL_VALUE + " DOUBLE,"
+                + DealsColumns.DEAL_VALUE + " DOUBLE,"
                 + "UNIQUE (" + DealsColumns.DEAL_ID + ") ON CONFLICT REPLACE)");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " + Tables.LISTINGS + "("
@@ -199,11 +202,14 @@ public class Database extends OrmLiteSqliteOpenHelper {
     public interface DealsColumns {
         String DEAL_ID = "deal_id";
         String DEAL_ICON = "deal_icon";
+        String DEAL_LISTING_ID = "deal_listing_id";
         String DEAL_TITLE = "deal_title";
         String DEAL_LISTING_TITLE = "deal_listing_title";
         String DEAL_LATITUDE = "deal_latitude";
         String DEAL_LONGITUDE = "deal_longitude";
         String DEAL_RATE = "deal_rate";
+        String DEAL_REAL_VALUE = "deal_real_value";
+        String DEAL_VALUE = "deal_value";
     }
 
     public interface EventsColumns {

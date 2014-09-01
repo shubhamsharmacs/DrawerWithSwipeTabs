@@ -2,7 +2,7 @@
 <resources>
 
     <style name="AppBackground">
-        <item name="android:background">@color/appBackground</item>
+        <item name="android:background">@color/black_weefinder</item>
     </style>
 
     <!-- Empty results -->
