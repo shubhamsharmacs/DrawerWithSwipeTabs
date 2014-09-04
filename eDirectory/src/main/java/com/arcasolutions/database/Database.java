@@ -176,6 +176,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
                 + ListingsColumns.LISTING_ADDRESS + " TEXT,"
                 + ListingsColumns.LISTING_HAS_DEAL + " INTEGER,"
                 + ListingsColumns.LISTING_RATE + " DOUBLE,"
+                + ListingsColumns.LISTING_COLOR + " TEXT,"
                 + "UNIQUE (" + ListingsColumns.LISTING_ID + ") ON CONFLICT REPLACE)");
     }
 
@@ -231,6 +232,7 @@ public class Database extends OrmLiteSqliteOpenHelper {
         String LISTING_HAS_DEAL = "listing_has_deal";
         String LISTING_LATITUDE = "listing_latitude";
         String LISTING_LONGITUDE = "listing_longitude";
+        String LISTING_COLOR = "listing_color";
     }
 
     public interface NotificationsColumns {

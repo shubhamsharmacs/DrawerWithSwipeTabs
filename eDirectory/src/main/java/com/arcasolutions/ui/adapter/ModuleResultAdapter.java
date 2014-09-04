@@ -211,7 +211,7 @@ public class ModuleResultAdapter<T extends Module> extends BaseAdapter {
                     image = R.drawable.ic_marker_purple;
                 } else if (color.equals("red")) {
                     image = R.drawable.ic_marker_red;
-                } else {
+                } else if (color.equals("yellow")) {
                     image = R.drawable.ic_marker_yellow;
                 }
             }

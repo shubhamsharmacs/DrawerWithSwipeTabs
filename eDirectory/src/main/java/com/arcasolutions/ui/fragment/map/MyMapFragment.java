@@ -373,7 +373,7 @@ public class MyMapFragment extends Fragment implements
                         }
                     });
                 } else if (searchByFilter && TextUtils.isEmpty(mFilter.getLocation()) && zoomFactor >= 0){
-                    zoomFactor = zoomFactor - 4;
+                    zoomFactor = zoomFactor - 2;
                     mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomFactor));
                 }
                 updateMapMarkers(items);
