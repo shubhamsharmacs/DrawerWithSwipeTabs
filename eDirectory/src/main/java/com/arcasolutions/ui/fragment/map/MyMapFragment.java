@@ -293,8 +293,18 @@ public class MyMapFragment extends Fragment implements
                     image = R.drawable.ic_marker_purple;
                 } else if (color.equals("red")) {
                     image = R.drawable.ic_marker_red;
-                } else {
+                } else if (color.equals("yellow")){
                     image = R.drawable.ic_marker_yellow;
+                } else if (color.equals("cadet_blue")) {
+                    image = R.drawable.ic_marker_cadet_blue;
+                } else if (color.equals("coral")) {
+                    image = R.drawable.ic_marker_coral;
+                } else if (color.equals("lime")) {
+                    image = R.drawable.ic_marker_lime;
+                } else if (color.equals("light_pink")) {
+                    image = R.drawable.ic_marker_light_pink;
+                } else if (color.equals("dark_red")) {
+                    image = R.drawable.ic_marker_dark_red;
                 }
             }
 
@@ -445,6 +455,16 @@ public class MyMapFragment extends Fragment implements
                     image = R.drawable.ic_redpin;
                 } else if (color.equals("yellow")) {
                     image = R.drawable.ic_yellowpin;
+                } else if (color.equals("cadet_blue")) {
+                    image = R.drawable.ic_cadetbluepin;
+                } else if (color.equals("coral")) {
+                    image = R.drawable.ic_lightcoral;
+                } else if (color.equals("lime")) {
+                    image = R.drawable.ic_lime;
+                } else if (color.equals("light_pink")) {
+                    image = R.drawable.ic_lightpink;
+                } else if (color.equals("dark_red")) {
+                    image = R.drawable.ic_red;
                 }
             }
 
