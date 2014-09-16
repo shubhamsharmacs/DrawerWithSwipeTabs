@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/AppBackground"
-    android:background="@drawable/bgbody">
+    android:background="#000000">
 
     <android.support.v4.view.ViewPager
         android:visibility="gone"

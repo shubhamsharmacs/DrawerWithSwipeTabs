@@ -77,7 +77,6 @@
 
         <activity
             android:name="com.arcasolutions.ui.activity.article.ArticleDetailActivity"
-            android:hardwareAccelerated="false"
             android:configChanges="orientation|screenSize" />
 
         <activity

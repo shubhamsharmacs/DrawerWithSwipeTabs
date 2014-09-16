@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     style="@style/AppBackground"
     tools:context=".MainActivity"
-    android:background="@drawable/bgbody">
+    android:background="#000000">
     <!-- The main content view -->
     <FrameLayout
         android:id="@+id/frame_content"

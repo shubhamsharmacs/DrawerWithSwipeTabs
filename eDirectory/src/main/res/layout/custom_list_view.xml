@@ -6,13 +6,13 @@
     style="@style/AppBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgbody_results">
+    android:background="#000000">
 
     <ListView
         android:id="@android:id/list"
         android:drawSelectorOnTop="true"
         android:divider="@android:color/transparent"
-        android:dividerHeight="15dp"
+        android:dividerHeight="25dp"
         android:listSelector="@drawable/list_selector"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

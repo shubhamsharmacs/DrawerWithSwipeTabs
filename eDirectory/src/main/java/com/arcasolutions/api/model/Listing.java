@@ -132,7 +132,7 @@ public class Listing extends Module implements IGeoPoint, IContactInfo {
     private String locationInformation;
 
     @JsonProperty("color")
-    @DatabaseField(columnName = Database.ListingsColumns.LISTING_LONGITUDE)
+    @DatabaseField(columnName = Database.ListingsColumns.LISTING_COLOR)
     private String color;
 
     @Override
