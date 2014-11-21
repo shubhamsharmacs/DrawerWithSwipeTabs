@@ -94,7 +94,7 @@ public class MyMapFragment extends Fragment implements
     private Filter mFilter = new Filter();
     LatLng lastLocation;
     int zoomFactor = 15;
-    private boolean searchByFilter = false;
+    private boolean zoomOutMap = false;
 
 
     private Class<? extends BaseResult> mClass;
@@ -186,6 +186,9 @@ public class MyMapFragment extends Fragment implements
 
         LatLng center = getMyPosition();
         lastLocation = center;
+
+        zoomFactor = 15;
+
         if (center != null) mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(center, 15f));
 
     }
@@ -382,7 +385,7 @@ public class MyMapFragment extends Fragment implements
                             return (IGeoPoint) geoPoint;
                         }
                     });
-                } else if (searchByFilter && TextUtils.isEmpty(mFilter.getLocation()) && zoomFactor >= 0){
+                } else if (zoomFactor >= 0){
                     zoomFactor = zoomFactor - 2;
                     mMap.animateCamera(CameraUpdateFactory.zoomTo(zoomFactor));
                 }
@@ -583,10 +586,12 @@ public class MyMapFragment extends Fragment implements
                 }
             });
         } else {
-            zoomFactor = 15;
             searchItems();
-            searchByFilter = true;
         }
+
+        zoomFactor = 15;
+        zoomOutMap = true;
+
     }
 
     @Override

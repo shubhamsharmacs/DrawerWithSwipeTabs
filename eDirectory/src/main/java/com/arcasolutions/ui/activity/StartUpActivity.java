@@ -14,6 +14,8 @@ import com.arcasolutions.util.Util;
 
 public class StartUpActivity extends Activity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,4 +68,6 @@ public class StartUpActivity extends Activity {
             })
             .create().show();
     }
+
+
 }

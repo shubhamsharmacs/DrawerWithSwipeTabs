@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -155,8 +157,18 @@ public abstract class BaseActivity extends ActionBarActivity implements
          */
         mLocationClient = new LocationClient(this, this, this);
 
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+        // Creating a criteria object to retrieve provider
+        Criteria criteria = new Criteria();
 
+        // Getting the name of the best provider
+        String provider = locationManager.getBestProvider(criteria, true);
+
+        // Getting Current Location
+        Location location = locationManager.getLastKnownLocation(provider);
+
+        Util.setMyLocation(locationManager.getLastKnownLocation(provider));
 
         List<NavItem> options = Lists.newArrayList();
         if (Util.isNonLocationApp(this)) {
@@ -432,10 +444,10 @@ public abstract class BaseActivity extends ActionBarActivity implements
             overridePendingTransition(0, 0);
         } else {
             if (i == 4) {
-                IntentUtil.openWebView(this, "http://weedfinder.arcastaging.com/gear");
+                IntentUtil.openWebView(this, "http://weedfinder.com/directory/gear");
                 overridePendingTransition(0, 0);
             } else if (i == 5) {
-                IntentUtil.openWebView(this, "http://weedfinder.arcastaging.com/dash/news");
+                IntentUtil.openWebView(this, "http://weedfinder.com/dash/news");
                 overridePendingTransition(0, 0);
             } else if (i == 6) {
                 IntentUtil.openWebView(this, "http://youtube.com/user/WeedFinderTV");

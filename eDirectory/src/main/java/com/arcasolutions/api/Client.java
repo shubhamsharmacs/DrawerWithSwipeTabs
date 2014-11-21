@@ -46,7 +46,7 @@ import java.util.Map;
 
 public class Client {
 
-    private static final String BASE_URL = "http://weedfinder.arcastaging.com";
+    private static final String BASE_URL = "http://weedfinder.com/directory";
 
     private static final String API_URL = BASE_URL + "/API/api2.php";
     private static final String IAPP_URL = BASE_URL + "/iapp/m6400";
@@ -197,7 +197,7 @@ public class Client {
 
         public Builder(Class<? extends BaseResult> clazz) {
             mMap.put("device", "android");
-            mMap.put("key", "2e21-4a3a-9ca1-5964-e0e7-61d6-540f-521c");
+            mMap.put("key", "8bc3-8782-8f86-7104-41d5-ea3d-34e8-74ab");
             mClass = clazz;
 
             if (mClass == null)

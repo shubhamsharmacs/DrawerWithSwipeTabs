@@ -4,7 +4,7 @@ buildscript {
         maven { url 'http://download.crashlytics.com/maven' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:0.14.0'
         classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
     }
 }
@@ -21,69 +21,54 @@ configurations {
 }
 
 dependencies {
-
     compile project(':libraries:StaggeredGridView')
-
     //compile files('libs/lombok-api.jar')
-
     // android libraries
     compile 'com.android.support:appcompat-v7:19.0.0'
     compile 'com.android.support:support-v4:19.0.0'
-
     // google libraries
     compile 'com.google.android.gms:play-services:4.0.30'
-
     // guava
     compile 'com.google.guava:guava:15.0'
-
     // spring for android
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
-
-    compile ('org.springframework.android:spring-android-auth:1.0.1.RELEASE') {
+    compile('org.springframework.android:spring-android-auth:1.0.1.RELEASE') {
         exclude group: 'org.springframework.security', module: 'spring-security-crypto'
     }
-
-    compile ('org.springframework.security:spring-security-crypto:3.1.3.RELEASE') {
+    compile('org.springframework.security:spring-security-crypto:3.1.3.RELEASE') {
         exclude group: 'org.springframework', module: 'spring-core'
     }
-    compile ('org.springframework.social:spring-social-facebook:1.0.3.RELEASE') {
+    compile('org.springframework.social:spring-social-facebook:1.0.3.RELEASE') {
         exclude group: 'org.springframework', module: 'spring-web'
     }
-
     // Android Query
     compile 'com.googlecode.android-query:android-query:0.24.3'
-
     // Jackson
     compile 'com.fasterxml.jackson.core:jackson-databind:2.1.2'
-
     // PhotoView (zoom)
     compile 'com.github.chrisbanes.photoview:library:1.2.1'
-
     // Orm Lite
     compile 'com.j256.ormlite:ormlite-android:4.25'
-
-
     // lombok
     compile 'org.projectlombok:lombok:0.12.0'
     compile 'com.crashlytics.android:crashlytics:1.+'
-
 }
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 17
     buildToolsVersion "19.1.0"
-
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 19
+        targetSdkVersion 17
     }
-
     packagingOptions {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/license.txt'
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
+    }
+    productFlavors {
     }
 }
 

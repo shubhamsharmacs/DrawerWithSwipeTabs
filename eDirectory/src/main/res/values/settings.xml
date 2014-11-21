@@ -4,9 +4,9 @@
     <!-- eDirectory settings -->
     <string name="edirectoryScheme" tools:ignore="MissingTranslation">http://</string>
 
-    <string name="edirectoryUrl" tools:ignore="MissingTranslation">weedfinder.arcastaging.com</string>
+    <string name="edirectoryUrl" tools:ignore="MissingTranslation">weedfinder.com/directory</string>
 
-    <string name="edirectoryApiKey" tools:ignore="MissingTranslation,TypographyDashes">2e21-4a3a-9ca1-5964-e0e7-61d6-540f-521c</string>
+    <string name="edirectoryApiKey" tools:ignore="MissingTranslation,TypographyDashes">8bc3-8782-8f86-7104-41d5-ea3d-34e8-74ab</string>
 
     <!-- Key for Android apps -->
     <string name="androidApiKey" tools:ignore="MissingTranslation">AIzaSyDtdNQJKgDGCPYscjNNBIXdwuY9LzI_19Y</string>
